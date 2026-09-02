@@ -1,0 +1,26 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@pathforge/shared-enums": ["../../packages/shared-enums/src"],
+      "@pathforge/shared-constants": ["../../packages/shared-constants/src"],
+      "@pathforge/shared-types": ["../../packages/shared-types/src"],
+      "@pathforge/shared-zod": ["../../packages/shared-zod/src"],
+      "@pathforge/shared-utils": ["../../packages/shared-utils/src"]
+    },
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
+  },
+  "include": ["src/**/*", "vite.config.ts"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,686 @@
+// This is your Prisma schema file.
+// Learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ─── Enums ────────────────────────────────────────────────────────
+
+enum Role {
+  STUDENT
+  ADMIN
+}
+
+enum Theme {
+  light
+  dark
+  system
+}
+
+enum Language {
+  en
+  hi
+}
+
+enum WorkMode {
+  REMOTE
+  HYBRID
+  ONSITE
+}
+
+// ─── Core Models ──────────────────────────────────────────────────
+
+model User {
+  id         String   @id @default(cuid())
+  fullName   String
+  email      String   @unique
+  password   String
+  role       Role     @default(STUDENT)
+  isVerified Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relations
+  profile              Profile?
+  preferences          UserPreference?
+  sessions             Session[]
+  auditLogs            AuditLog[]
+  passwordResetTokens  PasswordResetToken[]
+  verificationTokens   VerificationToken[]
+  skills               UserSkill[]
+  interests            UserInterest[]
+  careerGoal           CareerGoal?
+  projects             Project[]
+  certifications       Certification[]
+  codingPlatforms      CodingPlatform[]
+  recommendations      RecommendationResult[]
+  userRoadmaps         UserRoadmap[]
+  userTasks            UserTask[]
+  weeklyPlans          WeeklyPlan[]
+  userAchievements     UserAchievement[]
+  studySessions        StudySession[]
+  conversations        Conversation[]
+  aiMetrics            AiMetric[]
+
+  @@index([email])
+  @@map("users")
+}
+
+// ─── Phase 5: AI Operating System (AIOS) Models ───────────────────
+
+model Conversation {
+  id        String    @id @default(cuid())
+  userId    String
+  title     String    @default("New AI Session")
+  agentType String    @default("CAREER_MENTOR") // CAREER_MENTOR, RESUME, GITHUB, INTERVIEW, LEARNING, RESEARCH, ROADMAP
+  pinned    Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages Message[]
+
+  @@index([userId])
+  @@map("conversations")
+}
+
+model Message {
+  id             String   @id @default(cuid())
+  conversationId String
+  role           String   // user, assistant, system, tool
+  content        String   @db.Text
+  sources        Json?    // RAG Citing sources
+  tokensUsed     Int?     @default(0)
+  feedback       String?  // HELPFUL, UNHELPFUL
+  createdAt      DateTime @default(now())
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId])
+  @@map("messages")
+}
+
+model PromptTemplate {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  agentType String
+  template  String   @db.Text
+  version   Int      @default(1)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("prompt_templates")
+}
+
+model AiMetric {
+  id           String   @id @default(cuid())
+  userId       String
+  agentType    String
+  model        String   @default("gemini-1.5-pro")
+  tokensInput  Int      @default(0)
+  tokensOutput Int      @default(0)
+  durationMs   Int      @default(0)
+  cost         Float    @default(0.0)
+  createdAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("ai_metrics")
+}
+
+model KnowledgeDoc {
+  id        String   @id @default(cuid())
+  title     String
+  content   String   @db.Text
+  category  String   @default("CAREER_GUIDE") // CAREER_GUIDE, ROADMAP, RESUME, INTERVIEW, RESEARCH
+  tags      String[]
+  createdAt DateTime @default(now())
+
+  @@index([category])
+  @@map("knowledge_docs")
+}
+
+// ─── Phase 4: Adaptive Learning & Roadmap Models ──────────────────
+
+model Roadmap {
+  id                String   @id @default(cuid())
+  title             String
+  careerPathId      String
+  description       String   @db.Text
+  difficulty        String   @default("INTERMEDIATE") // BEGINNER, INTERMEDIATE, ADVANCED
+  estimatedDuration String   // e.g. "16 Weeks"
+  version           Int      @default(1)
+  isActive          Boolean  @default(true)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  careerPath   CareerPath     @relation(fields: [careerPathId], references: [id], onDelete: Cascade)
+  phases       RoadmapPhase[]
+  userRoadmaps UserRoadmap[]
+  milestones   Milestone[]
+
+  @@index([careerPathId])
+  @@map("roadmaps")
+}
+
+model RoadmapPhase {
+  id                   String   @id @default(cuid())
+  roadmapId            String
+  phaseNumber          Int
+  title                String
+  description          String   @db.Text
+  estimatedWeeks       Int      @default(4)
+  completionPercentage Float    @default(0)
+  order                Int      @default(1)
+  createdAt            DateTime @default(now())
+
+  roadmap Roadmap         @relation(fields: [roadmapId], references: [id], onDelete: Cascade)
+  modules RoadmapModule[]
+
+  @@index([roadmapId])
+  @@map("roadmap_phases")
+}
+
+model RoadmapModule {
+  id             String   @id @default(cuid())
+  phaseId        String
+  title          String
+  description    String   @db.Text
+  difficulty     String   @default("MEDIUM")
+  estimatedHours Int      @default(10)
+  requiredSkills String[] // Prerequisites
+  providedSkills String[] // Skills gained
+  dependencies   String[] // Module IDs or Names
+  order          Int      @default(1)
+
+  phase RoadmapPhase     @relation(fields: [phaseId], references: [id], onDelete: Cascade)
+  tasks LearningTask[]
+
+  @@index([phaseId])
+  @@map("roadmap_modules")
+}
+
+model LearningTask {
+  id               String    @id @default(cuid())
+  moduleId         String
+  title            String
+  description      String    @db.Text
+  taskType         String    @default("PRACTICE") // THEORY, PRACTICE, PROJECT, QUIZ, REVISION
+  estimatedMinutes Int       @default(60)
+  difficulty       String    @default("MEDIUM")
+  priority         String    @default("HIGH") // HIGH, MEDIUM, LOW
+  deadline         DateTime?
+  status           String    @default("PENDING") // PENDING, IN_PROGRESS, COMPLETED
+
+  module    RoadmapModule @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  resources Resource[]
+  userTasks UserTask[]
+
+  @@index([moduleId])
+  @@map("learning_tasks")
+}
+
+model Resource {
+  id           String  @id @default(cuid())
+  taskId       String
+  title        String
+  provider     String  // e.g. "YouTube", "freeCodeCamp", "Official Docs", "Coursera"
+  url          String
+  resourceType String  @default("VIDEO") // VIDEO, ARTICLE, DOCUMENTATION, COURSE
+  duration     String? @default("30 mins")
+  language     String  @default("English")
+  difficulty   String  @default("BEGINNER")
+  free         Boolean @default(true)
+  rating       Float   @default(4.8)
+
+  task LearningTask @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  @@index([taskId])
+  @@map("resources")
+}
+
+model UserRoadmap {
+  id                   String   @id @default(cuid())
+  userId               String
+  roadmapId            String
+  progress             Float    @default(0)
+  completionPercentage Float    @default(0)
+  learningPace         String   @default("MEDIUM") // FAST (20h), MEDIUM (10h), SLOW (5h)
+  currentPhase         Int      @default(1)
+  currentModule        String?
+  startedAt            DateTime @default(now())
+  lastUpdated          DateTime @updatedAt
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  roadmap Roadmap @relation(fields: [roadmapId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, roadmapId])
+  @@index([userId])
+  @@map("user_roadmaps")
+}
+
+model UserTask {
+  id          String    @id @default(cuid())
+  userId      String
+  taskId      String
+  status      String    @default("PENDING") // PENDING, COMPLETED, SKIPPED
+  startedAt   DateTime?
+  completedAt DateTime?
+  timeSpent   Int       @default(0) // in minutes
+  score       Float?
+  notes       String?   @db.Text
+
+  user User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  task LearningTask @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, taskId])
+  @@index([userId])
+  @@map("user_tasks")
+}
+
+model WeeklyPlan {
+  id                   String   @id @default(cuid())
+  userId               String
+  weekNumber           Int
+  startDate            DateTime
+  endDate              DateTime
+  estimatedHours       Float    @default(10)
+  completedHours       Float    @default(0)
+  completionPercentage Float    @default(0)
+  createdAt            DateTime @default(now())
+
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  dailyPlans DailyPlan[]
+
+  @@index([userId])
+  @@map("weekly_plans")
+}
+
+model DailyPlan {
+  id             String   @id @default(cuid())
+  weeklyPlanId   String
+  date           DateTime
+  tasks          Json     // Array of task items for the day
+  estimatedHours Float    @default(2)
+  completedHours Float    @default(0)
+  status         String   @default("PLANNED") // PLANNED, IN_PROGRESS, COMPLETED
+
+  weeklyPlan WeeklyPlan @relation(fields: [weeklyPlanId], references: [id], onDelete: Cascade)
+
+  @@index([weeklyPlanId])
+  @@map("daily_plans")
+}
+
+model Milestone {
+  id          String    @id @default(cuid())
+  roadmapId   String
+  title       String
+  description String    @db.Text
+  targetDate  DateTime?
+  status      String    @default("LOCKED") // LOCKED, IN_PROGRESS, ACHIEVED
+  reward      String?   @default("Badge")
+
+  roadmap Roadmap @relation(fields: [roadmapId], references: [id], onDelete: Cascade)
+
+  @@index([roadmapId])
+  @@map("milestones")
+}
+
+model Achievement {
+  id          String   @id @default(cuid())
+  title       String   @unique
+  description String
+  icon        String   @default("Trophy")
+  badgeColor  String   @default("gold")
+  criteria    Json
+  createdAt   DateTime @default(now())
+
+  userAchievements UserAchievement[]
+
+  @@map("achievements")
+}
+
+model UserAchievement {
+  id            String   @id @default(cuid())
+  userId        String
+  achievementId String
+  earnedAt      DateTime @default(now())
+
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievement Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, achievementId])
+  @@index([userId])
+  @@map("user_achievements")
+}
+
+model StudySession {
+  id        String    @id @default(cuid())
+  userId    String
+  startTime DateTime  @default(now())
+  endTime   DateTime?
+  duration  Int       @default(0) // in minutes
+  module    String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("study_sessions")
+}
+
+// ─── Phase 3: BYSER Recommendation Models ─────────────────────────
+
+model CareerPath {
+  id            String   @id @default(cuid())
+  name          String   @unique
+  description   String   @db.Text
+  category      String   // e.g. "Software Engineering", "AI & Data", "Cyber Security", "Cloud & DevOps"
+  industry      String   @default("Technology")
+  averageSalary String   // e.g. "12 - 25 LPA"
+  growthRate    String   // e.g. "22% YoY"
+  demandLevel   String   @default("HIGH") // HIGH, VERY_HIGH, EXTREME
+  roadmapId     String?
+  icon          String?  @default("Briefcase")
+  color         String?  @default("blue")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  requiredSkills  RequiredSkill[]
+  recommendations RecommendationResult[]
+  roadmaps        Roadmap[]
+
+  @@index([category])
+  @@map("career_paths")
+}
+
+model RequiredSkill {
+  id               String @id @default(cuid())
+  careerPathId     String
+  skillId          String
+  importanceWeight Int    @default(5) // 1 to 10
+
+  careerPath CareerPath @relation(fields: [careerPathId], references: [id], onDelete: Cascade)
+  skill      Skill      @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@unique([careerPathId, skillId])
+  @@index([careerPathId])
+  @@map("required_skills")
+}
+
+model RecommendationResult {
+  id           String   @id @default(cuid())
+  userId       String
+  careerPathId String
+  totalScore   Float    // 0 to 100
+  SGI          Float    // Skill Gap Index 0 to 100
+  confidence   Float    // Confidence percentage
+  explanation  Json     // Why recommended, strengths, and areas to improve
+  generatedAt  DateTime @default(now())
+
+  user       User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  careerPath CareerPath           @relation(fields: [careerPathId], references: [id], onDelete: Cascade)
+  factors    RecommendationFactor[]
+
+  @@index([userId])
+  @@index([careerPathId])
+  @@index([generatedAt])
+  @@map("recommendation_results")
+}
+
+model RecommendationFactor {
+  id               String @id @default(cuid())
+  recommendationId String
+  factor           String // Skills, Interests, Projects, Academic, Certifications, Coding, Goals
+  weight           Float  // e.g. 0.35
+  score            Float  // 0 to 100
+  explanation      String
+
+  recommendation RecommendationResult @relation(fields: [recommendationId], references: [id], onDelete: Cascade)
+
+  @@index([recommendationId])
+  @@map("recommendation_factors")
+}
+
+model Profile {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  college         String?
+  university      String?
+  degree          String?
+  branch          String?
+  specialization  String?
+  currentYear     Int?
+  currentSemester Int?
+  graduationYear  Int?
+  cgpa            Float?
+  bio             String?  @db.Text
+  profileImage    String?
+  city            String?
+  country         String?  @default("India")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("profiles")
+}
+
+model UserPreference {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  theme         Theme    @default(system)
+  language      Language @default(en)
+  notifications Boolean  @default(true)
+  timezone      String   @default("Asia/Kolkata")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("user_preferences")
+}
+
+// ─── Phase 2: Skills & Assessment ─────────────────────────────────
+
+model Skill {
+  id        String   @id @default(cuid())
+  category  String   // e.g. "Programming", "Frontend", "Backend", "Database", "Cloud", "Cyber Security", "AI", "DevOps"
+  name      String   @unique
+  createdAt DateTime @default(now())
+
+  userSkills     UserSkill[]
+  requiredSkills RequiredSkill[]
+
+  @@index([category])
+  @@map("skills")
+}
+
+model UserSkill {
+  id               String   @id @default(cuid())
+  userId           String
+  skillId          String
+  proficiency      Int      @default(1) // 1 to 5
+  experienceMonths Int      @default(0)
+  confidence       Int      @default(50) // 0 to 100
+  lastUpdated      DateTime @updatedAt
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  skill Skill @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, skillId])
+  @@index([userId])
+  @@map("user_skills")
+}
+
+model Interest {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  category  String?
+  createdAt DateTime @default(now())
+
+  userInterests UserInterest[]
+
+  @@map("interests")
+}
+
+model UserInterest {
+  id         String   @id @default(cuid())
+  userId     String
+  interestId String
+  priority   Int      @default(1) // 1 to 5
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  interest Interest @relation(fields: [interestId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, interestId])
+  @@index([userId])
+  @@map("user_interests")
+}
+
+model CareerGoal {
+  id                 String   @id @default(cuid())
+  userId             String   @unique
+  preferredJobRole   String?
+  preferredIndustry  String?
+  preferredWorkMode  WorkMode @default(HYBRID)
+  preferredCountries String?  // Comma separated
+  expectedSalary     String?
+  higherStudies      Boolean  @default(false)
+  entrepreneurship   Boolean  @default(false)
+  governmentJobs     Boolean  @default(false)
+  startup            Boolean  @default(false)
+  research           Boolean  @default(false)
+  updatedAt          DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("career_goals")
+}
+
+model Project {
+  id               String   @id @default(cuid())
+  userId           String
+  title            String
+  description      String   @db.Text
+  technologies     String   // Comma separated or stringified
+  githubUrl        String?
+  demoUrl          String?
+  completionStatus String   @default("COMPLETED") // COMPLETED, IN_PROGRESS, PLANNED
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("projects")
+}
+
+model Certification {
+  id            String   @id @default(cuid())
+  userId        String
+  title         String
+  issuer        String
+  issueDate     String?
+  credentialUrl String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("certifications")
+}
+
+model CodingPlatform {
+  id             String   @id @default(cuid())
+  userId         String
+  platform       String   // LeetCode, Codeforces, HackerRank, CodeChef, GeeksforGeeks, GitHub
+  username       String
+  problemsSolved Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("coding_platforms")
+}
+
+// ─── Sessions & Tokens ─────────────────────────────────────────────
+
+model Session {
+  id           String   @id @default(cuid())
+  userId       String
+  device       String?
+  browser      String?
+  ip           String?
+  refreshToken String   @unique
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([refreshToken])
+  @@map("sessions")
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([token])
+  @@map("password_reset_tokens")
+}
+
+model VerificationToken {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([token])
+  @@map("verification_tokens")
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  entity    String
+  entityId  String?
+  metadata  Json?
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+  @@map("audit_logs")
+}

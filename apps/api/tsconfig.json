@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "lib": ["ES2022"],
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@pathforge/shared-enums": ["../../packages/shared-enums/src"],
+      "@pathforge/shared-constants": ["../../packages/shared-constants/src"],
+      "@pathforge/shared-types": ["../../packages/shared-types/src"],
+      "@pathforge/shared-zod": ["../../packages/shared-zod/src"],
+      "@pathforge/shared-utils": ["../../packages/shared-utils/src"]
+    },
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
+}
