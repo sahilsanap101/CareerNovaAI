@@ -14,6 +14,6 @@ router.post('/resume', aiController.chat);
 router.post('/github', aiController.chat);
 router.post('/interview', aiController.chat);
 router.get('/history', aiController.getHistory);
-router.get('/analytics', aiController.getAnalytics);
+
 
 export default router;

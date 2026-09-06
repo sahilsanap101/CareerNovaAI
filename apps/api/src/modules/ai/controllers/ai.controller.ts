@@ -27,11 +27,4 @@ export async function getHistory(req: Request, res: Response, next: NextFunction
   }
 }
 
-export async function getAnalytics(req: Request, res: Response, next: NextFunction): Promise<void> {
-  try {
-    const data = await aiService.getAiAnalytics(req.user!.sub);
-    sendSuccess(res, { message: 'AI analytics retrieved.', data });
-  } catch (err) {
-    next(err);
-  }
-}
+

@@ -6,7 +6,7 @@ import { HTTP_STATUS, ERROR_CODES } from '@pathforge/shared-constants';
 
 // ─── Generate Recommendations ─────────────────────────────────────
 
-export async function generateRecommendations(userId: string): Promise<EvaluationResult[]> {
+export async function generateRecommendations(userId: string) {
   const student = await getFullStudentData(userId);
   if (!student) {
     throw new AppError('Student profile not found', HTTP_STATUS.NOT_FOUND, ERROR_CODES.USER_001);
@@ -27,7 +27,7 @@ export async function generateRecommendations(userId: string): Promise<Evaluatio
   const top5 = evaluated.slice(0, 5);
 
   // Save in database
-  await recRepo.saveRecommendations(
+  const savedRecords = await recRepo.saveRecommendations(
     userId,
     top5.map((rec) => ({
       careerPathId: rec.careerPathId,
@@ -39,7 +39,7 @@ export async function generateRecommendations(userId: string): Promise<Evaluatio
     })),
   );
 
-  return top5;
+  return savedRecords;
 }
 
 // ─── Get Recommendations ──────────────────────────────────────────

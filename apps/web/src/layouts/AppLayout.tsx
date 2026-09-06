@@ -14,7 +14,7 @@ export function AppLayout() {
     <div className="flex min-h-screen bg-slate-50 dark:bg-slate-950">
       <Sidebar />
 
-      <div className="main-content flex flex-col">
+      <div className="main-content flex-1 flex flex-col min-w-0">
         {/* Top Bar */}
         <header className="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center gap-4 px-6 shrink-0">
           {/* Search */}

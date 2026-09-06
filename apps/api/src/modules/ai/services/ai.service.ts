@@ -53,6 +53,4 @@ export async function getUserConversations(userId: string) {
   return aiRepo.getUserConversations(userId);
 }
 
-export async function getAiAnalytics(userId: string) {
-  return aiRepo.getAiAnalytics(userId);
-}
+

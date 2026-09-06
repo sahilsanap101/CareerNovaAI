@@ -1,0 +1,34 @@
+﻿{
+  "id": "cmtmjppkh002rd0xixf9qgz38",
+  "userId": "cmt2a7cc40000nactx9o8c8ei",
+  "careerPathId": "cmt2a4jdh006jv39jpe5uj00b",
+  "totalScore": 51,
+  "SGI": 40,
+  "confidence": 70,
+  "explanation": {
+    "strengths": [
+      "Strong skills in HTML (3/5), CSS (3/5).",
+      "Strong academic standing (CGPA 8.5/10)."
+    ],
+    "missingSkills": [],
+    "areasToImprove": [
+      "Build at least one hands-on project focused on UI/UX Designer."
+    ]
+  },
+  "generatedAt": "2026-09-04T06:01:05.969Z",
+  "careerPath": {
+    "id": "cmt2a4jdh006jv39jpe5uj00b",
+    "name": "UI/UX Designer",
+    "description": "Design user journeys, high-fidelity wireframes, interactive prototypes, and design systems.",
+    "category": "Product & Design",
+    "industry": "Technology",
+    "averageSalary": "10 - 22 LPA",
+    "growthRate": "18% YoY",
+    "demandLevel": "HIGH",
+    "roadmapId": null,
+    "icon": "Figma",
+    "color": "pink",
+    "createdAt": "2026-08-21T01:37:18.101Z",
+    "updatedAt": "2026-08-21T01:37:18.101Z"
+  }
+}

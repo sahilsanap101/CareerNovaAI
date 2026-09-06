@@ -1,0 +1,96 @@
+﻿
+> @pathforge/api@1.0.0 dev
+> tsx watch -r tsconfig-paths/register src/server.ts
+
+userSkillSchema in profile.routes.ts: ZodObject {
+  spa: [Function: bound safeParseAsync] AsyncFunction,
+  _def: {
+    shape: [Function: shape],
+    unknownKeys: 'strip',
+    catchall: ZodNever {
+      spa: [Function: bound safeParseAsync] AsyncFunction,
+      _def: [Object],
+      parse: [Function: bound parse],
+      safeParse: [Function: bound safeParse],
+      parseAsync: [Function: bound parseAsync] AsyncFunction,
+      safeParseAsync: [Function: bound safeParseAsync] AsyncFunction,
+      refine: [Function: bound refine],
+      refinement: [Function: bound refinement],
+      superRefine: [Function: bound superRefine],
+      optional: [Function: bound optional],
+      nullable: [Function: bound nullable],
+      nullish: [Function: bound nullish],
+      array: [Function: bound array],
+      promise: [Function: bound promise],
+      or: [Function: bound or],
+      and: [Function: bound and],
+      transform: [Function: bound transform],
+      brand: [Function: bound brand],
+      default: [Function: bound default],
+      catch: [Function: bound catch],
+      describe: [Function: bound describe],
+      pipe: [Function: bound pipe],
+      readonly: [Function: bound readonly],
+      isNullable: [Function: bound isNullable],
+      isOptional: [Function: bound isOptional],
+      '~standard': [Object]
+    },
+    typeName: 'ZodObject'
+  },
+  parse: [Function: bound parse],
+  safeParse: [Function: bound safeParse],
+  parseAsync: [Function: bound parseAsync] AsyncFunction,
+  safeParseAsync: [Function: bound safeParseAsync] AsyncFunction,
+  refine: [Function: bound refine],
+  refinement: [Function: bound refinement],
+  superRefine: [Function: bound superRefine],
+  optional: [Function: bound optional],
+  nullable: [Function: bound nullable],
+  nullish: [Function: bound nullish],
+  array: [Function: bound array],
+  promise: [Function: bound promise],
+  or: [Function: bound or],
+  and: [Function: bound and],
+  transform: [Function: bound transform],
+  brand: [Function: bound brand],
+  default: [Function: bound default],
+  catch: [Function: bound catch],
+  describe: [Function: bound describe],
+  pipe: [Function: bound pipe],
+  readonly: [Function: bound readonly],
+  isNullable: [Function: bound isNullable],
+  isOptional: [Function: bound isOptional],
+  '~standard': { version: 1, vendor: 'zod', validate: [Function: validate] },
+  _cached: null,
+  nonstrict: [Function: passthrough],
+  augment: [Function: extend]
+}
+00:23:32 [[32minfo[39m] [32mΓ£à Mail listeners registered[39m
+{
+  "service": "pathforge-api"
+}
+00:23:32 [[32minfo[39m] [32mΓ£à Audit listeners registered[39m
+{
+  "service": "pathforge-api"
+}
+00:23:36 [[32minfo[39m] [32mΓ£à Database connected[39m
+{
+  "service": "pathforge-api"
+}
+00:23:37 [[31merror[39m] [31mUncaught Exception: listen EADDRINUSE: address already in use :::5000[39m
+Error: listen EADDRINUSE: address already in use :::5000
+    at __node_internal_captureLargerStackTrace (node:internal/errors:496:5)
+    at __node_internal_uvExceptionWithHostPort (node:internal/errors:593:12)
+    at Server.setupListenHandle [as _listen2] (node:net:1817:16)
+    at listenInCluster (node:net:1865:12)
+    at Server.listen (node:net:1953:7)
+    at Function.listen (C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\node_modules\express\lib\application.js:635:24)
+    at bootstrap (c:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\apps\api\src\server.ts:87:24)
+{
+  "service": "pathforge-api",
+  "code": "EADDRINUSE",
+  "errno": -4091,
+  "syscall": "listen",
+  "address": "::",
+  "port": 5000
+}

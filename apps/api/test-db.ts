@@ -1,0 +1,1 @@
+import { prisma } from './src/config/database'; prisma.recommendationResult.findFirst({include: {careerPath: true}}).then(res => console.log(JSON.stringify(res, null, 2))).catch(console.error).finally(() => prisma.$disconnect());

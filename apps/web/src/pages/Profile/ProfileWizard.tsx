@@ -152,7 +152,7 @@ export function ProfileWizard() {
   const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 1));
 
   return (
-    <div className="space-y-6 max-w-5xl mx-auto pb-12">
+    <div className="space-y-6 w-full pb-12">
       {/* Completion Header Bar */}
       <Card>
         <CardContent className="p-6">
@@ -180,8 +180,7 @@ export function ProfileWizard() {
         </CardContent>
       </Card>
 
-      {/* Wizard Steps Navigation Bar */}
-      <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none">
+      <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none whitespace-nowrap">
         {STEPS.map((step) => {
           const isActive = step.id === currentStep;
           const isCompleted = step.id < currentStep;
@@ -216,14 +215,15 @@ export function ProfileWizard() {
                 <CardDescription>Basic details about you</CardDescription>
               </CardHeader>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input {...profileForm.register('fullName')} error={profileForm.formState.errors.fullName?.message as string} label="Full Name" placeholder="Arjun Sharma" />
                 <Input {...profileForm.register('profileImage')} error={profileForm.formState.errors.profileImage?.message as string} label="Profile Image URL" placeholder="https://..." />
                 <Input {...profileForm.register('city')} error={profileForm.formState.errors.city?.message as string} label="City" placeholder="Mumbai" />
                 <Input {...profileForm.register('country')} error={profileForm.formState.errors.country?.message as string} label="Country" placeholder="India" />
+                <div className="md:col-span-2">
+                  <Textarea {...profileForm.register('bio')} error={profileForm.formState.errors.bio?.message as string} label="Bio / About Yourself" rows={3} placeholder="Describe your background and core interests..." />
+                </div>
               </div>
-
-              <Textarea {...profileForm.register('bio')} error={profileForm.formState.errors.bio?.message as string} label="Bio / About Yourself" rows={3} placeholder="Describe your background and core interests..." />
 
               <Button type="submit" size="sm">Save Personal Info</Button>
             </form>
@@ -237,7 +237,7 @@ export function ProfileWizard() {
                 <CardDescription>Your current college and degree program</CardDescription>
               </CardHeader>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input {...profileForm.register('college')} error={profileForm.formState.errors.college?.message as string} label="College / Institute" placeholder="IIT Bombay" />
                 <Input {...profileForm.register('university')} error={profileForm.formState.errors.university?.message as string} label="University" placeholder="IIT Bombay" />
                 <Input {...profileForm.register('degree')} error={profileForm.formState.errors.degree?.message as string} label="Degree" placeholder="B.Tech" />
@@ -532,7 +532,7 @@ export function ProfileWizard() {
                 <CardDescription>Your target roles, preferred industries, and long-term aspirations</CardDescription>
               </CardHeader>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input {...careerForm.register('preferredJobRole')} error={careerForm.formState.errors.preferredJobRole?.message as string} label="Target Job Role" placeholder="Backend Engineer / ML Engineer" />
                 <Input {...careerForm.register('preferredIndustry')} error={careerForm.formState.errors.preferredIndustry?.message as string} label="Target Industry" placeholder="FinTech / AI / SaaS" />
                 <Select

@@ -1,4 +1,7 @@
 import { logger } from '@/utils/logger';
+import { GoogleGenAI } from '@google/genai';
+import { AppError } from '@/middleware/error.middleware';
+import { HTTP_STATUS, ERROR_CODES } from '@pathforge/shared-constants';
 
 export interface CompletionOptions {
   prompt: string;
@@ -20,7 +23,7 @@ export interface CompletionResult {
 
 /**
  * Provider-Independent AI Gateway
- * Defaults to Google Gemini / Native Fallback Engine with zero external crashes.
+ * Connects natively to Google Gemini (or specified Provider).
  */
 export async function generateAiCompletion(options: CompletionOptions): Promise<CompletionResult> {
   const startTime = Date.now();
@@ -30,7 +33,7 @@ export async function generateAiCompletion(options: CompletionOptions): Promise<
   logger.info(`🤖 AI Gateway executing completion via provider: ${provider} [${model}]`);
 
   // Provider abstraction logic
-  const responseText = await executeProviderCompletion(provider, options);
+  const responseText = await executeProviderCompletion(provider, model, options);
   const durationMs = Date.now() - startTime;
 
   const tokensInput = Math.round(options.prompt.length / 4);
@@ -46,23 +49,42 @@ export async function generateAiCompletion(options: CompletionOptions): Promise<
   };
 }
 
-async function executeProviderCompletion(provider: string, options: CompletionOptions): Promise<string> {
-  const { prompt, systemPrompt, agentType } = options;
+async function executeProviderCompletion(provider: string, model: string, options: CompletionOptions): Promise<string> {
+  const { prompt, systemPrompt } = options;
 
-  // Fallback / Production Intelligence Engine
-  const agentHeader = agentType ? `[${agentType} Response]` : '[Career Intelligence]';
-  
-  if (prompt.toLowerCase().includes('resume')) {
-    return `${agentHeader}\n\n### 📄 ATS Resume Intelligence Analysis\n\n- **ATS Compatibility Score**: **84/100**\n- **Strengths**: Strong technical stack formatting, quantitative impact metrics included in experience.\n- **Missing Keywords**: Docker, Microservices, CI/CD Pipelines.\n- **Actionable Advice**: Add a dedicated "Core Engineering Skills" section at top and format experience bullets with "Action Verb + Task + Quantitative Outcome".`;
+  if (provider === 'GEMINI') {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      throw new AppError(
+        'The AI provider is unavailable. Please check backend configuration.',
+        HTTP_STATUS.SERVICE_UNAVAILABLE,
+        ERROR_CODES.SERVER_001
+      );
+    }
+
+    try {
+      const ai = new GoogleGenAI({ apiKey });
+
+      const response = await ai.models.generateContent({
+        model,
+        contents: prompt,
+        config: systemPrompt ? { systemInstruction: systemPrompt } : undefined,
+      });
+
+      return response.text || "No response generated.";
+    } catch (err: any) {
+      logger.error('Gemini API Error:', err);
+      throw new AppError(
+        'The AI provider failed to generate a response. Please try again later.',
+        HTTP_STATUS.BAD_GATEWAY,
+        ERROR_CODES.SERVER_001
+      );
+    }
   }
 
-  if (prompt.toLowerCase().includes('github') || prompt.toLowerCase().includes('repo')) {
-    return `${agentHeader}\n\n### 🐙 GitHub Portfolio Intelligence\n\n- **Code Quality Score**: **88/100**\n- **Maintainability Index**: **High** (Clean monorepo structure, TypeScript strict mode enabled).\n- **Key Recommendations**: Add a root CONTRIBUTING.md and complete unit test coverage badges in README.`;
-  }
-
-  if (prompt.toLowerCase().includes('interview')) {
-    return `${agentHeader}\n\n### 🎙️ Technical Mock Interview Feedback\n\n**Question**: "Explain how database indexing works in PostgreSQL and when to use B-Tree vs Hash indexes."\n\n**Feedback**: Excellent response covering B-Tree range queries and binary search tree properties. To stand out, mention index bloat and VACUUM maintenance.`;
-  }
-
-  return `${agentHeader}\n\nBased on your active student profile, BYSER recommendation score, and learning roadmap:\n\n${systemPrompt ? `*Context Applied*: ${systemPrompt.slice(0, 120)}...\n\n` : ''}Here is your tailored career intelligence response for: **"${prompt}"**.\n\nContinue following your weekly roadmap tasks to reach 100% career readiness!`;
+  throw new AppError(
+    'Unsupported AI Provider configured.',
+    HTTP_STATUS.NOT_IMPLEMENTED,
+    ERROR_CODES.SERVER_001
+  );
 }

@@ -106,7 +106,7 @@ export default function Recommendations() {
                 </Badge>
               </div>
 
-              <CardTitle className="text-lg font-bold">{rec.careerPath?.name}</CardTitle>
+              <CardTitle className="text-lg font-bold">{rec.careerPath?.name || 'Career option unavailable'}</CardTitle>
               <CardDescription className="line-clamp-2">{rec.careerPath?.description}</CardDescription>
             </CardHeader>
 
@@ -125,8 +125,8 @@ export default function Recommendations() {
 
               {/* Salary & Demand */}
               <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                <span>Avg Salary: <strong className="text-slate-800 dark:text-slate-200">{rec.careerPath?.averageSalary}</strong></span>
-                <span>Growth: <strong className="text-green-600">{rec.careerPath?.growthRate}</strong></span>
+                <span>Avg Salary: <strong className="text-slate-800 dark:text-slate-200">{rec.careerPath?.averageSalary || 'N/A'}</strong></span>
+                <span>Growth: <strong className="text-green-600">{rec.careerPath?.growthRate || 'N/A'}</strong></span>
               </div>
 
               {/* Explainability Strengths Sample */}
@@ -161,14 +161,14 @@ export default function Recommendations() {
         <Modal
           isOpen={!!selectedRec}
           onClose={() => setSelectedRec(null)}
-          title={`Explainability Breakdown — ${selectedRec.careerPath?.name}`}
+          title={`Explainability Breakdown — ${selectedRec.careerPath?.name || 'Career option unavailable'}`}
           size="lg"
         >
           <div className="space-y-6">
             {/* Top Score Banner */}
             <div className="flex items-center justify-between p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
               <div>
-                <h4 className="text-sm font-bold text-slate-900 dark:text-slate-100">{selectedRec.careerPath?.name}</h4>
+                <h4 className="text-sm font-bold text-slate-900 dark:text-slate-100">{selectedRec.careerPath?.name || 'Career option unavailable'}</h4>
                 <p className="text-xs text-slate-500">{selectedRec.careerPath?.category} • Demand: {selectedRec.careerPath?.demandLevel}</p>
               </div>
               <div className="text-right">

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import {
   Bot,
   Send,
@@ -32,17 +32,17 @@ const AGENTS = [
 ];
 
 export default function AiDashboard() {
-  const queryClient = useQueryClient();
   const toast = useToast();
   const [selectedAgent, setSelectedAgent] = useState('CAREER_MENTOR');
   const [inputMessage, setInputMessage] = useState('');
   const [activeConvId, setActiveConvId] = useState<string | undefined>();
   const [chatMessages, setChatMessages] = useState<AiChatMessage[]>([]);
 
-  const { data: analytics } = useQuery({
-    queryKey: ['aiAnalytics'],
-    queryFn: aiApi.getAnalytics,
-  });
+  const handleAgentChange = (agentId: string) => {
+    setSelectedAgent(agentId);
+    setChatMessages([]);
+    setActiveConvId(undefined);
+  };
 
   const sendMutation = useMutation({
     mutationFn: (msg: string) => aiApi.sendChatMessage(msg, activeConvId, selectedAgent),
@@ -50,7 +50,6 @@ export default function AiDashboard() {
       setActiveConvId(data.conversationId);
       setChatMessages((prev) => [...prev, data.message]);
       setInputMessage('');
-      void queryClient.invalidateQueries({ queryKey: ['aiAnalytics'] });
     },
     onError: () => toast.error('Failed to send message to AIOS.'),
   });
@@ -71,7 +70,7 @@ export default function AiDashboard() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto space-y-6 pb-12">
+    <div className="w-full space-y-6 pb-12">
       <Breadcrumb />
 
       {/* Header Banner */}
@@ -88,44 +87,7 @@ export default function AiDashboard() {
         </div>
       </div>
 
-      {/* AI Metrics Overview */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card padding="sm">
-          <CardContent>
-            <p className="text-xs font-semibold text-slate-400 uppercase">AI Requests</p>
-            <p className="text-3xl font-extrabold text-violet-600 mt-1">{analytics?.totalRequests ?? 12}</p>
-            <p className="text-xs text-slate-500 mt-0.5">Total agent sessions</p>
-          </CardContent>
-        </Card>
 
-        <Card padding="sm">
-          <CardContent>
-            <p className="text-xs font-semibold text-slate-400 uppercase">Tokens Processed</p>
-            <p className="text-3xl font-extrabold text-slate-900 dark:text-slate-100 mt-1">
-              {(analytics?.totalTokens ?? 4250).toLocaleString()}
-            </p>
-            <p className="text-xs text-slate-500 mt-0.5">Prompt + completion tokens</p>
-          </CardContent>
-        </Card>
-
-        <Card padding="sm">
-          <CardContent>
-            <p className="text-xs font-semibold text-slate-400 uppercase">Avg Latency</p>
-            <p className="text-3xl font-extrabold text-slate-900 dark:text-slate-100 mt-1">
-              {analytics?.avgLatencyMs ?? 240}ms
-            </p>
-            <p className="text-xs text-slate-500 mt-0.5">AI Gateway response speed</p>
-          </CardContent>
-        </Card>
-
-        <Card padding="sm">
-          <CardContent>
-            <p className="text-xs font-semibold text-slate-400 uppercase">Estimated Cost</p>
-            <p className="text-3xl font-extrabold text-green-600 mt-1">${analytics?.totalCost ?? 0.0085}</p>
-            <p className="text-xs text-slate-500 mt-0.5">Provider usage metric</p>
-          </CardContent>
-        </Card>
-      </div>
 
       {/* Agent Selector Bar */}
       <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
@@ -135,12 +97,11 @@ export default function AiDashboard() {
           return (
             <button
               key={agent.id}
-              onClick={() => setSelectedAgent(agent.id)}
-              className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold shrink-0 transition-all ${
-                isSelected
-                  ? 'bg-violet-600 text-white shadow-md'
-                  : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-100'
-              }`}
+              onClick={() => handleAgentChange(agent.id)}
+              className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold shrink-0 transition-all ${isSelected
+                ? 'bg-violet-600 text-white shadow-md'
+                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-100'
+                }`}
             >
               <Icon className="h-4 w-4" />
               <span>{agent.name}</span>
@@ -155,9 +116,14 @@ export default function AiDashboard() {
           {chatMessages.length === 0 ? (
             <div className="flex flex-col items-center justify-center min-h-[300px] text-center space-y-2">
               <Bot className="h-10 w-10 text-violet-500" />
-              <h3 className="font-semibold text-slate-800 dark:text-slate-200">Start a session with {selectedAgent}</h3>
+              <h3 className="font-semibold text-slate-800 dark:text-slate-200 uppercase tracking-widest text-sm">Start a session with {AGENTS.find(a => a.id === selectedAgent)?.name}</h3>
               <p className="text-xs text-slate-400 max-w-md">
-                Ask about your ATS resume score, code quality analysis, mock interview questions, or career strategy.
+                {selectedAgent === 'CAREER_MENTOR' && 'Ask about career paths, BYSER recommendations, skill gaps, and career strategy.'}
+                {selectedAgent === 'RESUME' && 'Ask about your resume, ATS optimization, projects, and career-specific improvements.'}
+                {selectedAgent === 'GITHUB' && 'Ask about your GitHub portfolio, projects, repositories, and coding profile.'}
+                {selectedAgent === 'INTERVIEW' && 'Practice technical and behavioral interviews and receive feedback.'}
+                {selectedAgent === 'LEARNING' && 'Get personalized learning guidance based on your career goals and skill gaps.'}
+                {selectedAgent === 'RESEARCH' && 'Research careers, technologies, industries, skills, and learning resources.'}
               </p>
             </div>
           ) : (
@@ -172,11 +138,10 @@ export default function AiDashboard() {
                   </div>
                 )}
                 <div
-                  className={`p-4 rounded-2xl max-w-2xl text-xs leading-relaxed whitespace-pre-wrap ${
-                    msg.role === 'user'
-                      ? 'bg-primary-600 text-white'
-                      : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700'
-                  }`}
+                  className={`p-4 rounded-2xl max-w-2xl text-xs leading-relaxed whitespace-pre-wrap ${msg.role === 'user'
+                    ? 'bg-primary-600 text-white'
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700'
+                    }`}
                 >
                   {msg.content}
                 </div>
@@ -189,12 +154,13 @@ export default function AiDashboard() {
         <div className="p-4 border-t border-slate-200 dark:border-slate-800">
           <form onSubmit={handleSend} className="flex gap-2">
             <Input
-              placeholder={`Ask ${selectedAgent.replace('_', ' ')}...`}
+              placeholder={`Ask ${AGENTS.find(a => a.id === selectedAgent)?.name.toUpperCase()}...`}
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
+              disabled={sendMutation.isPending}
               className="flex-1"
             />
-            <Button type="submit" isLoading={sendMutation.isPending} rightIcon={<Send className="h-4 w-4" />}>
+            <Button type="submit" isLoading={sendMutation.isPending} disabled={!inputMessage.trim() || sendMutation.isPending} rightIcon={<Send className="h-4 w-4" />}>
               Send
             </Button>
           </form>
