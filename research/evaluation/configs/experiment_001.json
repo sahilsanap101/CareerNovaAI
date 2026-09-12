@@ -1,0 +1,17 @@
+{
+    "experiment": {
+        "experimentId": "EXP_001_CONSTRAINTS",
+        "datasetPath": "synthetic/student_baseline_01.json",
+        "careerModel": "PROPOSED_MARKET_GAP_CONSTRAINED",
+        "roadmapModel": "R4_R3_PLUS_PREREQUISITES",
+        "randomSeed": 42,
+        "evaluationProtocol": "SINGLE_SHOT",
+        "parameters": {
+            "budgetHours": 40,
+            "alphaSkill": 0.3,
+            "betaGoal": 0.2,
+            "gammaInterest": 0.1,
+            "deltaMarket": 0.4
+        }
+    }
+}

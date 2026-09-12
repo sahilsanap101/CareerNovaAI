@@ -1,7 +1,7 @@
 # AI Operating System (AIOS) Technical Specification
 
 ## 1. System Overview
-The **PATHFORGE AIOS** is a provider-independent, multi-agent AI orchestration platform. It connects internal platform data (student profile, BYSER scores, active roadmap, skill gaps) with specialized LLM agents to deliver grounded, non-hallucinated career intelligence.
+The **PathForge AIOS** is a provider-independent, multi-agent AI orchestration platform. It connects internal platform data (student profile, BYSER scores, active roadmap, skill gaps) with specialized LLM agents to deliver grounded, non-hallucinated career intelligence.
 
 ---
 

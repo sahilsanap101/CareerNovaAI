@@ -105,7 +105,7 @@ const emptyToNullString = (schema: z.ZodTypeAny) => z.preprocess((val) => (val =
 const emptyToNullNumber = (schema: z.ZodTypeAny) =>
   z.preprocess((val) => (val === '' || Number.isNaN(val) ? null : val), schema);
 
-const currentYear = new Date().getFullYear();
+// const currentYear = new Date().getFullYear();
 
 export const updateProfileSchema = z.object({
   fullName: z

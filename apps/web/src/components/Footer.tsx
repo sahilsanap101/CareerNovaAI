@@ -33,11 +33,11 @@ export function Footer() {
                 <Zap className="h-4 w-4 text-white" />
               </div>
               <span className="font-bold text-lg text-slate-900 dark:text-white">
-                PATH<span className="text-primary-600 dark:text-primary-400">FORGE</span>
+                Career<span className="text-primary-600 dark:text-primary-400">Nova</span>
               </span>
             </div>
             <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-xs">
-              AI-powered career navigation for engineering students. Navigate smarter, grow faster.
+              AI-assisted career navigation for engineering students.
             </p>
             <div className="flex items-center gap-2 mt-4">
               {[Github, Twitter, Linkedin].map((Icon, i) => (
@@ -75,10 +75,10 @@ export function Footer() {
 
         <div className="mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-400 dark:text-slate-600">
-            © {new Date().getFullYear()} PATHFORGE. All rights reserved.
+            © {new Date().getFullYear()} CareerNova. All rights reserved.
           </p>
           <p className="text-xs text-slate-400 dark:text-slate-600">
-            Built for engineering students, by engineers.
+            Built around the PathForge research framework for constraint-aware skill planning.
           </p>
         </div>
       </div>

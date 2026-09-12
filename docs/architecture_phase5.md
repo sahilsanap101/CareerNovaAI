@@ -1,4 +1,4 @@
-# PATHFORGE Phase 5 Architecture — AI Operating System (AIOS) for Career Intelligence
+# PathForge Phase 5 Architecture — AI Operating System (AIOS) for Career Intelligence
 
 ```mermaid
 graph TD

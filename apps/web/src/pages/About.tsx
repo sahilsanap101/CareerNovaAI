@@ -15,7 +15,7 @@ const values = [
 export default function About() {
   return (
     <>
-      <title>About PATHFORGE — Our Mission</title>
+      <title>About CareerNova — Our Mission</title>
 
       <div className="max-w-4xl mx-auto px-4 py-20">
         {/* Hero */}
@@ -29,7 +29,7 @@ export default function About() {
             Built for <span className="gradient-text">engineering students</span>
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            PATHFORGE was born from a simple observation: engineering students are brilliant, but most career guidance systems don't understand their world. We're changing that.
+            CareerNova was born from a simple observation: engineering students are brilliant, but most career guidance systems don't understand their world. We're changing that.
           </p>
         </div>
 

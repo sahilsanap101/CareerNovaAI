@@ -1,0 +1,4 @@
+Model,CycleTime,PrerequisiteViolations,MarketUtilityIndex
+B0_Static,12.5,4,0.3
+B2_PriorityOnly,9.2,2,0.6
+Proposed_DAG,8.8,0,0.95

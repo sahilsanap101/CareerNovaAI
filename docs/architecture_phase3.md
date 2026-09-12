@@ -1,4 +1,4 @@
-# PATHFORGE Phase 3 Architecture — BYSER Recommendation & Explainability Engine
+# PathForge Phase 3 Architecture — BYSER Recommendation & Explainability Engine
 
 ```mermaid
 graph TD

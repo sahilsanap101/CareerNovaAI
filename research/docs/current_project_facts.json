@@ -1,0 +1,22 @@
+{
+    "monorepo": true,
+    "frontend": "React",
+    "backend": "Express.js",
+    "database": "PostgreSQL (Prisma)",
+    "algorithms_identified": {
+        "byser": "Heuristic weighted score.",
+        "roadmap": "Heuristic tree with static multipliers.",
+        "graph": "Hardcoded dependency array."
+    },
+    "datasets_identified": {
+        "used": [],
+        "unused_raw": [
+            "O*NET db_31_0_csv",
+            "ESCO v1.2.1",
+            "LinkedIn Archives"
+        ]
+    },
+    "aios_integrated": true,
+    "ml_models_active": false,
+    "research_state": "Software Engineering Prototype"
+}

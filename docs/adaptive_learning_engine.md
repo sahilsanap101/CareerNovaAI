@@ -1,7 +1,7 @@
 # Adaptive Learning & Career Execution System Specification
 
 ## 1. System Overview
-The **PATHFORGE Adaptive Learning Engine** converts static skill requirements into an active, self-optimizing career execution roadmap. It continuously adapts study workload, reschedules missed tasks, updates prerequisite trees, and calculates a real-time **Career Readiness Score**.
+The **PathForge Adaptive Learning Engine** converts static skill requirements into an active, self-optimizing career execution roadmap. It continuously adapts study workload, reschedules missed tasks, updates prerequisite trees, and calculates a real-time **Career Readiness Score**.
 
 ---
 

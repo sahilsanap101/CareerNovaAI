@@ -3,7 +3,7 @@ import { EventEmitter } from 'events';
 import { logger } from '@/utils/logger';
 
 /**
- * PATHFORGE Event Bus
+ * PathForge Event Bus
  * 
  * Implements the Observer / Event-Driven pattern for decoupling business logic.
  * 
@@ -41,7 +41,7 @@ export const EVENTS = {
 
 export type EventName = (typeof EVENTS)[keyof typeof EVENTS];
 
-class PathforgeEventBus extends EventEmitter {
+class PathForgeEventBus extends EventEmitter {
   constructor() {
     super();
     this.setMaxListeners(20); // Allow multiple listeners per event
@@ -63,4 +63,4 @@ class PathforgeEventBus extends EventEmitter {
   }
 }
 
-export const eventBus = new PathforgeEventBus();
+export const eventBus = new PathForgeEventBus();

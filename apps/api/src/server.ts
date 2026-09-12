@@ -85,7 +85,7 @@ async function bootstrap(): Promise<void> {
 
     // Start server
     const server = app.listen(env.PORT, () => {
-      logger.info(`🚀 PATHFORGE API running at http://localhost:${env.PORT}`);
+      logger.info(`🚀 PathForge API running at http://localhost:${env.PORT}`);
       logger.info(`📚 Environment: ${env.NODE_ENV}`);
       logger.info(`🔗 API base: http://localhost:${env.PORT}/api/v1`);
     });

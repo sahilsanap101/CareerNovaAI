@@ -67,7 +67,7 @@ export function Sidebar() {
           <Zap className="h-4 w-4 text-white" />
         </div>
         <span className="font-bold text-lg tracking-tight text-slate-900 dark:text-white">
-          PATH<span className="text-primary-600 dark:text-primary-400">FORGE</span>
+          Career<span className="text-primary-600 dark:text-primary-400">Nova</span>
         </span>
       </div>
 

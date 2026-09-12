@@ -1,0 +1,24 @@
+[
+    {
+        "id": "TC_B0_001",
+        "description": "Zero Match Baseline Evaluation",
+        "studentProfile": {
+            "id": "student_0",
+            "fullName": "Test Ghost",
+            "profile": {
+                "cgpa": 5.0
+            },
+            "skills": [],
+            "interests": [],
+            "careerGoal": {},
+            "projects": [],
+            "certifications": [],
+            "codingPlatforms": []
+        },
+        "expectedOutputs": {
+            "totalScore": 25,
+            "SGI": 50,
+            "matchScore": 60
+        }
+    }
+]

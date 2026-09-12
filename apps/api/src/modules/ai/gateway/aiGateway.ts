@@ -84,7 +84,7 @@ async function executeProviderCompletion(provider: string, model: string, option
 
   throw new AppError(
     'Unsupported AI Provider configured.',
-    HTTP_STATUS.NOT_IMPLEMENTED,
+    501,
     ERROR_CODES.SERVER_001
   );
 }
