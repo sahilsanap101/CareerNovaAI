@@ -27,6 +27,11 @@ import { Select } from '@/components/ui/Select';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { Spinner } from '@/components/ui/Loader';
 import { useStudentProfile } from '@/hooks/useStudentProfile';
+import { useToast } from '@/hooks/useToast';
+import { profileApi } from '@/api/profile.api';
+import { ResumeImportChoice } from './ResumeImportChoice';
+import { ResumeUploader } from './ResumeUploader';
+import type { ExtractedResumeData } from '@/lib/resumeExtractor';
 import {
   updateProfileSchema,
   careerGoalSchema,
@@ -53,9 +58,12 @@ const STEPS = [
 ];
 
 export function ProfileWizard() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0); // 0 = Choice/Upload phase
+  const [isUploading, setIsUploading] = useState(false);
   const [skillSearch, setSkillSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
+
+  const toast = useToast();
 
   const {
     studentData,
@@ -75,6 +83,7 @@ export function ProfileWizard() {
     deleteCertification,
     addCodingPlatform,
     deleteCodingPlatform,
+    refetch,
   } = useStudentProfile();
 
   // Step 1 & 2 Form (Personal + Academic)
@@ -136,6 +145,122 @@ export function ProfileWizard() {
     return (
       <div className="flex justify-center items-center min-h-[400px]">
         <Spinner size="lg" />
+      </div>
+    );
+  }
+
+  const handleResumeSuccess = async (data: ExtractedResumeData) => {
+    setIsUploading(true);
+    try {
+      if (data.skills && data.skills.length > 0) {
+        for (const skillName of data.skills) {
+          const match = masterSkills.find(m => m.name.toLowerCase() === skillName.toLowerCase());
+          const alreadyAdded = studentData?.skills.some(s => s.skill.id === match?.id);
+          if (match && !alreadyAdded) {
+            await profileApi.addUserSkill({ skillId: match.id, proficiency: 3, experienceMonths: 0, confidence: 50 });
+          }
+        }
+      }
+
+      if (data.interests && data.interests.length > 0) {
+        for (const interestName of data.interests) {
+          const match = masterInterests.find(m => m.name.toLowerCase() === interestName.toLowerCase());
+          const alreadyAdded = studentData?.interests.some(i => i.interest.id === match?.id);
+          if (match && !alreadyAdded) {
+            await profileApi.addUserInterest({ interestId: match.id, priority: 1 });
+          }
+        }
+      }
+
+      if (data.projects && data.projects.length > 0) {
+        for (const p of data.projects) {
+          await profileApi.addProject(p);
+        }
+      }
+
+      if (data.certifications && data.certifications.length > 0) {
+        for (const c of data.certifications) {
+          await profileApi.addCertification(c);
+        }
+      }
+
+      if (data.codingProfiles && data.codingProfiles.length > 0) {
+        for (const cp of data.codingProfiles) {
+          await profileApi.addCodingPlatform(cp);
+        }
+      }
+
+      // Merge scalar fields safely so we don't blow away what they had if the resume missed it
+      const mergedFields: any = {};
+      for (const [key, value] of Object.entries(data.profile)) {
+        if (value) mergedFields[key] = value;
+      }
+
+      if (Object.keys(mergedFields).length > 0) {
+        await profileApi.updateProfile({
+          fullName: mergedFields.fullName || studentData?.fullName || '',
+          college: mergedFields.college || studentData?.profile?.college || '',
+          university: mergedFields.university || studentData?.profile?.university || '',
+          degree: mergedFields.degree || studentData?.profile?.degree || '',
+          branch: mergedFields.branch || studentData?.profile?.branch || '',
+          specialization: mergedFields.specialization || studentData?.profile?.specialization || '',
+          graduationYear: mergedFields.graduationYear ?? studentData?.profile?.graduationYear ?? undefined,
+          cgpa: mergedFields.cgpa ?? studentData?.profile?.cgpa ?? undefined,
+          currentYear: studentData?.profile?.currentYear ?? undefined,
+          currentSemester: studentData?.profile?.currentSemester ?? undefined,
+          bio: mergedFields.bio || studentData?.profile?.bio || '',
+          city: mergedFields.city || studentData?.profile?.city || '',
+          country: mergedFields.country || studentData?.profile?.country || 'India',
+          profileImage: studentData?.profile?.profileImage || ''
+        });
+      }
+
+      const mergedCareer: any = {};
+      for (const [key, value] of Object.entries(data.career)) {
+        if (value !== undefined) mergedCareer[key] = value;
+      }
+
+      if (Object.keys(mergedCareer).length > 0) {
+        await profileApi.updateCareerGoals({
+          preferredJobRole: mergedCareer.preferredJobRole || studentData?.careerGoal?.preferredJobRole || '',
+          preferredIndustry: mergedCareer.preferredIndustry || studentData?.careerGoal?.preferredIndustry || '',
+          preferredWorkMode: mergedCareer.preferredWorkMode || studentData?.careerGoal?.preferredWorkMode || 'HYBRID',
+          preferredCountries: mergedCareer.preferredCountries || studentData?.careerGoal?.preferredCountries || '',
+          expectedSalary: mergedCareer.expectedSalary || studentData?.careerGoal?.expectedSalary || '',
+          higherStudies: mergedCareer.higherStudies ?? studentData?.careerGoal?.higherStudies ?? false,
+          startup: mergedCareer.startup ?? studentData?.careerGoal?.startup ?? false,
+          entrepreneurship: studentData?.careerGoal?.entrepreneurship ?? false,
+          governmentJobs: studentData?.careerGoal?.governmentJobs ?? false,
+          research: studentData?.careerGoal?.research ?? false,
+        });
+      }
+
+      toast.success('Resume data securely merged into your profile!');
+    } catch (e) {
+      toast.error('Partial network failure during data merge, please check extracted fields.');
+    } finally {
+      setIsUploading(false);
+      refetch(); // Invalidate canonical query state to trigger re-render of forms with actual DB values!
+      setCurrentStep(9); // Send directly to Review screen!
+    }
+  };
+
+  if (currentStep === 0) {
+    return (
+      <div className="space-y-6 w-full pb-12">
+        {isUploading ? (
+          <ResumeUploader
+            onSuccess={handleResumeSuccess}
+            onSkip={() => { setIsUploading(false); setCurrentStep(1); }}
+          />
+        ) : (
+          <ResumeImportChoice
+            onChoice={(c) => {
+              if (c === 'import') setIsUploading(true);
+              else setCurrentStep(1);
+            }}
+          />
+        )}
       </div>
     );
   }
@@ -290,6 +415,8 @@ export function ProfileWizard() {
                 <CardDescription>Select skills and rate your proficiency (1-5) and confidence (0-100)</CardDescription>
               </CardHeader>
 
+
+
               {/* Current Added Skills */}
               <div className="space-y-3">
                 <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Your Skills ({studentData?.skills.length ?? 0})</h4>
@@ -365,6 +492,8 @@ export function ProfileWizard() {
                 <CardDescription>Select domains you are passionate about (Max 10)</CardDescription>
               </CardHeader>
 
+
+
               {/* Current Interests */}
               <div className="flex flex-wrap gap-2">
                 {studentData?.interests.map((i) => (
@@ -411,6 +540,8 @@ export function ProfileWizard() {
                 <CardDescription>Showcase your hands-on coding projects</CardDescription>
               </CardHeader>
 
+
+
               {/* Project List */}
               <div className="space-y-3">
                 {studentData?.projects.map((p) => (
@@ -450,6 +581,8 @@ export function ProfileWizard() {
                 <CardDescription>Verified courses and professional certificates</CardDescription>
               </CardHeader>
 
+
+
               <div className="space-y-3">
                 {studentData?.certifications.map((c) => (
                   <div key={c.id} className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex justify-between items-center">
@@ -484,6 +617,8 @@ export function ProfileWizard() {
                 <CardTitle>Coding Profiles</CardTitle>
                 <CardDescription>Connect competitive programming platforms</CardDescription>
               </CardHeader>
+
+
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {studentData?.codingPlatforms.map((cp) => (
@@ -573,6 +708,8 @@ export function ProfileWizard() {
               </CardHeader>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+
                 <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                   <span className="text-xs font-semibold text-slate-400 uppercase">Profile Completion</span>
                   <p className="text-3xl font-extrabold text-primary-600 mt-1">{completion?.completionPercentage}%</p>

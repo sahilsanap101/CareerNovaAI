@@ -78,7 +78,7 @@ export default function Settings() {
               <Monitor className="h-4 w-4 text-primary-500" aria-hidden="true" />
               <CardTitle>Appearance</CardTitle>
             </div>
-            <CardDescription>Choose how PATHFORGE looks to you.</CardDescription>
+            <CardDescription>Choose how CareerNova looks to you.</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-3 gap-3">
@@ -86,11 +86,10 @@ export default function Settings() {
                 <button
                   key={t.value}
                   onClick={() => setTheme(t.value)}
-                  className={`flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all ${
-                    theme === t.value
+                  className={`flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all ${theme === t.value
                       ? 'border-primary-500 bg-primary-50 dark:bg-primary-950 text-primary-700 dark:text-primary-300'
                       : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600'
-                  }`}
+                    }`}
                   id={`settings-theme-${t.value}`}
                 >
                   <t.icon className="h-5 w-5" aria-hidden="true" />

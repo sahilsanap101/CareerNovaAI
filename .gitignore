@@ -67,3 +67,22 @@ tmp/
 # ─── Misc ─────────────────────────────────────────────────────────
 *.pem
 .turbo/
+
+# Research datasets - keep local, never commit
+research/data/raw/
+research/data/processed/
+apps/api/src/research/data/
+
+# Generated logs/output
+**/out.txt
+**/out-utf8.txt
+**/server-logs.txt
+**/tsx-out.txt
+**/tsx-out-utf8.txt
+**/tsc.txt
+**/typeresult.txt
+**/build.txt
+**/buildout.txt
+**/lint.txt
+**/lintout.txt
+**/errors.txt

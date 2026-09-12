@@ -1,4 +1,4 @@
-# PATHFORGE Phase 4 Architecture — Intelligent Adaptive Learning & Career Execution Ecosystem
+# PathForge Phase 4 Architecture — Intelligent Adaptive Learning & Career Execution Ecosystem
 
 ```mermaid
 graph TD

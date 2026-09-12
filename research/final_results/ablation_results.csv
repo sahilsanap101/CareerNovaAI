@@ -1,0 +1,5 @@
+Configuration,ImpactOnRecall
+A0_NoConstraints,-0.45
+A1_NoMarketData,-0.22
+A2_NoLearningCost,-0.15
+A6_FullSystem,0.00

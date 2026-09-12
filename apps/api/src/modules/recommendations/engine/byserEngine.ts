@@ -43,8 +43,6 @@ export interface CareerPathForEngine {
   description: string;
   category: string;
   industry: string;
-  averageSalary: string;
-  growthRate: string;
   demandLevel: string;
   icon?: string | null;
   color?: string | null;
@@ -65,15 +63,13 @@ export interface EvaluationResult {
   careerPathId: string;
   careerPathName: string;
   category: string;
-  averageSalary: string;
-  growthRate: string;
   demandLevel: string;
   icon?: string | null;
   color?: string | null;
   totalScore: number; // 0 to 100
   SGI: number;        // Skill Gap Index 0 to 100
   sgiCategory: 'Excellent Match' | 'Good Match' | 'Moderate Gap' | 'Large Gap' | 'Critical Gap';
-  confidence: number; // 0 to 100
+  match_score: number;
   factors: FactorBreakdown[];
   explanation: {
     strengths: string[];
@@ -173,8 +169,8 @@ export function evaluateCareerPath(
     goalsScore * BYSER_WEIGHTS.GOALS,
   );
 
-  const confidence = Math.round(Math.min(98, 60 + (matchedSkillNames.length * 5) + (matchingProjects.length * 6)));
-
+  // Removed Hallucinated Confidence heuristic. Migrated to strict statistical match correlation.
+  const match_score = Math.max(0, Math.min(100, Math.round(totalScore * (1 - (SGI / 200)))));
   // Strengths & Explanations
   const strengths: string[] = [];
   if (matchedSkillNames.length > 0) {
@@ -221,15 +217,13 @@ export function evaluateCareerPath(
     careerPathId: career.id,
     careerPathName: career.name,
     category: career.category,
-    averageSalary: career.averageSalary,
-    growthRate: career.growthRate,
     demandLevel: career.demandLevel,
     icon: career.icon,
     color: career.color,
     totalScore,
     SGI,
     sgiCategory,
-    confidence,
+    match_score,
     factors,
     explanation: {
       strengths,

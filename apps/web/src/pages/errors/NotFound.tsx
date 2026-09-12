@@ -13,7 +13,7 @@ export default function NotFound() {
           <div className="h-9 w-9 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center">
             <Zap className="h-5 w-5 text-white" />
           </div>
-          <span className="font-bold text-xl text-slate-900 dark:text-white">PATHFORGE</span>
+          <span className="font-bold text-xl text-slate-900 dark:text-white">CareerNova</span>
         </div>
 
         {/* 404 */}

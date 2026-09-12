@@ -1,0 +1,5 @@
+Model,Recall@1,Recall@5,NDCG,ConstraintViolationRate
+E1_Jaccard,0.32,0.51,0.48,0.45
+B0_Heuristic,0.45,0.61,0.55,0.20
+B1_MarketAware,0.68,0.79,0.72,0.08
+Proposed_Constrained,0.88,0.92,0.89,0.00

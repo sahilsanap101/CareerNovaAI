@@ -29,7 +29,7 @@ const envSchema = z.object({
   EMAIL_SECURE: z.coerce.boolean().default(false),
   EMAIL_USER: z.string().optional(),
   EMAIL_PASS: z.string().optional(),
-  EMAIL_FROM: z.string().default('PATHFORGE <noreply@pathforge.dev>'),
+  EMAIL_FROM: z.string().default('PathForge <noreply@pathforge.dev>'),
 
   // Frontend
   FRONTEND_URL: z.string().url().default('http://localhost:5173'),

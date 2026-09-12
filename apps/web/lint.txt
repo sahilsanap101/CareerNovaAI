@@ -1,0 +1,18 @@
+
+Oops! Something went wrong! :(
+
+ESLint: 8.57.1
+
+Error: Error while loading rule '@typescript-eslint/no-floating-promises': You have used a rule which requires parserServices to be generated. You must therefore provide a value for the "parserOptions.project" property for @typescript-eslint/parser.
+Parser: C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\node_modules\@typescript-eslint\parser\dist\index.js
+Occurred while linting C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\apps\web\src\api\ai.api.ts
+    at throwError (C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\node_modules\@typescript-eslint\utils\dist\eslint-utils\getParserServices.js:38:11)
+    at getParserServices (C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\node_modules\@typescript-eslint\utils\dist\eslint-utils\getParserServices.js:27:9)
+    at create (C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\node_modules\@typescript-eslint\eslint-plugin\dist\rules\no-floating-promises.js:88:55)
+    at Object.create (C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\node_modules\@typescript-eslint\utils\dist\eslint-utils\RuleCreator.js:37:20)
+    at createRuleListeners (C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\node_modules\eslint\lib\linter\linter.js:895:21)
+    at C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\node_modules\eslint\lib\linter\linter.js:1066:110
+    at Array.forEach (<anonymous>)
+    at runRules (C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\node_modules\eslint\lib\linter\linter.js:1003:34)
+    at Linter._verifyWithoutProcessors (C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\node_modules\eslint\lib\linter\linter.js:1355:31)
+    at Linter._verifyWithConfigArray (C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\node_modules\eslint\lib\linter\linter.js:1807:21)

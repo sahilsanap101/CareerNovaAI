@@ -1,0 +1,20 @@
+{
+    "baseline_id": "B0_BYSER",
+    "version": "1.0.0",
+    "methodology": "HEURISTIC_LINEAR_COMBINATION",
+    "deterministic": true,
+    "factors": {
+        "SKILLS": 0.35,
+        "INTERESTS": 0.20,
+        "PROJECTS": 0.15,
+        "ACADEMIC": 0.10,
+        "CERTIFICATIONS": 0.10,
+        "CODING": 0.05,
+        "GOALS": 0.05
+    },
+    "constraints": {
+        "LLM_DEPENDENCY": false,
+        "API_CALLS": false,
+        "DYNAMIC_WEIGHTING": false
+    }
+}

@@ -90,7 +90,7 @@ export function InterviewCoach() {
             ) : (
               <div className="text-center py-20 space-y-2 text-slate-400">
                 <Mic className="h-10 w-10 mx-auto text-slate-300" />
-                <p className="text-sm">Submit your answer to receive real-time coaching feedback.</p>
+                <p className="text-sm">Submit your answer to receive synchronous coaching feedback.</p>
               </div>
             )}
           </CardContent>

@@ -15,7 +15,10 @@ export interface RecommendationItem {
   totalScore: number;
   SGI: number;
   sgiCategory?: string;
-  confidence: number;
+  skillFit?: number;
+  goalFit?: number;
+  marketAlignment?: number;
+  evidenceDate?: string;
   generatedAt: string;
   careerPath: {
     id: string;
@@ -23,9 +26,6 @@ export interface RecommendationItem {
     description: string;
     category: string;
     industry: string;
-    averageSalary: string;
-    growthRate: string;
-    demandLevel: string;
     icon?: string | null;
     color?: string | null;
     requiredSkills?: Array<{

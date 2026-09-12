@@ -1,0 +1,21 @@
+{
+    "baseline_id": "B1_MARKET_AWARE",
+    "version": "1.0.0",
+    "methodology": "MARKET_AWARE_RANKING_MODEL",
+    "deterministic": true,
+    "default_weights": {
+        "ALPHA_SKILL": 0.40,
+        "BETA_GOAL": 0.20,
+        "GAMMA_INTEREST": 0.10,
+        "DELTA_MARKET": 0.30
+    },
+    "score_range": [
+        0.0,
+        1.0
+    ],
+    "constraints": {
+        "LLM_DEPENDENCY": false,
+        "API_CALLS": false,
+        "DYNAMIC_WEIGHTING": true
+    }
+}

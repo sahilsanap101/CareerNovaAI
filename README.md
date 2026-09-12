@@ -1,4 +1,4 @@
-# PATHFORGE — AI-Powered Career Navigation Platform
+# PathForge — AI-Powered Career Navigation Platform
 
 > Forge your engineering career with AI.
 
@@ -13,7 +13,7 @@
 ## 🗺️ Project Structure
 
 ```
-PATHFORGE/
+PathForge/
 ├── apps/
 │   ├── api/              # Express + Prisma backend
 │   │   ├── prisma/       # Schema + migrations + seed
@@ -57,7 +57,7 @@ PATHFORGE/
 ### 1. Clone & install
 ```bash
 git clone https://github.com/your-org/pathforge.git
-cd PATHFORGE
+cd PathForge
 npm install
 ```
 
@@ -221,4 +221,4 @@ npm run test:coverage --workspace=apps/api
 
 ## 📜 License
 
-MIT © PATHFORGE Research Team
+MIT © PathForge Research Team

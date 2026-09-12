@@ -34,14 +34,14 @@ function getBaseEmailTemplate(title: string, content: string): string {
 <body>
   <div class="container">
     <div class="header">
-      <h1>⚡ PATHFORGE</h1>
+      <h1>⚡ PathForge</h1>
       <p>AI-Powered Career Navigation</p>
     </div>
     <div class="body">
       ${content}
     </div>
     <div class="footer">
-      <p>© ${new Date().getFullYear()} PATHFORGE. This email was sent to you because you registered on our platform.</p>
+      <p>© ${new Date().getFullYear()} PathForge. This email was sent to you because you registered on our platform.</p>
       <p>If you didn't request this, you can safely ignore this email.</p>
     </div>
   </div>
@@ -91,7 +91,7 @@ export async function sendVerificationEmail(
 
   const content = `
     <h2>Verify your email, ${name.split(' ')[0]}!</h2>
-    <p>Welcome to PATHFORGE — your AI-powered career navigation platform. Please verify your email address to get started.</p>
+    <p>Welcome to PathForge — your AI-powered career navigation platform. Please verify your email address to get started.</p>
     <a href="${verifyUrl}" class="btn">✅ Verify Email</a>
     <p>Or copy this link into your browser:</p>
     <div class="token-box">${verifyUrl}</div>
@@ -101,7 +101,7 @@ export async function sendVerificationEmail(
 
   await sendMail({
     to,
-    subject: '✅ Verify your PATHFORGE email',
+    subject: '✅ Verify your PathForge email',
     html: getBaseEmailTemplate('Verify your email', content),
   });
 }
@@ -118,7 +118,7 @@ export async function sendPasswordResetEmail(
 
   const content = `
     <h2>Reset your password</h2>
-    <p>Hi ${name.split(' ')[0]}, we received a request to reset your PATHFORGE password.</p>
+    <p>Hi ${name.split(' ')[0]}, we received a request to reset your PathForge password.</p>
     <a href="${resetUrl}" class="btn">🔐 Reset Password</a>
     <p>Or copy this link into your browser:</p>
     <div class="token-box">${resetUrl}</div>
@@ -129,7 +129,7 @@ export async function sendPasswordResetEmail(
 
   await sendMail({
     to,
-    subject: '🔐 Reset your PATHFORGE password',
+    subject: '🔐 Reset your PathForge password',
     html: getBaseEmailTemplate('Reset your password', content),
   });
 }

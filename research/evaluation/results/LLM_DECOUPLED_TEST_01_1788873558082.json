@@ -1,0 +1,29 @@
+{
+  "experimentId": "LLM_DECOUPLED_TEST_01",
+  "timestamp": "2026-09-08T13:19:18.081Z",
+  "careerResults": [
+    {
+      "career_id": "ai",
+      "score": 0.95,
+      "rank": 1,
+      "market_alignment": 0.9,
+      "skill_fit": 0.5
+    }
+  ],
+  "roadmapResults": [
+    {
+      "phase": 1,
+      "skillId": "python",
+      "priority": 0.8,
+      "gap": 1,
+      "learningCost": 40,
+      "prerequisites": [],
+      "reason": "Optimal highest-priority unblocked node."
+    }
+  ],
+  "metaTracking": {
+    "prerequisiteViolations": 0,
+    "deferredTargets": 0,
+    "roadmapChurn": 0
+  }
+}

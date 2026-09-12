@@ -2,12 +2,13 @@
   "name": "@pathforge/api",
   "version": "1.0.0",
   "private": true,
-  "description": "PATHFORGE API Server",
+  "description": "PathForge API Server",
   "main": "dist/server.js",
-  
   "scripts": {
     "dev": "tsx watch -r tsconfig-paths/register src/server.ts",
     "build": "tsc",
+    "research:data:audit": "python src/research/data/audit_datasets.py",
+    "research:data:process": "python src/research/data/parsers/esco_parser.py && python src/research/data/parsers/onet_parser.py && python src/research/data/parsers/linkedin_parser.py",
     "start": "node dist/server.js",
     "lint": "eslint src --ext .ts",
     "db:generate": "prisma generate",
@@ -21,8 +22,8 @@
     "test:coverage": "jest --coverage"
   },
   "prisma": {
-  "seed": "tsx prisma/seed.ts"
-},
+    "seed": "tsx prisma/seed.ts"
+  },
   "dependencies": {
     "@google/genai": "^1.0.0",
     "@pathforge/shared-constants": "*",

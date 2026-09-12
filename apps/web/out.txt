@@ -1,0 +1,14 @@
+
+> @pathforge/web@1.0.0 type-check
+> tsc --noEmit
+
+src/lib/resumeExtractor.ts(144,37): error TS18048: 'technologies' is possibly 'undefined'.
+src/lib/resumeExtractor.ts(147,21): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+npm error Lifecycle script `type-check` failed with error:
+npm error code 2
+npm error path C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\apps\web
+npm error workspace @pathforge/web@1.0.0
+npm error location C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\apps\web
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c tsc --noEmit

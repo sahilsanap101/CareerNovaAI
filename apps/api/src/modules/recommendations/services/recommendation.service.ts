@@ -33,7 +33,7 @@ export async function generateRecommendations(userId: string) {
       careerPathId: rec.careerPathId,
       totalScore: rec.totalScore,
       SGI: rec.SGI,
-      confidence: rec.confidence,
+      confidence: (rec as any).confidence,
       explanation: rec.explanation as unknown as import('@prisma/client').Prisma.InputJsonValue,
       factors: rec.factors,
     })),

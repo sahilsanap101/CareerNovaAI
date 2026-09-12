@@ -18,7 +18,7 @@ export function AuthLayout() {
           <div className="h-10 w-10 bg-white/10 backdrop-blur rounded-xl flex items-center justify-center">
             <Zap className="h-5 w-5 text-white" />
           </div>
-          <span className="font-bold text-xl text-white tracking-tight">PATHFORGE</span>
+          <span className="font-bold text-xl text-white tracking-tight">CareerNova</span>
         </div>
 
         {/* Feature list */}
