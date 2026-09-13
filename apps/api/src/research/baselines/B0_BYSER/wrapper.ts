@@ -39,6 +39,6 @@ export function runB0Evaluation(
         })),
         missing_skills: res.explanation.missingSkills.map(m => m.name),
         strengths: res.explanation.strengths,
-        match_score: res.confidence // Plucked from 'confidence' parameter safely wrapped
+        match_score: res.match_score // Plucked from 'match_score' 
     }));
 }

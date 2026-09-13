@@ -1,0 +1,39 @@
+{
+  "p1": 0.78,
+  "macro_f1": 0.7790195277947881,
+  "metrics": {
+    "Frontend Developer": {
+      "P": 0.7945205479452054,
+      "R": 0.8923076923076924,
+      "F1": 0.8405797101449275
+    },
+    "Backend Developer": {
+      "P": 0.8490566037735849,
+      "R": 0.6716417910447762,
+      "F1": 0.7500000000000001
+    },
+    "AI Engineer": {
+      "P": 0.7162162162162162,
+      "R": 0.7794117647058824,
+      "F1": 0.7464788732394366
+    }
+  },
+  "samples": 200,
+  "cm": {
+    "Frontend Developer": {
+      "Frontend Developer": 58,
+      "Backend Developer": 1,
+      "AI Engineer": 6
+    },
+    "Backend Developer": {
+      "Frontend Developer": 7,
+      "Backend Developer": 45,
+      "AI Engineer": 15
+    },
+    "AI Engineer": {
+      "Frontend Developer": 8,
+      "Backend Developer": 7,
+      "AI Engineer": 53
+    }
+  }
+}

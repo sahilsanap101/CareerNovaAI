@@ -1,0 +1,109 @@
+PrismaClientValidationError: 
+Invalid `prisma.recommendationResult.create()` invocation in
+c:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\apps\api\src\modules\recommendations\repositories\recommendation.repository.ts:47:55
+
+  44 
+  45 const createdResults = [];
+  46 for (const rec of recommendations) {
+→ 47   const created = await prisma.recommendationResult.create({
+         data: {
+           userId: "cmtpxk9rz006vxgpb3yr476lp",
+           careerPathId: "cmtpxk9e8002mxgpb3uxxu55c",
+           totalScore: 30,
+           SGI: 100,
+           explanation: {
+             strengths: [
+               "Good foundational engineering baseline for career growth."
+             ],
+             areasToImprove: [
+               "Acquire core missing skills: TypeScript, React, JavaScript.",
+               "Build at least one hands-on project focused on Mobile Developer.",
+               "Consider earning an industry-recognized certification in Mobile Engineering."
+             ],
+             missingSkills: [
+               {
+                 id: "cmtpxk9bo0005xgpbqto077hn",
+                 name: "TypeScript",
+                 category: "Programming",
+                 importanceWeight: 9,
+                 priority: "HIGH"
+               },
+               {
+                 id: "cmtpxk9bt000axgpb16asc7jm",
+                 name: "React",
+                 category: "Frontend",
+                 importanceWeight: 9,
+                 priority: "HIGH"
+               },
+               {
+                 id: "cmtpxk9bm0004xgpbrcu64ugv",
+                 name: "JavaScript",
+                 category: "Programming",
+                 importanceWeight: 8,
+                 priority: "HIGH"
+               }
+             ]
+           },
+           factors: {
+             create: [
+               {
+                 factor: "Skills",
+                 weight: 0.35,
+                 score: 0,
+                 explanation: "No skills matched yet"
+               },
+               {
+                 factor: "Interests",
+                 weight: 0.2,
+                 score: 30,
+                 explanation: "Moderate domain alignment"
+               },
+               {
+                 factor: "Projects",
+                 weight: 0.15,
+                 score: 0,
+                 explanation: "0 relevant portfolio project(s)"
+               },
+               {
+                 factor: "Academic",
+                 weight: 0.1,
+                 score: 70,
+                 explanation: "CGPA 7.0/10"
+               },
+               {
+                 factor: "Certifications",
+                 weight: 0.1,
+                 score: 0,
+                 explanation: "0 active certification(s)"
+               },
+               {
+                 factor: "Coding Experience",
+                 weight: 0.05,
+                 score: 30,
+                 explanation: "0 problem(s) solved across platforms"
+               },
+               {
+                 factor: "Career Goals",
+                 weight: 0.05,
+                 score: 40,
+                 explanation: "General engineering career goal"
+               }
+             ]
+           },
+       +   confidence: Float
+         },
+         include: {
+           careerPath: true,
+           factors: true
+         }
+       })
+
+Argument `confidence` is missing.
+    at wn (C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at $n.handleRequestError (C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\node_modules\@prisma\client\runtime\library.js:121:6958)
+    at $n.handleAndLogRequestError (C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at Object.saveRecommendations (c:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\apps\api\src\modules\recommendations\repositories\recommendation.repository.ts:47:21)
+    at generateRecommendations (c:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\apps\api\src\modules\recommendations\services\recommendation.service.ts:30:24)
+    at main (c:\Users\ankit\Downloads\PATHFORGE (1)\PATHFORGE\research\reproduce.ts:18:9)

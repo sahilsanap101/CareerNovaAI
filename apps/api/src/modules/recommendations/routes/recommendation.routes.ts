@@ -23,4 +23,7 @@ router.get('/analytics/profile', recController.getAnalytics);
 router.get('/analytics/skills', recController.getAnalytics);
 router.get('/analytics/recommendations', recController.getAnalytics);
 
+// ─── Feedback API ──────────────────────────────────────────────────
+router.post('/feedback', recController.submitFeedback);
+
 export default router;

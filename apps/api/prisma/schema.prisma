@@ -48,26 +48,37 @@ model User {
   updatedAt  DateTime @updatedAt
 
   // Relations
-  profile              Profile?
-  preferences          UserPreference?
-  sessions             Session[]
-  auditLogs            AuditLog[]
-  passwordResetTokens  PasswordResetToken[]
-  verificationTokens   VerificationToken[]
-  skills               UserSkill[]
-  interests            UserInterest[]
-  careerGoal           CareerGoal?
-  projects             Project[]
-  certifications       Certification[]
-  codingPlatforms      CodingPlatform[]
-  recommendations      RecommendationResult[]
-  userRoadmaps         UserRoadmap[]
-  userTasks            UserTask[]
-  weeklyPlans          WeeklyPlan[]
-  userAchievements     UserAchievement[]
-  studySessions        StudySession[]
-  conversations        Conversation[]
-  aiMetrics            AiMetric[]
+  profile               Profile?
+  preferences           UserPreference?
+  sessions              Session[]
+  auditLogs             AuditLog[]
+  passwordResetTokens   PasswordResetToken[]
+  verificationTokens    VerificationToken[]
+  skills                UserSkill[]
+  interests             UserInterest[]
+  careerGoal            CareerGoal?
+  projects              Project[]
+  certifications        Certification[]
+  codingPlatforms       CodingPlatform[]
+  recommendations       RecommendationResult[]
+  userRoadmaps          UserRoadmap[]
+  userTasks             UserTask[]
+  weeklyPlans           WeeklyPlan[]
+  userAchievements      UserAchievement[]
+  studySessions         StudySession[]
+  conversations         Conversation[]
+  aiMetrics             AiMetric[]
+  feedbacks             Feedback[]
+  gateProfile           UserGateProfile?
+  GateQuestionAttempt   GateQuestionAttempt[]
+  GateBookmark          GateBookmark[]
+  GateTopicMastery      GateTopicMastery[]
+  GateMistakeTracker    GateMistakeTracker[]
+  GateRevisionQueue     GateRevisionQueue[]
+  GateStudyPlan         GateStudyPlan[]
+  GateMockAttempt       GateMockAttempt[]
+  GateReadinessSnapshot GateReadinessSnapshot[]
+  GateAdminAudit        GateAdminAudit[]
 
   @@index([email])
   @@map("users")
@@ -76,13 +87,13 @@ model User {
 // ─── Phase 5: AI Operating System (AIOS) Models ───────────────────
 
 model Conversation {
-  id        String    @id @default(cuid())
+  id        String   @id @default(cuid())
   userId    String
-  title     String    @default("New AI Session")
-  agentType String    @default("CAREER_MENTOR") // CAREER_MENTOR, RESUME, GITHUB, INTERVIEW, LEARNING, RESEARCH, ROADMAP
-  pinned    Boolean   @default(false)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  title     String   @default("New AI Session")
+  agentType String   @default("CAREER_MENTOR") // CAREER_MENTOR, RESUME, GITHUB, INTERVIEW, LEARNING, RESEARCH, ROADMAP
+  pinned    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   messages Message[]
@@ -94,11 +105,11 @@ model Conversation {
 model Message {
   id             String   @id @default(cuid())
   conversationId String
-  role           String   // user, assistant, system, tool
+  role           String // user, assistant, system, tool
   content        String   @db.Text
-  sources        Json?    // RAG Citing sources
+  sources        Json? // RAG Citing sources
   tokensUsed     Int?     @default(0)
-  feedback       String?  // HELPFUL, UNHELPFUL
+  feedback       String? // HELPFUL, UNHELPFUL
   createdAt      DateTime @default(now())
 
   conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
@@ -157,7 +168,7 @@ model Roadmap {
   careerPathId      String
   description       String   @db.Text
   difficulty        String   @default("INTERMEDIATE") // BEGINNER, INTERMEDIATE, ADVANCED
-  estimatedDuration String   // e.g. "16 Weeks"
+  estimatedDuration String // e.g. "16 Weeks"
   version           Int      @default(1)
   isActive          Boolean  @default(true)
   createdAt         DateTime @default(now())
@@ -202,7 +213,7 @@ model RoadmapModule {
   dependencies   String[] // Module IDs or Names
   order          Int      @default(1)
 
-  phase RoadmapPhase     @relation(fields: [phaseId], references: [id], onDelete: Cascade)
+  phase RoadmapPhase   @relation(fields: [phaseId], references: [id], onDelete: Cascade)
   tasks LearningTask[]
 
   @@index([phaseId])
@@ -233,7 +244,7 @@ model Resource {
   id           String  @id @default(cuid())
   taskId       String
   title        String
-  provider     String  // e.g. "YouTube", "freeCodeCamp", "Official Docs", "Coursera"
+  provider     String // e.g. "YouTube", "freeCodeCamp", "Official Docs", "Coursera"
   url          String
   resourceType String  @default("VIDEO") // VIDEO, ARTICLE, DOCUMENTATION, COURSE
   duration     String? @default("30 mins")
@@ -309,7 +320,7 @@ model DailyPlan {
   id             String   @id @default(cuid())
   weeklyPlanId   String
   date           DateTime
-  tasks          Json     // Array of task items for the day
+  tasks          Json // Array of task items for the day
   estimatedHours Float    @default(2)
   completedHours Float    @default(0)
   status         String   @default("PLANNED") // PLANNED, IN_PROGRESS, COMPLETED
@@ -383,10 +394,10 @@ model CareerPath {
   id            String   @id @default(cuid())
   name          String   @unique
   description   String   @db.Text
-  category      String   // e.g. "Software Engineering", "AI & Data", "Cyber Security", "Cloud & DevOps"
+  category      String // e.g. "Software Engineering", "AI & Data", "Cyber Security", "Cloud & DevOps"
   industry      String   @default("Technology")
-  averageSalary String   // e.g. "12 - 25 LPA"
-  growthRate    String   // e.g. "22% YoY"
+  averageSalary String // e.g. "12 - 25 LPA"
+  growthRate    String // e.g. "22% YoY"
   demandLevel   String   @default("HIGH") // HIGH, VERY_HIGH, EXTREME
   roadmapId     String?
   icon          String?  @default("Briefcase")
@@ -420,15 +431,16 @@ model RecommendationResult {
   id           String   @id @default(cuid())
   userId       String
   careerPathId String
-  totalScore   Float    // 0 to 100
-  SGI          Float    // Skill Gap Index 0 to 100
-  confidence   Float    // Confidence percentage
-  explanation  Json     // Why recommended, strengths, and areas to improve
+  totalScore   Float // 0 to 100
+  SGI          Float // Skill Gap Index 0 to 100
+  confidence   Float // Confidence percentage
+  explanation  Json // Why recommended, strengths, and areas to improve
   generatedAt  DateTime @default(now())
 
-  user       User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
-  careerPath CareerPath           @relation(fields: [careerPathId], references: [id], onDelete: Cascade)
+  user       User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  careerPath CareerPath             @relation(fields: [careerPathId], references: [id], onDelete: Cascade)
   factors    RecommendationFactor[]
+  feedbacks  Feedback[]
 
   @@index([userId])
   @@index([careerPathId])
@@ -440,8 +452,8 @@ model RecommendationFactor {
   id               String @id @default(cuid())
   recommendationId String
   factor           String // Skills, Interests, Projects, Academic, Certifications, Coding, Goals
-  weight           Float  // e.g. 0.35
-  score            Float  // 0 to 100
+  weight           Float // e.g. 0.35
+  score            Float // 0 to 100
   explanation      String
 
   recommendation RecommendationResult @relation(fields: [recommendationId], references: [id], onDelete: Cascade)
@@ -466,6 +478,8 @@ model Profile {
   profileImage    String?
   city            String?
   country         String?  @default("India")
+  gender          String?
+  category        String?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
@@ -496,7 +510,7 @@ model UserPreference {
 
 model Skill {
   id        String   @id @default(cuid())
-  category  String   // e.g. "Programming", "Frontend", "Backend", "Database", "Cloud", "Cyber Security", "AI", "DevOps"
+  category  String // e.g. "Programming", "Frontend", "Backend", "Database", "Cloud", "Cyber Security", "AI", "DevOps"
   name      String   @unique
   createdAt DateTime @default(now())
 
@@ -536,10 +550,10 @@ model Interest {
 }
 
 model UserInterest {
-  id         String   @id @default(cuid())
+  id         String @id @default(cuid())
   userId     String
   interestId String
-  priority   Int      @default(1) // 1 to 5
+  priority   Int    @default(1) // 1 to 5
 
   user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   interest Interest @relation(fields: [interestId], references: [id], onDelete: Cascade)
@@ -555,7 +569,7 @@ model CareerGoal {
   preferredJobRole   String?
   preferredIndustry  String?
   preferredWorkMode  WorkMode @default(HYBRID)
-  preferredCountries String?  // Comma separated
+  preferredCountries String? // Comma separated
   expectedSalary     String?
   higherStudies      Boolean  @default(false)
   entrepreneurship   Boolean  @default(false)
@@ -575,7 +589,7 @@ model Project {
   userId           String
   title            String
   description      String   @db.Text
-  technologies     String   // Comma separated or stringified
+  technologies     String // Comma separated or stringified
   githubUrl        String?
   demoUrl          String?
   completionStatus String   @default("COMPLETED") // COMPLETED, IN_PROGRESS, PLANNED
@@ -607,7 +621,7 @@ model Certification {
 model CodingPlatform {
   id             String   @id @default(cuid())
   userId         String
-  platform       String   // LeetCode, Codeforces, HackerRank, CodeChef, GeeksforGeeks, GitHub
+  platform       String // LeetCode, Codeforces, HackerRank, CodeChef, GeeksforGeeks, GitHub
   username       String
   problemsSolved Int      @default(0)
   createdAt      DateTime @default(now())
@@ -683,4 +697,553 @@ model AuditLog {
   @@index([action])
   @@index([createdAt])
   @@map("audit_logs")
+}
+
+model Feedback {
+  id                  String   @id @default(cuid())
+  userId              String
+  recommendationId    String
+  relevanceScore      Int // 1-5
+  roadmapClarityScore Int // 1-5
+  freeTextComment     String?  @db.Text
+  createdAt           DateTime @default(now())
+
+  user           User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recommendation RecommendationResult @relation(fields: [recommendationId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([recommendationId])
+  @@map("feedbacks")
+}
+
+// ─── Phase 6: GATE Preparation Module ──────────────────────────────
+enum GateQuestionType {
+  MCQ
+  MSQ
+  NAT
+}
+
+enum GateDifficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum GateStudySessionStatus {
+  PLANNED
+  IN_PROGRESS
+  COMPLETED
+  SKIPPED
+}
+
+enum GateMockStatus {
+  UPCOMING
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum GateMistakeType {
+  CALCULATION
+  CONCEPTUAL
+  READING
+  TIME_PRESSURE
+}
+
+enum GateOfficialStatus {
+  OFFICIAL
+  UNOFFICIAL
+  VERIFIED
+}
+
+enum GateExamLifecycle {
+  DRAFT
+  IMPORTED
+  VALIDATING
+  VERIFIED
+  PUBLISHED
+  ARCHIVED
+}
+
+model GateExam {
+  id                  String   @id @default(cuid())
+  year                Int
+  organizingInstitute String
+  officialWebsite     String?
+  isActive            Boolean           @default(true)
+  lifecycleStatus     GateExamLifecycle @default(DRAFT)
+  createdAt           DateTime          @default(now())
+
+  papers         GatePaper[]
+  importantDates GateImportantDate[]
+  officialLinks  GateOfficialLink[]
+  questions      GateQuestion[]
+  studyPlans     GateStudyPlan[]
+  mockTests      GateMockTest[]
+  syncRecords    GateSyncRecord[]
+
+  @@unique([year])
+  @@map("gate_exams")
+}
+
+model GateImportantDate {
+  id          String   @id @default(cuid())
+  examId      String
+  title       String
+  date        DateTime
+  description String?  @db.Text
+  createdAt   DateTime @default(now())
+
+  exam GateExam @relation(fields: [examId], references: [id], onDelete: Cascade)
+
+  @@index([examId])
+  @@map("gate_important_dates")
+}
+
+model GateOfficialLink {
+  id          String   @id @default(cuid())
+  examId      String
+  title       String
+  url         String
+  description String?  @db.Text
+  createdAt   DateTime @default(now())
+
+  exam GateExam @relation(fields: [examId], references: [id], onDelete: Cascade)
+
+  @@index([examId])
+  @@map("gate_official_links")
+}
+
+model GatePaper {
+  id        String    @id @default(cuid())
+  examId    String
+  paperCode String // e.g. "CS", "ME"
+  paperName String // e.g. "Computer Science and Information Technology"
+  examDate  DateTime?
+  session   String? // e.g. "Forenoon", "Afternoon"
+  createdAt DateTime  @default(now())
+
+  exam      GateExam              @relation(fields: [examId], references: [id], onDelete: Cascade)
+  subjects  GateSyllabusSubject[]
+  resources GateResource[]
+  questions GateQuestion[]
+  mockTests GateMockTest[]
+
+  @@unique([examId, paperCode])
+  @@index([examId])
+  @@map("gate_papers")
+}
+
+model GateSyllabusSubject {
+  id               String   @id @default(cuid())
+  paperId          String
+  title            String
+  weightagePercent Float?
+  createdAt        DateTime @default(now())
+
+  paper     GatePaper           @relation(fields: [paperId], references: [id], onDelete: Cascade)
+  topics    GateSyllabusTopic[]
+  questions GateQuestion[]
+
+  @@index([paperId])
+  @@map("gate_syllabus_subjects")
+}
+
+model GateSyllabusTopic {
+  id          String   @id @default(cuid())
+  subjectId   String
+  title       String
+  description String?  @db.Text
+  createdAt   DateTime @default(now())
+
+  subject   GateSyllabusSubject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  resources GateResource[]
+  subtopics GateSubtopic[]
+  questions GateQuestion[]
+
+  prerequisitesGateTarget GateTopicPrerequisite[] @relation("TopicHasPrerequisite")
+  prerequisitesGatePrereq GateTopicPrerequisite[] @relation("TopicIsPrerequisiteFor")
+
+  mastery       GateTopicMastery[]
+  revisionItems GateRevisionQueue[]
+  studySessions GateStudySession[]
+
+  @@index([subjectId])
+  @@map("gate_syllabus_topics")
+}
+
+model GateSubtopic {
+  id          String   @id @default(cuid())
+  topicId     String
+  title       String
+  description String?  @db.Text
+  createdAt   DateTime @default(now())
+
+  topic GateSyllabusTopic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+
+  @@index([topicId])
+  @@map("gate_subtopics")
+}
+
+model GateTopicPrerequisite {
+  id            String   @id @default(cuid())
+  targetTopicId String
+  prereqTopicId String
+  createdAt     DateTime @default(now())
+
+  targetTopic GateSyllabusTopic @relation("TopicHasPrerequisite", fields: [targetTopicId], references: [id], onDelete: Cascade)
+  prereqTopic GateSyllabusTopic @relation("TopicIsPrerequisiteFor", fields: [prereqTopicId], references: [id], onDelete: Cascade)
+
+  @@unique([targetTopicId, prereqTopicId])
+  @@index([targetTopicId])
+  @@index([prereqTopicId])
+  @@map("gate_topic_prerequisites")
+}
+
+model GateResource {
+  id             String    @id @default(cuid())
+  paperId        String
+  subjectId      String?
+  topicId        String?
+  subtopicId     String?
+  title          String
+  description    String?   @db.Text
+  url            String
+  provider       String
+  resourceType   String    // OFFICIAL_GATE, MOCK, VIDEO, COURSE, BOOK, etc.
+  language       String    @default("ENGLISH")
+  difficulty     String?   // BEGINNER, INTERMEDIATE, ADVANCED
+  isPaid         Boolean   @default(false)
+  isOfficial     Boolean   @default(true)
+  tags           Json?
+  isActive       Boolean   @default(true)
+  verifiedAt     DateTime?
+  lastVerifiedAt DateTime?
+  createdAt      DateTime  @default(now())
+
+  paper GatePaper          @relation(fields: [paperId], references: [id], onDelete: Cascade)
+  subject GateSyllabusSubject? @relation(fields: [subjectId], references: [id], onDelete: SetNull)
+  topic GateSyllabusTopic? @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  actions GateUserResourceAction[]
+
+  @@index([paperId])
+  @@index([topicId])
+  @@map("gate_resources")
+}
+
+model GateUserResourceAction {
+  id           String    @id @default(cuid())
+  userId       String
+  resourceId   String
+  actionType   String    // BOOKMARK, USEFUL, NOT_USEFUL, OPENED
+  createdAt    DateTime  @default(now())
+
+  user     User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resource GateResource  @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([resourceId])
+  @@map("gate_user_resource_actions")
+}
+
+model UserGateProfile {
+  id                      String   @id @default(cuid())
+  userId                  String   @unique
+  targetYear              Int
+  targetPaperCode         String
+  expectedScore           Float?
+  targetRank              Int?
+  weeklyStudyHours        Int      @default(10)
+  preparationStage        String   @default("BEGINNER") // BEGINNER, INTERMEDIATE, ADVANCED
+  preferredLearningFormat String   @default("VIDEO")
+  diagnosticState         Json?
+  createdAt               DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("user_gate_profiles")
+}
+
+model GateQuestion {
+  id             String             @id @default(cuid())
+  examId         String
+  paperId        String
+  subjectId      String?
+  topicId        String?
+  subtopicId     String?
+  questionNumber Int?
+  marks          Float
+  questionType   GateQuestionType
+  difficulty     GateDifficulty     @default(MEDIUM)
+  concept        String?
+  content        String             @db.Text
+  options        Json?
+  correctAnswer  String
+  explanation    String?            @db.Text
+  sourceUrl      String?
+  sourceProvider String?
+  status         GateOfficialStatus @default(UNOFFICIAL)
+  version        Int                @default(1)
+  createdAt      DateTime           @default(now())
+
+  exam    GateExam             @relation(fields: [examId], references: [id], onDelete: Cascade)
+  paper   GatePaper            @relation(fields: [paperId], references: [id], onDelete: Cascade)
+  subject GateSyllabusSubject? @relation(fields: [subjectId], references: [id], onDelete: SetNull)
+  topic   GateSyllabusTopic?   @relation(fields: [topicId], references: [id], onDelete: SetNull)
+
+  attempts  GateQuestionAttempt[]
+  bookmarks GateBookmark[]
+  mistakes  GateMistakeTracker[]
+
+  @@index([examId])
+  @@index([paperId])
+  @@index([topicId])
+  @@map("gate_questions")
+}
+
+model GateQuestionAttempt {
+  id           String   @id @default(cuid())
+  userId       String
+  questionId   String
+  userAnswer   String?
+  isCorrect    Boolean
+  timeSpentsMs Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  user     User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question GateQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([questionId])
+  @@map("gate_question_attempts")
+}
+
+model GateBookmark {
+  id         String   @id @default(cuid())
+  userId     String
+  questionId String
+  notes      String?  @db.Text
+  createdAt  DateTime @default(now())
+
+  user     User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question GateQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, questionId])
+  @@index([userId])
+  @@map("gate_bookmarks")
+}
+
+model GateTopicMastery {
+  id           String   @id @default(cuid())
+  userId       String
+  topicId      String
+  masteryLevel Float // 0.0 to 100.0
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user  User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic GateSyllabusTopic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, topicId])
+  @@index([userId])
+  @@map("gate_topic_mastery")
+}
+
+model GateMistakeTracker {
+  id              String          @id @default(cuid())
+  userId          String
+  questionId      String
+  mistakeType     GateMistakeType
+  notes           String?         @db.Text
+  correctApproach String?         @db.Text  // ADDED
+  confidenceLevel String?         // HIGH, MEDIUM, LOW
+  resolved        Boolean         @default(false)
+  createdAt       DateTime        @default(now())
+
+  user     User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question GateQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([questionId])
+  @@map("gate_mistake_tracker")
+}
+
+model GateRevisionQueue {
+  id              String   @id @default(cuid())
+  userId          String
+  topicId         String
+  lastReviewAt    DateTime? 
+  nextReviewAt    DateTime
+  reviewCount     Int      @default(0)
+  performance     Float?   
+  confidenceScore Float?
+  createdAt       DateTime @default(now())
+
+  user  User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic GateSyllabusTopic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([nextReviewAt])
+  @@map("gate_revision_queue")
+}
+
+model GateStudyPlan {
+  id           String   @id @default(cuid())
+  userId       String
+  targetExamId String
+  title        String
+  startDate    DateTime
+  endDate      DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user     User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  exam     GateExam           @relation(fields: [targetExamId], references: [id], onDelete: Cascade)
+  sessions GateStudySession[]
+
+  @@index([userId])
+  @@map("gate_study_plans")
+}
+
+model GateStudySession {
+  id           String                 @id @default(cuid())
+  planId       String
+  topicId      String?
+  title        String
+  date         DateTime
+  durationMins Int
+  status       GateStudySessionStatus @default(PLANNED)
+  createdAt    DateTime               @default(now())
+
+  plan  GateStudyPlan      @relation(fields: [planId], references: [id], onDelete: Cascade)
+  topic GateSyllabusTopic? @relation(fields: [topicId], references: [id], onDelete: SetNull)
+
+  @@index([planId])
+  @@index([topicId])
+  @@map("gate_study_sessions")
+}
+
+model GateMockTest {
+  id           String   @id @default(cuid())
+  examId       String
+  paperId      String
+  title        String
+  description  String?  @db.Text
+  durationMins Int      @default(180)
+  totalMarks   Float    @default(100.0)
+  isOfficial   Boolean  @default(false)
+  createdAt    DateTime @default(now())
+
+  exam      GateExam           @relation(fields: [examId], references: [id], onDelete: Cascade)
+  paper     GatePaper          @relation(fields: [paperId], references: [id], onDelete: Cascade)
+  questions GateMockQuestion[]
+  attempts  GateMockAttempt[]
+
+  @@index([examId])
+  @@index([paperId])
+  @@map("gate_mock_tests")
+}
+
+model GateMockQuestion {
+  id               String           @id @default(cuid())
+  mockId           String
+  actualQuestionId String? // MUST LINK TO REAL QUESTION TO PREVENT FABRICATION
+  questionText     String           @db.Text
+  options          Json?
+  correctAnswer    String
+  marks            Float
+  questionType     GateQuestionType
+  createdAt        DateTime         @default(now())
+
+  mock           GateMockTest     @relation(fields: [mockId], references: [id], onDelete: Cascade)
+  actualQuestion GateQuestion?    @relation(fields: [actualQuestionId], references: [id], onDelete: SetNull)
+  answers        GateMockAnswer[]
+
+  @@index([mockId])
+  @@index([actualQuestionId])
+  @@map("gate_mock_questions")
+}
+
+model GateMockAnswer {
+  id                String           @id @default(cuid())
+  attemptId         String
+  questionId        String
+  answerText        String?          // For NAT
+  selectedOptionIds String[]         // Array of IDs for MSQ/MCQ
+  isSubjective      Boolean          @default(false)
+  isCorrect         Boolean          @default(false)
+  timeSpentSecs     Int              @default(0)
+  createdAt         DateTime         @default(now())
+
+  attempt  GateMockAttempt  @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  question GateMockQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@index([attemptId])
+  @@index([questionId])
+  @@map("gate_mock_answers")
+}
+
+model GateMockAttempt {
+  id         String         @id @default(cuid())
+  userId     String
+  mockId     String
+  status     GateMockStatus @default(IN_PROGRESS)
+  score      Float          @default(0.0)
+  totalTime  Int            @default(0)
+  startedAt  DateTime       @default(now())
+  finishedAt DateTime?
+  createdAt  DateTime       @default(now())
+
+  user    User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mock    GateMockTest     @relation(fields: [mockId], references: [id], onDelete: Cascade)
+  answers GateMockAnswer[]
+
+  @@index([userId])
+  @@index([mockId])
+  @@map("gate_mock_attempts")
+}
+
+model GateReadinessSnapshot {
+  id               String   @id @default(cuid())
+  userId           String
+  targetYear       Int
+  overallReadiness Float
+  metrics          Json     // Storing { syllabus, mastery, practice, etc. }
+  createdAt        DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, targetYear])
+  @@map("gate_readiness_snapshot")
+}
+
+model GateSyncRecord {
+  id           String   @id @default(cuid())
+  examId       String
+  hashValue    String
+  entityCount  Int
+  status       String   // SUCCESS, FAILED
+  errorMessage String?  @db.Text
+  createdAt    DateTime @default(now())
+
+  exam GateExam @relation(fields: [examId], references: [id], onDelete: Cascade)
+
+  @@index([examId])
+  @@index([hashValue])
+  @@map("gate_sync_records")
+}
+
+model GateAdminAudit {
+  id        String   @id @default(cuid())
+  adminId   String
+  action    String
+  entityId  String
+  details   Json?
+  createdAt DateTime @default(now())
+
+  admin     User     @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  
+  @@index([adminId])
+  @@index([entityId])
+  @@map("gate_admin_audits")
 }

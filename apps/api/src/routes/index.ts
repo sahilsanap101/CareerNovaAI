@@ -7,6 +7,7 @@ import recRoutes from '@/modules/recommendations/routes/recommendation.routes';
 import roadmapRoutes from '@/modules/roadmap/routes/roadmap.routes';
 import aiRoutes from '@/modules/ai/routes/ai.routes';
 import platformRoutes from '@/modules/platform/routes/platform.routes';
+import gateRoutes from '@/modules/gate/routes/gate.routes';
 
 const v1Router = Router();
 
@@ -19,6 +20,7 @@ v1Router.use('/', recRoutes);
 v1Router.use('/', roadmapRoutes);
 v1Router.use('/ai', aiRoutes);
 v1Router.use('/platform', platformRoutes);
+v1Router.use('/gate', gateRoutes);
 
 // ─── Health Check ─────────────────────────────────────────────────
 v1Router.get('/health', (_req, res) => {

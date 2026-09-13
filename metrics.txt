@@ -1,0 +1,6 @@
+METRICS:
+N=200
+Total_Time_ms=7.43
+Latency_per_Match_ms=0.0371
+Accuracy=100.00
+Average_SGI=22.44

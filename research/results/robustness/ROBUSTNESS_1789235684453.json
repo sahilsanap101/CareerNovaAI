@@ -1,0 +1,32 @@
+[
+  {
+    "noiseLevel": 0,
+    "roadmapStabilityRate": 1,
+    "meanUtilityShift": -0.6000000000000004,
+    "constraintViolations": 0
+  },
+  {
+    "noiseLevel": 0.05,
+    "roadmapStabilityRate": 1,
+    "meanUtilityShift": -0.6191087668257599,
+    "constraintViolations": 0
+  },
+  {
+    "noiseLevel": 0.1,
+    "roadmapStabilityRate": 1,
+    "meanUtilityShift": -0.6382175336515199,
+    "constraintViolations": 0
+  },
+  {
+    "noiseLevel": 0.25,
+    "roadmapStabilityRate": 1,
+    "meanUtilityShift": -0.701669073027161,
+    "constraintViolations": 0
+  },
+  {
+    "noiseLevel": 0.5,
+    "roadmapStabilityRate": 0.8,
+    "meanUtilityShift": -0.9162130909579977,
+    "constraintViolations": 0
+  }
+]

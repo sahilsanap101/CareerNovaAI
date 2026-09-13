@@ -1,3 +1,4 @@
-src/lib/resumeExtractor.ts(144,37): error TS18048: 'technologies' is possibly 'undefined'.
-src/lib/resumeExtractor.ts(147,21): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
-  Type 'undefined' is not assignable to type 'string'.
+﻿src/pages/Gate/AdminStatus.tsx(39,36): error TS2532: Object is possibly 'undefined'.
+src/pages/Gate/AdminStatus.tsx(40,56): error TS2532: Object is possibly 'undefined'.
+src/pages/Gate/GateOnboarding.tsx(231,88): error TS2304: Cannot find name 'ShieldAlert'.
+src/pages/Gate/GateReadinessDashboard.tsx(149,71): error TS2532: Object is possibly 'undefined'.

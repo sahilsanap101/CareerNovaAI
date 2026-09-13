@@ -1,0 +1,16 @@
+{
+  "optimalSubset": [
+    "A",
+    "B",
+    "D",
+    "E",
+    "F"
+  ],
+  "utility": 7,
+  "cost": 45,
+  "runtimeMs": 2.644700000062585,
+  "B3_utility": 7,
+  "B3_runtimeMs": 1.8987000002525747,
+  "B3_cost": 45,
+  "optimalityGap": 0
+}

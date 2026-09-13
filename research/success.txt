@@ -1,0 +1,562 @@
+[
+  {
+    "id": "cmtzpc5lg0001iq7oy3wq75mo",
+    "userId": "cmtpxk9rz006vxgpb3yr476lp",
+    "careerPathId": "cmtpxk9e8002mxgpb3uxxu55c",
+    "totalScore": 30,
+    "SGI": 100,
+    "confidence": 15,
+    "explanation": {
+      "strengths": [
+        "Good foundational engineering baseline for career growth."
+      ],
+      "missingSkills": [
+        {
+          "id": "cmtpxk9bo0005xgpbqto077hn",
+          "name": "TypeScript",
+          "category": "Programming",
+          "priority": "HIGH",
+          "importanceWeight": 9
+        },
+        {
+          "id": "cmtpxk9bt000axgpb16asc7jm",
+          "name": "React",
+          "category": "Frontend",
+          "priority": "HIGH",
+          "importanceWeight": 9
+        },
+        {
+          "id": "cmtpxk9bm0004xgpbrcu64ugv",
+          "name": "JavaScript",
+          "category": "Programming",
+          "priority": "HIGH",
+          "importanceWeight": 8
+        }
+      ],
+      "areasToImprove": [
+        "Acquire core missing skills: TypeScript, React, JavaScript.",
+        "Build at least one hands-on project focused on Mobile Developer.",
+        "Consider earning an industry-recognized certification in Mobile Engineering."
+      ]
+    },
+    "generatedAt": "2026-09-13T10:59:31.539Z",
+    "careerPath": {
+      "id": "cmtpxk9e8002mxgpb3uxxu55c",
+      "name": "Mobile Developer",
+      "description": "Architect native and cross-platform mobile apps for iOS and Android devices.",
+      "category": "Mobile Engineering",
+      "industry": "Technology",
+      "averageSalary": "12 - 25 LPA",
+      "growthRate": "19% YoY",
+      "demandLevel": "HIGH",
+      "roadmapId": null,
+      "icon": "Smartphone",
+      "color": "indigo",
+      "createdAt": "2026-09-06T14:52:04.880Z",
+      "updatedAt": "2026-09-06T14:55:55.171Z"
+    },
+    "factors": [
+      {
+        "id": "cmtzpc5lg0002iq7of51utrmd",
+        "recommendationId": "cmtzpc5lg0001iq7oy3wq75mo",
+        "factor": "Skills",
+        "weight": 0.35,
+        "score": 0,
+        "explanation": "No skills matched yet"
+      },
+      {
+        "id": "cmtzpc5lg0003iq7ojrn78n12",
+        "recommendationId": "cmtzpc5lg0001iq7oy3wq75mo",
+        "factor": "Interests",
+        "weight": 0.2,
+        "score": 30,
+        "explanation": "Moderate domain alignment"
+      },
+      {
+        "id": "cmtzpc5lg0004iq7o50ft8yub",
+        "recommendationId": "cmtzpc5lg0001iq7oy3wq75mo",
+        "factor": "Projects",
+        "weight": 0.15,
+        "score": 0,
+        "explanation": "0 relevant portfolio project(s)"
+      },
+      {
+        "id": "cmtzpc5lg0005iq7orb5a9idx",
+        "recommendationId": "cmtzpc5lg0001iq7oy3wq75mo",
+        "factor": "Academic",
+        "weight": 0.1,
+        "score": 70,
+        "explanation": "CGPA 7.0/10"
+      },
+      {
+        "id": "cmtzpc5lg0006iq7oaqtifku8",
+        "recommendationId": "cmtzpc5lg0001iq7oy3wq75mo",
+        "factor": "Certifications",
+        "weight": 0.1,
+        "score": 0,
+        "explanation": "0 active certification(s)"
+      },
+      {
+        "id": "cmtzpc5lg0007iq7oc2ht7nlg",
+        "recommendationId": "cmtzpc5lg0001iq7oy3wq75mo",
+        "factor": "Coding Experience",
+        "weight": 0.05,
+        "score": 30,
+        "explanation": "0 problem(s) solved across platforms"
+      },
+      {
+        "id": "cmtzpc5lg0008iq7o8h49ry7u",
+        "recommendationId": "cmtzpc5lg0001iq7oy3wq75mo",
+        "factor": "Career Goals",
+        "weight": 0.05,
+        "score": 40,
+        "explanation": "General engineering career goal"
+      }
+    ]
+  },
+  {
+    "id": "cmtzpc5mf000aiq7osoknznfu",
+    "userId": "cmtpxk9rz006vxgpb3yr476lp",
+    "careerPathId": "cmtpxk9ge005yxgpbqw6k18v0",
+    "totalScore": 30,
+    "SGI": 100,
+    "confidence": 15,
+    "explanation": {
+      "strengths": [
+        "Good foundational engineering baseline for career growth."
+      ],
+      "missingSkills": [
+        {
+          "id": "cmtpxk9bk0003xgpba4efpfje",
+          "name": "Python",
+          "category": "Programming",
+          "priority": "HIGH",
+          "importanceWeight": 9
+        },
+        {
+          "id": "cmtpxk9bm0004xgpbrcu64ugv",
+          "name": "JavaScript",
+          "category": "Programming",
+          "priority": "HIGH",
+          "importanceWeight": 9
+        },
+        {
+          "id": "cmtpxk9c9000qxgpb2dhqymt3",
+          "name": "GitHub Actions",
+          "category": "DevOps",
+          "priority": "HIGH",
+          "importanceWeight": 8
+        }
+      ],
+      "areasToImprove": [
+        "Acquire core missing skills: Python, JavaScript, GitHub Actions.",
+        "Build at least one hands-on project focused on QA Engineer.",
+        "Consider earning an industry-recognized certification in Software Engineering."
+      ]
+    },
+    "generatedAt": "2026-09-13T10:59:31.575Z",
+    "careerPath": {
+      "id": "cmtpxk9ge005yxgpbqw6k18v0",
+      "name": "QA Engineer",
+      "description": "Design automated testing frameworks, end-to-end regression suites, and load testing harnesses.",
+      "category": "Software Engineering",
+      "industry": "Technology",
+      "averageSalary": "9 - 18 LPA",
+      "growthRate": "14% YoY",
+      "demandLevel": "MODERATE",
+      "roadmapId": null,
+      "icon": "CheckSquare",
+      "color": "green",
+      "createdAt": "2026-09-06T14:52:04.958Z",
+      "updatedAt": "2026-09-06T14:55:55.305Z"
+    },
+    "factors": [
+      {
+        "id": "cmtzpc5mf000biq7o2c7q00n5",
+        "recommendationId": "cmtzpc5mf000aiq7osoknznfu",
+        "factor": "Skills",
+        "weight": 0.35,
+        "score": 0,
+        "explanation": "No skills matched yet"
+      },
+      {
+        "id": "cmtzpc5mf000ciq7ow02bxmcz",
+        "recommendationId": "cmtzpc5mf000aiq7osoknznfu",
+        "factor": "Interests",
+        "weight": 0.2,
+        "score": 30,
+        "explanation": "Moderate domain alignment"
+      },
+      {
+        "id": "cmtzpc5mf000diq7of3w8kau6",
+        "recommendationId": "cmtzpc5mf000aiq7osoknznfu",
+        "factor": "Projects",
+        "weight": 0.15,
+        "score": 0,
+        "explanation": "0 relevant portfolio project(s)"
+      },
+      {
+        "id": "cmtzpc5mf000eiq7oppfpwk31",
+        "recommendationId": "cmtzpc5mf000aiq7osoknznfu",
+        "factor": "Academic",
+        "weight": 0.1,
+        "score": 70,
+        "explanation": "CGPA 7.0/10"
+      },
+      {
+        "id": "cmtzpc5mf000fiq7onb0uoddj",
+        "recommendationId": "cmtzpc5mf000aiq7osoknznfu",
+        "factor": "Certifications",
+        "weight": 0.1,
+        "score": 0,
+        "explanation": "0 active certification(s)"
+      },
+      {
+        "id": "cmtzpc5mf000giq7ojgcovlk6",
+        "recommendationId": "cmtzpc5mf000aiq7osoknznfu",
+        "factor": "Coding Experience",
+        "weight": 0.05,
+        "score": 30,
+        "explanation": "0 problem(s) solved across platforms"
+      },
+      {
+        "id": "cmtzpc5mf000hiq7o3zqpu4aj",
+        "recommendationId": "cmtzpc5mf000aiq7osoknznfu",
+        "factor": "Career Goals",
+        "weight": 0.05,
+        "score": 40,
+        "explanation": "General engineering career goal"
+      }
+    ]
+  },
+  {
+    "id": "cmtzpc5mm000jiq7oyqwfb0ox",
+    "userId": "cmtpxk9rz006vxgpb3yr476lp",
+    "careerPathId": "cmtpxk9g2005kxgpbi7rzwn2b",
+    "totalScore": 29,
+    "SGI": 100,
+    "confidence": 15,
+    "explanation": {
+      "strengths": [
+        "Good foundational engineering baseline for career growth."
+      ],
+      "missingSkills": [
+        {
+          "id": "cmtpxk9ac0000xgpbf1k1tgyu",
+          "name": "C",
+          "category": "Programming",
+          "priority": "HIGH",
+          "importanceWeight": 10
+        },
+        {
+          "id": "cmtpxk9bf0001xgpbzv5egr9u",
+          "name": "C++",
+          "category": "Programming",
+          "priority": "HIGH",
+          "importanceWeight": 9
+        },
+        {
+          "id": "cmtpxk9bk0003xgpba4efpfje",
+          "name": "Python",
+          "category": "Programming",
+          "priority": "HIGH",
+          "importanceWeight": 8
+        }
+      ],
+      "areasToImprove": [
+        "Acquire core missing skills: C, C++, Python.",
+        "Build at least one hands-on project focused on IoT Engineer.",
+        "Consider earning an industry-recognized certification in Hardware & Systems."
+      ]
+    },
+    "generatedAt": "2026-09-13T10:59:31.582Z",
+    "careerPath": {
+      "id": "cmtpxk9g2005kxgpbi7rzwn2b",
+      "name": "IoT Engineer",
+      "description": "Build connected sensor networks, edge computing protocols, and embedded firmware applications.",
+      "category": "Hardware & Systems",
+      "industry": "Technology",
+      "averageSalary": "10 - 22 LPA",
+      "growthRate": "15% YoY",
+      "demandLevel": "MODERATE",
+      "roadmapId": null,
+      "icon": "Radio",
+      "color": "emerald",
+      "createdAt": "2026-09-06T14:52:04.947Z",
+      "updatedAt": "2026-09-06T14:55:55.290Z"
+    },
+    "factors": [
+      {
+        "id": "cmtzpc5mm000kiq7otvnkzvwf",
+        "recommendationId": "cmtzpc5mm000jiq7oyqwfb0ox",
+        "factor": "Skills",
+        "weight": 0.35,
+        "score": 0,
+        "explanation": "No skills matched yet"
+      },
+      {
+        "id": "cmtzpc5mm000liq7opimhapfw",
+        "recommendationId": "cmtzpc5mm000jiq7oyqwfb0ox",
+        "factor": "Interests",
+        "weight": 0.2,
+        "score": 30,
+        "explanation": "Moderate domain alignment"
+      },
+      {
+        "id": "cmtzpc5mm000miq7owbs6cx7d",
+        "recommendationId": "cmtzpc5mm000jiq7oyqwfb0ox",
+        "factor": "Projects",
+        "weight": 0.15,
+        "score": 0,
+        "explanation": "0 relevant portfolio project(s)"
+      },
+      {
+        "id": "cmtzpc5mm000niq7o33e1wj6m",
+        "recommendationId": "cmtzpc5mm000jiq7oyqwfb0ox",
+        "factor": "Academic",
+        "weight": 0.1,
+        "score": 70,
+        "explanation": "CGPA 7.0/10"
+      },
+      {
+        "id": "cmtzpc5mm000oiq7or3prnb1u",
+        "recommendationId": "cmtzpc5mm000jiq7oyqwfb0ox",
+        "factor": "Certifications",
+        "weight": 0.1,
+        "score": 0,
+        "explanation": "0 active certification(s)"
+      },
+      {
+        "id": "cmtzpc5mm000piq7olwp77n1e",
+        "recommendationId": "cmtzpc5mm000jiq7oyqwfb0ox",
+        "factor": "Coding Experience",
+        "weight": 0.05,
+        "score": 30,
+        "explanation": "0 problem(s) solved across platforms"
+      },
+      {
+        "id": "cmtzpc5mm000qiq7ouig5yecu",
+        "recommendationId": "cmtzpc5mm000jiq7oyqwfb0ox",
+        "factor": "Career Goals",
+        "weight": 0.05,
+        "score": 40,
+        "explanation": "General engineering career goal"
+      }
+    ]
+  },
+  {
+    "id": "cmtzpc5mt000siq7ovq7iojsu",
+    "userId": "cmtpxk9rz006vxgpb3yr476lp",
+    "careerPathId": "cmtpxk9gt006gxgpbqvs8n3f4",
+    "totalScore": 29,
+    "SGI": 100,
+    "confidence": 15,
+    "explanation": {
+      "strengths": [
+        "Good foundational engineering baseline for career growth."
+      ],
+      "missingSkills": [
+        {
+          "id": "cmtpxk9bk0003xgpba4efpfje",
+          "name": "Python",
+          "category": "Programming",
+          "priority": "MEDIUM",
+          "importanceWeight": 6
+        }
+      ],
+      "areasToImprove": [
+        "Build at least one hands-on project focused on Product Manager.",
+        "Consider earning an industry-recognized certification in Product & Design."
+      ]
+    },
+    "generatedAt": "2026-09-13T10:59:31.590Z",
+    "careerPath": {
+      "id": "cmtpxk9gt006gxgpbqvs8n3f4",
+      "name": "Product Manager",
+      "description": "Bridge engineering, design, and business goals to deliver user-centric software products.",
+      "category": "Product & Design",
+      "industry": "Technology",
+      "averageSalary": "16 - 32 LPA",
+      "growthRate": "20% YoY",
+      "demandLevel": "HIGH",
+      "roadmapId": null,
+      "icon": "Briefcase",
+      "color": "indigo",
+      "createdAt": "2026-09-06T14:52:04.973Z",
+      "updatedAt": "2026-09-06T14:55:55.319Z"
+    },
+    "factors": [
+      {
+        "id": "cmtzpc5mu000tiq7ohlv8k3vy",
+        "recommendationId": "cmtzpc5mt000siq7ovq7iojsu",
+        "factor": "Skills",
+        "weight": 0.35,
+        "score": 0,
+        "explanation": "No skills matched yet"
+      },
+      {
+        "id": "cmtzpc5mu000uiq7oadpflfnv",
+        "recommendationId": "cmtzpc5mt000siq7ovq7iojsu",
+        "factor": "Interests",
+        "weight": 0.2,
+        "score": 30,
+        "explanation": "Moderate domain alignment"
+      },
+      {
+        "id": "cmtzpc5mu000viq7oay188s2f",
+        "recommendationId": "cmtzpc5mt000siq7ovq7iojsu",
+        "factor": "Projects",
+        "weight": 0.15,
+        "score": 0,
+        "explanation": "0 relevant portfolio project(s)"
+      },
+      {
+        "id": "cmtzpc5mu000wiq7o28785fep",
+        "recommendationId": "cmtzpc5mt000siq7ovq7iojsu",
+        "factor": "Academic",
+        "weight": 0.1,
+        "score": 70,
+        "explanation": "CGPA 7.0/10"
+      },
+      {
+        "id": "cmtzpc5mu000xiq7oezcsxqnx",
+        "recommendationId": "cmtzpc5mt000siq7ovq7iojsu",
+        "factor": "Certifications",
+        "weight": 0.1,
+        "score": 0,
+        "explanation": "0 active certification(s)"
+      },
+      {
+        "id": "cmtzpc5mu000yiq7oyz7rml9q",
+        "recommendationId": "cmtzpc5mt000siq7ovq7iojsu",
+        "factor": "Coding Experience",
+        "weight": 0.05,
+        "score": 30,
+        "explanation": "0 problem(s) solved across platforms"
+      },
+      {
+        "id": "cmtzpc5mu000ziq7obthjdt1o",
+        "recommendationId": "cmtzpc5mt000siq7ovq7iojsu",
+        "factor": "Career Goals",
+        "weight": 0.05,
+        "score": 40,
+        "explanation": "General engineering career goal"
+      }
+    ]
+  },
+  {
+    "id": "cmtzpc5n10011iq7owv3o64q9",
+    "userId": "cmtpxk9rz006vxgpb3yr476lp",
+    "careerPathId": "cmtpxk9fx005dxgpb8vj9c3z4",
+    "totalScore": 28,
+    "SGI": 100,
+    "confidence": 14,
+    "explanation": {
+      "strengths": [
+        "Good foundational engineering baseline for career growth."
+      ],
+      "missingSkills": [
+        {
+          "id": "cmtpxk9bp0006xgpb0fsmjxnp",
+          "name": "Go",
+          "category": "Programming",
+          "priority": "HIGH",
+          "importanceWeight": 9
+        },
+        {
+          "id": "cmtpxk9bq0007xgpbjt1513y4",
+          "name": "Rust",
+          "category": "Programming",
+          "priority": "HIGH",
+          "importanceWeight": 9
+        },
+        {
+          "id": "cmtpxk9bo0005xgpbqto077hn",
+          "name": "TypeScript",
+          "category": "Programming",
+          "priority": "HIGH",
+          "importanceWeight": 8
+        }
+      ],
+      "areasToImprove": [
+        "Acquire core missing skills: Go, Rust, TypeScript.",
+        "Build at least one hands-on project focused on Blockchain Developer.",
+        "Consider earning an industry-recognized certification in Emerging Tech."
+      ]
+    },
+    "generatedAt": "2026-09-13T10:59:31.597Z",
+    "careerPath": {
+      "id": "cmtpxk9fx005dxgpb8vj9c3z4",
+      "name": "Blockchain Developer",
+      "description": "Develop decentralized applications (dApps), smart contracts, and Web3 protocol consensus algorithms.",
+      "category": "Emerging Tech",
+      "industry": "Technology",
+      "averageSalary": "16 - 35 LPA",
+      "growthRate": "20% YoY",
+      "demandLevel": "HIGH",
+      "roadmapId": null,
+      "icon": "Link",
+      "color": "amber",
+      "createdAt": "2026-09-06T14:52:04.942Z",
+      "updatedAt": "2026-09-06T14:55:55.283Z"
+    },
+    "factors": [
+      {
+        "id": "cmtzpc5n10012iq7o9rs3ssmz",
+        "recommendationId": "cmtzpc5n10011iq7owv3o64q9",
+        "factor": "Skills",
+        "weight": 0.35,
+        "score": 0,
+        "explanation": "No skills matched yet"
+      },
+      {
+        "id": "cmtzpc5n10013iq7o563oo8fa",
+        "recommendationId": "cmtzpc5n10011iq7owv3o64q9",
+        "factor": "Interests",
+        "weight": 0.2,
+        "score": 30,
+        "explanation": "Moderate domain alignment"
+      },
+      {
+        "id": "cmtzpc5n10014iq7om6vi673v",
+        "recommendationId": "cmtzpc5n10011iq7owv3o64q9",
+        "factor": "Projects",
+        "weight": 0.15,
+        "score": 0,
+        "explanation": "0 relevant portfolio project(s)"
+      },
+      {
+        "id": "cmtzpc5n10015iq7oce7roqtm",
+        "recommendationId": "cmtzpc5n10011iq7owv3o64q9",
+        "factor": "Academic",
+        "weight": 0.1,
+        "score": 70,
+        "explanation": "CGPA 7.0/10"
+      },
+      {
+        "id": "cmtzpc5n10016iq7oog7ol2m6",
+        "recommendationId": "cmtzpc5n10011iq7owv3o64q9",
+        "factor": "Certifications",
+        "weight": 0.1,
+        "score": 0,
+        "explanation": "0 active certification(s)"
+      },
+      {
+        "id": "cmtzpc5n10017iq7onah09sku",
+        "recommendationId": "cmtzpc5n10011iq7owv3o64q9",
+        "factor": "Coding Experience",
+        "weight": 0.05,
+        "score": 30,
+        "explanation": "0 problem(s) solved across platforms"
+      },
+      {
+        "id": "cmtzpc5n10018iq7ofi6ben5f",
+        "recommendationId": "cmtzpc5n10011iq7owv3o64q9",
+        "factor": "Career Goals",
+        "weight": 0.05,
+        "score": 40,
+        "explanation": "General engineering career goal"
+      }
+    ]
+  }
+]

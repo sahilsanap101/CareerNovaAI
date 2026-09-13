@@ -10,17 +10,17 @@ import { Loader } from '@/components/ui/Loader';
 import { PageTransition } from '@/components/layout/PageTransition';
 
 // ─── Lazy-loaded pages ────────────────────────────────────────────
-const Landing         = lazy(() => import('@/pages/Landing/Landing'));
-const About           = lazy(() => import('@/pages/About/About'));
-const Login           = lazy(() => import('@/pages/auth/Login/Login'));
-const Register        = lazy(() => import('@/pages/auth/Register/Register'));
-const ForgotPassword  = lazy(() => import('@/pages/auth/ForgotPassword/ForgotPassword'));
-const ResetPassword   = lazy(() => import('@/pages/auth/ResetPassword/ResetPassword'));
-const VerifyEmail     = lazy(() => import('@/pages/auth/VerifyEmail'));
-const NotFound        = lazy(() => import('@/pages/errors/NotFound'));
-const Dashboard       = lazy(() => import('@/pages/Dashboard/Dashboard'));
-const Profile         = lazy(() => import('@/pages/Profile/Profile'));
-const Settings        = lazy(() => import('@/pages/Settings/Settings'));
+const Landing = lazy(() => import('@/pages/Landing/Landing'));
+const About = lazy(() => import('@/pages/About/About'));
+const Login = lazy(() => import('@/pages/auth/Login/Login'));
+const Register = lazy(() => import('@/pages/auth/Register/Register'));
+const ForgotPassword = lazy(() => import('@/pages/auth/ForgotPassword/ForgotPassword'));
+const ResetPassword = lazy(() => import('@/pages/auth/ResetPassword/ResetPassword'));
+const VerifyEmail = lazy(() => import('@/pages/auth/VerifyEmail'));
+const NotFound = lazy(() => import('@/pages/errors/NotFound'));
+const Dashboard = lazy(() => import('@/pages/Dashboard/Dashboard'));
+const Profile = lazy(() => import('@/pages/Profile/Profile'));
+const Settings = lazy(() => import('@/pages/Settings/Settings'));
 const Recommendations = lazy(() => import('@/pages/Recommendations/Recommendations'));
 const CareerComparison = lazy(() => import('@/pages/Recommendations/CareerComparison').then((m) => ({ default: m.CareerComparison })));
 const AnalyticsDashboard = lazy(() => import('@/pages/Analytics/AnalyticsDashboard'));
@@ -30,6 +30,17 @@ const WeeklyPlanner = lazy(() => import('@/pages/Roadmap/WeeklyPlanner').then((m
 const AiDashboard = lazy(() => import('@/pages/AI/AiDashboard'));
 const ResumeIntelligence = lazy(() => import('@/pages/AI/ResumeIntelligence').then((m) => ({ default: m.ResumeIntelligence })));
 const InterviewCoach = lazy(() => import('@/pages/AI/InterviewCoach').then((m) => ({ default: m.InterviewCoach })));
+
+const GateDashboard = lazy(() => import('@/pages/Gate/GateDashboard').then((m) => ({ default: m.GateDashboard })));
+const GatePaperDetails = lazy(() => import('@/pages/Gate/GatePaperDetails').then((m) => ({ default: m.GatePaperDetails })));
+const AdminSyncStatus = lazy(() => import('@/pages/Gate/AdminStatus').then((m) => ({ default: m.AdminSyncStatus })));
+const GateOnboarding = lazy(() => import('@/pages/Gate/GateOnboarding').then((m) => ({ default: m.GateOnboarding })));
+const GateTopicDetails = lazy(() => import('@/pages/Gate/GateTopicDetails').then((m) => ({ default: m.GateTopicDetails })));
+const GatePracticeEngine = lazy(() => import('@/pages/Gate/GatePracticeEngine').then((m) => ({ default: m.GatePracticeEngine })));
+const GateResourceExplorer = lazy(() => import('@/pages/Gate/GateResourceExplorer').then((m) => ({ default: m.GateResourceExplorer })));
+const GateMockInterface = lazy(() => import('@/pages/Gate/GateMockInterface').then((m) => ({ default: m.GateMockInterface })));
+const GateRevisionHub = lazy(() => import('@/pages/Gate/GateRevisionHub').then((m) => ({ default: m.GateRevisionHub })));
+const GateReadinessDashboard = lazy(() => import('@/pages/Gate/GateReadinessDashboard').then((m) => ({ default: m.GateReadinessDashboard })));
 
 // ─── Router Config ────────────────────────────────────────────────
 const router = createBrowserRouter([
@@ -70,6 +81,17 @@ const router = createBrowserRouter([
       { path: '/ai', element: <PageTransition><AiDashboard /></PageTransition> },
       { path: '/resume-intelligence', element: <PageTransition><ResumeIntelligence /></PageTransition> },
       { path: '/interview-coach', element: <PageTransition><InterviewCoach /></PageTransition> },
+      { path: '/gate/onboarding', element: <PageTransition><GateOnboarding /></PageTransition> },
+      { path: '/gate', element: <PageTransition><GateDashboard /></PageTransition> },
+      { path: '/gate/admin', element: <PageTransition><AdminSyncStatus /></PageTransition> },
+      { path: '/gate/topics/:id', element: <PageTransition><GateTopicDetails /></PageTransition> },
+      { path: '/gate/practice', element: <PageTransition><GatePracticeEngine /></PageTransition> },
+      { path: '/gate/resources', element: <PageTransition><GateResourceExplorer /></PageTransition> },
+      { path: '/gate/revisions', element: <PageTransition><GateRevisionHub /></PageTransition> },
+      { path: '/gate/readiness', element: <PageTransition><GateReadinessDashboard /></PageTransition> },
+      { path: '/gate/mocks/:mockId/attempt', element: <PageTransition><GateMockInterface /></PageTransition> },
+      { path: '/gate/:year', element: <PageTransition><GatePaperDetails /></PageTransition> },
+      { path: '/gate/:year/:paperCode', element: <PageTransition><GatePaperDetails /></PageTransition> },
     ],
   },
 

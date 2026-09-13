@@ -1,0 +1,14 @@
+{
+    "phase_12_status": "LOCKED",
+    "empirical_proof_matrix": {
+        "Ablations": "VERIFIED_DETERMINISTIC",
+        "B4_Counterfactual": "VERIFIED_DETERMINISTIC",
+        "Semantic_Text_Match": "VERIFIED_DETERMINISTIC",
+        "Uncertainty_Noise": "VERIFIED_DETERMINISTIC",
+        "Exact_Algorithms": "VERIFIED_DETERMINISTIC",
+        "Dynamic_Baseline": "VERIFIED_DETERMINISTIC"
+    },
+    "execution_frozen": true,
+    "execution_script": "run_all.ps1",
+    "adjudication": "RESEARCH_IMPLEMENTATION_FROZEN"
+}

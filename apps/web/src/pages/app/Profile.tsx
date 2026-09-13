@@ -12,6 +12,15 @@ export default function Profile() {
         </p>
       </div>
 
+      <div className="mb-6 p-4 border border-blue-200 bg-blue-50 dark:bg-slate-800 dark:border-slate-700 rounded-md">
+        <p className="text-sm text-blue-800 dark:text-slate-300 font-medium">
+          Optional Demographic Context
+        </p>
+        <p className="text-sm text-blue-700 dark:text-slate-400 mt-1">
+          This information is collected only for academic fairness research and is never used as an input to your recommendation.
+        </p>
+      </div>
+
       <ProfileWizard />
     </div>
   );

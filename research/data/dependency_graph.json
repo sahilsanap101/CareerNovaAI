@@ -1,0 +1,647 @@
+[
+  {
+    "skill": "design computer network",
+    "prerequisites": [
+      {
+        "skill": "network management system tools",
+        "source": "esco_derived"
+      },
+      {
+        "skill": "ICT network cable limitations",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "align software with system architectures",
+    "prerequisites": [
+      {
+        "skill": "ICT system integration",
+        "source": "esco_derived"
+      },
+      {
+        "skill": "ICT architectural frameworks",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "manage system security",
+    "prerequisites": [
+      {
+        "skill": "cyber attack counter-measures",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "manage quantitative data",
+    "prerequisites": [
+      {
+        "skill": "use data processing techniques",
+        "source": "esco_derived"
+      },
+      {
+        "skill": "perform data analysis",
+        "source": "esco_derived"
+      },
+      {
+        "skill": "analyse big data",
+        "source": "esco_derived"
+      },
+      {
+        "skill": "handle data samples",
+        "source": "esco_derived"
+      },
+      {
+        "skill": "conduct quantitative research",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "implement ICT risk management",
+    "prerequisites": [
+      {
+        "skill": "information security strategy",
+        "source": "esco_derived"
+      },
+      {
+        "skill": "ICT security standards",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "use methodologies for user-centered design",
+    "prerequisites": [
+      {
+        "skill": "usability engineering",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "monitor technology trends",
+    "prerequisites": [
+      {
+        "skill": "emergent technologies",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "design database in the cloud",
+    "prerequisites": [
+      {
+        "skill": "database",
+        "source": "esco_derived"
+      },
+      {
+        "skill": "distributed computing",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "attend to ICT systems quality",
+    "prerequisites": [
+      {
+        "skill": "systems theory",
+        "source": "esco_derived"
+      },
+      {
+        "skill": "apply ICT systems theory",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "learning technologies",
+    "prerequisites": [
+      {
+        "skill": "learning management systems",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "Cyber Security",
+    "prerequisites": [
+      {
+        "skill": "cyber attack counter-measures",
+        "source": "esco_derived"
+      },
+      {
+        "skill": "data protection",
+        "source": "esco_derived"
+      },
+      {
+        "skill": "Networking",
+        "source": "standard_curriculum_ordering"
+      },
+      {
+        "skill": "Linux",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "monitor system performance",
+    "prerequisites": [
+      {
+        "skill": "systems theory",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "manage data",
+    "prerequisites": [
+      {
+        "skill": "audit techniques",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "design information system",
+    "prerequisites": [
+      {
+        "skill": "ICT architectural frameworks",
+        "source": "esco_derived"
+      },
+      {
+        "skill": "ICT infrastructure",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "design application interfaces",
+    "prerequisites": [
+      {
+        "skill": "mobile device software frameworks",
+        "source": "esco_derived"
+      },
+      {
+        "skill": "use methodologies for user-centered design",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "define ICT network design policies",
+    "prerequisites": [
+      {
+        "skill": "network management system tools",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "test system accessibility for users with special needs",
+    "prerequisites": [
+      {
+        "skill": "ICT accessibility standards",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "ICT project management methodologies",
+    "prerequisites": [
+      {
+        "skill": "ICT project management",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "provide ICT support",
+    "prerequisites": [
+      {
+        "skill": "ICT problem management techniques",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "perform backups",
+    "prerequisites": [
+      {
+        "skill": "system backup best practice",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "analyse network bandwidth requirements",
+    "prerequisites": [
+      {
+        "skill": "ICT network routing",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "execute integration testing",
+    "prerequisites": [
+      {
+        "skill": "levels of software testing",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "design user interface",
+    "prerequisites": [
+      {
+        "skill": "use methodologies for user-centered design",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "manage ICT semantic integration",
+    "prerequisites": [
+      {
+        "skill": "information structure",
+        "source": "esco_derived"
+      },
+      {
+        "skill": "data models",
+        "source": "esco_derived"
+      }
+    ]
+  },
+  {
+    "skill": "CSS",
+    "prerequisites": [
+      {
+        "skill": "HTML",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "JavaScript",
+    "prerequisites": [
+      {
+        "skill": "HTML",
+        "source": "standard_curriculum_ordering"
+      },
+      {
+        "skill": "CSS",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "TypeScript",
+    "prerequisites": [
+      {
+        "skill": "JavaScript",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "React",
+    "prerequisites": [
+      {
+        "skill": "JavaScript",
+        "source": "standard_curriculum_ordering"
+      },
+      {
+        "skill": "HTML",
+        "source": "standard_curriculum_ordering"
+      },
+      {
+        "skill": "CSS",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Vue",
+    "prerequisites": [
+      {
+        "skill": "JavaScript",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Angular",
+    "prerequisites": [
+      {
+        "skill": "JavaScript",
+        "source": "standard_curriculum_ordering"
+      },
+      {
+        "skill": "TypeScript",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Java",
+    "prerequisites": [
+      {
+        "skill": "C",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Spring Boot",
+    "prerequisites": [
+      {
+        "skill": "Java",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Node.js",
+    "prerequisites": [
+      {
+        "skill": "JavaScript",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Express",
+    "prerequisites": [
+      {
+        "skill": "Node.js",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Python",
+    "prerequisites": [
+      {
+        "skill": "C",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Django",
+    "prerequisites": [
+      {
+        "skill": "Python",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Flask",
+    "prerequisites": [
+      {
+        "skill": "Python",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Database Design",
+    "prerequisites": [
+      {
+        "skill": "SQL",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "PostgreSQL",
+    "prerequisites": [
+      {
+        "skill": "Database Design",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "MySQL",
+    "prerequisites": [
+      {
+        "skill": "Database Design",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "MongoDB",
+    "prerequisites": [
+      {
+        "skill": "Database Design",
+        "source": "standard_curriculum_ordering"
+      },
+      {
+        "skill": "JavaScript",
+        "source": "standard_curriculum_ordering"
+      },
+      {
+        "skill": "Node.js",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Pandas",
+    "prerequisites": [
+      {
+        "skill": "Python",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "NumPy",
+    "prerequisites": [
+      {
+        "skill": "Python",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Machine Learning",
+    "prerequisites": [
+      {
+        "skill": "Pandas",
+        "source": "standard_curriculum_ordering"
+      },
+      {
+        "skill": "NumPy",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Scikit-learn",
+    "prerequisites": [
+      {
+        "skill": "Machine Learning",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "TensorFlow",
+    "prerequisites": [
+      {
+        "skill": "Machine Learning",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "PyTorch",
+    "prerequisites": [
+      {
+        "skill": "Machine Learning",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Deep Learning",
+    "prerequisites": [
+      {
+        "skill": "TensorFlow",
+        "source": "standard_curriculum_ordering"
+      },
+      {
+        "skill": "PyTorch",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "NLP",
+    "prerequisites": [
+      {
+        "skill": "Machine Learning",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Computer Vision",
+    "prerequisites": [
+      {
+        "skill": "Machine Learning",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Linux",
+    "prerequisites": [
+      {
+        "skill": "C",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Bash",
+    "prerequisites": [
+      {
+        "skill": "Linux",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Networking",
+    "prerequisites": [
+      {
+        "skill": "Linux",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "AWS",
+    "prerequisites": [
+      {
+        "skill": "Networking",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Azure",
+    "prerequisites": [
+      {
+        "skill": "Networking",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "GCP",
+    "prerequisites": [
+      {
+        "skill": "Networking",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Docker",
+    "prerequisites": [
+      {
+        "skill": "Linux",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Kubernetes",
+    "prerequisites": [
+      {
+        "skill": "Docker",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "CI/CD",
+    "prerequisites": [
+      {
+        "skill": "Docker",
+        "source": "standard_curriculum_ordering"
+      },
+      {
+        "skill": "Git",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Penetration Testing",
+    "prerequisites": [
+      {
+        "skill": "Cyber Security",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  },
+  {
+    "skill": "Cryptography",
+    "prerequisites": [
+      {
+        "skill": "Cyber Security",
+        "source": "standard_curriculum_ordering"
+      }
+    ]
+  }
+]

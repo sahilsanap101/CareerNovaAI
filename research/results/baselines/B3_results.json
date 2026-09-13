@@ -1,0 +1,400 @@
+{
+  "metadata": {
+    "experimentId": "EXP_1789235668768_N10",
+    "seed": 42,
+    "dataset": "deterministic_smoke_generator",
+    "studentCount": 10,
+    "careerCount": 1,
+    "skillCount": 3,
+    "configHash": "7684fc4440b4a089714bb4bafcf20d6b5bbd692f0647a2d0e9f720dcb6b7c3a5",
+    "codeVersion": "git_unknown",
+    "baselineId": "B3",
+    "type": "baseline",
+    "timestamp": "2026-09-12T17:54:28.787Z"
+  },
+  "metricDefinitions": {
+    "feasibilityRate": "Percentage of students fully resolved."
+  },
+  "results": [
+    {
+      "studentId": "u_0",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "A",
+          "priority": 0.4,
+          "marketDemand": 0.5,
+          "careerImportance": 0.8,
+          "gap": 1,
+          "learningCost": 20,
+          "prerequisites": [],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [B]",
+          "expectedStateTransition": "A: -> 1.0"
+        },
+        {
+          "phase": 2,
+          "skillId": "B",
+          "priority": 0.81,
+          "marketDemand": 0.9,
+          "careerImportance": 0.9,
+          "gap": 1,
+          "learningCost": 30,
+          "prerequisites": [
+            "A"
+          ],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [C]",
+          "expectedStateTransition": "B: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "C",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_1",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "A",
+          "priority": 0.4,
+          "marketDemand": 0.5,
+          "careerImportance": 0.8,
+          "gap": 1,
+          "learningCost": 20,
+          "prerequisites": [],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [B]",
+          "expectedStateTransition": "A: -> 1.0"
+        },
+        {
+          "phase": 2,
+          "skillId": "B",
+          "priority": 0.81,
+          "marketDemand": 0.9,
+          "careerImportance": 0.9,
+          "gap": 1,
+          "learningCost": 30,
+          "prerequisites": [
+            "A"
+          ],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [C]",
+          "expectedStateTransition": "B: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "C",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_2",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "A",
+          "priority": 0.4,
+          "marketDemand": 0.5,
+          "careerImportance": 0.8,
+          "gap": 1,
+          "learningCost": 20,
+          "prerequisites": [],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [B]",
+          "expectedStateTransition": "A: -> 1.0"
+        },
+        {
+          "phase": 2,
+          "skillId": "B",
+          "priority": 0.81,
+          "marketDemand": 0.9,
+          "careerImportance": 0.9,
+          "gap": 1,
+          "learningCost": 30,
+          "prerequisites": [
+            "A"
+          ],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [C]",
+          "expectedStateTransition": "B: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "C",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_3",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "A",
+          "priority": 0.4,
+          "marketDemand": 0.5,
+          "careerImportance": 0.8,
+          "gap": 1,
+          "learningCost": 20,
+          "prerequisites": [],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [B]",
+          "expectedStateTransition": "A: -> 1.0"
+        },
+        {
+          "phase": 2,
+          "skillId": "B",
+          "priority": 0.81,
+          "marketDemand": 0.9,
+          "careerImportance": 0.9,
+          "gap": 1,
+          "learningCost": 30,
+          "prerequisites": [
+            "A"
+          ],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [C]",
+          "expectedStateTransition": "B: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "C",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_4",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "A",
+          "priority": 0.4,
+          "marketDemand": 0.5,
+          "careerImportance": 0.8,
+          "gap": 1,
+          "learningCost": 20,
+          "prerequisites": [],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [B]",
+          "expectedStateTransition": "A: -> 1.0"
+        },
+        {
+          "phase": 2,
+          "skillId": "B",
+          "priority": 0.81,
+          "marketDemand": 0.9,
+          "careerImportance": 0.9,
+          "gap": 1,
+          "learningCost": 30,
+          "prerequisites": [
+            "A"
+          ],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [C]",
+          "expectedStateTransition": "B: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "C",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_5",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "A",
+          "priority": 0.4,
+          "marketDemand": 0.5,
+          "careerImportance": 0.8,
+          "gap": 1,
+          "learningCost": 20,
+          "prerequisites": [],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [B]",
+          "expectedStateTransition": "A: -> 1.0"
+        },
+        {
+          "phase": 2,
+          "skillId": "B",
+          "priority": 0.81,
+          "marketDemand": 0.9,
+          "careerImportance": 0.9,
+          "gap": 1,
+          "learningCost": 30,
+          "prerequisites": [
+            "A"
+          ],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [C]",
+          "expectedStateTransition": "B: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "C",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_6",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "A",
+          "priority": 0.4,
+          "marketDemand": 0.5,
+          "careerImportance": 0.8,
+          "gap": 1,
+          "learningCost": 20,
+          "prerequisites": [],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [B]",
+          "expectedStateTransition": "A: -> 1.0"
+        },
+        {
+          "phase": 2,
+          "skillId": "B",
+          "priority": 0.81,
+          "marketDemand": 0.9,
+          "careerImportance": 0.9,
+          "gap": 1,
+          "learningCost": 30,
+          "prerequisites": [
+            "A"
+          ],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [C]",
+          "expectedStateTransition": "B: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "C",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_7",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "A",
+          "priority": 0.4,
+          "marketDemand": 0.5,
+          "careerImportance": 0.8,
+          "gap": 1,
+          "learningCost": 20,
+          "prerequisites": [],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [B]",
+          "expectedStateTransition": "A: -> 1.0"
+        },
+        {
+          "phase": 2,
+          "skillId": "B",
+          "priority": 0.81,
+          "marketDemand": 0.9,
+          "careerImportance": 0.9,
+          "gap": 1,
+          "learningCost": 30,
+          "prerequisites": [
+            "A"
+          ],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [C]",
+          "expectedStateTransition": "B: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "C",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_8",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "A",
+          "priority": 0.4,
+          "marketDemand": 0.5,
+          "careerImportance": 0.8,
+          "gap": 1,
+          "learningCost": 20,
+          "prerequisites": [],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [B]",
+          "expectedStateTransition": "A: -> 1.0"
+        },
+        {
+          "phase": 2,
+          "skillId": "B",
+          "priority": 0.81,
+          "marketDemand": 0.9,
+          "careerImportance": 0.9,
+          "gap": 1,
+          "learningCost": 30,
+          "prerequisites": [
+            "A"
+          ],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [C]",
+          "expectedStateTransition": "B: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "C",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_9",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "A",
+          "priority": 0.4,
+          "marketDemand": 0.5,
+          "careerImportance": 0.8,
+          "gap": 1,
+          "learningCost": 20,
+          "prerequisites": [],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [B]",
+          "expectedStateTransition": "A: -> 1.0"
+        },
+        {
+          "phase": 2,
+          "skillId": "B",
+          "priority": 0.81,
+          "marketDemand": 0.9,
+          "careerImportance": 0.9,
+          "gap": 1,
+          "learningCost": 30,
+          "prerequisites": [
+            "A"
+          ],
+          "reason": "Scheduled prerequisite to explicitly unblock high-priority skill: [C]",
+          "expectedStateTransition": "B: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "C",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    }
+  ]
+}

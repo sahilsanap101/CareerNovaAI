@@ -1,4 +1,5 @@
 import { BYSER_WEIGHTS } from '@/config/byserWeights';
+import { normalizeSkillName } from '@pathforge/shared-constants';
 
 export interface StudentProfileForEngine {
   id: string;
@@ -96,8 +97,9 @@ export function evaluateCareerPath(
 
   for (const req of career.requiredSkills) {
     totalRequiredWeight += req.importanceWeight;
+    const reqNormalized = normalizeSkillName(req.skill.name);
     const userSkill = student.skills.find(
-      (s) => s.skill.name.toLowerCase() === req.skill.name.toLowerCase(),
+      (s) => normalizeSkillName(s.skill.name) === reqNormalized,
     );
 
     if (userSkill) {
@@ -158,16 +160,52 @@ export function evaluateCareerPath(
   const isGoalMatch = targetRole ? career.name.toLowerCase().includes(targetRole) || targetRole.includes(career.name.toLowerCase()) : false;
   const goalsScore = isGoalMatch ? 100 : targetRole ? 60 : 40;
 
+  // 8. Market Alignment Extension Layer (Add-on up to 15 points)
+  let marketAlignmentBonus = 0;
+  try {
+    // If we had the market JSON loaded globally, we would query it here:
+    // This provides a proxy demand signal based strictly on ESCO mappings.
+    const path = require('path');
+    const fs = require('fs');
+    if (typeof process !== 'undefined') {
+      const possiblePaths = [
+        path.join(process.cwd(), 'research/results/market_demand.json'),
+        path.join(process.cwd(), '../../research/results/market_demand.json'),
+      ];
+
+      let p = possiblePaths.find(p => fs.existsSync(p));
+      if (p) {
+        const dict = JSON.parse(fs.readFileSync(p, 'utf8'));
+
+        let totalSkillMarket = 0;
+        let counted = 0;
+        for (const req of career.requiredSkills) {
+          const skillName = normalizeSkillName(req.skill.name);
+          if (dict[skillName]) {
+            totalSkillMarket += dict[skillName];
+            counted += 1;
+          }
+        }
+        const avgMarket = counted > 0 ? (totalSkillMarket / counted) : 0;
+        // Normal average is 0 to 1, multiply by the max bonus defined in config (0.15 * 100 = 15 points)
+        marketAlignmentBonus = avgMarket * BYSER_WEIGHTS.MARKET_ALIGNMENT * 100;
+      }
+    }
+  } catch (e) {
+    // ignore
+  }
+
   // Total Weighted BYSER Score
-  const totalScore = Math.round(
+  const totalScore = Math.min(100, Math.round(
     skillScore * BYSER_WEIGHTS.SKILLS +
     interestScore * BYSER_WEIGHTS.INTERESTS +
     projectScore * BYSER_WEIGHTS.PROJECTS +
     academicScore * BYSER_WEIGHTS.ACADEMIC +
     certScore * BYSER_WEIGHTS.CERTIFICATIONS +
     codingScore * BYSER_WEIGHTS.CODING +
-    goalsScore * BYSER_WEIGHTS.GOALS,
-  );
+    goalsScore * BYSER_WEIGHTS.GOALS +
+    marketAlignmentBonus
+  ));
 
   // Removed Hallucinated Confidence heuristic. Migrated to strict statistical match correlation.
   const match_score = Math.max(0, Math.min(100, Math.round(totalScore * (1 - (SGI / 200)))));
