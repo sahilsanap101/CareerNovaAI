@@ -1,6 +1,4 @@
 import * as fs from 'fs';
-// @ts-nocheck
-import { PrismaClient } from '@prisma/client';
 import * as path from 'path';
 import { runB2Prioritization, SkillEvaluationRequest, SkillPriorityResult } from '../baselines/B2_SKILL_PRIORITY/prioritizer';
 import { generateConstrainedRoadmap, PlannerInput } from '../baselines/B3_CONSTRAINED_PLANNER/planner';

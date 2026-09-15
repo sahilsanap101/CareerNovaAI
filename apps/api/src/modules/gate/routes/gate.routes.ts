@@ -1,76 +1,58 @@
 import { Router } from 'express';
-import * as gateController from '../controllers/gate.controller';
 import { authenticate } from '@/middleware/auth.middleware';
-import gateAdminRoutes from './gateAdmin.routes';
+import * as gateController from '../controllers/gate.controller';
 
 const router = Router();
 
-// ----- Public / Basic App Routes -----
-router.get('/exams', gateController.getExams);
-router.get('/exams/:year/papers', gateController.getPapersForYear);
-router.get('/papers/:paperId/syllabus', gateController.getPaperSyllabus);
-router.get('/questions', gateController.getQuestions);
-router.get('/papers/:paperId/mocks', gateController.getMocksForPaper);
-
-// ----- Protected User Routes -----
 router.use(authenticate);
 
-// Questions & Mocks
-router.get('/questions', gateController.getQuestions);
-router.get('/questions/personalized', gateController.getPersonalizedQuestions);
-router.post('/questions/:id/attempt', gateController.attemptQuestion);
-router.post('/questions/:id/bookmark', gateController.bookmarkQuestion);
+router.get('/analytics', gateController.getGateAnalytics);
+router.get('/readiness', gateController.getGateReadiness);
+router.get('/profile', gateController.getProfile);
+router.post('/profile', gateController.createProfile);
+router.put('/profile', gateController.updateProfile);
 
-// Practice Intelligence
-router.post('/practice/session', gateController.startPracticeSession);
-router.post('/practice/attempt/:id', gateController.recordPracticeAttempt);
+router.get('/topics/progress', gateController.getTopicProgress);
+router.get('/topics', gateController.getTopics);
+router.post('/topics', gateController.createTopic);
+router.put('/topics/:id', gateController.updateTopic);
+router.delete('/topics/:id', gateController.deleteTopic);
 
-// Adaptive Study Planner
-router.get('/planner/daily', gateController.getDailyPlan);
-router.put('/planner/session/:sessionId', gateController.updatePlannerSession);
-router.post('/planner/regenerate', gateController.forceRegeneratePlan);
+router.get('/planner/weekly-summary', gateController.getWeeklySummary);
+router.get('/study-tasks', gateController.getStudyTasks);
+router.post('/study-tasks', gateController.createStudyTask);
+router.put('/study-tasks/:id', gateController.updateStudyTask);
+router.delete('/study-tasks/:id', gateController.deleteStudyTask);
 
-// Learning Resources Tracking
-router.get('/resources', gateController.getRankedResources);
-router.post('/resources/:id/action', gateController.logResourceAction);
+router.get('/study-sessions/summary', gateController.getStudySessionSummary);
+router.get('/study-sessions', gateController.getStudySessions);
+router.post('/study-sessions', gateController.createStudySession);
+router.put('/study-sessions/:id', gateController.updateStudySession);
+router.delete('/study-sessions/:id', gateController.deleteStudySession);
 
-// Mocks
-router.get('/papers/:paperId/mocks', gateController.getMocksForPaper);
-router.post('/mocks/generate', gateController.generateCustomMock);
-router.post('/mocks/:id/start', gateController.startMockAttempt);
-router.post('/mocks/attempts/:id/submit', gateController.submitMockAttempt);
+router.get('/practice-attempts/summary', gateController.getPracticePerformance);
+router.get('/practice-attempts', gateController.getGatePracticeAttempts);
+router.post('/practice-attempts', gateController.createGatePracticeAttempt);
+router.put('/practice-attempts/:id', gateController.updateGatePracticeAttempt);
+router.delete('/practice-attempts/:id', gateController.deleteGatePracticeAttempt);
 
-// Prerequisite Graph Explorer
-router.post('/study-plans', gateController.createStudyPlan);
-router.get('/study-plans', gateController.getStudyPlans);
-router.put('/sessions/:id/status', gateController.updateSessionStatus);
+router.get('/mocks/summary', gateController.getMockSummary);
 
-// Progress, Readiness, & Career Integration
-router.post('/mastery', gateController.updateMastery);
-router.get('/readiness/:year', gateController.getReadiness);
-router.post('/readiness/:year/what-if', gateController.generateCounterfactual);
-router.get('/integration/:year/allocation', gateController.getTimeAllocation);
+router.get('/mistakes/summary', gateController.getMistakeSummary);
+router.get('/mistakes', gateController.getGateMistakes);
+router.post('/mistakes', gateController.createGateMistake);
+router.put('/mistakes/:id', gateController.updateGateMistake);
+router.delete('/mistakes/:id', gateController.deleteGateMistake);
 
-// Onboarding & Diagnostics
-router.get('/onboarding', gateController.getOnboarding);
-router.put('/onboarding', gateController.saveOnboarding);
-router.post('/onboarding/diagnostic/start', gateController.startDiagnostic);
-router.post('/onboarding/diagnostic/submit', gateController.submitDiagnostic);
+router.get('/revisions/summary', gateController.getRevisionSummary);
+router.get('/revisions', gateController.getGateRevisionItems);
+router.post('/revisions', gateController.createGateRevisionItem);
+router.put('/revisions/:id', gateController.updateGateRevisionItem);
+router.delete('/revisions/:id', gateController.deleteGateRevisionItem);
 
-// Prerequisite Graph Explorer
-router.get('/topics/:id/details', gateController.getTopicExplorer);
-router.post('/topics/:id/check-cycles', gateController.checkGraphCycles);
-
-// Revision Engine & Mistake Book
-router.get('/revisions', gateController.getRevisionDashboard);
-router.post('/revisions/mistake', gateController.logMistake);
-router.post('/revisions/mistake/:id/resolve', gateController.resolveMistake);
-router.post('/revisions/evaluate', gateController.evaluateRevision);
-
-// ----- Admin Only -----
-// Middleware should ideally check req.user.role === 'ADMIN'
-router.get('/admin/sync-status', gateController.getSyncStatus);
-router.post('/admin/sync/:examId', gateController.triggerSync);
-router.use('/admin', gateAdminRoutes);
+router.post('/revisions/:id/review', gateController.reviewGateRevisionItem);
+router.post('/revisions/:id/complete', gateController.completeGateRevisionItem);
+router.post('/revisions/:id/reopen', gateController.reopenGateRevisionItem);
+router.post('/revisions/:id/reschedule', gateController.rescheduleGateRevisionItem);
 
 export default router;

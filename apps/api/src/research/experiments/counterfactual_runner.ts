@@ -32,8 +32,8 @@ export class CounterfactualExperiment {
         if (!fs.existsSync(this.baseDir)) fs.mkdirSync(this.baseDir, { recursive: true });
         this.graph = new SkillGraph();
         ['Skill_1', 'Skill_2', 'Skill_3', 'Skill_4'].forEach(id => this.graph.addNode({ id }));
-        this.graph.addEdge({ fromId: 'Skill_1', toId: 'Skill_2', type: 'PREREQUISITE', provenance: {} });
-        this.graph.addEdge({ fromId: 'Skill_2', toId: 'Skill_3', type: 'PREREQUISITE', provenance: {} });
+        this.graph.addEdge({ fromId: 'Skill_1', toId: 'Skill_2', type: 'PREREQUISITE', provenance: { source: 'automated_test', evidence: '', confidence: 100, manualValidationStats: null } as any });
+        this.graph.addEdge({ fromId: 'Skill_2', toId: 'Skill_3', type: 'PREREQUISITE', provenance: { source: 'automated_test', evidence: '', confidence: 100, manualValidationStats: null } as any });
     }
 
     private plan(state: StudentState, graph: SkillGraph, marketMutations: Record<string, number> = {}): PlannedSkill[] {

@@ -40,6 +40,14 @@ const envSchema = z.object({
   // Rate Limiting
   RATE_LIMIT_WINDOW_MS: z.coerce.number().default(900000),
   RATE_LIMIT_MAX: z.coerce.number().default(200),
+
+  // Jooble (Live Jobs)
+  JOOBLE_API_KEY: z.string().optional(),
+  JOOBLE_CACHE_TTL_HOURS: z.coerce.number().default(12),
+  JOOBLE_MAX_QUERIES_PER_SYNC: z.coerce.number().default(3),
+  JOOBLE_MAX_RESULTS_PER_QUERY: z.coerce.number().default(20),
+  JOOBLE_MAX_LIFETIME_REQUESTS: z.coerce.number().default(500),
+  JOOBLE_SAFETY_LIMIT: z.coerce.number().default(450),
 });
 
 const parsed = envSchema.safeParse(process.env);

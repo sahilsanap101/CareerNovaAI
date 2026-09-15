@@ -21,6 +21,17 @@ const NotFound = lazy(() => import('@/pages/errors/NotFound'));
 const Dashboard = lazy(() => import('@/pages/Dashboard/Dashboard'));
 const Profile = lazy(() => import('@/pages/Profile/Profile'));
 const Settings = lazy(() => import('@/pages/Settings/Settings'));
+const GateDashboardPage = lazy(() => import('@/pages/Gate/GateDashboardPage'));
+const GateSyllabusPage = lazy(() => import('@/pages/Gate/GateSyllabusPage'));
+const GatePracticePage = lazy(() => import('@/pages/Gate/GatePracticePage'));
+const GatePracticeAttemptsPage = lazy(() => import('@/pages/Gate/GatePracticeAttemptsPage'));
+const GatePlannerPage = lazy(() => import('@/pages/Gate/GatePlannerPage'));
+const GateStudyPage = lazy(() => import('@/pages/Gate/GateStudyPage'));
+const GateMistakesPage = lazy(() => import('@/pages/Gate/GateMistakesPage'));
+const GateRevisionHubPage = lazy(() => import('@/pages/Gate/GateRevisionHubPage'));
+const GateMockTestsPage = lazy(() => import('@/pages/Gate/GateMockTestsPage'));
+const GateAnalyticsPage = lazy(() => import('@/pages/Gate/GateAnalyticsPage'));
+const GateReadinessPage = lazy(() => import('@/pages/Gate/GateReadinessPage').then(m => ({ default: m.GateReadinessPage })));
 const Recommendations = lazy(() => import('@/pages/Recommendations/Recommendations'));
 const CareerComparison = lazy(() => import('@/pages/Recommendations/CareerComparison').then((m) => ({ default: m.CareerComparison })));
 const AnalyticsDashboard = lazy(() => import('@/pages/Analytics/AnalyticsDashboard'));
@@ -30,17 +41,8 @@ const WeeklyPlanner = lazy(() => import('@/pages/Roadmap/WeeklyPlanner').then((m
 const AiDashboard = lazy(() => import('@/pages/AI/AiDashboard'));
 const ResumeIntelligence = lazy(() => import('@/pages/AI/ResumeIntelligence').then((m) => ({ default: m.ResumeIntelligence })));
 const InterviewCoach = lazy(() => import('@/pages/AI/InterviewCoach').then((m) => ({ default: m.InterviewCoach })));
-
-const GateDashboard = lazy(() => import('@/pages/Gate/GateDashboard').then((m) => ({ default: m.GateDashboard })));
-const GatePaperDetails = lazy(() => import('@/pages/Gate/GatePaperDetails').then((m) => ({ default: m.GatePaperDetails })));
-const AdminSyncStatus = lazy(() => import('@/pages/Gate/AdminStatus').then((m) => ({ default: m.AdminSyncStatus })));
-const GateOnboarding = lazy(() => import('@/pages/Gate/GateOnboarding').then((m) => ({ default: m.GateOnboarding })));
-const GateTopicDetails = lazy(() => import('@/pages/Gate/GateTopicDetails').then((m) => ({ default: m.GateTopicDetails })));
-const GatePracticeEngine = lazy(() => import('@/pages/Gate/GatePracticeEngine').then((m) => ({ default: m.GatePracticeEngine })));
-const GateResourceExplorer = lazy(() => import('@/pages/Gate/GateResourceExplorer').then((m) => ({ default: m.GateResourceExplorer })));
-const GateMockInterface = lazy(() => import('@/pages/Gate/GateMockInterface').then((m) => ({ default: m.GateMockInterface })));
-const GateRevisionHub = lazy(() => import('@/pages/Gate/GateRevisionHub').then((m) => ({ default: m.GateRevisionHub })));
-const GateReadinessDashboard = lazy(() => import('@/pages/Gate/GateReadinessDashboard').then((m) => ({ default: m.GateReadinessDashboard })));
+const SuccessStoriesPage = lazy(() => import('@/pages/SuccessStoriesPage').then((m) => ({ default: m.SuccessStoriesPage })));
+const LiveJobsPage = lazy(() => import('@/pages/LiveJobsPage'));
 
 // ─── Router Config ────────────────────────────────────────────────
 const router = createBrowserRouter([
@@ -79,19 +81,21 @@ const router = createBrowserRouter([
       { path: '/skill-graph', element: <PageTransition><SkillGraph /></PageTransition> },
       { path: '/planner', element: <PageTransition><WeeklyPlanner /></PageTransition> },
       { path: '/ai', element: <PageTransition><AiDashboard /></PageTransition> },
+      { path: '/gate', element: <PageTransition><GateDashboardPage /></PageTransition> },
+      { path: '/gate/syllabus', element: <PageTransition><GateSyllabusPage /></PageTransition> },
+      { path: '/gate/practice', element: <PageTransition><GatePracticePage /></PageTransition> },
+      { path: '/gate/attempts', element: <PageTransition><GatePracticeAttemptsPage /></PageTransition> },
+      { path: '/gate/planner', element: <PageTransition><GatePlannerPage /></PageTransition> },
+      { path: '/gate/study', element: <PageTransition><GateStudyPage /></PageTransition> },
+      { path: '/gate/mistakes', element: <PageTransition><GateMistakesPage /></PageTransition> },
+      { path: '/gate/revisions', element: <PageTransition><GateRevisionHubPage /></PageTransition> },
+      { path: '/gate/mocks', element: <PageTransition><GateMockTestsPage /></PageTransition> },
+      { path: '/gate/analytics', element: <PageTransition><GateAnalyticsPage /></PageTransition> },
+      { path: '/gate/readiness', element: <PageTransition><GateReadinessPage /></PageTransition> },
       { path: '/resume-intelligence', element: <PageTransition><ResumeIntelligence /></PageTransition> },
       { path: '/interview-coach', element: <PageTransition><InterviewCoach /></PageTransition> },
-      { path: '/gate/onboarding', element: <PageTransition><GateOnboarding /></PageTransition> },
-      { path: '/gate', element: <PageTransition><GateDashboard /></PageTransition> },
-      { path: '/gate/admin', element: <PageTransition><AdminSyncStatus /></PageTransition> },
-      { path: '/gate/topics/:id', element: <PageTransition><GateTopicDetails /></PageTransition> },
-      { path: '/gate/practice', element: <PageTransition><GatePracticeEngine /></PageTransition> },
-      { path: '/gate/resources', element: <PageTransition><GateResourceExplorer /></PageTransition> },
-      { path: '/gate/revisions', element: <PageTransition><GateRevisionHub /></PageTransition> },
-      { path: '/gate/readiness', element: <PageTransition><GateReadinessDashboard /></PageTransition> },
-      { path: '/gate/mocks/:mockId/attempt', element: <PageTransition><GateMockInterface /></PageTransition> },
-      { path: '/gate/:year', element: <PageTransition><GatePaperDetails /></PageTransition> },
-      { path: '/gate/:year/:paperCode', element: <PageTransition><GatePaperDetails /></PageTransition> },
+      { path: '/success-stories', element: <PageTransition><SuccessStoriesPage /></PageTransition> },
+      { path: '/live-jobs', element: <PageTransition><LiveJobsPage /></PageTransition> },
     ],
   },
 

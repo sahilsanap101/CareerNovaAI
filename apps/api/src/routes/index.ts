@@ -8,6 +8,7 @@ import roadmapRoutes from '@/modules/roadmap/routes/roadmap.routes';
 import aiRoutes from '@/modules/ai/routes/ai.routes';
 import platformRoutes from '@/modules/platform/routes/platform.routes';
 import gateRoutes from '@/modules/gate/routes/gate.routes';
+import liveJobsRoutes from '@/modules/jobs/routes/jobs.routes';
 
 const v1Router = Router();
 
@@ -21,6 +22,7 @@ v1Router.use('/', roadmapRoutes);
 v1Router.use('/ai', aiRoutes);
 v1Router.use('/platform', platformRoutes);
 v1Router.use('/gate', gateRoutes);
+v1Router.use('/live-jobs', liveJobsRoutes);
 
 // ─── Health Check ─────────────────────────────────────────────────
 v1Router.get('/health', (_req, res) => {

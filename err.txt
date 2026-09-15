@@ -1,0 +1,47 @@
+
+> pathforge@1.0.0 build:api
+> npm run build --workspace=apps/api
+
+
+> @pathforge/api@1.0.0 build
+> tsc
+
+src/modules/gate/controllers/gateAdmin.controller.ts(3,10): error TS2305: Module '"@prisma/client"' has no exported member 'GateExamLifecycle'.
+src/modules/gate/services/gateAdmin.service.ts(1,24): error TS2305: Module '"@prisma/client"' has no exported member 'GateExamLifecycle'.
+src/modules/gate/services/gateAdmin.service.ts(7,18): error TS2339: Property 'gateAdminAudit' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+src/modules/gate/services/gateAdmin.service.ts(98,13): error TS2561: Object literal may only specify known properties, but 'lastVerifiedAt' does not exist in type '(Without<GateResourceUpdateInput, GateResourceUncheckedUpdateInput> & GateResourceUncheckedUpdateInput) | (Without<...> & GateResourceUpdateInput)'. Did you mean to write 'verifiedAt'?
+src/modules/roadmap/services/roadmap.service.ts(38,5): error TS2322: Type 'GeneratedPhaseData[]' is not assignable to type '{ phaseNumber: number; title: string; description: string; estimatedWeeks: number; modules: { title: string; description: string; difficulty: string; estimatedHours: number; requiredSkills: string[]; providedSkills: string[]; tasks: { ...; }[]; }[]; }[]'.
+  Type 'GeneratedPhaseData' is not assignable to type '{ phaseNumber: number; title: string; description: string; estimatedWeeks: number; modules: { title: string; description: string; difficulty: string; estimatedHours: number; requiredSkills: string[]; providedSkills: string[]; tasks: { ...; }[]; }[]; }'.
+    Types of property 'modules' are incompatible.
+      Type '{ title: string; description: string; difficulty: string; estimatedHours: number; requiredSkills: string[]; providedSkills: string[]; tasks: { title: string; description: string; taskType: "THEORY" | "PRACTICE" | "PROJECT" | "QUIZ" | "REVISION"; estimatedMinutes: number; priority: "HIGH" | ... 1 more ... | "LOW"; re...' is not assignable to type '{ title: string; description: string; difficulty: string; estimatedHours: number; requiredSkills: string[]; providedSkills: string[]; tasks: { title: string; description: string; taskType: string; estimatedMinutes: number; priority: string; resources: { ...; }[]; }[]; }[]'.
+        Type '{ title: string; description: string; difficulty: string; estimatedHours: number; requiredSkills: string[]; providedSkills: string[]; tasks: { title: string; description: string; taskType: "THEORY" | "PRACTICE" | "PROJECT" | "QUIZ" | "REVISION"; estimatedMinutes: number; priority: "HIGH" | ... 1 more ... | "LOW"; re...' is not assignable to type '{ title: string; description: string; difficulty: string; estimatedHours: number; requiredSkills: string[]; providedSkills: string[]; tasks: { title: string; description: string; taskType: string; estimatedMinutes: number; priority: string; resources: { ...; }[]; }[]; }'.
+          Types of property 'tasks' are incompatible.
+            Type '{ title: string; description: string; taskType: "THEORY" | "PRACTICE" | "PROJECT" | "QUIZ" | "REVISION"; estimatedMinutes: number; priority: "HIGH" | "MEDIUM" | "LOW"; resources: { ...; }[] | "resource_curation_pending"; }[]' is not assignable to type '{ title: string; description: string; taskType: string; estimatedMinutes: number; priority: string; resources: { title: string; provider: string; url: string; resourceType: string; duration: string; free: boolean; rating: number; }[]; }[]'.
+              Type '{ title: string; description: string; taskType: "THEORY" | "PRACTICE" | "PROJECT" | "QUIZ" | "REVISION"; estimatedMinutes: number; priority: "HIGH" | "MEDIUM" | "LOW"; resources: { ...; }[] | "resource_curation_pending"; }' is not assignable to type '{ title: string; description: string; taskType: string; estimatedMinutes: number; priority: string; resources: { title: string; provider: string; url: string; resourceType: string; duration: string; free: boolean; rating: number; }[]; }'.
+                Types of property 'resources' are incompatible.
+                  Type '{ title: string; provider: string; url: string; resourceType: "VIDEO" | "ARTICLE" | "DOCUMENTATION" | "COURSE"; duration: string; free: boolean; rating: number; }[] | "resource_curation_pending"' is not assignable to type '{ title: string; provider: string; url: string; resourceType: string; duration: string; free: boolean; rating: number; }[]'.
+                    Type 'string' is not assignable to type '{ title: string; provider: string; url: string; resourceType: string; duration: string; free: boolean; rating: number; }[]'.
+src/research/baselines/milp/exact_solver.ts(25,21): error TS2532: Object is possibly 'undefined'.
+src/research/baselines/milp/exact_solver.ts(26,24): error TS2532: Object is possibly 'undefined'.
+src/research/core/temporal/churn.ts(28,16): error TS2532: Object is possibly 'undefined'.
+src/research/core/temporal/churn.ts(28,44): error TS2532: Object is possibly 'undefined'.
+src/research/evaluation/run_experiments.ts(99,25): error TS2532: Object is possibly 'undefined'.
+src/research/evaluation/run_experiments.ts(108,23): error TS2532: Object is possibly 'undefined'.
+src/research/evaluation/run_experiments.ts(109,18): error TS2532: Object is possibly 'undefined'.
+src/research/experiments/counterfactual_runner.ts(35,88): error TS2739: Type '{}' is missing the following properties from type 'EdgeProvenance': source, evidence, confidence, manualValidationStats
+src/research/experiments/counterfactual_runner.ts(36,88): error TS2739: Type '{}' is missing the following properties from type 'EdgeProvenance': source, evidence, confidence, manualValidationStats
+src/research/experiments/counterfactual_runner.ts(71,41): error TS18048: 'mDemand' is possibly 'undefined'.
+src/research/experiments/counterfactual_runner.ts(160,80): error TS2532: Object is possibly 'undefined'.
+src/research/experiments/dynamic_baseline_runner.ts(41,144): error TS2353: Object literal may only specify known properties, and 'confidenceWeight' does not exist in type 'SkillEvaluationRequest'.
+src/research/experiments/dynamic_baseline_runner.ts(42,144): error TS2353: Object literal may only specify known properties, and 'confidenceWeight' does not exist in type 'SkillEvaluationRequest'.
+src/research/experiments/dynamic_baseline_runner.ts(43,144): error TS2353: Object literal may only specify known properties, and 'confidenceWeight' does not exist in type 'SkillEvaluationRequest'.
+src/research/experiments/dynamic_baseline_runner.ts(60,43): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ A: number; B: number; C: number; }'.
+  No index signature with a parameter of type 'string' was found on type '{ A: number; B: number; C: number; }'.
+src/research/experiments/exact_scaling_runner.ts(38,33): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/research/experiments/exact_scaling_runner.ts(38,52): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/research/experiments/milp_runner.ts(58,26): error TS2532: Object is possibly 'undefined'.
+src/research/experiments/variant_runner.ts(78,151): error TS2322: Type 'null' is not assignable to type '"PENDING" | "VALIDATED" | "REJECTED"'.
+src/research/experiments/variant_runner.ts(79,151): error TS2322: Type 'null' is not assignable to type '"PENDING" | "VALIDATED" | "REJECTED"'.
+src/research/experiments/variant_runner.ts(92,81): error TS7006: Parameter 's' implicitly has an 'any' type.

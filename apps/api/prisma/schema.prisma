@@ -48,37 +48,36 @@ model User {
   updatedAt  DateTime @updatedAt
 
   // Relations
-  profile               Profile?
-  preferences           UserPreference?
-  sessions              Session[]
-  auditLogs             AuditLog[]
-  passwordResetTokens   PasswordResetToken[]
-  verificationTokens    VerificationToken[]
-  skills                UserSkill[]
-  interests             UserInterest[]
-  careerGoal            CareerGoal?
-  projects              Project[]
-  certifications        Certification[]
-  codingPlatforms       CodingPlatform[]
-  recommendations       RecommendationResult[]
-  userRoadmaps          UserRoadmap[]
-  userTasks             UserTask[]
-  weeklyPlans           WeeklyPlan[]
-  userAchievements      UserAchievement[]
-  studySessions         StudySession[]
-  conversations         Conversation[]
-  aiMetrics             AiMetric[]
-  feedbacks             Feedback[]
-  gateProfile           UserGateProfile?
-  GateQuestionAttempt   GateQuestionAttempt[]
-  GateBookmark          GateBookmark[]
-  GateTopicMastery      GateTopicMastery[]
-  GateMistakeTracker    GateMistakeTracker[]
-  GateRevisionQueue     GateRevisionQueue[]
-  GateStudyPlan         GateStudyPlan[]
-  GateMockAttempt       GateMockAttempt[]
-  GateReadinessSnapshot GateReadinessSnapshot[]
-  GateAdminAudit        GateAdminAudit[]
+  profile             Profile?
+  preferences         UserPreference?
+  sessions            Session[]
+  auditLogs           AuditLog[]
+  passwordResetTokens PasswordResetToken[]
+  verificationTokens  VerificationToken[]
+  skills              UserSkill[]
+  interests           UserInterest[]
+  careerGoal          CareerGoal?
+  gateProfile         GateUserProfile?
+  gatePersonalTopics  GatePersonalTopic[]
+  gateStudyTasks      GateStudyTask[]
+  gateStudySessions   GateStudySession[]
+  gatePracticeAttempts GatePracticeAttempt[]
+  gateMistakes        GateMistake[]
+  gateRevisionItems   GateRevisionItem[]
+  projects            Project[]
+  certifications      Certification[]
+  codingPlatforms     CodingPlatform[]
+  recommendations     RecommendationResult[]
+  userRoadmaps        UserRoadmap[]
+  userTasks           UserTask[]
+  weeklyPlans         WeeklyPlan[]
+  userAchievements    UserAchievement[]
+  studySessions       StudySession[]
+  conversations       Conversation[]
+  aiMetrics           AiMetric[]
+  feedbacks           Feedback[]
+  savedJobs           SavedJob[]
+  jobApplications     JobApplication[]
 
   @@index([email])
   @@map("users")
@@ -716,534 +715,294 @@ model Feedback {
   @@map("feedbacks")
 }
 
-// ─── Phase 6: GATE Preparation Module ──────────────────────────────
-enum GateQuestionType {
-  MCQ
-  MSQ
-  NAT
-}
+// ─── Phase 6: GATE Intelligence ───────────────────────────────────
 
-enum GateDifficulty {
-  EASY
-  MEDIUM
-  HARD
-}
-
-enum GateStudySessionStatus {
-  PLANNED
-  IN_PROGRESS
-  COMPLETED
-  SKIPPED
-}
-
-enum GateMockStatus {
-  UPCOMING
-  IN_PROGRESS
-  COMPLETED
-}
-
-enum GateMistakeType {
-  CALCULATION
-  CONCEPTUAL
-  READING
-  TIME_PRESSURE
-}
-
-enum GateOfficialStatus {
-  OFFICIAL
-  UNOFFICIAL
-  VERIFIED
-}
-
-enum GateExamLifecycle {
-  DRAFT
-  IMPORTED
-  VALIDATING
-  VERIFIED
-  PUBLISHED
-  ARCHIVED
-}
-
-model GateExam {
-  id                  String   @id @default(cuid())
-  year                Int
-  organizingInstitute String
-  officialWebsite     String?
-  isActive            Boolean           @default(true)
-  lifecycleStatus     GateExamLifecycle @default(DRAFT)
-  createdAt           DateTime          @default(now())
-
-  papers         GatePaper[]
-  importantDates GateImportantDate[]
-  officialLinks  GateOfficialLink[]
-  questions      GateQuestion[]
-  studyPlans     GateStudyPlan[]
-  mockTests      GateMockTest[]
-  syncRecords    GateSyncRecord[]
-
-  @@unique([year])
-  @@map("gate_exams")
-}
-
-model GateImportantDate {
-  id          String   @id @default(cuid())
-  examId      String
-  title       String
-  date        DateTime
-  description String?  @db.Text
-  createdAt   DateTime @default(now())
-
-  exam GateExam @relation(fields: [examId], references: [id], onDelete: Cascade)
-
-  @@index([examId])
-  @@map("gate_important_dates")
-}
-
-model GateOfficialLink {
-  id          String   @id @default(cuid())
-  examId      String
-  title       String
-  url         String
-  description String?  @db.Text
-  createdAt   DateTime @default(now())
-
-  exam GateExam @relation(fields: [examId], references: [id], onDelete: Cascade)
-
-  @@index([examId])
-  @@map("gate_official_links")
-}
-
-model GatePaper {
-  id        String    @id @default(cuid())
-  examId    String
-  paperCode String // e.g. "CS", "ME"
-  paperName String // e.g. "Computer Science and Information Technology"
-  examDate  DateTime?
-  session   String? // e.g. "Forenoon", "Afternoon"
-  createdAt DateTime  @default(now())
-
-  exam      GateExam              @relation(fields: [examId], references: [id], onDelete: Cascade)
-  subjects  GateSyllabusSubject[]
-  resources GateResource[]
-  questions GateQuestion[]
-  mockTests GateMockTest[]
-
-  @@unique([examId, paperCode])
-  @@index([examId])
-  @@map("gate_papers")
-}
-
-model GateSyllabusSubject {
-  id               String   @id @default(cuid())
-  paperId          String
-  title            String
-  weightagePercent Float?
-  createdAt        DateTime @default(now())
-
-  paper     GatePaper           @relation(fields: [paperId], references: [id], onDelete: Cascade)
-  topics    GateSyllabusTopic[]
-  questions GateQuestion[]
-
-  @@index([paperId])
-  @@map("gate_syllabus_subjects")
-}
-
-model GateSyllabusTopic {
-  id          String   @id @default(cuid())
-  subjectId   String
-  title       String
-  description String?  @db.Text
-  createdAt   DateTime @default(now())
-
-  subject   GateSyllabusSubject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
-  resources GateResource[]
-  subtopics GateSubtopic[]
-  questions GateQuestion[]
-
-  prerequisitesGateTarget GateTopicPrerequisite[] @relation("TopicHasPrerequisite")
-  prerequisitesGatePrereq GateTopicPrerequisite[] @relation("TopicIsPrerequisiteFor")
-
-  mastery       GateTopicMastery[]
-  revisionItems GateRevisionQueue[]
-  studySessions GateStudySession[]
-
-  @@index([subjectId])
-  @@map("gate_syllabus_topics")
-}
-
-model GateSubtopic {
-  id          String   @id @default(cuid())
-  topicId     String
-  title       String
-  description String?  @db.Text
-  createdAt   DateTime @default(now())
-
-  topic GateSyllabusTopic @relation(fields: [topicId], references: [id], onDelete: Cascade)
-
-  @@index([topicId])
-  @@map("gate_subtopics")
-}
-
-model GateTopicPrerequisite {
-  id            String   @id @default(cuid())
-  targetTopicId String
-  prereqTopicId String
-  createdAt     DateTime @default(now())
-
-  targetTopic GateSyllabusTopic @relation("TopicHasPrerequisite", fields: [targetTopicId], references: [id], onDelete: Cascade)
-  prereqTopic GateSyllabusTopic @relation("TopicIsPrerequisiteFor", fields: [prereqTopicId], references: [id], onDelete: Cascade)
-
-  @@unique([targetTopicId, prereqTopicId])
-  @@index([targetTopicId])
-  @@index([prereqTopicId])
-  @@map("gate_topic_prerequisites")
-}
-
-model GateResource {
-  id             String    @id @default(cuid())
-  paperId        String
-  subjectId      String?
-  topicId        String?
-  subtopicId     String?
-  title          String
-  description    String?   @db.Text
-  url            String
-  provider       String
-  resourceType   String    // OFFICIAL_GATE, MOCK, VIDEO, COURSE, BOOK, etc.
-  language       String    @default("ENGLISH")
-  difficulty     String?   // BEGINNER, INTERMEDIATE, ADVANCED
-  isPaid         Boolean   @default(false)
-  isOfficial     Boolean   @default(true)
-  tags           Json?
-  isActive       Boolean   @default(true)
-  verifiedAt     DateTime?
-  lastVerifiedAt DateTime?
-  createdAt      DateTime  @default(now())
-
-  paper GatePaper          @relation(fields: [paperId], references: [id], onDelete: Cascade)
-  subject GateSyllabusSubject? @relation(fields: [subjectId], references: [id], onDelete: SetNull)
-  topic GateSyllabusTopic? @relation(fields: [topicId], references: [id], onDelete: SetNull)
-  actions GateUserResourceAction[]
-
-  @@index([paperId])
-  @@index([topicId])
-  @@map("gate_resources")
-}
-
-model GateUserResourceAction {
-  id           String    @id @default(cuid())
-  userId       String
-  resourceId   String
-  actionType   String    // BOOKMARK, USEFUL, NOT_USEFUL, OPENED
-  createdAt    DateTime  @default(now())
-
-  user     User          @relation(fields: [userId], references: [id], onDelete: Cascade)
-  resource GateResource  @relation(fields: [resourceId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-  @@index([resourceId])
-  @@map("gate_user_resource_actions")
-}
-
-model UserGateProfile {
-  id                      String   @id @default(cuid())
-  userId                  String   @unique
-  targetYear              Int
-  targetPaperCode         String
-  expectedScore           Float?
-  targetRank              Int?
-  weeklyStudyHours        Int      @default(10)
-  preparationStage        String   @default("BEGINNER") // BEGINNER, INTERMEDIATE, ADVANCED
-  preferredLearningFormat String   @default("VIDEO")
-  diagnosticState         Json?
-  createdAt               DateTime @default(now())
+model GateUserProfile {
+  id               String    @id @default(cuid())
+  userId           String    @unique
+  gateYear         Int
+  paper            String
+  targetScore      Float
+  weeklyHours      Float
+  preparationStage String
+  examDate         DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
-  @@map("user_gate_profiles")
+  @@map("gate_user_profiles")
 }
 
-model GateQuestion {
-  id             String             @id @default(cuid())
-  examId         String
-  paperId        String
-  subjectId      String?
-  topicId        String?
-  subtopicId     String?
-  questionNumber Int?
-  marks          Float
-  questionType   GateQuestionType
-  difficulty     GateDifficulty     @default(MEDIUM)
-  concept        String?
-  content        String             @db.Text
-  options        Json?
-  correctAnswer  String
-  explanation    String?            @db.Text
-  sourceUrl      String?
-  sourceProvider String?
-  status         GateOfficialStatus @default(UNOFFICIAL)
-  version        Int                @default(1)
-  createdAt      DateTime           @default(now())
-
-  exam    GateExam             @relation(fields: [examId], references: [id], onDelete: Cascade)
-  paper   GatePaper            @relation(fields: [paperId], references: [id], onDelete: Cascade)
-  subject GateSyllabusSubject? @relation(fields: [subjectId], references: [id], onDelete: SetNull)
-  topic   GateSyllabusTopic?   @relation(fields: [topicId], references: [id], onDelete: SetNull)
-
-  attempts  GateQuestionAttempt[]
-  bookmarks GateBookmark[]
-  mistakes  GateMistakeTracker[]
-
-  @@index([examId])
-  @@index([paperId])
-  @@index([topicId])
-  @@map("gate_questions")
-}
-
-model GateQuestionAttempt {
-  id           String   @id @default(cuid())
-  userId       String
-  questionId   String
-  userAnswer   String?
-  isCorrect    Boolean
-  timeSpentsMs Int      @default(0)
-  createdAt    DateTime @default(now())
-
-  user     User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  question GateQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-  @@index([questionId])
-  @@map("gate_question_attempts")
-}
-
-model GateBookmark {
-  id         String   @id @default(cuid())
+model GatePersonalTopic {
+  id         String    @id @default(cuid())
   userId     String
-  questionId String
-  notes      String?  @db.Text
-  createdAt  DateTime @default(now())
+  title      String
+  subject    String
+  notes      String?   @db.Text
+  status     String    @default("NOT_STARTED")
+  priority   String    @default("MEDIUM")
+  targetDate DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 
-  user     User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  question GateQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  user             User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  studyTasks       GateStudyTask[]
+  studySessions    GateStudySession[]
+  practiceAttempts GatePracticeAttempt[]
+  mistakes         GateMistake[]
+  revisionItems    GateRevisionItem[]
 
-  @@unique([userId, questionId])
   @@index([userId])
-  @@map("gate_bookmarks")
+  @@map("gate_personal_topics")
 }
 
-model GateTopicMastery {
-  id           String   @id @default(cuid())
-  userId       String
-  topicId      String
-  masteryLevel Float // 0.0 to 100.0
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+model GateStudyTask {
+  id               String    @id @default(cuid())
+  userId           String
+  topicId          String?
+  title            String
+  description      String?   @db.Text
+  plannedDate      DateTime
+  estimatedMinutes Int
+  priority         String    @default("MEDIUM")
+  status           String    @default("NOT_STARTED")
+  completedAt      DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
 
-  user  User              @relation(fields: [userId], references: [id], onDelete: Cascade)
-  topic GateSyllabusTopic @relation(fields: [topicId], references: [id], onDelete: Cascade)
-
-  @@unique([userId, topicId])
-  @@index([userId])
-  @@map("gate_topic_mastery")
-}
-
-model GateMistakeTracker {
-  id              String          @id @default(cuid())
-  userId          String
-  questionId      String
-  mistakeType     GateMistakeType
-  notes           String?         @db.Text
-  correctApproach String?         @db.Text  // ADDED
-  confidenceLevel String?         // HIGH, MEDIUM, LOW
-  resolved        Boolean         @default(false)
-  createdAt       DateTime        @default(now())
-
-  user     User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  question GateQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  user  User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic GatePersonalTopic? @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  studySessions GateStudySession[]
 
   @@index([userId])
-  @@index([questionId])
-  @@map("gate_mistake_tracker")
-}
-
-model GateRevisionQueue {
-  id              String   @id @default(cuid())
-  userId          String
-  topicId         String
-  lastReviewAt    DateTime? 
-  nextReviewAt    DateTime
-  reviewCount     Int      @default(0)
-  performance     Float?   
-  confidenceScore Float?
-  createdAt       DateTime @default(now())
-
-  user  User              @relation(fields: [userId], references: [id], onDelete: Cascade)
-  topic GateSyllabusTopic @relation(fields: [topicId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-  @@index([nextReviewAt])
-  @@map("gate_revision_queue")
-}
-
-model GateStudyPlan {
-  id           String   @id @default(cuid())
-  userId       String
-  targetExamId String
-  title        String
-  startDate    DateTime
-  endDate      DateTime
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-
-  user     User               @relation(fields: [userId], references: [id], onDelete: Cascade)
-  exam     GateExam           @relation(fields: [targetExamId], references: [id], onDelete: Cascade)
-  sessions GateStudySession[]
-
-  @@index([userId])
-  @@map("gate_study_plans")
+  @@index([topicId])
+  @@map("gate_study_tasks")
 }
 
 model GateStudySession {
-  id           String                 @id @default(cuid())
-  planId       String
-  topicId      String?
-  title        String
-  date         DateTime
-  durationMins Int
-  status       GateStudySessionStatus @default(PLANNED)
-  createdAt    DateTime               @default(now())
+  id              String             @id @default(cuid())
+  userId          String
+  topicId         String?
+  studyTaskId     String?
+  startedAt       DateTime
+  endedAt         DateTime?
+  durationMinutes Int
+  sessionType     String             @default("STUDY")
+  notes           String?            @db.Text
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
 
-  plan  GateStudyPlan      @relation(fields: [planId], references: [id], onDelete: Cascade)
-  topic GateSyllabusTopic? @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  user       User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic      GatePersonalTopic? @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  studyTask  GateStudyTask?     @relation(fields: [studyTaskId], references: [id], onDelete: SetNull)
 
-  @@index([planId])
+  @@index([userId])
+  @@index([userId, startedAt])
   @@index([topicId])
+  @@index([studyTaskId])
   @@map("gate_study_sessions")
 }
 
-model GateMockTest {
-  id           String   @id @default(cuid())
-  examId       String
-  paperId      String
-  title        String
-  description  String?  @db.Text
-  durationMins Int      @default(180)
-  totalMarks   Float    @default(100.0)
-  isOfficial   Boolean  @default(false)
-  createdAt    DateTime @default(now())
+model GatePracticeAttempt {
+  id                    String             @id @default(cuid())
+  userId                String
+  topicId               String?
+  attemptType           String             // PYQ, PRACTICE, MOCK
+  sourceName            String
+  sourceUrl             String?
+  paperCode             String?
+  paperYear             Int?
+  attemptDate           DateTime           @default(now())
+  totalQuestions        Int
+  attemptedQuestions    Int
+  correctAnswers        Int
+  incorrectAnswers      Int
+  unattemptedQuestions  Int
+  marksObtained         Float?
+  percentile            Float?
+  durationMinutes       Int?
+  difficulty            String?
+  notes                 String?            @db.Text
+  createdAt             DateTime           @default(now())
+  updatedAt             DateTime           @updatedAt
 
-  exam      GateExam           @relation(fields: [examId], references: [id], onDelete: Cascade)
-  paper     GatePaper          @relation(fields: [paperId], references: [id], onDelete: Cascade)
-  questions GateMockQuestion[]
-  attempts  GateMockAttempt[]
-
-  @@index([examId])
-  @@index([paperId])
-  @@map("gate_mock_tests")
-}
-
-model GateMockQuestion {
-  id               String           @id @default(cuid())
-  mockId           String
-  actualQuestionId String? // MUST LINK TO REAL QUESTION TO PREVENT FABRICATION
-  questionText     String           @db.Text
-  options          Json?
-  correctAnswer    String
-  marks            Float
-  questionType     GateQuestionType
-  createdAt        DateTime         @default(now())
-
-  mock           GateMockTest     @relation(fields: [mockId], references: [id], onDelete: Cascade)
-  actualQuestion GateQuestion?    @relation(fields: [actualQuestionId], references: [id], onDelete: SetNull)
-  answers        GateMockAnswer[]
-
-  @@index([mockId])
-  @@index([actualQuestionId])
-  @@map("gate_mock_questions")
-}
-
-model GateMockAnswer {
-  id                String           @id @default(cuid())
-  attemptId         String
-  questionId        String
-  answerText        String?          // For NAT
-  selectedOptionIds String[]         // Array of IDs for MSQ/MCQ
-  isSubjective      Boolean          @default(false)
-  isCorrect         Boolean          @default(false)
-  timeSpentSecs     Int              @default(0)
-  createdAt         DateTime         @default(now())
-
-  attempt  GateMockAttempt  @relation(fields: [attemptId], references: [id], onDelete: Cascade)
-  question GateMockQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
-
-  @@index([attemptId])
-  @@index([questionId])
-  @@map("gate_mock_answers")
-}
-
-model GateMockAttempt {
-  id         String         @id @default(cuid())
-  userId     String
-  mockId     String
-  status     GateMockStatus @default(IN_PROGRESS)
-  score      Float          @default(0.0)
-  totalTime  Int            @default(0)
-  startedAt  DateTime       @default(now())
-  finishedAt DateTime?
-  createdAt  DateTime       @default(now())
-
-  user    User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  mock    GateMockTest     @relation(fields: [mockId], references: [id], onDelete: Cascade)
-  answers GateMockAnswer[]
+  user          User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic         GatePersonalTopic? @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  mistakes      GateMistake[]
+  revisionItems GateRevisionItem[]
 
   @@index([userId])
-  @@index([mockId])
-  @@map("gate_mock_attempts")
+  @@index([userId, attemptDate])
+  @@index([topicId])
+  @@index([attemptType])
+  @@map("gate_practice_attempts")
 }
 
-model GateReadinessSnapshot {
+model GateMistake {
+  id                String    @id @default(cuid())
+  userId            String
+  topicId           String?
+  practiceAttemptId String?
+  title             String
+  category          String    
+  description       String?   @db.Text
+  correctConcept    String?   @db.Text
+  priority          String    @default("MEDIUM") 
+  difficulty        String?   
+  status            String    @default("OPEN")   
+  needsRevision     Boolean   @default(true)
+  mistakeDate       DateTime  @default(now())
+  resolvedAt        DateTime?
+  notes             String?   @db.Text
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  user            User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic           GatePersonalTopic?   @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  practiceAttempt GatePracticeAttempt? @relation(fields: [practiceAttemptId], references: [id], onDelete: SetNull)
+  revisionItems   GateRevisionItem[]
+
+  @@index([userId])
+  @@index([topicId])
+  @@index([practiceAttemptId])
+  @@index([status])
+  @@map("gate_mistakes")
+}
+
+model GateRevisionItem {
+  id                String               @id @default(cuid())
+  userId            String
+  topicId           String?
+  mistakeId         String?
+  practiceAttemptId String?
+  title             String
+  description       String?
+  scheduledDate     DateTime
+  priority          String               @default("MEDIUM")
+  status            String               @default("PENDING")
+  lastReviewedAt    DateTime?
+  completedAt       DateTime?
+  reviewCount       Int                  @default(0)
+  notes             String?
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt
+
+  user              User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic             GatePersonalTopic?   @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  mistake           GateMistake?         @relation(fields: [mistakeId], references: [id], onDelete: SetNull)
+  practiceAttempt   GatePracticeAttempt? @relation(fields: [practiceAttemptId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([scheduledDate])
+  @@index([topicId])
+  @@index([mistakeId])
+  @@index([practiceAttemptId])
+  @@map("gate_revision_items")
+}
+
+// ─── Feature 12: Live Jobs ─────────────────────────────────────────
+
+enum ApplicationStatus {
+  SAVED
+  APPLIED
+  ASSESSMENT
+  INTERVIEW
+  OFFER
+  REJECTED
+}
+
+model Job {
+  id                 String    @id @default(cuid())
+  provider           String    @default("JOOBLE")
+  providerJobId      String
+  title              String
+  company            String?
+  location           String?
+  snippet            String?   @db.Text
+  salary             String?
+  type               String?   // Full-time, Part-time, Contract, Internship
+  source             String?   // Job board source within Jooble
+  applyUrl           String
+  providerUpdatedAt  DateTime?
+  fetchedAt          DateTime  @default(now())
+  expiresAt          DateTime?
+  isActive           Boolean   @default(true)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  careerMatches  JobCareerMatch[]
+  savedBy        SavedJob[]
+  applications   JobApplication[]
+
+  @@unique([provider, providerJobId])
+  @@index([isActive])
+  @@index([fetchedAt])
+  @@map("jobs")
+}
+
+model JobCareerMatch {
   id               String   @id @default(cuid())
-  userId           String
-  targetYear       Int
-  overallReadiness Float
-  metrics          Json     // Storing { syllabus, mastery, practice, etc. }
+  jobId            String
+  careerIdentifier String   // careerPath.name e.g. "Mobile Developer"
+  queryUsed        String   // exact Jooble keywords string used
   createdAt        DateTime @default(now())
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  job Job @relation(fields: [jobId], references: [id], onDelete: Cascade)
 
-  @@index([userId, targetYear])
-  @@map("gate_readiness_snapshot")
+  @@unique([jobId, careerIdentifier])
+  @@index([careerIdentifier])
+  @@index([jobId])
+  @@map("job_career_matches")
 }
 
-model GateSyncRecord {
-  id           String   @id @default(cuid())
-  examId       String
-  hashValue    String
-  entityCount  Int
-  status       String   // SUCCESS, FAILED
-  errorMessage String?  @db.Text
-  createdAt    DateTime @default(now())
-
-  exam GateExam @relation(fields: [examId], references: [id], onDelete: Cascade)
-
-  @@index([examId])
-  @@index([hashValue])
-  @@map("gate_sync_records")
-}
-
-model GateAdminAudit {
+model SavedJob {
   id        String   @id @default(cuid())
-  adminId   String
-  action    String
-  entityId  String
-  details   Json?
+  userId    String
+  jobId     String
   createdAt DateTime @default(now())
 
-  admin     User     @relation(fields: [adminId], references: [id], onDelete: Cascade)
-  
-  @@index([adminId])
-  @@index([entityId])
-  @@map("gate_admin_audits")
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  job  Job  @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, jobId])
+  @@index([userId])
+  @@map("saved_jobs")
+}
+
+model JobApplication {
+  id        String            @id @default(cuid())
+  userId    String
+  jobId     String
+  status    ApplicationStatus @default(APPLIED)
+  appliedAt DateTime          @default(now())
+  notes     String?           @db.Text
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  job  Job  @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, jobId])
+  @@index([userId])
+  @@index([status])
+  @@map("job_applications")
+}
+
+model JobSyncLog {
+  id               String    @id @default(cuid())
+  provider         String    @default("JOOBLE")
+  startedAt        DateTime  @default(now())
+  completedAt      DateTime?
+  status           String    @default("PENDING") // PENDING, SUCCESS, FAILED, QUOTA_EXCEEDED
+  requestCount     Int       @default(0)
+  queriesExecuted  String[]
+  jobsUpserted     Int       @default(0)
+  lastError        String?
+  createdAt        DateTime  @default(now())
+
+  @@index([provider])
+  @@index([startedAt])
+  @@map("job_sync_logs")
 }

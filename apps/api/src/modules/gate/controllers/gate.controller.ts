@@ -1,342 +1,497 @@
-import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import type { Request, Response, NextFunction } from 'express';
+import { sendSuccess } from '@/utils/response';
+import { HTTP_STATUS, ERROR_MESSAGES } from '@pathforge/shared-constants';
 import * as gateService from '../services/gate.service';
-import * as gateQuestionService from '../services/gateQuestion.service';
-import * as gateSyllabusService from '../services/gateSyllabus.service';
-import * as gateMockService from '../services/gateMock.service';
-import * as gateStudyPlanService from '../services/gateStudyPlan.service';
-import * as gateProgressService from '../services/gateProgress.service';
-import * as gateSyncService from '../services/gateSync.service';
-import * as gateOnboardingService from '../services/gateOnboarding.service';
-import * as gateDashboardService from '../services/gateDashboard.service';
-import * as gateGraphService from '../services/gateGraph.service';
-import * as gatePracticeService from '../services/gatePractice.service';
-import * as gatePlannerService from '../services/gatePlanner.service';
-import * as gateResourceService from '../services/gateResource.service';
-import * as gateRevisionService from '../services/gateRevision.service';
-import * as gateReadinessService from '../services/gateReadiness.service';
-import * as gateIntegrationService from '../services/gateIntegration.service';
+import { gateProfileSchema, gateTopicSchema, gateStudyTaskSchema, gateStudySessionSchema, gatePracticeAttemptSchema, gateMistakeSchema, gateRevisionItemSchema } from '../schemas/gate.schema';
+import { AppError } from '@/middleware/error.middleware';
 
-const prisma = new PrismaClient();
-
-// EXTENDED Error handler util
-const handleError = (res: Response, error: any) => res.status(500).json({ success: false, error: error.message });
-
-/* ---------------- EXAMS & PAPERS ---------------- */
-export const getExams = async (req: Request, res: Response) => {
+export async function getProfile(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const exams = await gateService.getActiveExams();
-        res.json({ success: true, data: exams });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) {
+            throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        }
+        const profile = await gateService.getGateProfileByUserId(userId);
+        sendSuccess(res, { message: 'Profile retrieved successfully', data: profile });
+    } catch (err) {
+        next(err);
+    }
+}
 
-export const getPapersForYear = async (req: Request, res: Response) => {
+export async function createProfile(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const papers = await gateService.getPapersByYear(parseInt(req.params.year as string, 10));
-        res.json({ success: true, data: papers });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) {
+            throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        }
+        const validatedData = gateProfileSchema.parse(req.body);
+        const profile = await gateService.createGateProfile(userId, validatedData);
+        sendSuccess(res, { message: 'Profile created successfully', data: profile, statusCode: HTTP_STATUS.CREATED });
+    } catch (err) {
+        next(err);
+    }
+}
 
-/* ---------------- READINESS ANALYTICS ---------------- */
-export const getReadiness = async (req: Request, res: Response) => {
+export async function updateProfile(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const userId = (req as any).user.id;
-        const result = await gateReadinessService.computeReadinessAnalytics(userId, req.params.year as string);
-        res.json({ success: true, data: result });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) {
+            throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        }
+        const validatedData = gateProfileSchema.parse(req.body);
+        const profile = await gateService.updateGateProfile(userId, validatedData);
+        sendSuccess(res, { message: 'Profile updated successfully', data: profile });
+    } catch (err) {
+        next(err);
+    }
+}
 
-export const generateCounterfactual = async (req: Request, res: Response) => {
+// ─── GATE Topics ──────────────────────────────────────────────────
+
+export async function getTopics(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const userId = (req as any).user.id;
-        const result = await gateReadinessService.generateCounterfactualScenario(userId, req.params.year as string, req.body.overrides);
-        res.json({ success: true, data: result });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const topics = await gateService.getGateTopics(userId);
+        sendSuccess(res, { message: 'Success', data: topics });
+    } catch (err) {
+        next(err);
+    }
+}
 
-/* ---------------- SYLLABUS ---------------- */
-export const getPaperSyllabus = async (req: Request, res: Response) => {
+export async function getTopicProgress(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const syllabus = await gateSyllabusService.getSyllabusForPaper(req.params.paperId as string);
-        res.json({ success: true, data: syllabus });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const progress = await gateService.getGateTopicProgress(userId);
+        sendSuccess(res, { message: 'Success', data: progress });
+    } catch (err) {
+        next(err);
+    }
+}
 
-export const getTopicExplorer = async (req: Request, res: Response) => {
-    res.json({ success: true, data: {} });
-};
-
-export const checkGraphCycles = async (req: Request, res: Response) => {
-    res.json({ success: true, data: {} });
-};
-
-/* ---------------- PYQ ENGINE ---------------- */
-export const getQuestions = async (req: Request, res: Response) => {
+export async function createTopic(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const { paperId, topicId, difficulty, page = 1, limit = 20 } = req.query;
-        const skip = (Number(page) - 1) * Number(limit);
-        // Simple filter
-        const filters: any = {};
-        if (paperId) filters.paperId = String(paperId);
-        if (topicId) filters.topicId = String(topicId);
-        if (difficulty) filters.difficulty = String(difficulty);
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const validatedData = gateTopicSchema.parse(req.body);
+        const topic = await gateService.createGateTopic(userId, validatedData);
+        sendSuccess(res, { message: 'Topic created successfully', data: topic, statusCode: HTTP_STATUS.CREATED });
+    } catch (err) {
+        next(err);
+    }
+}
 
-        const questions = await gateQuestionService.getQuestions({ ...filters, limit: Number(limit), skip });
-        res.json({ success: true, data: questions, meta: { page: Number(page), limit: Number(limit) } });
-    } catch (error: any) { handleError(res, error); }
-};
-
-export const getPersonalizedQuestions = async (req: Request, res: Response) => {
+export async function updateTopic(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const userId = (req as any).user.id;
-        const targetYear = req.query.targetYear ? parseInt(String(req.query.targetYear), 10) : new Date().getFullYear();
-        const limit = req.query.limit ? parseInt(String(req.query.limit), 10) : 10;
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const topicId = req.params.id;
+        if (!topicId) throw new AppError('Topic ID is required', HTTP_STATUS.BAD_REQUEST);
+        const validatedData = gateTopicSchema.parse(req.body);
+        const topic = await gateService.updateGateTopic(userId, topicId, validatedData);
+        sendSuccess(res, { message: 'Topic updated successfully', data: topic });
+    } catch (err) {
+        next(err);
+    }
+}
 
-        const questions = await gateQuestionService.generatePersonalizedSet(userId, targetYear, limit);
-        res.json({ success: true, data: questions });
-    } catch (error: any) { handleError(res, error); }
-};
-
-export const attemptQuestion = async (req: Request, res: Response) => {
+export async function deleteTopic(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const userId = (req as any).user.id;
-        const attempt = await gateQuestionService.recordAttempt(userId, { questionId: req.params.id, ...req.body });
-        res.status(201).json({ success: true, data: attempt });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const topicId = req.params.id;
+        if (!topicId) throw new AppError('Topic ID is required', HTTP_STATUS.BAD_REQUEST);
+        await gateService.deleteGateTopic(userId, topicId);
+        sendSuccess(res, { message: 'Topic deleted successfully', data: null });
+    } catch (err) {
+        next(err);
+    }
+}
 
-export const bookmarkQuestion = async (req: Request, res: Response) => {
-    try {
-        const userId = (req as any).user.id;
-        const result = await gateQuestionService.bookmarkQuestion(userId, req.params.id as string);
-        res.json({ success: true, data: result });
-    } catch (error: any) { handleError(res, error); }
-};
+// ─── GATE Study Tasks ─────────────────────────────────────────────
 
-/* ---------------- PRACTICE ENGINE ---------------- */
-export const startPracticeSession = async (req: Request, res: Response) => {
+export async function getStudyTasks(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const userId = (req as any).user.id;
-        const questions = await gatePracticeService.generatePracticeSession(userId, req.body);
-        res.status(201).json({ success: true, data: questions });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const { weekStart, weekEnd } = req.query;
+        const tasks = await gateService.getGateStudyTasks(
+            userId,
+            weekStart ? new Date(weekStart as string) : undefined,
+            weekEnd ? new Date(weekEnd as string) : undefined
+        );
+        sendSuccess(res, { message: 'Success', data: tasks });
+    } catch (err) {
+        next(err);
+    }
+}
 
-export const recordPracticeAttempt = async (req: Request, res: Response) => {
+export async function createStudyTask(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const userId = (req as any).user.id;
-        const attemptResult = await gatePracticeService.recordPracticeAttempt(userId, { questionId: req.params.id, ...req.body });
-        res.json({ success: true, data: attemptResult });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
 
-/* ---------------- ADAPTIVE PLANNER ---------------- */
-export const getDailyPlan = async (req: Request, res: Response) => {
-    try {
-        const userId = (req as any).user.id;
-        const sessions = await gatePlannerService.generateDailyPlan(userId);
-        res.json({ success: true, data: sessions });
-    } catch (error: any) { handleError(res, error); }
-};
+        const { gateStudyTaskSchema } = await import('../schemas/gate.schema');
+        const validatedData = gateStudyTaskSchema.parse(req.body);
 
-export const updatePlannerSession = async (req: Request, res: Response) => {
-    try {
-        const updated = await gatePlannerService.updateSessionState(req.params.sessionId as string, req.body.action, req.body.reason);
-        res.json({ success: true, data: updated });
-    } catch (error: any) { handleError(res, error); }
-};
+        const task = await gateService.createGateStudyTask(userId, validatedData);
+        sendSuccess(res, { message: 'Task created successfully', data: task, statusCode: HTTP_STATUS.CREATED });
+    } catch (err) {
+        next(err);
+    }
+}
 
-export const forceRegeneratePlan = async (req: Request, res: Response) => {
+export async function updateStudyTask(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const userId = (req as any).user.id;
-        const sessions = await gatePlannerService.regeneratePlan(userId);
-        res.json({ success: true, data: sessions });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const taskId = req.params.id;
+        if (!taskId) throw new AppError('Task ID is required', HTTP_STATUS.BAD_REQUEST);
 
-/* ---------------- LEARNING RESOURCES ---------------- */
-export const getRankedResources = async (req: Request, res: Response) => {
-    try {
-        const userId = (req as any).user.id;
-        const resources = await gateResourceService.getPersonalizedResources(userId, req.query);
-        res.json({ success: true, data: resources });
-    } catch (error: any) { handleError(res, error); }
-};
+        const { gateStudyTaskSchema } = await import('../schemas/gate.schema');
+        const validatedData = gateStudyTaskSchema.partial().parse(req.body);
 
-export const logResourceAction = async (req: Request, res: Response) => {
-    try {
-        const userId = (req as any).user.id;
-        const result = await gateResourceService.logResourceAction(userId, req.params.id as string, req.body.actionType);
-        res.json({ success: true, data: result });
-    } catch (error: any) { handleError(res, error); }
-};
+        const task = await gateService.updateGateStudyTask(userId, taskId, validatedData);
+        sendSuccess(res, { message: 'Task updated successfully', data: task });
+    } catch (err) {
+        next(err);
+    }
+}
 
-/* ---------------- MOCKS ---------------- */
-export const getMocksForPaper = async (req: Request, res: Response) => {
+export async function deleteStudyTask(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const mocks = await (prisma as any).gateMockTest.findMany({ where: { paperId: req.params.paperId } });
-        res.json({ success: true, data: mocks });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const taskId = req.params.id;
+        if (!taskId) throw new AppError('Task ID is required', HTTP_STATUS.BAD_REQUEST);
 
-export const startMockAttempt = async (req: Request, res: Response) => {
-    try {
-        const userId = (req as any).user.id;
-        const attempt = await gateMockService.startMockAttempt(userId, req.params.id as string);
-        res.json({ success: true, data: attempt });
-    } catch (error: any) { handleError(res, error); }
-};
+        await gateService.deleteGateStudyTask(userId, taskId);
+        sendSuccess(res, { message: 'Task deleted successfully', data: null });
+    } catch (err) {
+        next(err);
+    }
+}
 
-export const submitMockAttempt = async (req: Request, res: Response) => {
+export async function getWeeklySummary(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        // `req.params.id` is the attemptId
-        const result = await gateMockService.submitMockAttempt(req.params.id as string, req.body);
-        res.json({ success: true, data: result });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const { weekStart, weekEnd } = req.query;
 
-export const generateCustomMock = async (req: Request, res: Response) => {
-    try {
-        const userId = (req as any).user.id;
-        const result = await gateMockService.generateAuthenticMock({ ...req.body, userId });
-        res.json({ success: true, data: result });
-    } catch (error: any) { handleError(res, error); }
-};
+        if (!weekStart || !weekEnd) throw new AppError('weekStart and weekEnd are required', HTTP_STATUS.BAD_REQUEST);
 
-/* ---------------- MISTAKE BOOK & REVISION ---------------- */
-export const getRevisionDashboard = async (req: Request, res: Response) => {
-    try {
-        const userId = (req as any).user.id;
-        const result = await gateRevisionService.getRevisionDashboard(userId);
-        res.json({ success: true, data: result });
-    } catch (error: any) { handleError(res, error); }
-};
+        const summary = await gateService.getWeeklyPlannerSummary(
+            userId,
+            new Date(weekStart as string),
+            new Date(weekEnd as string)
+        );
+        sendSuccess(res, { message: 'Success', data: summary });
+    } catch (err) {
+        next(err);
+    }
+}
 
-export const logMistake = async (req: Request, res: Response) => {
-    try {
-        const userId = (req as any).user.id;
-        const result = await gateRevisionService.logMistake(userId, req.body);
-        res.json({ success: true, data: result });
-    } catch (error: any) { handleError(res, error); }
-};
+// ─── GATE Study Sessions ──────────────────────────────────────────
 
-export const evaluateRevision = async (req: Request, res: Response) => {
+export async function getStudySessions(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const userId = (req as any).user.id;
-        const { topicId, performanceScore } = req.body;
-        const result = await gateRevisionService.evaluateRevision(userId, topicId, parseFloat(performanceScore));
-        res.json({ success: true, data: result });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
 
-export const resolveMistake = async (req: Request, res: Response) => {
-    try {
-        const userId = (req as any).user.id;
-        const result = await gateRevisionService.resolveMistake(req.params.id as string, userId);
-        res.json({ success: true, data: result });
-    } catch (error: any) { handleError(res, error); }
-};
+        const { weekStart, weekEnd, sessionType, topicId } = req.query;
 
-/* ---------------- CAREERNOVA INTEGRATION ---------------- */
-export const getTimeAllocation = async (req: Request, res: Response) => {
-    try {
-        const userId = (req as any).user.id;
-        const result = await gateIntegrationService.unifyCareerVectors(userId, req.params.year as string);
-        res.json({ success: true, data: result });
-    } catch (error: any) { handleError(res, error); }
-};
+        const sessions = await gateService.getGateStudySessions(
+            userId,
+            weekStart ? new Date(weekStart as string) : undefined,
+            weekEnd ? new Date(weekEnd as string) : undefined,
+            sessionType as string,
+            topicId as string
+        );
+        sendSuccess(res, { message: 'Success', data: sessions });
+    } catch (err) {
+        next(err);
+    }
+}
 
-/* ---------------- STUDY PLANS ---------------- */
-export const createStudyPlan = async (req: Request, res: Response) => {
+export async function createStudySession(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const userId = (req as any).user.id;
-        const { targetExamId, title, startDate, endDate } = req.body;
-        const plan = await gateStudyPlanService.createStudyPlan(userId, targetExamId, title, new Date(startDate), new Date(endDate));
-        res.status(201).json({ success: true, data: plan });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
 
-export const getStudyPlans = async (req: Request, res: Response) => {
-    try {
-        const userId = (req as any).user.id;
-        const plans = await gateStudyPlanService.getStudyPlans(userId);
-        res.json({ success: true, data: plans });
-    } catch (error: any) { handleError(res, error); }
-};
+        const { gateStudySessionSchema } = await import('../schemas/gate.schema');
+        const validatedData = gateStudySessionSchema.parse(req.body);
 
-export const updateSessionStatus = async (req: Request, res: Response) => {
-    try {
-        const updated = await gateStudyPlanService.updateStudySessionStatus(req.params.id as string, req.body.status);
-        res.json({ success: true, data: updated });
-    } catch (error: any) { handleError(res, error); }
-};
+        const session = await gateService.createGateStudySession(userId, validatedData);
+        sendSuccess(res, { message: 'Session created successfully', data: session, statusCode: HTTP_STATUS.CREATED });
+    } catch (err) {
+        next(err);
+    }
+}
 
-/* ---------------- PROGRESS / MASTERY ---------------- */
-export const updateMastery = async (req: Request, res: Response) => {
+export async function updateStudySession(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const userId = (req as any).user.id;
-        const { topicId, pointDelta } = req.body;
-        const mastery = await gateProgressService.updateTopicMastery(userId, topicId, pointDelta);
-        res.json({ success: true, data: mastery });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const sessionId = req.params.id;
+        if (!sessionId) throw new AppError('Session ID is required', HTTP_STATUS.BAD_REQUEST);
 
-/* ---------------- ADMIN SYNC DASHBOARD ---------------- */
-export const getSyncStatus = async (req: Request, res: Response) => {
-    try {
-        const statusLogs = await gateSyncService.getSyncStatus();
-        res.json({ success: true, data: statusLogs });
-    } catch (error: any) { handleError(res, error); }
-};
+        const { gateStudySessionSchema } = await import('../schemas/gate.schema');
+        const validatedData = gateStudySessionSchema.partial().parse(req.body);
 
-export const triggerSync = async (req: Request, res: Response) => {
-    try {
-        const { entityType, sourceUrl } = req.body;
-        const result = await gateSyncService.syncExamData(req.params.examId as string, entityType, sourceUrl);
-        res.json({ success: true, data: result });
-    } catch (error: any) { handleError(res, error); }
-};
+        const session = await gateService.updateGateStudySession(userId, sessionId, validatedData);
+        sendSuccess(res, { message: 'Session updated successfully', data: session });
+    } catch (err) {
+        next(err);
+    }
+}
 
-/* ---------------- ONBOARDING & DIAGNOSTICS ---------------- */
-export const getOnboarding = async (req: Request, res: Response) => {
+export async function deleteStudySession(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const userId = (req as any).user.id;
-        const state = await gateOnboardingService.getOnboardingState(userId);
-        res.json({ success: true, data: state });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const sessionId = req.params.id;
+        if (!sessionId) throw new AppError('Session ID is required', HTTP_STATUS.BAD_REQUEST);
 
-export const saveOnboarding = async (req: Request, res: Response) => {
-    try {
-        const userId = (req as any).user.id;
-        const { step, data } = req.body;
-        const result = await gateOnboardingService.saveOnboardingStep(userId, step, data);
-        res.json({ success: true, data: result });
-    } catch (error: any) { handleError(res, error); }
-};
+        await gateService.deleteGateStudySession(userId, sessionId);
+        sendSuccess(res, { message: 'Session deleted successfully', data: null });
+    } catch (err) {
+        next(err);
+    }
+}
 
-export const startDiagnostic = async (req: Request, res: Response) => {
+export async function getStudySessionSummary(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const { paperCode, year } = req.body;
-        const questions = await gateOnboardingService.generateDiagnosticAssessment(paperCode, parseInt(year, 10));
-        res.json({ success: true, data: questions });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const { weekStart, weekEnd } = req.query;
 
-export const submitDiagnostic = async (req: Request, res: Response) => {
-    try {
-        const userId = (req as any).user.id;
-        const { targetYear, submissions } = req.body;
-        const result = await gateOnboardingService.evaluateDiagnostic(userId, parseInt(targetYear, 10), submissions);
-        res.json({ success: true, data: result });
-    } catch (error: any) { handleError(res, error); }
-};
+        if (!weekStart || !weekEnd) throw new AppError('weekStart and weekEnd are required', HTTP_STATUS.BAD_REQUEST);
 
-/* ---------------- DASHBOARD AGGREGATION ---------------- */
-export const getDashboardMetrics = async (req: Request, res: Response) => {
+        const summary = await gateService.getStudySessionSummary(
+            userId,
+            new Date(weekStart as string),
+            new Date(weekEnd as string)
+        );
+        sendSuccess(res, { message: 'Success', data: summary });
+    } catch (err) {
+        next(err);
+    }
+}
+
+export async function getPracticePerformance(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-        const userId = (req as any).user.id;
-        const metrics = await gateDashboardService.getAggregatedDashboardData(userId);
-        res.json({ success: true, data: metrics });
-    } catch (error: any) { handleError(res, error); }
-};
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const summary = await gateService.getPracticeSummary(userId);
+        res.status(HTTP_STATUS.OK).json({ status: 'success', data: summary });
+    } catch (err) { next(err); }
+}
+
+export async function getMockSummary(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const summary = await gateService.getMockSummary(userId);
+        res.status(HTTP_STATUS.OK).json({ status: 'success', data: summary });
+    } catch (err) { next(err); }
+}
+
+export async function getGatePracticeAttempts(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const { startDate, endDate, topicId, attemptType, paperCode, paperYear } = req.query;
+        const attempts = await gateService.getGatePracticeAttempts(
+            userId,
+            startDate ? new Date(startDate as string) : undefined,
+            endDate ? new Date(endDate as string) : undefined,
+            topicId as string,
+            attemptType as string,
+            paperCode as string,
+            paperYear ? parseInt(paperYear as string) : undefined
+        );
+        res.status(HTTP_STATUS.OK).json({ status: 'success', data: attempts });
+    } catch (err) { next(err); }
+}
+
+export async function createGatePracticeAttempt(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const validatedData = gatePracticeAttemptSchema.parse(req.body);
+        const attempt = await gateService.createGatePracticeAttempt(userId, validatedData);
+        res.status(HTTP_STATUS.CREATED).json({ status: 'success', data: attempt });
+    } catch (err) { next(err); }
+}
+
+export async function updateGatePracticeAttempt(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const validatedData = gatePracticeAttemptSchema.parse(req.body);
+        const attempt = await gateService.updateGatePracticeAttempt(userId, req.params.id as string, validatedData);
+        res.status(HTTP_STATUS.OK).json({ status: 'success', data: attempt });
+    } catch (err) { next(err); }
+}
+
+export async function deleteGatePracticeAttempt(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        await gateService.deleteGatePracticeAttempt(userId, req.params.id as string);
+        res.status(HTTP_STATUS.NO_CONTENT).send();
+    } catch (err) { next(err); }
+}
+
+export async function createGateMistake(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const validatedData = gateMistakeSchema.parse(req.body);
+        const mistake = await gateService.createGateMistake(userId, validatedData);
+        res.status(HTTP_STATUS.CREATED).json({ status: 'success', data: mistake });
+    } catch (err) { next(err); }
+}
+
+export async function getGateMistakes(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const mistakes = await gateService.getGateMistakes(userId, req.query);
+        res.status(HTTP_STATUS.OK).json({ status: 'success', data: mistakes });
+    } catch (err) { next(err); }
+}
+
+export async function updateGateMistake(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const validatedData = gateMistakeSchema.partial().parse(req.body);
+        const mistake = await gateService.updateGateMistake(userId, req.params.id as string, validatedData);
+        res.status(HTTP_STATUS.OK).json({ status: 'success', data: mistake });
+    } catch (err) { next(err); }
+}
+
+export async function deleteGateMistake(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        await gateService.deleteGateMistake(userId, req.params.id as string);
+        res.status(HTTP_STATUS.NO_CONTENT).send();
+    } catch (err) { next(err); }
+}
+
+export async function getMistakeSummary(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const summary = await gateService.getMistakeSummary(userId);
+        res.status(HTTP_STATUS.OK).json({ status: 'success', data: summary });
+    } catch (err) { next(err); }
+}
+
+// ─── GATE Revision Hub ──────────────────────────────────────────────
+
+export async function createGateRevisionItem(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const validatedData = gateRevisionItemSchema.parse(req.body);
+        const item = await gateService.createGateRevisionItem(userId, validatedData);
+        res.status(HTTP_STATUS.CREATED).json({ status: 'success', data: item });
+    } catch (err) { next(err); }
+}
+
+export async function getGateRevisionItems(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const items = await gateService.getGateRevisionItems(userId, req.query);
+        res.status(HTTP_STATUS.OK).json({ status: 'success', data: items });
+    } catch (err) { next(err); }
+}
+
+export async function updateGateRevisionItem(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const validatedData = gateRevisionItemSchema.partial().parse(req.body);
+        const item = await gateService.updateGateRevisionItem(userId, req.params.id as string, validatedData);
+        res.status(HTTP_STATUS.OK).json({ status: 'success', data: item });
+    } catch (err) { next(err); }
+}
+
+export async function deleteGateRevisionItem(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        await gateService.deleteGateRevisionItem(userId, req.params.id as string);
+        res.status(HTTP_STATUS.NO_CONTENT).send();
+    } catch (err) { next(err); }
+}
+
+export async function getGateAnalytics(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const data = await gateService.getComprehensiveAnalytics(userId);
+        res.status(HTTP_STATUS.OK).json({ status: 'success', data });
+    } catch (err) { next(err); }
+}
+
+export async function reviewGateRevisionItem(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const item = await gateService.reviewGateRevisionItem(userId, req.params.id as string);
+        res.status(HTTP_STATUS.OK).json({ status: 'success', data: item });
+    } catch (err) { next(err); }
+}
+
+export async function getGateReadiness(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const data = await gateService.getGateReadiness(userId);
+        res.status(HTTP_STATUS.OK).json({ status: 'success', data });
+    } catch (err) { next(err); }
+}
+
+export async function completeGateRevisionItem(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const item = await gateService.completeGateRevisionItem(userId, req.params.id as string);
+        res.status(HTTP_STATUS.OK).json({ status: 'success', data: item });
+    } catch (err) { next(err); }
+}
+
+export async function reopenGateRevisionItem(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const item = await gateService.reopenGateRevisionItem(userId, req.params.id as string);
+        res.status(HTTP_STATUS.OK).json({ status: 'success', data: item });
+    } catch (err) { next(err); }
+}
+
+export async function rescheduleGateRevisionItem(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const { scheduledDate } = req.body;
+        if (!scheduledDate) throw new AppError('scheduledDate is required', HTTP_STATUS.BAD_REQUEST);
+        const item = await gateService.rescheduleGateRevisionItem(userId, req.params.id as string, scheduledDate);
+        res.status(HTTP_STATUS.OK).json({ status: 'success', data: item });
+    } catch (err) { next(err); }
+}
+
+export async function getRevisionSummary(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+        const userId = req.user?.sub;
+        if (!userId) throw new AppError('Unauthorized', HTTP_STATUS.UNAUTHORIZED);
+        const summary = await gateService.getRevisionSummary(userId);
+        res.status(HTTP_STATUS.OK).json({ status: 'success', data: summary });
+    } catch (err) { next(err); }
+}

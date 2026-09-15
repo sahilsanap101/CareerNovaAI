@@ -10,15 +10,39 @@ import {
   BarChart3,
   Map,
   GitFork,
-  Calendar,
   Bot,
   FileText,
   Mic,
+  BookOpen,
+  BookX,
+  PenTool,
+  Calendar,
+  Clock,
+  MessageSquare,
+  Users,
+  ChevronLeft,
+  ChevronRight,
+  Menu,
+  CheckCircle2,
+  Bell,
+  FileCode,
+  BrainCircuit,
+  Target,
+  Code2,
+  Database,
+  Binary,
+  TestTube,
+  BookMarked,
+  Flag,
+  AlertOctagon,
+  Library,
+  LineChart,
+  Activity,
+  Star
 } from 'lucide-react';
 import { clsx } from 'clsx';
-
-import { Avatar } from '@/components/ui/Avatar';
 import { useAuthStore } from '@/store/auth.store';
+import { Avatar } from '@/components/ui/Avatar';
 import { authApi } from '@/api/auth.api';
 import { APP_ROUTES } from '@pathforge/shared-constants';
 
@@ -26,6 +50,7 @@ const mainNavItems = [
   { label: 'Dashboard', href: APP_ROUTES.DASHBOARD, icon: LayoutDashboard },
   { label: 'Profile & Skills', href: APP_ROUTES.PROFILE, icon: User },
   { label: 'Settings', href: APP_ROUTES.SETTINGS, icon: Settings },
+  { label: 'Success Stories', href: '/success-stories', icon: Star },
 ];
 
 const byserNavItems = [
@@ -43,7 +68,20 @@ const roadmapNavItems = [
 const aiNavItems = [
   { label: 'AIOS Career System', href: APP_ROUTES.AI, icon: Bot },
   { label: 'Resume Intelligence', href: APP_ROUTES.RESUME_INTELLIGENCE, icon: FileText },
-  { label: 'Interview Coach', href: APP_ROUTES.INTERVIEW_COACH, icon: Mic },
+];
+
+const gateNavItems = [
+  { label: 'GATE Dashboard', href: '/gate', icon: LayoutDashboard },
+  { label: 'Official Syllabus', href: '/gate/syllabus', icon: BookOpen },
+  { label: 'Practice & PYQs', href: '/gate/practice', icon: PenTool },
+  { label: 'Study Planner', href: '/gate/planner', icon: Calendar },
+  { label: 'Study Sessions', href: '/gate/study', icon: Clock },
+  { label: 'Practice Attempts', href: '/gate/attempts', icon: GitFork },
+  { label: 'Mistake Log', href: '/gate/mistakes', icon: AlertOctagon },
+  { label: 'Revision Hub', href: '/gate/revisions', icon: Library },
+  { label: 'Mock Tests', href: '/gate/mocks', icon: Target },
+  { label: 'Analytics Hub', href: '/gate/analytics', icon: LineChart },
+  { label: 'Readiness Assessment', href: '/gate/readiness', icon: Activity },
 ];
 
 export function Sidebar() {
@@ -100,6 +138,27 @@ export function Sidebar() {
           </p>
           <div className="space-y-0.5">
             {aiNavItems.map((item) => (
+              <NavLink
+                key={item.href}
+                to={item.href}
+                className={({ isActive }: { isActive: boolean }) =>
+                  clsx('sidebar-item', isActive && 'active')
+                }
+              >
+                <item.icon className="h-4 w-4 shrink-0" aria-hidden="true" />
+                {item.label}
+              </NavLink>
+            ))}
+          </div>
+        </div>
+
+        {/* GATE Intelligence Section */}
+        <div>
+          <p className="px-3 mb-2 text-xs font-semibold text-rose-500 uppercase tracking-wider">
+            GATE Intelligence
+          </p>
+          <div className="space-y-0.5">
+            {gateNavItems.map((item) => (
               <NavLink
                 key={item.href}
                 to={item.href}
