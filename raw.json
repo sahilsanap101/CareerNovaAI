@@ -1,0 +1,26 @@
+﻿--- 1. MarketAlignment values across Top-3 Careers for 5 Profiles ---
+
+Student ID: stu_0
+  - AI Engineer: Base =   21, Score(+Market) =   21 | Delta (approx MarketAlignment) =  0
+  - Frontend Developer: Base =   15, Score(+Market) =   15 | Delta (approx MarketAlignment) =  0
+  - Backend Developer: Base =   11, Score(+Market) =   11 | Delta (approx MarketAlignment) =  0
+
+Student ID: stu_1
+  - Backend Developer: Base =   23, Score(+Market) =   23 | Delta (approx MarketAlignment) =  0
+  - Frontend Developer: Base =   12, Score(+Market) =   12 | Delta (approx MarketAlignment) =  0
+  - AI Engineer: Base =   12, Score(+Market) =   12 | Delta (approx MarketAlignment) =  0
+
+Student ID: stu_2
+  - Frontend Developer: Base =   25, Score(+Market) =   25 | Delta (approx MarketAlignment) =  0
+  - Backend Developer: Base =   12, Score(+Market) =   12 | Delta (approx MarketAlignment) =  0
+  - AI Engineer: Base =   11, Score(+Market) =   11 | Delta (approx MarketAlignment) =  0
+
+Student ID: stu_3
+  - Frontend Developer: Base =   20, Score(+Market) =   20 | Delta (approx MarketAlignment) =  0
+  - AI Engineer: Base =   17, Score(+Market) =   17 | Delta (approx MarketAlignment) =  0
+  - Backend Developer: Base =   15, Score(+Market) =   15 | Delta (approx MarketAlignment) =  0
+
+Student ID: stu_4
+  - AI Engineer: Base =   24, Score(+Market) =   24 | Delta (approx MarketAlignment) =  0
+  - Frontend Developer: Base =   14, Score(+Market) =   14 | Delta (approx MarketAlignment) =  0
+  - Backend Developer: Base =   14, Score(+Market) =   14 | Delta (approx MarketAlignment) =  0

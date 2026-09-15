@@ -1,0 +1,66 @@
+Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+
+Error: Prisma schema validation - (validate wasm)
+Error code: P1012
+[1;91merror[0m: [1mError validating field `subject` in model `GateResource`: The relation field `subject` on model `GateResource` is missing an opposite relation field on the model `GateSyllabusSubject`. Either run `prisma format` or add it manually.[0m
+  [1;94m-->[0m  [4mprisma\schema.prisma:924[0m
+[1;94m   | [0m
+[1;94m923 | [0m  paper GatePaper          @relation(fields: [paperId], references: [id], onDelete: Cascade)
+[1;94m924 | [0m  [1;91msubject GateSyllabusSubject? @relation(fields: [subjectId], references: [id], onDelete: SetNull)[0m
+[1;94m925 | [0m  topic GateSyllabusTopic? @relation(fields: [topicId], references: [id], onDelete: SetNull)
+[1;94m   | [0m
+[1;91merror[0m: [1mError validating field `user` in model `GateUserResourceAction`: The relation field `user` on model `GateUserResourceAction` is missing an opposite relation field on the model `User`. Either run `prisma format` or add it manually.[0m
+  [1;94m-->[0m  [4mprisma\schema.prisma:940[0m
+[1;94m   | [0m
+[1;94m939 | [0m
+[1;94m940 | [0m  [1;91muser     User          @relation(fields: [userId], references: [id], onDelete: Cascade)[0m
+[1;94m941 | [0m  resource GateResource  @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+[1;94m   | [0m
+[1;91merror[0m: [1mError validating field `actualQuestion` in model `GateMockQuestion`: The relation field `actualQuestion` on model `GateMockQuestion` is missing an opposite relation field on the model `GateQuestion`. Either run `prisma format` or add it manually.[0m
+  [1;94m-->[0m  [4mprisma\schema.prisma:1159[0m
+[1;94m   | [0m
+[1;94m1158 | [0m  mock           GateMockTest     @relation(fields: [mockId], references: [id], onDelete: Cascade)
+[1;94m1159 | [0m  [1;91mactualQuestion GateQuestion?    @relation(fields: [actualQuestionId], references: [id], onDelete: SetNull)[0m
+[1;94m1160 | [0m  answers        GateMockAnswer[]
+[1;94m   | [0m
+[1;91merror[0m: [1mError validating field `exam` in model `GateOfficialResource`: The relation field `exam` on model `GateOfficialResource` is missing an opposite relation field on the model `GateExam`. Either run `prisma format` or add it manually.[0m
+  [1;94m-->[0m  [4mprisma\schema.prisma:1293[0m
+[1;94m   | [0m
+[1;94m1292 | [0m
+[1;94m1293 | [0m  [1;91mexam               GateExam                 @relation(fields: [examId], references: [id], onDelete: Cascade)[0m
+[1;94m1294 | [0m
+[1;94m   | [0m
+[1;91merror[0m: [1mError validating field `user` in model `GateUserTopic`: The relation field `user` on model `GateUserTopic` is missing an opposite relation field on the model `User`. Either run `prisma format` or add it manually.[0m
+  [1;94m-->[0m  [4mprisma\schema.prisma:1320[0m
+[1;94m   | [0m
+[1;94m1319 | [0m
+[1;94m1320 | [0m  [1;91muser          User                @relation(fields: [userId], references: [id], onDelete: Cascade)[0m
+[1;94m1321 | [0m
+[1;94m   | [0m
+[1;91merror[0m: [1mError validating field `user` in model `GateStudyTask`: The relation field `user` on model `GateStudyTask` is missing an opposite relation field on the model `User`. Either run `prisma format` or add it manually.[0m
+  [1;94m-->[0m  [4mprisma\schema.prisma:1342[0m
+[1;94m   | [0m
+[1;94m1341 | [0m
+[1;94m1342 | [0m  [1;91muser             User      @relation(fields: [userId], references: [id], onDelete: Cascade)[0m
+[1;94m1343 | [0m
+[1;94m   | [0m
+[1;91merror[0m: [1mError validating field `user` in model `GateMistake`: The relation field `user` on model `GateMistake` is missing an opposite relation field on the model `User`. Either run `prisma format` or add it manually.[0m
+  [1;94m-->[0m  [4mprisma\schema.prisma:1368[0m
+[1;94m   | [0m
+[1;94m1367 | [0m
+[1;94m1368 | [0m  [1;91muser           User      @relation(fields: [userId], references: [id], onDelete: Cascade)[0m
+[1;94m1369 | [0m
+[1;94m   | [0m
+[1;91merror[0m: [1mError validating field `user` in model `GateRevisionItem`: The relation field `user` on model `GateRevisionItem` is missing an opposite relation field on the model `User`. Either run `prisma format` or add it manually.[0m
+  [1;94m-->[0m  [4mprisma\schema.prisma:1387[0m
+[1;94m   | [0m
+[1;94m1386 | [0m
+[1;94m1387 | [0m  [1;91muser            User      @relation(fields: [userId], references: [id], onDelete: Cascade)[0m
+[1;94m1388 | [0m
+[1;94m   | [0m
+
+Validation Error Count: 8
+[Context: validate]
+
+Prisma CLI Version : 5.22.0

@@ -1,17 +1,7 @@
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import {
-  Sparkles,
-  TrendingUp,
-  ShieldCheck,
-  AlertCircle,
-  Briefcase,
-  ChevronRight,
-  Info,
-  CheckCircle2,
-  RefreshCw,
-  Zap,
-} from 'lucide-react';
+import { Sparkles, TrendingUp, ShieldCheck, AlertCircle, Briefcase, ChevronRight, Info, CheckCircle2, RefreshCw, Zap } from 'lucide-react';
+import { FeedbackSurvey } from './FeedbackSurvey';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, Badge } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -236,6 +226,8 @@ export default function Recommendations() {
                 ))}
               </div>
             </div>
+
+            <FeedbackSurvey recommendationId={selectedRec.id} />
           </div>
         </Modal>
       )}

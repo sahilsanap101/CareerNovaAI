@@ -1,44 +1,30 @@
+import { normalizeSkillName } from '@pathforge/shared-constants';
+import * as fs from 'fs';
+import * as path from 'path';
+
 export interface DependencyRule {
   skill: string;
-  prerequisites: string[];
+  prerequisites: { skill: string; source: string }[];
 }
 
-export const SKILL_DEPENDENCY_GRAPH: DependencyRule[] = [
-  // Web Development Tree
-  { skill: 'CSS', prerequisites: ['HTML'] },
-  { skill: 'JavaScript', prerequisites: ['HTML', 'CSS'] },
-  { skill: 'TypeScript', prerequisites: ['JavaScript'] },
-  { skill: 'React', prerequisites: ['HTML', 'CSS', 'JavaScript'] },
-  { skill: 'Angular', prerequisites: ['TypeScript'] },
-  { skill: 'Vue', prerequisites: ['JavaScript'] },
-  { skill: 'Node.js', prerequisites: ['JavaScript'] },
-  { skill: 'Express', prerequisites: ['Node.js'] },
+let SKILL_DEPENDENCY_GRAPH: DependencyRule[] = [];
 
-  // Java Tree
-  { skill: 'Java', prerequisites: ['C'] },
-  { skill: 'Spring Boot', prerequisites: ['Java'] },
+try {
+  const possiblePaths = [
+    path.join(__dirname, '../../../../../../research/data/dependency_graph.json'), // from src
+    path.join(process.cwd(), 'research/data/dependency_graph.json'), // if run from workspace root
+    path.join(process.cwd(), '../../research/data/dependency_graph.json'), // if run from apps/api
+  ];
 
-  // Python & AI Tree
-  { skill: 'Python', prerequisites: ['C'] },
-  { skill: 'Django', prerequisites: ['Python'] },
-  { skill: 'Machine Learning', prerequisites: ['Python'] },
-  { skill: 'TensorFlow', prerequisites: ['Python', 'Machine Learning'] },
-  { skill: 'PyTorch', prerequisites: ['Python', 'Machine Learning'] },
-
-  // Cloud & DevOps Tree
-  { skill: 'Linux', prerequisites: ['C'] },
-  { skill: 'Networking', prerequisites: ['Linux'] },
-  { skill: 'Docker', prerequisites: ['Linux'] },
-  { skill: 'Kubernetes', prerequisites: ['Docker', 'Linux'] },
-  { skill: 'AWS', prerequisites: ['Networking', 'Linux'] },
-  { skill: 'Azure', prerequisites: ['Networking', 'Linux'] },
-  { skill: 'GCP', prerequisites: ['Networking', 'Linux'] },
-
-  // Cyber Security Tree
-  { skill: 'Wireshark', prerequisites: ['Networking', 'Linux'] },
-  { skill: 'Burp Suite', prerequisites: ['Networking', 'HTML'] },
-  { skill: 'Metasploit', prerequisites: ['Linux', 'Networking', 'Python'] },
-];
+  for (const p of possiblePaths) {
+    if (fs.existsSync(p)) {
+      SKILL_DEPENDENCY_GRAPH = JSON.parse(fs.readFileSync(p, 'utf-8'));
+      break;
+    }
+  }
+} catch (error) {
+  console.warn('Failed to load dynamic skill dependency graph, using empty fallback.', error);
+}
 
 /**
  * Returns ordered skill learning order respecting prerequisites.
@@ -51,10 +37,11 @@ export function getPrerequisiteChain(targetSkills: string[]): string[] {
     if (visited.has(skillName)) return;
     visited.add(skillName);
 
-    const rule = SKILL_DEPENDENCY_GRAPH.find((r) => r.skill.toLowerCase() === skillName.toLowerCase());
+    const normTarget = normalizeSkillName(skillName);
+    const rule = SKILL_DEPENDENCY_GRAPH.find((r) => normalizeSkillName(r.skill) === normTarget);
     if (rule) {
       for (const prereq of rule.prerequisites) {
-        visit(prereq);
+        visit(prereq.skill);
       }
     }
     if (!ordered.includes(skillName)) {

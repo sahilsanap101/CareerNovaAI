@@ -11,6 +11,11 @@ export const BYSER_WEIGHTS = {
   CERTIFICATIONS: 0.10,  // 10% Verified Professional Certifications
   CODING: 0.05,          // 5% Coding Platform Activity & Problem Solving
   GOALS: 0.05,           // 5% Preferred Job Role & Industry Match
+
+  // --- ADDITIVE LAYER 1 EXTENSION ---
+  // Market Alignment uses external ESCO proxy data to boost scores 
+  // It acts additively strictly on top of the deterministic core equation without altering base weights
+  MARKET_ALIGNMENT: 0.15,
 };
 
 export type ByserWeights = typeof BYSER_WEIGHTS;

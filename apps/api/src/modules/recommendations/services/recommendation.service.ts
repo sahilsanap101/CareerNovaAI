@@ -33,7 +33,7 @@ export async function generateRecommendations(userId: string) {
       careerPathId: rec.careerPathId,
       totalScore: rec.totalScore,
       SGI: rec.SGI,
-      confidence: (rec as any).confidence,
+      confidence: (rec as any).match_score || 0,
       explanation: rec.explanation as unknown as import('@prisma/client').Prisma.InputJsonValue,
       factors: rec.factors,
     })),
@@ -137,4 +137,14 @@ export async function getStudentAnalytics(userId: string) {
     projectTechDistribution: Object.entries(projectTech).map(([technology, count]) => ({ technology, count })),
     interestsList: student.interests.map((i) => i.interest.name),
   };
+}
+
+export async function submitHumanFeedback(userId: string, payload: { recommendationId: string, relevanceScore: number, roadmapClarityScore: number, freeTextComment?: string }) {
+  return recRepo.createFeedback({
+    userId,
+    recommendationId: payload.recommendationId,
+    relevanceScore: payload.relevanceScore,
+    roadmapClarityScore: payload.roadmapClarityScore,
+    freeTextComment: payload.freeTextComment
+  });
 }

@@ -94,3 +94,7 @@ export async function getRecommendationHistory(userId: string) {
     orderBy: { generatedAt: 'desc' },
   });
 }
+
+export async function createFeedback(data: { userId: string, recommendationId: string, relevanceScore: number, roadmapClarityScore: number, freeTextComment?: string }) {
+  return prisma.feedback.create({ data });
+}

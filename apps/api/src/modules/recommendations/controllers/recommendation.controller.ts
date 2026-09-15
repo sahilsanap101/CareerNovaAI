@@ -74,3 +74,15 @@ export async function getAnalytics(req: Request, res: Response, next: NextFuncti
     next(err);
   }
 }
+
+// ─── Feedback ─────────────────────────────────────────────────────
+
+export async function submitFeedback(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const feedbackPayload = req.body;
+    const data = await recService.submitHumanFeedback(req.user!.sub, feedbackPayload);
+    sendSuccess(res, { message: 'Feedback submitted securely for human evaluation.', data, statusCode: HTTP_STATUS.CREATED });
+  } catch (err) {
+    next(err);
+  }
+}

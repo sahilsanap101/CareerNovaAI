@@ -1,0 +1,1 @@
+src/pages/Gate/GateOnboarding.tsx(231,88): error TS2304: Cannot find name 'ShieldAlert'.

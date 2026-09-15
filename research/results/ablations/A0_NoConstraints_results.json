@@ -1,0 +1,300 @@
+{
+  "metadata": {
+    "experimentId": "EXP_1789235668768_N10",
+    "seed": 42,
+    "dataset": "deterministic_smoke_generator",
+    "studentCount": 10,
+    "careerCount": 1,
+    "skillCount": 3,
+    "configHash": "7684fc4440b4a089714bb4bafcf20d6b5bbd692f0647a2d0e9f720dcb6b7c3a5",
+    "codeVersion": "git_unknown",
+    "baselineId": "A0_NoConstraints",
+    "type": "ablation",
+    "timestamp": "2026-09-12T17:54:28.792Z"
+  },
+  "metricDefinitions": {
+    "feasibilityRate": "Percentage of students fully resolved."
+  },
+  "results": [
+    {
+      "studentId": "u_0",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "C",
+          "priority": 1,
+          "marketDemand": 1,
+          "careerImportance": 1,
+          "gap": 1,
+          "learningCost": 50,
+          "prerequisites": [],
+          "reason": "Identified as highly-priority callable target.",
+          "expectedStateTransition": "C: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "A",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        },
+        {
+          "skillId": "B",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_1",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "C",
+          "priority": 1,
+          "marketDemand": 1,
+          "careerImportance": 1,
+          "gap": 1,
+          "learningCost": 50,
+          "prerequisites": [],
+          "reason": "Identified as highly-priority callable target.",
+          "expectedStateTransition": "C: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "A",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        },
+        {
+          "skillId": "B",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_2",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "C",
+          "priority": 1,
+          "marketDemand": 1,
+          "careerImportance": 1,
+          "gap": 1,
+          "learningCost": 50,
+          "prerequisites": [],
+          "reason": "Identified as highly-priority callable target.",
+          "expectedStateTransition": "C: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "A",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        },
+        {
+          "skillId": "B",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_3",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "C",
+          "priority": 1,
+          "marketDemand": 1,
+          "careerImportance": 1,
+          "gap": 1,
+          "learningCost": 50,
+          "prerequisites": [],
+          "reason": "Identified as highly-priority callable target.",
+          "expectedStateTransition": "C: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "A",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        },
+        {
+          "skillId": "B",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_4",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "C",
+          "priority": 1,
+          "marketDemand": 1,
+          "careerImportance": 1,
+          "gap": 1,
+          "learningCost": 50,
+          "prerequisites": [],
+          "reason": "Identified as highly-priority callable target.",
+          "expectedStateTransition": "C: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "A",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        },
+        {
+          "skillId": "B",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_5",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "C",
+          "priority": 1,
+          "marketDemand": 1,
+          "careerImportance": 1,
+          "gap": 1,
+          "learningCost": 50,
+          "prerequisites": [],
+          "reason": "Identified as highly-priority callable target.",
+          "expectedStateTransition": "C: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "A",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        },
+        {
+          "skillId": "B",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_6",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "C",
+          "priority": 1,
+          "marketDemand": 1,
+          "careerImportance": 1,
+          "gap": 1,
+          "learningCost": 50,
+          "prerequisites": [],
+          "reason": "Identified as highly-priority callable target.",
+          "expectedStateTransition": "C: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "A",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        },
+        {
+          "skillId": "B",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_7",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "C",
+          "priority": 1,
+          "marketDemand": 1,
+          "careerImportance": 1,
+          "gap": 1,
+          "learningCost": 50,
+          "prerequisites": [],
+          "reason": "Identified as highly-priority callable target.",
+          "expectedStateTransition": "C: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "A",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        },
+        {
+          "skillId": "B",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_8",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "C",
+          "priority": 1,
+          "marketDemand": 1,
+          "careerImportance": 1,
+          "gap": 1,
+          "learningCost": 50,
+          "prerequisites": [],
+          "reason": "Identified as highly-priority callable target.",
+          "expectedStateTransition": "C: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "A",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        },
+        {
+          "skillId": "B",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    },
+    {
+      "studentId": "u_9",
+      "plan": [
+        {
+          "phase": 1,
+          "skillId": "C",
+          "priority": 1,
+          "marketDemand": 1,
+          "careerImportance": 1,
+          "gap": 1,
+          "learningCost": 50,
+          "prerequisites": [],
+          "reason": "Identified as highly-priority callable target.",
+          "expectedStateTransition": "C: -> 1.0"
+        }
+      ],
+      "deferred": [
+        {
+          "skillId": "A",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        },
+        {
+          "skillId": "B",
+          "reason": "Deferred: Requires additional cognitive budget. Total hours allocated (50h) reached limit."
+        }
+      ],
+      "fullyResolved": false
+    }
+  ]
+}

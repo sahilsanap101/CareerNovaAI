@@ -1,6 +1,6 @@
 {
-  "id": "FINAL_f6661195",
-  "timestamp": "2026-09-08T13:57:49.629Z",
-  "datasetVersion": "Bayesian_Noisy_N500",
-  "configurations": "FROZEN_v4.2"
+  "id": "REAL_HYBRID_77869caa",
+  "timestamp": "2026-09-12T13:27:54.364Z",
+  "datasetVersion": "ESCO_ONET_LINKEDIN_HYBRID_N500",
+  "configurations": "LIVE_B0_B1_EVALUATION"
 }

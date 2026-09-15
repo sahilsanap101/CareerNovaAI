@@ -1,3 +1,6 @@
+import { normalizeSkillName } from '@pathforge/shared-constants';
+import * as fs from 'fs';
+import * as path from 'path';
 import { getPrerequisiteChain } from './skillDependencyEngine';
 
 export interface GeneratedPhaseData {
@@ -26,9 +29,45 @@ export interface GeneratedPhaseData {
         duration: string;
         free: boolean;
         rating: number;
-      }>;
+      }> | 'resource_curation_pending';
     }>;
   }>;
+}
+
+let CURATED_RESOURCES: Record<string, any> = {};
+try {
+  const possiblePaths = [
+    path.join(__dirname, '../../../../../../apps/api/src/data/curated_resources.json'), // from dist
+    path.join(process.cwd(), 'apps/api/src/data/curated_resources.json'), // from workspace root
+    path.join(process.cwd(), '../../apps/api/src/data/curated_resources.json'), // from apps/api
+    path.join(process.cwd(), 'src/data/curated_resources.json'), // failsafe
+  ];
+  for (const p of possiblePaths) {
+    if (fs.existsSync(p)) {
+      CURATED_RESOURCES = JSON.parse(fs.readFileSync(p, 'utf-8'));
+      break;
+    }
+  }
+} catch (error) {
+  console.warn('Failed to load curated resources dynamically.', error);
+}
+
+function getCuratedResources(skillName: string) {
+  const normTarget = normalizeSkillName(skillName);
+  const data = CURATED_RESOURCES[normTarget];
+
+  if (data && data.resources && data.resources.length > 0) {
+    return data.resources.map((r: any) => ({
+      title: r.title,
+      provider: r.source,
+      url: r.url,
+      resourceType: r.type === 'official_documentation' ? 'DOCUMENTATION' : 'ARTICLE',
+      duration: 'Variable',
+      free: true,
+      rating: 4.8
+    }));
+  }
+  return 'resource_curation_pending';
 }
 
 export function buildAdaptiveRoadmapTree(
@@ -74,26 +113,7 @@ export function buildAdaptiveRoadmapTree(
             taskType: 'THEORY',
             estimatedMinutes: 90,
             priority: 'HIGH',
-            resources: [
-              {
-                title: `${skill} Official Documentation`,
-                provider: 'Official Docs',
-                url: `https://developer.mozilla.org/search?q=${encodeURIComponent(skill)}`,
-                resourceType: 'DOCUMENTATION',
-                duration: '45 mins',
-                free: true,
-                rating: 4.9,
-              },
-              {
-                title: `Full ${skill} Course for Beginners`,
-                provider: 'freeCodeCamp',
-                url: `https://www.youtube.com/results?search_query=freecodecamp+${encodeURIComponent(skill)}`,
-                resourceType: 'VIDEO',
-                duration: '2 hours',
-                free: true,
-                rating: 4.8,
-              },
-            ],
+            resources: getCuratedResources(skill),
           },
           {
             title: `Build Mini Practice Exercises in ${skill}`,
@@ -101,17 +121,7 @@ export function buildAdaptiveRoadmapTree(
             taskType: 'PRACTICE',
             estimatedMinutes: 120,
             priority: 'HIGH',
-            resources: [
-              {
-                title: `${skill} Practice Exercises`,
-                provider: 'GitHub',
-                url: `https://github.com/topics/${encodeURIComponent(skill.toLowerCase())}`,
-                resourceType: 'ARTICLE',
-                duration: '60 mins',
-                free: true,
-                rating: 4.7,
-              },
-            ],
+            resources: getCuratedResources(skill),
           },
         ],
       })),
@@ -135,17 +145,7 @@ export function buildAdaptiveRoadmapTree(
             taskType: 'PRACTICE',
             estimatedMinutes: 150,
             priority: 'HIGH',
-            resources: [
-              {
-                title: `Mastering ${skill} Architecture`,
-                provider: 'Coursera',
-                url: `https://www.coursera.org/search?query=${encodeURIComponent(skill)}`,
-                resourceType: 'COURSE',
-                duration: '3 hours',
-                free: true,
-                rating: 4.8,
-              },
-            ],
+            resources: getCuratedResources(skill),
           },
         ],
       })),
@@ -170,17 +170,7 @@ export function buildAdaptiveRoadmapTree(
               taskType: 'PROJECT',
               estimatedMinutes: 240,
               priority: 'HIGH',
-              resources: [
-                {
-                  title: 'Cloud Deployment Guide',
-                  provider: 'AWS Skill Builder',
-                  url: 'https://explore.skillbuilder.aws/',
-                  resourceType: 'DOCUMENTATION',
-                  duration: '2 hours',
-                  free: true,
-                  rating: 4.9,
-                },
-              ],
+              resources: getCuratedResources(careerPathName),
             },
           ],
         },

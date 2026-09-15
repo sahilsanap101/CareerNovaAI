@@ -1,0 +1,672 @@
+[
+  {
+    "studentId": "user_0",
+    "finalState": {
+      "stateId": "S_user_0_4",
+      "studentId": "user_0",
+      "sequenceOrder": 4,
+      "timestamp": "2026-01-05",
+      "proficiencies": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "targetCareer": "Data Scientist",
+      "availableBudgetHours": 60,
+      "provenance": {
+        "sourceEventId": "E_0_4",
+        "generator": "synthetic"
+      }
+    },
+    "history": [
+      {
+        "event": {
+          "eventId": "E_0_1",
+          "studentId": "user_0",
+          "eventType": "skill_completed",
+          "timestamp": "2026-01-02",
+          "payload": {
+            "skillId": "A",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_0_1",
+        "churnMetrics": {
+          "retainedSkills": [
+            "B",
+            "D",
+            "C"
+          ],
+          "addedSkills": [],
+          "removedSkills": [
+            "A"
+          ],
+          "reorderedSkills": [
+            "B",
+            "C"
+          ],
+          "budgetDelta": -20,
+          "careerTargetChanged": false
+        }
+      },
+      {
+        "event": {
+          "eventId": "E_0_2",
+          "studentId": "user_0",
+          "eventType": "skill_failed",
+          "timestamp": "2026-01-03",
+          "payload": {
+            "skillId": "A",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_0_2",
+        "churnMetrics": {
+          "retainedSkills": [
+            "B",
+            "D",
+            "C"
+          ],
+          "addedSkills": [],
+          "removedSkills": [],
+          "reorderedSkills": [],
+          "budgetDelta": 0,
+          "careerTargetChanged": false
+        }
+      },
+      {
+        "event": {
+          "eventId": "E_0_3",
+          "studentId": "user_0",
+          "eventType": "skill_completed",
+          "timestamp": "2026-01-04",
+          "payload": {
+            "skillId": "B",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_0_3",
+        "churnMetrics": {
+          "retainedSkills": [
+            "C",
+            "D"
+          ],
+          "addedSkills": [],
+          "removedSkills": [
+            "B"
+          ],
+          "reorderedSkills": [
+            "C"
+          ],
+          "budgetDelta": -20,
+          "careerTargetChanged": false
+        }
+      },
+      {
+        "event": {
+          "eventId": "E_0_4",
+          "studentId": "user_0",
+          "eventType": "skill_failed",
+          "timestamp": "2026-01-05",
+          "payload": {
+            "skillId": "B",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_0_4",
+        "churnMetrics": {
+          "retainedSkills": [
+            "C",
+            "D"
+          ],
+          "addedSkills": [],
+          "removedSkills": [],
+          "reorderedSkills": [],
+          "budgetDelta": 0,
+          "careerTargetChanged": false
+        }
+      }
+    ]
+  },
+  {
+    "studentId": "user_1",
+    "finalState": {
+      "stateId": "S_user_1_4",
+      "studentId": "user_1",
+      "sequenceOrder": 4,
+      "timestamp": "2026-01-05",
+      "proficiencies": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "targetCareer": "Data Scientist",
+      "availableBudgetHours": 60,
+      "provenance": {
+        "sourceEventId": "E_1_4",
+        "generator": "synthetic"
+      }
+    },
+    "history": [
+      {
+        "event": {
+          "eventId": "E_1_1",
+          "studentId": "user_1",
+          "eventType": "skill_completed",
+          "timestamp": "2026-01-02",
+          "payload": {
+            "skillId": "A",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_1_1",
+        "churnMetrics": {
+          "retainedSkills": [
+            "B",
+            "D",
+            "C"
+          ],
+          "addedSkills": [],
+          "removedSkills": [
+            "A"
+          ],
+          "reorderedSkills": [
+            "B",
+            "C"
+          ],
+          "budgetDelta": -20,
+          "careerTargetChanged": false
+        }
+      },
+      {
+        "event": {
+          "eventId": "E_1_2",
+          "studentId": "user_1",
+          "eventType": "skill_failed",
+          "timestamp": "2026-01-03",
+          "payload": {
+            "skillId": "A",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_1_2",
+        "churnMetrics": {
+          "retainedSkills": [
+            "B",
+            "D",
+            "C"
+          ],
+          "addedSkills": [],
+          "removedSkills": [],
+          "reorderedSkills": [],
+          "budgetDelta": 0,
+          "careerTargetChanged": false
+        }
+      },
+      {
+        "event": {
+          "eventId": "E_1_3",
+          "studentId": "user_1",
+          "eventType": "skill_completed",
+          "timestamp": "2026-01-04",
+          "payload": {
+            "skillId": "B",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_1_3",
+        "churnMetrics": {
+          "retainedSkills": [
+            "C",
+            "D"
+          ],
+          "addedSkills": [],
+          "removedSkills": [
+            "B"
+          ],
+          "reorderedSkills": [
+            "C"
+          ],
+          "budgetDelta": -20,
+          "careerTargetChanged": false
+        }
+      },
+      {
+        "event": {
+          "eventId": "E_1_4",
+          "studentId": "user_1",
+          "eventType": "skill_failed",
+          "timestamp": "2026-01-05",
+          "payload": {
+            "skillId": "B",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_1_4",
+        "churnMetrics": {
+          "retainedSkills": [
+            "C",
+            "D"
+          ],
+          "addedSkills": [],
+          "removedSkills": [],
+          "reorderedSkills": [],
+          "budgetDelta": 0,
+          "careerTargetChanged": false
+        }
+      }
+    ]
+  },
+  {
+    "studentId": "user_2",
+    "finalState": {
+      "stateId": "S_user_2_4",
+      "studentId": "user_2",
+      "sequenceOrder": 4,
+      "timestamp": "2026-01-05",
+      "proficiencies": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "targetCareer": "Data Scientist",
+      "availableBudgetHours": 60,
+      "provenance": {
+        "sourceEventId": "E_2_4",
+        "generator": "synthetic"
+      }
+    },
+    "history": [
+      {
+        "event": {
+          "eventId": "E_2_1",
+          "studentId": "user_2",
+          "eventType": "skill_completed",
+          "timestamp": "2026-01-02",
+          "payload": {
+            "skillId": "A",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_2_1",
+        "churnMetrics": {
+          "retainedSkills": [
+            "B",
+            "D",
+            "C"
+          ],
+          "addedSkills": [],
+          "removedSkills": [
+            "A"
+          ],
+          "reorderedSkills": [
+            "B",
+            "C"
+          ],
+          "budgetDelta": -20,
+          "careerTargetChanged": false
+        }
+      },
+      {
+        "event": {
+          "eventId": "E_2_2",
+          "studentId": "user_2",
+          "eventType": "skill_failed",
+          "timestamp": "2026-01-03",
+          "payload": {
+            "skillId": "A",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_2_2",
+        "churnMetrics": {
+          "retainedSkills": [
+            "B",
+            "D",
+            "C"
+          ],
+          "addedSkills": [],
+          "removedSkills": [],
+          "reorderedSkills": [],
+          "budgetDelta": 0,
+          "careerTargetChanged": false
+        }
+      },
+      {
+        "event": {
+          "eventId": "E_2_3",
+          "studentId": "user_2",
+          "eventType": "skill_completed",
+          "timestamp": "2026-01-04",
+          "payload": {
+            "skillId": "B",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_2_3",
+        "churnMetrics": {
+          "retainedSkills": [
+            "C",
+            "D"
+          ],
+          "addedSkills": [],
+          "removedSkills": [
+            "B"
+          ],
+          "reorderedSkills": [
+            "C"
+          ],
+          "budgetDelta": -20,
+          "careerTargetChanged": false
+        }
+      },
+      {
+        "event": {
+          "eventId": "E_2_4",
+          "studentId": "user_2",
+          "eventType": "skill_failed",
+          "timestamp": "2026-01-05",
+          "payload": {
+            "skillId": "B",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_2_4",
+        "churnMetrics": {
+          "retainedSkills": [
+            "C",
+            "D"
+          ],
+          "addedSkills": [],
+          "removedSkills": [],
+          "reorderedSkills": [],
+          "budgetDelta": 0,
+          "careerTargetChanged": false
+        }
+      }
+    ]
+  },
+  {
+    "studentId": "user_3",
+    "finalState": {
+      "stateId": "S_user_3_4",
+      "studentId": "user_3",
+      "sequenceOrder": 4,
+      "timestamp": "2026-01-05",
+      "proficiencies": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "targetCareer": "Data Scientist",
+      "availableBudgetHours": 60,
+      "provenance": {
+        "sourceEventId": "E_3_4",
+        "generator": "synthetic"
+      }
+    },
+    "history": [
+      {
+        "event": {
+          "eventId": "E_3_1",
+          "studentId": "user_3",
+          "eventType": "skill_completed",
+          "timestamp": "2026-01-02",
+          "payload": {
+            "skillId": "A",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_3_1",
+        "churnMetrics": {
+          "retainedSkills": [
+            "B",
+            "D",
+            "C"
+          ],
+          "addedSkills": [],
+          "removedSkills": [
+            "A"
+          ],
+          "reorderedSkills": [
+            "B",
+            "C"
+          ],
+          "budgetDelta": -20,
+          "careerTargetChanged": false
+        }
+      },
+      {
+        "event": {
+          "eventId": "E_3_2",
+          "studentId": "user_3",
+          "eventType": "skill_failed",
+          "timestamp": "2026-01-03",
+          "payload": {
+            "skillId": "A",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_3_2",
+        "churnMetrics": {
+          "retainedSkills": [
+            "B",
+            "D",
+            "C"
+          ],
+          "addedSkills": [],
+          "removedSkills": [],
+          "reorderedSkills": [],
+          "budgetDelta": 0,
+          "careerTargetChanged": false
+        }
+      },
+      {
+        "event": {
+          "eventId": "E_3_3",
+          "studentId": "user_3",
+          "eventType": "skill_completed",
+          "timestamp": "2026-01-04",
+          "payload": {
+            "skillId": "B",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_3_3",
+        "churnMetrics": {
+          "retainedSkills": [
+            "C",
+            "D"
+          ],
+          "addedSkills": [],
+          "removedSkills": [
+            "B"
+          ],
+          "reorderedSkills": [
+            "C"
+          ],
+          "budgetDelta": -20,
+          "careerTargetChanged": false
+        }
+      },
+      {
+        "event": {
+          "eventId": "E_3_4",
+          "studentId": "user_3",
+          "eventType": "skill_failed",
+          "timestamp": "2026-01-05",
+          "payload": {
+            "skillId": "B",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_3_4",
+        "churnMetrics": {
+          "retainedSkills": [
+            "C",
+            "D"
+          ],
+          "addedSkills": [],
+          "removedSkills": [],
+          "reorderedSkills": [],
+          "budgetDelta": 0,
+          "careerTargetChanged": false
+        }
+      }
+    ]
+  },
+  {
+    "studentId": "user_4",
+    "finalState": {
+      "stateId": "S_user_4_4",
+      "studentId": "user_4",
+      "sequenceOrder": 4,
+      "timestamp": "2026-01-05",
+      "proficiencies": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "targetCareer": "Data Scientist",
+      "availableBudgetHours": 60,
+      "provenance": {
+        "sourceEventId": "E_4_4",
+        "generator": "synthetic"
+      }
+    },
+    "history": [
+      {
+        "event": {
+          "eventId": "E_4_1",
+          "studentId": "user_4",
+          "eventType": "skill_completed",
+          "timestamp": "2026-01-02",
+          "payload": {
+            "skillId": "A",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_4_1",
+        "churnMetrics": {
+          "retainedSkills": [
+            "B",
+            "D",
+            "C"
+          ],
+          "addedSkills": [],
+          "removedSkills": [
+            "A"
+          ],
+          "reorderedSkills": [
+            "B",
+            "C"
+          ],
+          "budgetDelta": -20,
+          "careerTargetChanged": false
+        }
+      },
+      {
+        "event": {
+          "eventId": "E_4_2",
+          "studentId": "user_4",
+          "eventType": "skill_failed",
+          "timestamp": "2026-01-03",
+          "payload": {
+            "skillId": "A",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_4_2",
+        "churnMetrics": {
+          "retainedSkills": [
+            "B",
+            "D",
+            "C"
+          ],
+          "addedSkills": [],
+          "removedSkills": [],
+          "reorderedSkills": [],
+          "budgetDelta": 0,
+          "careerTargetChanged": false
+        }
+      },
+      {
+        "event": {
+          "eventId": "E_4_3",
+          "studentId": "user_4",
+          "eventType": "skill_completed",
+          "timestamp": "2026-01-04",
+          "payload": {
+            "skillId": "B",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_4_3",
+        "churnMetrics": {
+          "retainedSkills": [
+            "C",
+            "D"
+          ],
+          "addedSkills": [],
+          "removedSkills": [
+            "B"
+          ],
+          "reorderedSkills": [
+            "C"
+          ],
+          "budgetDelta": -20,
+          "careerTargetChanged": false
+        }
+      },
+      {
+        "event": {
+          "eventId": "E_4_4",
+          "studentId": "user_4",
+          "eventType": "skill_failed",
+          "timestamp": "2026-01-05",
+          "payload": {
+            "skillId": "B",
+            "costSpent": 10
+          },
+          "provenance": "synthetic"
+        },
+        "transitionId": "S_user_4_4",
+        "churnMetrics": {
+          "retainedSkills": [
+            "C",
+            "D"
+          ],
+          "addedSkills": [],
+          "removedSkills": [],
+          "reorderedSkills": [],
+          "budgetDelta": 0,
+          "careerTargetChanged": false
+        }
+      }
+    ]
+  }
+]

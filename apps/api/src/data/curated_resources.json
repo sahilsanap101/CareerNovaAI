@@ -1,0 +1,682 @@
+{
+  "design computer network": {
+    "canonical_name": "design computer network",
+    "resources": []
+  },
+  "network management system tools": {
+    "canonical_name": "network management system tools",
+    "resources": []
+  },
+  "ict network cable limitations": {
+    "canonical_name": "ict network cable limitations",
+    "resources": []
+  },
+  "align software with system architectures": {
+    "canonical_name": "align software with system architectures",
+    "resources": []
+  },
+  "ict system integration": {
+    "canonical_name": "ict system integration",
+    "resources": []
+  },
+  "ict architectural frameworks": {
+    "canonical_name": "ict architectural frameworks",
+    "resources": []
+  },
+  "manage system security": {
+    "canonical_name": "manage system security",
+    "resources": []
+  },
+  "cyber attack counter-measures": {
+    "canonical_name": "cyber attack counter-measures",
+    "resources": []
+  },
+  "manage quantitative data": {
+    "canonical_name": "manage quantitative data",
+    "resources": []
+  },
+  "use data processing techniques": {
+    "canonical_name": "use data processing techniques",
+    "resources": []
+  },
+  "perform data analysis": {
+    "canonical_name": "perform data analysis",
+    "resources": []
+  },
+  "analyse big data": {
+    "canonical_name": "analyse big data",
+    "resources": []
+  },
+  "handle data samples": {
+    "canonical_name": "handle data samples",
+    "resources": []
+  },
+  "conduct quantitative research": {
+    "canonical_name": "conduct quantitative research",
+    "resources": []
+  },
+  "implement ict risk management": {
+    "canonical_name": "implement ict risk management",
+    "resources": []
+  },
+  "information security strategy": {
+    "canonical_name": "information security strategy",
+    "resources": []
+  },
+  "ict security standards": {
+    "canonical_name": "ict security standards",
+    "resources": []
+  },
+  "use methodologies for user-centered design": {
+    "canonical_name": "use methodologies for user-centered design",
+    "resources": []
+  },
+  "usability engineering": {
+    "canonical_name": "usability engineering",
+    "resources": []
+  },
+  "monitor technology trends": {
+    "canonical_name": "monitor technology trends",
+    "resources": []
+  },
+  "emergent technologies": {
+    "canonical_name": "emergent technologies",
+    "resources": []
+  },
+  "design database in the cloud": {
+    "canonical_name": "design database in the cloud",
+    "resources": []
+  },
+  "database": {
+    "canonical_name": "database",
+    "resources": []
+  },
+  "distributed computing": {
+    "canonical_name": "distributed computing",
+    "resources": []
+  },
+  "attend to ict systems quality": {
+    "canonical_name": "attend to ict systems quality",
+    "resources": []
+  },
+  "systems theory": {
+    "canonical_name": "systems theory",
+    "resources": []
+  },
+  "apply ict systems theory": {
+    "canonical_name": "apply ict systems theory",
+    "resources": []
+  },
+  "learning technologies": {
+    "canonical_name": "learning technologies",
+    "resources": []
+  },
+  "learning management systems": {
+    "canonical_name": "learning management systems",
+    "resources": []
+  },
+  "cyber security": {
+    "canonical_name": "cyber security",
+    "resources": []
+  },
+  "data protection": {
+    "canonical_name": "data protection",
+    "resources": []
+  },
+  "Networking": {
+    "canonical_name": "Networking",
+    "resources": []
+  },
+  "Linux": {
+    "canonical_name": "Linux",
+    "resources": []
+  },
+  "monitor system performance": {
+    "canonical_name": "monitor system performance",
+    "resources": []
+  },
+  "manage data": {
+    "canonical_name": "manage data",
+    "resources": []
+  },
+  "audit techniques": {
+    "canonical_name": "audit techniques",
+    "resources": []
+  },
+  "design information system": {
+    "canonical_name": "design information system",
+    "resources": []
+  },
+  "ict infrastructure": {
+    "canonical_name": "ict infrastructure",
+    "resources": []
+  },
+  "design application interfaces": {
+    "canonical_name": "design application interfaces",
+    "resources": []
+  },
+  "mobile device software frameworks": {
+    "canonical_name": "mobile device software frameworks",
+    "resources": []
+  },
+  "define ict network design policies": {
+    "canonical_name": "define ict network design policies",
+    "resources": []
+  },
+  "test system accessibility for users with special needs": {
+    "canonical_name": "test system accessibility for users with special needs",
+    "resources": []
+  },
+  "ict accessibility standards": {
+    "canonical_name": "ict accessibility standards",
+    "resources": []
+  },
+  "ict project management methodologies": {
+    "canonical_name": "ict project management methodologies",
+    "resources": []
+  },
+  "ict project management": {
+    "canonical_name": "ict project management",
+    "resources": []
+  },
+  "provide ict support": {
+    "canonical_name": "provide ict support",
+    "resources": []
+  },
+  "ict problem management techniques": {
+    "canonical_name": "ict problem management techniques",
+    "resources": []
+  },
+  "perform backups": {
+    "canonical_name": "perform backups",
+    "resources": []
+  },
+  "system backup best practice": {
+    "canonical_name": "system backup best practice",
+    "resources": []
+  },
+  "analyse network bandwidth requirements": {
+    "canonical_name": "analyse network bandwidth requirements",
+    "resources": []
+  },
+  "ict network routing": {
+    "canonical_name": "ict network routing",
+    "resources": []
+  },
+  "execute integration testing": {
+    "canonical_name": "execute integration testing",
+    "resources": []
+  },
+  "levels of software testing": {
+    "canonical_name": "levels of software testing",
+    "resources": []
+  },
+  "design user interface": {
+    "canonical_name": "design user interface",
+    "resources": []
+  },
+  "manage ict semantic integration": {
+    "canonical_name": "manage ict semantic integration",
+    "resources": []
+  },
+  "information structure": {
+    "canonical_name": "information structure",
+    "resources": []
+  },
+  "data models": {
+    "canonical_name": "data models",
+    "resources": []
+  },
+  "CSS": {
+    "canonical_name": "CSS",
+    "resources": [
+      {
+        "title": "CSS - MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+        "type": "official_documentation",
+        "source": "MDN",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "HTML": {
+    "canonical_name": "HTML",
+    "resources": [
+      {
+        "title": "HTML - MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+        "type": "official_documentation",
+        "source": "MDN",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "JavaScript": {
+    "canonical_name": "JavaScript",
+    "resources": [
+      {
+        "title": "JavaScript Guide - MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+        "type": "official_documentation",
+        "source": "MDN",
+        "priority": 1,
+        "verified": "Yes"
+      },
+      {
+        "title": "The Modern JavaScript Tutorial",
+        "url": "https://javascript.info/",
+        "type": "tutorial",
+        "source": "JavaScript.info",
+        "priority": 2,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "TypeScript": {
+    "canonical_name": "TypeScript",
+    "resources": [
+      {
+        "title": "TypeScript Documentation",
+        "url": "https://www.typescriptlang.org/docs/",
+        "type": "official_documentation",
+        "source": "TypeScript",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "React": {
+    "canonical_name": "React",
+    "resources": [
+      {
+        "title": "Learn React",
+        "url": "https://react.dev/learn",
+        "type": "official_documentation",
+        "source": "React",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "Vue": {
+    "canonical_name": "Vue",
+    "resources": [
+      {
+        "title": "Vue Guide",
+        "url": "https://vuejs.org/guide/introduction.html",
+        "type": "official_documentation",
+        "source": "Vue",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "Angular": {
+    "canonical_name": "Angular",
+    "resources": [
+      {
+        "title": "Angular Documentation",
+        "url": "https://angular.dev/",
+        "type": "official_documentation",
+        "source": "Angular",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "Java": {
+    "canonical_name": "Java",
+    "resources": [
+      {
+        "title": "Learn Java",
+        "url": "https://dev.java/learn/",
+        "type": "official_documentation",
+        "source": "Oracle",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "C": {
+    "canonical_name": "C",
+    "resources": [
+      {
+        "title": "C Reference",
+        "url": "https://en.cppreference.com/w/c",
+        "type": "official_documentation",
+        "source": "cppreference",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "Spring Boot": {
+    "canonical_name": "Spring Boot",
+    "resources": []
+  },
+  "Node.js": {
+    "canonical_name": "Node.js",
+    "resources": [
+      {
+        "title": "Learn Node.js",
+        "url": "https://nodejs.org/en/learn",
+        "type": "official_documentation",
+        "source": "Node.js",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "Express": {
+    "canonical_name": "Express",
+    "resources": [
+      {
+        "title": "Express Documentation",
+        "url": "https://expressjs.com/",
+        "type": "official_documentation",
+        "source": "Express",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "Python": {
+    "canonical_name": "Python",
+    "resources": [
+      {
+        "title": "Python Tutorial",
+        "url": "https://docs.python.org/3/tutorial/",
+        "type": "official_documentation",
+        "source": "Python",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "Django": {
+    "canonical_name": "Django",
+    "resources": [
+      {
+        "title": "Django Documentation",
+        "url": "https://docs.djangoproject.com/",
+        "type": "official_documentation",
+        "source": "Django",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "Flask": {
+    "canonical_name": "Flask",
+    "resources": [
+      {
+        "title": "Flask Documentation",
+        "url": "https://flask.palletsprojects.com/",
+        "type": "official_documentation",
+        "source": "Flask",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "database design": {
+    "canonical_name": "database design",
+    "resources": []
+  },
+  "SQL": {
+    "canonical_name": "SQL",
+    "resources": [
+      {
+        "title": "PostgreSQL SQL Tutorial",
+        "url": "https://www.postgresql.org/docs/current/tutorial-sql.html",
+        "type": "tutorial",
+        "source": "PostgreSQL",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "PostgreSQL": {
+    "canonical_name": "PostgreSQL",
+    "resources": [
+      {
+        "title": "PostgreSQL Documentation",
+        "url": "https://www.postgresql.org/docs/",
+        "type": "official_documentation",
+        "source": "PostgreSQL",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "MySQL": {
+    "canonical_name": "MySQL",
+    "resources": [
+      {
+        "title": "MySQL Documentation",
+        "url": "https://dev.mysql.com/doc/",
+        "type": "official_documentation",
+        "source": "MySQL",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "MongoDB": {
+    "canonical_name": "MongoDB",
+    "resources": [
+      {
+        "title": "MongoDB Documentation",
+        "url": "https://www.mongodb.com/docs/",
+        "type": "official_documentation",
+        "source": "MongoDB",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "Pandas": {
+    "canonical_name": "Pandas",
+    "resources": [
+      {
+        "title": "Pandas Getting Started",
+        "url": "https://pandas.pydata.org/docs/getting_started/intro_tutorials/",
+        "type": "official_documentation",
+        "source": "Pandas",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "NumPy": {
+    "canonical_name": "NumPy",
+    "resources": [
+      {
+        "title": "NumPy Learn",
+        "url": "https://numpy.org/learn/",
+        "type": "official_documentation",
+        "source": "NumPy",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "Machine Learning": {
+    "canonical_name": "Machine Learning",
+    "resources": [
+      {
+        "title": "Scikit-learn User Guide",
+        "url": "https://scikit-learn.org/stable/user_guide.html",
+        "type": "official_documentation",
+        "source": "Scikit-learn",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "Scikit-learn": {
+    "canonical_name": "Scikit-learn",
+    "resources": [
+      {
+        "title": "Scikit-learn Getting Started",
+        "url": "https://scikit-learn.org/stable/getting_started.html",
+        "type": "official_documentation",
+        "source": "Scikit-learn",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "TensorFlow": {
+    "canonical_name": "TensorFlow",
+    "resources": [
+      {
+        "title": "Learn TensorFlow",
+        "url": "https://www.tensorflow.org/learn",
+        "type": "official_documentation",
+        "source": "TensorFlow",
+        "priority": 1,
+        "verified": "Unconfirmed"
+      }
+    ]
+  },
+  "PyTorch": {
+    "canonical_name": "PyTorch",
+    "resources": [
+      {
+        "title": "PyTorch Tutorials",
+        "url": "https://docs.pytorch.org/tutorials/",
+        "type": "official_documentation",
+        "source": "PyTorch",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "Deep Learning": {
+    "canonical_name": "Deep Learning",
+    "resources": [
+      {
+        "title": "PyTorch Tutorials",
+        "url": "https://pytorch.org/tutorials/",
+        "type": "official_documentation",
+        "source": "PyTorch",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "NLP": {
+    "canonical_name": "NLP",
+    "resources": [
+      {
+        "title": "NLP Course",
+        "url": "https://huggingface.co/learn/nlp-course/chapter1/1",
+        "type": "tutorial",
+        "source": "Hugging Face",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "computer vision": {
+    "canonical_name": "computer vision",
+    "resources": []
+  },
+  "bash": {
+    "canonical_name": "bash",
+    "resources": []
+  },
+  "AWS": {
+    "canonical_name": "AWS",
+    "resources": [
+      {
+        "title": "AWS Getting Started",
+        "url": "https://aws.amazon.com/getting-started/",
+        "type": "official_documentation",
+        "source": "AWS",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "Azure": {
+    "canonical_name": "Azure",
+    "resources": [
+      {
+        "title": "Azure Training",
+        "url": "https://learn.microsoft.com/en-us/training/azure/",
+        "type": "official_documentation",
+        "source": "Microsoft",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "GCP": {
+    "canonical_name": "GCP",
+    "resources": [
+      {
+        "title": "Google Cloud Documentation",
+        "url": "https://cloud.google.com/docs",
+        "type": "official_documentation",
+        "source": "Google Cloud",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "Docker": {
+    "canonical_name": "Docker",
+    "resources": [
+      {
+        "title": "Docker Get Started",
+        "url": "https://docs.docker.com/get-started/",
+        "type": "official_documentation",
+        "source": "Docker",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "Kubernetes": {
+    "canonical_name": "Kubernetes",
+    "resources": [
+      {
+        "title": "Kubernetes Tutorials",
+        "url": "https://kubernetes.io/docs/tutorials/",
+        "type": "official_documentation",
+        "source": "Kubernetes",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "ci/cd": {
+    "canonical_name": "ci/cd",
+    "resources": []
+  },
+  "Git": {
+    "canonical_name": "Git",
+    "resources": [
+      {
+        "title": "Git Documentation",
+        "url": "https://git-scm.com/doc",
+        "type": "official_documentation",
+        "source": "Git",
+        "priority": 1,
+        "verified": "Yes"
+      }
+    ]
+  },
+  "penetration testing": {
+    "canonical_name": "penetration testing",
+    "resources": []
+  },
+  "cryptography": {
+    "canonical_name": "cryptography",
+    "resources": []
+  }
+}

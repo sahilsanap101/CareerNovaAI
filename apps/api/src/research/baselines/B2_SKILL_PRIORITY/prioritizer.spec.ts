@@ -1,87 +1,82 @@
-import { runB2Prioritization, SkillEvaluationRequest, calculateGap } from './prioritizer';
+import { runB2Prioritization, SkillEvaluationRequest, calculateGap, evaluateSkillPriority } from './prioritizer';
 
-describe('B2 Skill Priority Model', () => {
-    const mockProv = { source: 'TEST' };
-
-    it('calculates gap bounded at 0', () => {
-        expect(calculateGap(0.8, 0.4)).toBeCloseTo(0.4);
-        expect(calculateGap(0.5, 1.0)).toBe(0); // Handled correctly, not negative
+describe('B2 Skill Priority Model Validation', () => {
+    describe('Gap Calculation', () => {
+        it('calculates deterministic standard gap', () => {
+            expect(calculateGap(1.0, 0.4)).toBeCloseTo(0.6);
+        });
+        it('bounds negative gap to 0', () => {
+            expect(calculateGap(0.5, 1.0)).toBe(0.0);
+        });
+        it('handles undefined or missing proficiencies by defaulting to 0', () => {
+            expect(calculateGap(undefined, 0.8)).toBe(0.0);
+            expect(calculateGap(1.0, undefined)).toBe(1.0);
+            expect(calculateGap(undefined, undefined)).toBe(0.0);
+        });
+        it('handles NaN gracefully', () => {
+            expect(calculateGap(Number.NaN, 0.5)).toBe(0.0);
+        });
     });
 
-    it('prioritizes based on variables and ranks dynamically', () => {
-        const skills: SkillEvaluationRequest[] = [
-            { // S1: Small gap, low importance, low demand
-                skillId: 's1',
-                studentProficiency: 0.8,
-                requiredProficiency: 1.0,  // Gap 0.2
-                careerImportance: 0.2,
-                marketDemand: 0.5,
-                prerequisiteStatus: 'AVAILABLE',
-                provenance: mockProv
-            },
-            { // S2: High gap, high importance, high demand
-                skillId: 's2',
-                studentProficiency: 0.0,
-                requiredProficiency: 1.0,  // Gap 1.0
-                careerImportance: 1.0,
-                marketDemand: 1.0,
-                prerequisiteStatus: 'BLOCKED_BY_PREREQUISITE',
-                provenance: mockProv
-            },
-            { // S3: Medium gap, but MASSIVE demand multiplier
-                skillId: 's3',
-                studentProficiency: 0.5,
-                requiredProficiency: 1.0, // Gap 0.5
-                careerImportance: 0.8,
-                marketDemand: 0.8,
-                prerequisiteStatus: 'AVAILABLE',
-                provenance: mockProv
-            }
-        ];
+    describe('Priority & Edge Handlers', () => {
+        it('calculates Priority = Gap * W_c * M_t correctly', () => {
+            const res = evaluateSkillPriority({
+                skillId: 's1', studentProficiency: 0.2, requiredProficiency: 1.0,
+                careerImportance: 0.5, marketDemand: 2.0
+            });
+            expect(res.priorityScore).toBeCloseTo(0.8);
+        });
 
-        const results = runB2Prioritization(skills);
+        it('assigns 0 to priority when market demand or career importance is missing', () => {
+            const missingCareer = evaluateSkillPriority({
+                skillId: 's', requiredProficiency: 1.0, marketDemand: 1.0
+            });
+            expect(missingCareer.priorityScore).toBe(0.0);
 
-        // S2 should be highest priority (1.0 * 1.0 * 1.0 = 1.0 logic score)
-        expect(results[0].skillId).toBe('s2');
-        expect(results[0].priorityScore).toBe(1.0);
-        expect(results[0].normalizedPriority).toBe(1.0);
-
-        // S3 should be second (0.5 * 0.8 * 0.8 = 0.32)
-        expect(results[1].skillId).toBe('s3');
-        expect(results[1].priorityScore).toBeCloseTo(0.32);
-
-        // S1 is last (0.2 * 0.2 * 0.5 = 0.02)
-        expect(results[2].skillId).toBe('s1');
-        expect(results[2].normalizedPriority).toBe(0.0); // min norm
-
-        // Notably, prerequisite logic is uncoupled from priority logic.
-        // S2 is ranked #1 in subjective priority despite being structurally 'BLOCKED_BY_PREREQUISITE'.
-        expect(results[0].prerequisiteStatus).toBe('BLOCKED_BY_PREREQUISITE');
+            const missingMarket = evaluateSkillPriority({
+                skillId: 's', requiredProficiency: 1.0, careerImportance: 1.0
+            });
+            expect(missingMarket.priorityScore).toBe(0.0);
+        });
     });
 
-    it('calculates utility score factoring learning cost appropriately', () => {
-        const identicalSkills: SkillEvaluationRequest[] = [
-            { // Large cost
-                skillId: 'HardSkill', studentProficiency: 0.0, requiredProficiency: 1.0,
-                careerImportance: 1.0, marketDemand: 1.0, learningCostHours: 100,
-                prerequisiteStatus: 'AVAILABLE', provenance: mockProv
-            },
-            { // Micro cost (should have radically higher utility)
-                skillId: 'EasySkill', studentProficiency: 0.0, requiredProficiency: 1.0,
-                careerImportance: 1.0, marketDemand: 1.0, learningCostHours: 5,
-                prerequisiteStatus: 'AVAILABLE', provenance: mockProv
-            }
-        ];
+    describe('Cost-Adjusted Utility Calculation', () => {
+        it('calculates exact utility score Utility = Priority / (Cost + 0.0001)', () => {
+            const res = evaluateSkillPriority({
+                skillId: 's', requiredProficiency: 1.0, studentProficiency: 0.0,
+                careerImportance: 1.0, marketDemand: 1.0, learningCostHours: 0
+            });
+            expect(res.utilityScore).toBeCloseTo(10000.0);
+        });
 
-        const results = runB2Prioritization(identicalSkills);
+        it('calculates standard utility', () => {
+            const res = evaluateSkillPriority({
+                skillId: 's', requiredProficiency: 1.0, studentProficiency: 0.0,
+                careerImportance: 1.0, marketDemand: 1.0, learningCostHours: 10
+            });
+            expect(res.utilityScore).toBeCloseTo(1.0 / 10.0001);
+        });
+    });
 
-        // Priority scores are identical: 1.0 (both gap=1, imp=1, demand=1)
-        expect(results[0].priorityScore).toBe(results[1].priorityScore);
+    describe('Normalization & Batch Execution', () => {
+        it('normalizes priorities correctly', () => {
+            const results = runB2Prioritization([
+                { skillId: 'high', requiredProficiency: 1.0, careerImportance: 1.0, marketDemand: 1.0 },
+                { skillId: 'low', requiredProficiency: 1.0, careerImportance: 0.2, marketDemand: 1.0 }
+            ]);
+            expect(results.length).toBe(2);
+            expect(results[0].skillId).toBe('high');
+            expect(results[0].normalizedPriority).toBe(1.0);
+            expect(results[1].normalizedPriority).toBe(0.0);
+        });
 
-        const easySkill = results.find(r => r.skillId === 'EasySkill')!;
-        const hardSkill = results.find(r => r.skillId === 'HardSkill')!;
-
-        // But Utility must be vastly different. priority(1.0) / cost(5) vs priority(1.0) / cost(100)
-        expect(easySkill.utilityScore).toBeGreaterThan(hardSkill.utilityScore!);
+        it('returns 0.5 normalized when all priorities are exactly equal', () => {
+            const results = runB2Prioritization([
+                { skillId: 's1', requiredProficiency: 1.0, careerImportance: 1.0, marketDemand: 1.0 },
+                { skillId: 's2', requiredProficiency: 1.0, careerImportance: 1.0, marketDemand: 1.0 }
+            ]);
+            expect(results[0].normalizedPriority).toBe(0.5);
+            expect(results[1].normalizedPriority).toBe(0.5);
+        });
     });
 });

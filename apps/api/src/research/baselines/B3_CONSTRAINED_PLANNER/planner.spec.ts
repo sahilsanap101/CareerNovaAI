@@ -19,10 +19,10 @@ describe('B3 Constrained Skill Planner & Validator', () => {
     });
 
     const getPriorityMock = (): SkillPriorityResult[] => [
-        { skillId: 'A', priorityScore: 50, careerImportance: 0.5, gap: 1, learningCost: 10, marketDemand: 0.1, normalizedPriority: 0, prerequisiteStatus: 'AVAILABLE', provenance: {} },
-        { skillId: 'B', priorityScore: 200, careerImportance: 0.9, gap: 1, learningCost: 40, marketDemand: 0.8, normalizedPriority: 0, prerequisiteStatus: 'BLOCKED', provenance: {} },
-        { skillId: 'C', priorityScore: 400, careerImportance: 1.0, gap: 1, learningCost: 60, marketDemand: 1.0, normalizedPriority: 0, prerequisiteStatus: 'BLOCKED', provenance: {} },
-        { skillId: 'D', priorityScore: 100, careerImportance: 0.8, gap: 1, learningCost: 20, marketDemand: 0.4, normalizedPriority: 0, prerequisiteStatus: 'AVAILABLE', provenance: {} }
+        { skillId: 'A', priorityScore: 50, careerImportance: 0.5, gap: 1, learningCost: 10, utilityScore: 5, marketDemand: 0.1, normalizedPriority: 0, prerequisiteStatus: 'AVAILABLE', provenance: {} },
+        { skillId: 'B', priorityScore: 200, careerImportance: 0.9, gap: 1, learningCost: 40, utilityScore: 5, marketDemand: 0.8, normalizedPriority: 0, prerequisiteStatus: 'BLOCKED', provenance: {} },
+        { skillId: 'C', priorityScore: 400, careerImportance: 1.0, gap: 1, learningCost: 60, utilityScore: 6.66, marketDemand: 1.0, normalizedPriority: 0, prerequisiteStatus: 'BLOCKED', provenance: {} },
+        { skillId: 'D', priorityScore: 100, careerImportance: 0.8, gap: 1, learningCost: 20, utilityScore: 5, marketDemand: 0.4, normalizedPriority: 0, prerequisiteStatus: 'AVAILABLE', provenance: {} }
     ];
 
     it('generates a valid traversal and asserts zero violations', () => {

@@ -10,17 +10,28 @@ import { Loader } from '@/components/ui/Loader';
 import { PageTransition } from '@/components/layout/PageTransition';
 
 // ─── Lazy-loaded pages ────────────────────────────────────────────
-const Landing         = lazy(() => import('@/pages/Landing/Landing'));
-const About           = lazy(() => import('@/pages/About/About'));
-const Login           = lazy(() => import('@/pages/auth/Login/Login'));
-const Register        = lazy(() => import('@/pages/auth/Register/Register'));
-const ForgotPassword  = lazy(() => import('@/pages/auth/ForgotPassword/ForgotPassword'));
-const ResetPassword   = lazy(() => import('@/pages/auth/ResetPassword/ResetPassword'));
-const VerifyEmail     = lazy(() => import('@/pages/auth/VerifyEmail'));
-const NotFound        = lazy(() => import('@/pages/errors/NotFound'));
-const Dashboard       = lazy(() => import('@/pages/Dashboard/Dashboard'));
-const Profile         = lazy(() => import('@/pages/Profile/Profile'));
-const Settings        = lazy(() => import('@/pages/Settings/Settings'));
+const Landing = lazy(() => import('@/pages/Landing/Landing'));
+const About = lazy(() => import('@/pages/About/About'));
+const Login = lazy(() => import('@/pages/auth/Login/Login'));
+const Register = lazy(() => import('@/pages/auth/Register/Register'));
+const ForgotPassword = lazy(() => import('@/pages/auth/ForgotPassword/ForgotPassword'));
+const ResetPassword = lazy(() => import('@/pages/auth/ResetPassword/ResetPassword'));
+const VerifyEmail = lazy(() => import('@/pages/auth/VerifyEmail'));
+const NotFound = lazy(() => import('@/pages/errors/NotFound'));
+const Dashboard = lazy(() => import('@/pages/Dashboard/Dashboard'));
+const Profile = lazy(() => import('@/pages/Profile/Profile'));
+const Settings = lazy(() => import('@/pages/Settings/Settings'));
+const GateDashboardPage = lazy(() => import('@/pages/Gate/GateDashboardPage'));
+const GateSyllabusPage = lazy(() => import('@/pages/Gate/GateSyllabusPage'));
+const GatePracticePage = lazy(() => import('@/pages/Gate/GatePracticePage'));
+const GatePracticeAttemptsPage = lazy(() => import('@/pages/Gate/GatePracticeAttemptsPage'));
+const GatePlannerPage = lazy(() => import('@/pages/Gate/GatePlannerPage'));
+const GateStudyPage = lazy(() => import('@/pages/Gate/GateStudyPage'));
+const GateMistakesPage = lazy(() => import('@/pages/Gate/GateMistakesPage'));
+const GateRevisionHubPage = lazy(() => import('@/pages/Gate/GateRevisionHubPage'));
+const GateMockTestsPage = lazy(() => import('@/pages/Gate/GateMockTestsPage'));
+const GateAnalyticsPage = lazy(() => import('@/pages/Gate/GateAnalyticsPage'));
+const GateReadinessPage = lazy(() => import('@/pages/Gate/GateReadinessPage').then(m => ({ default: m.GateReadinessPage })));
 const Recommendations = lazy(() => import('@/pages/Recommendations/Recommendations'));
 const CareerComparison = lazy(() => import('@/pages/Recommendations/CareerComparison').then((m) => ({ default: m.CareerComparison })));
 const AnalyticsDashboard = lazy(() => import('@/pages/Analytics/AnalyticsDashboard'));
@@ -30,6 +41,8 @@ const WeeklyPlanner = lazy(() => import('@/pages/Roadmap/WeeklyPlanner').then((m
 const AiDashboard = lazy(() => import('@/pages/AI/AiDashboard'));
 const ResumeIntelligence = lazy(() => import('@/pages/AI/ResumeIntelligence').then((m) => ({ default: m.ResumeIntelligence })));
 const InterviewCoach = lazy(() => import('@/pages/AI/InterviewCoach').then((m) => ({ default: m.InterviewCoach })));
+const SuccessStoriesPage = lazy(() => import('@/pages/SuccessStoriesPage').then((m) => ({ default: m.SuccessStoriesPage })));
+const LiveJobsPage = lazy(() => import('@/pages/LiveJobsPage'));
 
 // ─── Router Config ────────────────────────────────────────────────
 const router = createBrowserRouter([
@@ -68,8 +81,21 @@ const router = createBrowserRouter([
       { path: '/skill-graph', element: <PageTransition><SkillGraph /></PageTransition> },
       { path: '/planner', element: <PageTransition><WeeklyPlanner /></PageTransition> },
       { path: '/ai', element: <PageTransition><AiDashboard /></PageTransition> },
+      { path: '/gate', element: <PageTransition><GateDashboardPage /></PageTransition> },
+      { path: '/gate/syllabus', element: <PageTransition><GateSyllabusPage /></PageTransition> },
+      { path: '/gate/practice', element: <PageTransition><GatePracticePage /></PageTransition> },
+      { path: '/gate/attempts', element: <PageTransition><GatePracticeAttemptsPage /></PageTransition> },
+      { path: '/gate/planner', element: <PageTransition><GatePlannerPage /></PageTransition> },
+      { path: '/gate/study', element: <PageTransition><GateStudyPage /></PageTransition> },
+      { path: '/gate/mistakes', element: <PageTransition><GateMistakesPage /></PageTransition> },
+      { path: '/gate/revisions', element: <PageTransition><GateRevisionHubPage /></PageTransition> },
+      { path: '/gate/mocks', element: <PageTransition><GateMockTestsPage /></PageTransition> },
+      { path: '/gate/analytics', element: <PageTransition><GateAnalyticsPage /></PageTransition> },
+      { path: '/gate/readiness', element: <PageTransition><GateReadinessPage /></PageTransition> },
       { path: '/resume-intelligence', element: <PageTransition><ResumeIntelligence /></PageTransition> },
       { path: '/interview-coach', element: <PageTransition><InterviewCoach /></PageTransition> },
+      { path: '/success-stories', element: <PageTransition><SuccessStoriesPage /></PageTransition> },
+      { path: '/live-jobs', element: <PageTransition><LiveJobsPage /></PageTransition> },
     ],
   },
 

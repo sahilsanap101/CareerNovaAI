@@ -48,26 +48,36 @@ model User {
   updatedAt  DateTime @updatedAt
 
   // Relations
-  profile              Profile?
-  preferences          UserPreference?
-  sessions             Session[]
-  auditLogs            AuditLog[]
-  passwordResetTokens  PasswordResetToken[]
-  verificationTokens   VerificationToken[]
-  skills               UserSkill[]
-  interests            UserInterest[]
-  careerGoal           CareerGoal?
-  projects             Project[]
-  certifications       Certification[]
-  codingPlatforms      CodingPlatform[]
-  recommendations      RecommendationResult[]
-  userRoadmaps         UserRoadmap[]
-  userTasks            UserTask[]
-  weeklyPlans          WeeklyPlan[]
-  userAchievements     UserAchievement[]
-  studySessions        StudySession[]
-  conversations        Conversation[]
-  aiMetrics            AiMetric[]
+  profile             Profile?
+  preferences         UserPreference?
+  sessions            Session[]
+  auditLogs           AuditLog[]
+  passwordResetTokens PasswordResetToken[]
+  verificationTokens  VerificationToken[]
+  skills              UserSkill[]
+  interests           UserInterest[]
+  careerGoal          CareerGoal?
+  gateProfile         GateUserProfile?
+  gatePersonalTopics  GatePersonalTopic[]
+  gateStudyTasks      GateStudyTask[]
+  gateStudySessions   GateStudySession[]
+  gatePracticeAttempts GatePracticeAttempt[]
+  gateMistakes        GateMistake[]
+  gateRevisionItems   GateRevisionItem[]
+  projects            Project[]
+  certifications      Certification[]
+  codingPlatforms     CodingPlatform[]
+  recommendations     RecommendationResult[]
+  userRoadmaps        UserRoadmap[]
+  userTasks           UserTask[]
+  weeklyPlans         WeeklyPlan[]
+  userAchievements    UserAchievement[]
+  studySessions       StudySession[]
+  conversations       Conversation[]
+  aiMetrics           AiMetric[]
+  feedbacks           Feedback[]
+  savedJobs           SavedJob[]
+  jobApplications     JobApplication[]
 
   @@index([email])
   @@map("users")
@@ -76,13 +86,13 @@ model User {
 // ─── Phase 5: AI Operating System (AIOS) Models ───────────────────
 
 model Conversation {
-  id        String    @id @default(cuid())
+  id        String   @id @default(cuid())
   userId    String
-  title     String    @default("New AI Session")
-  agentType String    @default("CAREER_MENTOR") // CAREER_MENTOR, RESUME, GITHUB, INTERVIEW, LEARNING, RESEARCH, ROADMAP
-  pinned    Boolean   @default(false)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  title     String   @default("New AI Session")
+  agentType String   @default("CAREER_MENTOR") // CAREER_MENTOR, RESUME, GITHUB, INTERVIEW, LEARNING, RESEARCH, ROADMAP
+  pinned    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   messages Message[]
@@ -94,11 +104,11 @@ model Conversation {
 model Message {
   id             String   @id @default(cuid())
   conversationId String
-  role           String   // user, assistant, system, tool
+  role           String // user, assistant, system, tool
   content        String   @db.Text
-  sources        Json?    // RAG Citing sources
+  sources        Json? // RAG Citing sources
   tokensUsed     Int?     @default(0)
-  feedback       String?  // HELPFUL, UNHELPFUL
+  feedback       String? // HELPFUL, UNHELPFUL
   createdAt      DateTime @default(now())
 
   conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
@@ -157,7 +167,7 @@ model Roadmap {
   careerPathId      String
   description       String   @db.Text
   difficulty        String   @default("INTERMEDIATE") // BEGINNER, INTERMEDIATE, ADVANCED
-  estimatedDuration String   // e.g. "16 Weeks"
+  estimatedDuration String // e.g. "16 Weeks"
   version           Int      @default(1)
   isActive          Boolean  @default(true)
   createdAt         DateTime @default(now())
@@ -202,7 +212,7 @@ model RoadmapModule {
   dependencies   String[] // Module IDs or Names
   order          Int      @default(1)
 
-  phase RoadmapPhase     @relation(fields: [phaseId], references: [id], onDelete: Cascade)
+  phase RoadmapPhase   @relation(fields: [phaseId], references: [id], onDelete: Cascade)
   tasks LearningTask[]
 
   @@index([phaseId])
@@ -233,7 +243,7 @@ model Resource {
   id           String  @id @default(cuid())
   taskId       String
   title        String
-  provider     String  // e.g. "YouTube", "freeCodeCamp", "Official Docs", "Coursera"
+  provider     String // e.g. "YouTube", "freeCodeCamp", "Official Docs", "Coursera"
   url          String
   resourceType String  @default("VIDEO") // VIDEO, ARTICLE, DOCUMENTATION, COURSE
   duration     String? @default("30 mins")
@@ -309,7 +319,7 @@ model DailyPlan {
   id             String   @id @default(cuid())
   weeklyPlanId   String
   date           DateTime
-  tasks          Json     // Array of task items for the day
+  tasks          Json // Array of task items for the day
   estimatedHours Float    @default(2)
   completedHours Float    @default(0)
   status         String   @default("PLANNED") // PLANNED, IN_PROGRESS, COMPLETED
@@ -383,10 +393,10 @@ model CareerPath {
   id            String   @id @default(cuid())
   name          String   @unique
   description   String   @db.Text
-  category      String   // e.g. "Software Engineering", "AI & Data", "Cyber Security", "Cloud & DevOps"
+  category      String // e.g. "Software Engineering", "AI & Data", "Cyber Security", "Cloud & DevOps"
   industry      String   @default("Technology")
-  averageSalary String   // e.g. "12 - 25 LPA"
-  growthRate    String   // e.g. "22% YoY"
+  averageSalary String // e.g. "12 - 25 LPA"
+  growthRate    String // e.g. "22% YoY"
   demandLevel   String   @default("HIGH") // HIGH, VERY_HIGH, EXTREME
   roadmapId     String?
   icon          String?  @default("Briefcase")
@@ -420,15 +430,16 @@ model RecommendationResult {
   id           String   @id @default(cuid())
   userId       String
   careerPathId String
-  totalScore   Float    // 0 to 100
-  SGI          Float    // Skill Gap Index 0 to 100
-  confidence   Float    // Confidence percentage
-  explanation  Json     // Why recommended, strengths, and areas to improve
+  totalScore   Float // 0 to 100
+  SGI          Float // Skill Gap Index 0 to 100
+  confidence   Float // Confidence percentage
+  explanation  Json // Why recommended, strengths, and areas to improve
   generatedAt  DateTime @default(now())
 
-  user       User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
-  careerPath CareerPath           @relation(fields: [careerPathId], references: [id], onDelete: Cascade)
+  user       User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  careerPath CareerPath             @relation(fields: [careerPathId], references: [id], onDelete: Cascade)
   factors    RecommendationFactor[]
+  feedbacks  Feedback[]
 
   @@index([userId])
   @@index([careerPathId])
@@ -440,8 +451,8 @@ model RecommendationFactor {
   id               String @id @default(cuid())
   recommendationId String
   factor           String // Skills, Interests, Projects, Academic, Certifications, Coding, Goals
-  weight           Float  // e.g. 0.35
-  score            Float  // 0 to 100
+  weight           Float // e.g. 0.35
+  score            Float // 0 to 100
   explanation      String
 
   recommendation RecommendationResult @relation(fields: [recommendationId], references: [id], onDelete: Cascade)
@@ -466,6 +477,8 @@ model Profile {
   profileImage    String?
   city            String?
   country         String?  @default("India")
+  gender          String?
+  category        String?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
@@ -496,7 +509,7 @@ model UserPreference {
 
 model Skill {
   id        String   @id @default(cuid())
-  category  String   // e.g. "Programming", "Frontend", "Backend", "Database", "Cloud", "Cyber Security", "AI", "DevOps"
+  category  String // e.g. "Programming", "Frontend", "Backend", "Database", "Cloud", "Cyber Security", "AI", "DevOps"
   name      String   @unique
   createdAt DateTime @default(now())
 
@@ -536,10 +549,10 @@ model Interest {
 }
 
 model UserInterest {
-  id         String   @id @default(cuid())
+  id         String @id @default(cuid())
   userId     String
   interestId String
-  priority   Int      @default(1) // 1 to 5
+  priority   Int    @default(1) // 1 to 5
 
   user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   interest Interest @relation(fields: [interestId], references: [id], onDelete: Cascade)
@@ -555,7 +568,7 @@ model CareerGoal {
   preferredJobRole   String?
   preferredIndustry  String?
   preferredWorkMode  WorkMode @default(HYBRID)
-  preferredCountries String?  // Comma separated
+  preferredCountries String? // Comma separated
   expectedSalary     String?
   higherStudies      Boolean  @default(false)
   entrepreneurship   Boolean  @default(false)
@@ -575,7 +588,7 @@ model Project {
   userId           String
   title            String
   description      String   @db.Text
-  technologies     String   // Comma separated or stringified
+  technologies     String // Comma separated or stringified
   githubUrl        String?
   demoUrl          String?
   completionStatus String   @default("COMPLETED") // COMPLETED, IN_PROGRESS, PLANNED
@@ -607,7 +620,7 @@ model Certification {
 model CodingPlatform {
   id             String   @id @default(cuid())
   userId         String
-  platform       String   // LeetCode, Codeforces, HackerRank, CodeChef, GeeksforGeeks, GitHub
+  platform       String // LeetCode, Codeforces, HackerRank, CodeChef, GeeksforGeeks, GitHub
   username       String
   problemsSolved Int      @default(0)
   createdAt      DateTime @default(now())
@@ -683,4 +696,313 @@ model AuditLog {
   @@index([action])
   @@index([createdAt])
   @@map("audit_logs")
+}
+
+model Feedback {
+  id                  String   @id @default(cuid())
+  userId              String
+  recommendationId    String
+  relevanceScore      Int // 1-5
+  roadmapClarityScore Int // 1-5
+  freeTextComment     String?  @db.Text
+  createdAt           DateTime @default(now())
+
+  user           User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recommendation RecommendationResult @relation(fields: [recommendationId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([recommendationId])
+  @@map("feedbacks")
+}
+
+// ─── Phase 6: GATE Intelligence ───────────────────────────────────
+
+model GateUserProfile {
+  id               String    @id @default(cuid())
+  userId           String    @unique
+  gateYear         Int
+  paper            String
+  targetScore      Float
+  weeklyHours      Float
+  preparationStage String
+  examDate         DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("gate_user_profiles")
+}
+
+model GatePersonalTopic {
+  id         String    @id @default(cuid())
+  userId     String
+  title      String
+  subject    String
+  notes      String?   @db.Text
+  status     String    @default("NOT_STARTED")
+  priority   String    @default("MEDIUM")
+  targetDate DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  user             User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  studyTasks       GateStudyTask[]
+  studySessions    GateStudySession[]
+  practiceAttempts GatePracticeAttempt[]
+  mistakes         GateMistake[]
+  revisionItems    GateRevisionItem[]
+
+  @@index([userId])
+  @@map("gate_personal_topics")
+}
+
+model GateStudyTask {
+  id               String    @id @default(cuid())
+  userId           String
+  topicId          String?
+  title            String
+  description      String?   @db.Text
+  plannedDate      DateTime
+  estimatedMinutes Int
+  priority         String    @default("MEDIUM")
+  status           String    @default("NOT_STARTED")
+  completedAt      DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  user  User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic GatePersonalTopic? @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  studySessions GateStudySession[]
+
+  @@index([userId])
+  @@index([topicId])
+  @@map("gate_study_tasks")
+}
+
+model GateStudySession {
+  id              String             @id @default(cuid())
+  userId          String
+  topicId         String?
+  studyTaskId     String?
+  startedAt       DateTime
+  endedAt         DateTime?
+  durationMinutes Int
+  sessionType     String             @default("STUDY")
+  notes           String?            @db.Text
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+
+  user       User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic      GatePersonalTopic? @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  studyTask  GateStudyTask?     @relation(fields: [studyTaskId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([userId, startedAt])
+  @@index([topicId])
+  @@index([studyTaskId])
+  @@map("gate_study_sessions")
+}
+
+model GatePracticeAttempt {
+  id                    String             @id @default(cuid())
+  userId                String
+  topicId               String?
+  attemptType           String             // PYQ, PRACTICE, MOCK
+  sourceName            String
+  sourceUrl             String?
+  paperCode             String?
+  paperYear             Int?
+  attemptDate           DateTime           @default(now())
+  totalQuestions        Int
+  attemptedQuestions    Int
+  correctAnswers        Int
+  incorrectAnswers      Int
+  unattemptedQuestions  Int
+  marksObtained         Float?
+  percentile            Float?
+  durationMinutes       Int?
+  difficulty            String?
+  notes                 String?            @db.Text
+  createdAt             DateTime           @default(now())
+  updatedAt             DateTime           @updatedAt
+
+  user          User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic         GatePersonalTopic? @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  mistakes      GateMistake[]
+  revisionItems GateRevisionItem[]
+
+  @@index([userId])
+  @@index([userId, attemptDate])
+  @@index([topicId])
+  @@index([attemptType])
+  @@map("gate_practice_attempts")
+}
+
+model GateMistake {
+  id                String    @id @default(cuid())
+  userId            String
+  topicId           String?
+  practiceAttemptId String?
+  title             String
+  category          String    
+  description       String?   @db.Text
+  correctConcept    String?   @db.Text
+  priority          String    @default("MEDIUM") 
+  difficulty        String?   
+  status            String    @default("OPEN")   
+  needsRevision     Boolean   @default(true)
+  mistakeDate       DateTime  @default(now())
+  resolvedAt        DateTime?
+  notes             String?   @db.Text
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  user            User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic           GatePersonalTopic?   @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  practiceAttempt GatePracticeAttempt? @relation(fields: [practiceAttemptId], references: [id], onDelete: SetNull)
+  revisionItems   GateRevisionItem[]
+
+  @@index([userId])
+  @@index([topicId])
+  @@index([practiceAttemptId])
+  @@index([status])
+  @@map("gate_mistakes")
+}
+
+model GateRevisionItem {
+  id                String               @id @default(cuid())
+  userId            String
+  topicId           String?
+  mistakeId         String?
+  practiceAttemptId String?
+  title             String
+  description       String?
+  scheduledDate     DateTime
+  priority          String               @default("MEDIUM")
+  status            String               @default("PENDING")
+  lastReviewedAt    DateTime?
+  completedAt       DateTime?
+  reviewCount       Int                  @default(0)
+  notes             String?
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt
+
+  user              User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic             GatePersonalTopic?   @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  mistake           GateMistake?         @relation(fields: [mistakeId], references: [id], onDelete: SetNull)
+  practiceAttempt   GatePracticeAttempt? @relation(fields: [practiceAttemptId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([scheduledDate])
+  @@index([topicId])
+  @@index([mistakeId])
+  @@index([practiceAttemptId])
+  @@map("gate_revision_items")
+}
+
+// ─── Feature 12: Live Jobs ─────────────────────────────────────────
+
+enum ApplicationStatus {
+  SAVED
+  APPLIED
+  ASSESSMENT
+  INTERVIEW
+  OFFER
+  REJECTED
+}
+
+model Job {
+  id                 String    @id @default(cuid())
+  provider           String    @default("JOOBLE")
+  providerJobId      String
+  title              String
+  company            String?
+  location           String?
+  snippet            String?   @db.Text
+  salary             String?
+  type               String?   // Full-time, Part-time, Contract, Internship
+  source             String?   // Job board source within Jooble
+  applyUrl           String
+  providerUpdatedAt  DateTime?
+  fetchedAt          DateTime  @default(now())
+  expiresAt          DateTime?
+  isActive           Boolean   @default(true)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  careerMatches  JobCareerMatch[]
+  savedBy        SavedJob[]
+  applications   JobApplication[]
+
+  @@unique([provider, providerJobId])
+  @@index([isActive])
+  @@index([fetchedAt])
+  @@map("jobs")
+}
+
+model JobCareerMatch {
+  id               String   @id @default(cuid())
+  jobId            String
+  careerIdentifier String   // careerPath.name e.g. "Mobile Developer"
+  queryUsed        String   // exact Jooble keywords string used
+  createdAt        DateTime @default(now())
+
+  job Job @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([jobId, careerIdentifier])
+  @@index([careerIdentifier])
+  @@index([jobId])
+  @@map("job_career_matches")
+}
+
+model SavedJob {
+  id        String   @id @default(cuid())
+  userId    String
+  jobId     String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  job  Job  @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, jobId])
+  @@index([userId])
+  @@map("saved_jobs")
+}
+
+model JobApplication {
+  id        String            @id @default(cuid())
+  userId    String
+  jobId     String
+  status    ApplicationStatus @default(APPLIED)
+  appliedAt DateTime          @default(now())
+  notes     String?           @db.Text
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  job  Job  @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, jobId])
+  @@index([userId])
+  @@index([status])
+  @@map("job_applications")
+}
+
+model JobSyncLog {
+  id               String    @id @default(cuid())
+  provider         String    @default("JOOBLE")
+  startedAt        DateTime  @default(now())
+  completedAt      DateTime?
+  status           String    @default("PENDING") // PENDING, SUCCESS, FAILED, QUOTA_EXCEEDED
+  requestCount     Int       @default(0)
+  queriesExecuted  String[]
+  jobsUpserted     Int       @default(0)
+  lastError        String?
+  createdAt        DateTime  @default(now())
+
+  @@index([provider])
+  @@index([startedAt])
+  @@map("job_sync_logs")
 }

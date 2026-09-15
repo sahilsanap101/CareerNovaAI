@@ -1,0 +1,35 @@
+{
+  "query": "Data Scientist Machine Learning Models Predictive Statistics",
+  "ranks": [
+    {
+      "candidate": "Data Science Python Machine Learning Pandas",
+      "score": 0.3781955035718694
+    },
+    {
+      "candidate": "Data Analysis Statistics SQL Tableau",
+      "score": 0.2704297203021665
+    },
+    {
+      "candidate": "Front End React User Interface CSS HTML",
+      "score": 0
+    },
+    {
+      "candidate": "Back End Node Server API Database SQL",
+      "score": 0
+    },
+    {
+      "candidate": "System Architecture Cloud AWS Docker Kubernetes",
+      "score": 0
+    },
+    {
+      "candidate": "Basic Coding Hello World",
+      "score": 0
+    }
+  ],
+  "metrics": {
+    "runtimeMs": 0.4765999997034669,
+    "recallAt2": 1,
+    "ndcg": 0.992619504174702,
+    "mrr": 1
+  }
+}

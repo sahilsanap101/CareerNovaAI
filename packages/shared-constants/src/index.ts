@@ -212,3 +212,5 @@ export const RATE_LIMITS = {
     MAX_REQUESTS: 200,
   },
 } as const;
+
+export * from './skillAliases';

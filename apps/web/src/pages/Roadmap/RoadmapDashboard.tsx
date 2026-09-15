@@ -84,8 +84,8 @@ export default function RoadmapDashboard() {
               key={pace}
               onClick={() => generateMutation.mutate(pace as 'FAST' | 'MEDIUM' | 'SLOW')}
               className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${userRoadmap?.learningPace === pace
-                  ? 'bg-primary-600 text-white shadow'
-                  : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                ? 'bg-primary-600 text-white shadow'
+                : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
                 }`}
             >
               {pace === 'SLOW' ? '5h/wk' : pace === 'MEDIUM' ? '10h/wk' : '20h/wk'}
