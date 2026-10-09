@@ -998,11 +998,11 @@ export async function getComprehensiveAnalytics(userId: string) {
     mistakes.forEach(m => { mistakeSummary.byCategory[m.category] = (mistakeSummary.byCategory[m.category] || 0) + 1; });
 
     let revisionsDueToday = 0, revisionsOverdue = 0, pendingRevisions = 0, completedRevisions = 0, upcomingRevisions = 0;
-    const todayStr = now.toISOString().split('T')[0];
+    const todayStr = now.toISOString().split('T')[0] as string;
     revisions.forEach(r => {
         if (r.status === 'COMPLETED') { completedRevisions++; return; }
         pendingRevisions++;
-        const tDate = r.scheduledDate.toISOString().split('T')[0];
+        const tDate = r.scheduledDate.toISOString().split('T')[0] as string;
         if (tDate < todayStr) revisionsOverdue++;
         else if (tDate === todayStr) revisionsDueToday++;
         else upcomingRevisions++;

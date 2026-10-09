@@ -1,5 +1,12 @@
 import * as aiRepo from '@/modules/ai/repositories/ai.repository';
-import { orchestrateAiRequest, type AgentType } from '../orchestrator/multiAgentOrchestrator';
+import { generateAiCompletion } from '@/modules/ai/gateway/aiGateway';
+export type AgentType =
+  | 'CAREER_MENTOR'
+  | 'RESUME'
+  | 'GITHUB'
+  | 'INTERVIEW'
+  | 'LEARNING'
+  | 'RESEARCH';
 
 export async function processChatRequest(
   userId: string,
@@ -17,7 +24,7 @@ export async function processChatRequest(
   await aiRepo.saveMessage(convId, 'user', userMessage);
 
   // Orchestrate AI completion
-  const aiResult = await orchestrateAiRequest(userId, userMessage, agentType);
+  const aiResult = await generateAiCompletion({ userId, prompt: userMessage, agentType });
 
   // Save assistant message
   const assistantMsg = await aiRepo.saveMessage(

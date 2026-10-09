@@ -1,0 +1,26 @@
+{
+  "synthetic_v2_A.csv": {
+    "hash": "00f75ac47ec579311b7d5049b9458a679c90e2b2013edbaf810e61b364fd4c52",
+    "rows": 2000,
+    "columns": 30
+  },
+  "synthetic_v2_B.csv": {
+    "hash": "3dfe508fcace8ea607b26ac98028ce97d7b55f6c534e12b80f4862da89b1487b",
+    "rows": 2000,
+    "columns": 30
+  },
+  "synthetic_v2_C.csv": {
+    "hash": "845da92ddb247558a19775aecaf08ea9aed8073c3115c5eb2cb015d95efcd71e",
+    "rows": 2000,
+    "columns": 30
+  },
+  "generator_config_v1.json": {
+    "hash": "3f56032d857b8e71af6c7e0dd46824b17419ea6de474fe4e7748dbfd21e5594b"
+  },
+  "generator_version": "v1",
+  "random_seeds": {
+    "master": 42,
+    "career_mappings": 101,
+    "transition_bias": 202
+  }
+}

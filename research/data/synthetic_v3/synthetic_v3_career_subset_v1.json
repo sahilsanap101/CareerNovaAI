@@ -1,0 +1,77 @@
+[
+  {
+    "career_id": "C08",
+    "career_name": ".NET Developer",
+    "canonical_category": "Software Engineering"
+  },
+  {
+    "career_id": "C59",
+    "career_name": "AI Data / Annotation Quality Specialist",
+    "canonical_category": "AI / Data"
+  },
+  {
+    "career_id": "C13",
+    "career_name": "AI Engineer",
+    "canonical_category": "AI / Machine Learning"
+  },
+  {
+    "career_id": "C58",
+    "career_name": "AI Product / Applied AI Developer",
+    "canonical_category": "AI / Product"
+  },
+  {
+    "career_id": "C10",
+    "career_name": "API / Integration Developer",
+    "canonical_category": "Software Engineering"
+  },
+  {
+    "career_id": "C33",
+    "career_name": "Application Security Engineer",
+    "canonical_category": "Cybersecurity"
+  },
+  {
+    "career_id": "C36",
+    "career_name": "Automation Test Engineer",
+    "canonical_category": "Quality Engineering"
+  },
+  {
+    "career_id": "C21",
+    "career_name": "BI Developer / BI Analyst",
+    "canonical_category": "Data"
+  },
+  {
+    "career_id": "C03",
+    "career_name": "Backend Developer",
+    "canonical_category": "Software Engineering"
+  },
+  {
+    "career_id": "C22",
+    "career_name": "Big Data Engineer",
+    "canonical_category": "Data"
+  },
+  {
+    "career_id": "C48",
+    "career_name": "Blockchain / Web3 Developer",
+    "canonical_category": "Emerging Technology"
+  },
+  {
+    "career_id": "C51",
+    "career_name": "Business Analyst (IT)",
+    "canonical_category": "Business / Technology"
+  },
+  {
+    "career_id": "C57",
+    "career_name": "Cloud Data Engineer",
+    "canonical_category": "Data / Cloud"
+  },
+  {
+    "career_id": "C23",
+    "career_name": "Cloud Engineer",
+    "canonical_category": "Cloud / Infrastructure"
+  },
+  {
+    "career_id": "C32",
+    "career_name": "Cloud Security Engineer",
+    "canonical_category": "Cybersecurity"
+  }
+]

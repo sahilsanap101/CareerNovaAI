@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500" style="background-color: white; font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;">
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8" /></marker>
+</defs>
+<line x1="365" y1="260.0" x2="395" y2="260.0" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="725" y1="260.0" x2="755" y2="260.0" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+<text x="200.0" y="30" font-size="16" font-weight="bold" text-anchor="middle" alignment-baseline="baseline" fill="#0f172a">(a) Career Recommendation</text>
+<rect x="40" y="50" width="320" height="420" rx="16" fill="#fff" stroke="#3b82f6" stroke-width="2" />
+<rect x="37" y="47" width="326" height="426" rx="19" fill="none" stroke="#3b82f6" stroke-width="1" />
+<rect x="64" y="74" width="32" height="22" rx="6" fill="#fef9c3" /><text x="80.0" y="89.0" font-size="10" font-weight="bold" text-anchor="middle" alignment-baseline="baseline" fill="#854d0e">#1</text>
+<text x="104" y="89" font-size="12" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#64748b">TECHNOLOGY</text>
+<text x="64" y="124" font-size="20" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#0f172a">AI Engineer</text>
+<rect x="184" y="109" width="75" height="22" rx="6" fill="#eff6ff" /><text x="221.5" y="124.0" font-size="10" font-weight="bold" text-anchor="middle" alignment-baseline="baseline" fill="#2563eb">✓ Selected</text>
+<rect x="64" y="150" width="120" height="8" rx="4" fill="#f1f5f9" stroke="none" stroke-width="1" />
+<rect x="64" y="150" width="102" height="8" rx="4" fill="#22c55e" stroke="none" stroke-width="1" />
+<text x="194" y="158" font-size="14" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#334155">Match Score: 85/100</text>
+<line x1="64" y1="174" x2="336" y2="174" stroke="#e2e8f0" stroke-width="1" />
+<text x="64" y="199" font-size="12" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#64748b">TOP SKILLS</text>
+<circle cx="72" cy="217" r="8" fill="#22c55e" /><path d="M 4 8 L 7 11 L 12 5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="88" y="221" font-size="14" font-weight="normal" text-anchor="start" alignment-baseline="baseline" fill="#334155">Python</text>
+<text x="64" y="254" font-size="12" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#64748b">SKILLS TO DEVELOP</text>
+<path d="M 8 1 L 15 14 L 1 14 Z" fill="#f59e0b" /><line x1="8" y1="5" x2="8" y2="10" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="8" cy="12" r="1" fill="#fff" />
+<text x="88" y="276" font-size="14" font-weight="normal" text-anchor="start" alignment-baseline="baseline" fill="#334155">Deep Learning</text>
+<path d="M 8 1 L 15 14 L 1 14 Z" fill="#f59e0b" /><line x1="8" y1="5" x2="8" y2="10" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="8" cy="12" r="1" fill="#fff" />
+<text x="88" y="301" font-size="14" font-weight="normal" text-anchor="start" alignment-baseline="baseline" fill="#334155">ML System Design</text>
+<line x1="64" y1="329" x2="336" y2="329" stroke="#e2e8f0" stroke-width="1" />
+<rect x="64" y="349" width="272" height="40" rx="12" fill="#dbeafe" stroke="none" stroke-width="1" />
+<text x="200.0" y="374" font-size="14" font-weight="bold" text-anchor="middle" alignment-baseline="baseline" fill="#1d4ed8">Roadmap Generated ✓</text>
+<text x="560.0" y="30" font-size="16" font-weight="bold" text-anchor="middle" alignment-baseline="baseline" fill="#0f172a">(b) Skill-Gap Analysis</text>
+<rect x="400" y="50" width="320" height="420" rx="16" fill="#fff" stroke="#e2e8f0" stroke-width="2" />
+<text x="424" y="89" font-size="20" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#0f172a">Your Current Position</text>
+<rect x="424" y="114" width="272" height="80" rx="12" fill="#fff" stroke="#e2e8f0" stroke-width="1" />
+<circle cx="447" cy="137" r="8" fill="#22c55e" /><path d="M 4 8 L 7 11 L 12 5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="459" y="141" font-size="12" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#94a3b8">STRONG SKILLS</text>
+<text x="439" y="174" font-size="14" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#334155">Python</text>
+<rect x="556" y="159" width="125" height="20" rx="6" fill="#dcfce7" /><text x="618.5" y="173.0" font-size="10" font-weight="bold" text-anchor="middle" alignment-baseline="baseline" fill="#15803d">Intermediate (3/5)</text>
+<rect x="424" y="214" width="272" height="80" rx="12" fill="#fff" stroke="#e2e8f0" stroke-width="1" />
+<path d="M 8 1 L 15 14 L 1 14 Z" fill="#f59e0b" /><line x1="8" y1="5" x2="8" y2="10" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="8" cy="12" r="1" fill="#fff" />
+<text x="459" y="241" font-size="12" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#94a3b8">PARTIAL SKILLS</text>
+<text x="439" y="274" font-size="14" font-weight="normal" text-anchor="start" alignment-baseline="baseline" fill="#64748b">None identified.</text>
+<rect x="424" y="314" width="272" height="80" rx="12" fill="#fff" stroke="#e2e8f0" stroke-width="1" />
+<path d="M 8 1 L 15 14 L 1 14 Z" fill="#ef4444" /><line x1="8" y1="5" x2="8" y2="10" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="8" cy="12" r="1" fill="#fff" />
+<text x="459" y="341" font-size="12" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#94a3b8">SKILL GAPS</text>
+<text x="439" y="374" font-size="14" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#334155">Deep Learning</text>
+<rect x="546" y="359" width="135" height="20" rx="6" fill="#fee2e2" /><text x="613.5" y="373.0" font-size="10" font-weight="bold" text-anchor="middle" alignment-baseline="baseline" fill="#b91c1c">Target: Intermediate</text>
+<text x="980.0" y="30" font-size="16" font-weight="bold" text-anchor="middle" alignment-baseline="baseline" fill="#0f172a">(c) Personalized Learning Roadmap</text>
+<rect x="760" y="50" width="440" height="420" rx="16" fill="#fff" stroke="#e2e8f0" stroke-width="2" />
+<text x="784" y="89" font-size="20" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#0f172a">AI Engineer</text>
+<rect x="1036" y="74" width="140" height="30" rx="6" fill="#f1f5f9" /><text x="1106.0" y="93.0" font-size="10" font-weight="bold" text-anchor="middle" alignment-baseline="baseline" fill="#334155">Readiness 45/100</text>
+<line x1="784" y1="114" x2="1176" y2="114" stroke="#e2e8f0" stroke-width="1" />
+<line x1="794" y1="134" x2="794" y2="394" stroke="#e2e8f0" stroke-width="2" />
+<rect x="786" y="136" width="16" height="16" rx="8" fill="#3b82f6" stroke="white" stroke-width="4" />
+<text x="814" y="149" font-size="16" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#0f172a">Stage 1: Foundation</text>
+<rect x="814" y="164" width="360" height="50" rx="12" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1" />
+<circle cx="837" cy="189" r="8" fill="#22c55e" /><path d="M 4 8 L 7 11 L 12 5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="854" y="194" font-size="15" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#0f172a">Python</text>
+<rect x="954" y="179" width="190" height="20" rx="6" fill="#dcfce7" /><text x="1049.0" y="193.0" font-size="10" font-weight="bold" text-anchor="middle" alignment-baseline="baseline" fill="#15803d">SKIPPED BY EXISTING KNOWLEDGE</text>
+<rect x="786" y="236" width="16" height="16" rx="8" fill="#cbd5e1" stroke="white" stroke-width="4" />
+<text x="814" y="249" font-size="16" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#0f172a">Stage 2: Core Skills</text>
+<rect x="814" y="264" width="360" height="50" rx="12" fill="#fff" stroke="#e2e8f0" stroke-width="1" />
+<rect x="832" y="288" width="10" height="7" rx="1" fill="none" stroke="#94a3b8" stroke-width="2"/><path d="M 5 7 V 5 A 3 3 0 0 1 11 5" fill="none" stroke="#94a3b8" stroke-width="2"/>
+<text x="854" y="294" font-size="15" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#0f172a">Deep Learning</text>
+<rect x="1054" y="279" width="90" height="20" rx="6" fill="#f1f5f9" /><text x="1099.0" y="293.0" font-size="10" font-weight="bold" text-anchor="middle" alignment-baseline="baseline" fill="#334155">NOT STARTED</text>
+<rect x="786" y="336" width="16" height="16" rx="8" fill="#cbd5e1" stroke="white" stroke-width="4" />
+<text x="814" y="349" font-size="16" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#0f172a">Stage 3: Placement Preparation</text>
+<rect x="814" y="364" width="360" height="50" rx="12" fill="#fff" stroke="#e2e8f0" stroke-width="1" />
+<rect x="832" y="388" width="10" height="7" rx="1" fill="none" stroke="#94a3b8" stroke-width="2"/><path d="M 5 7 V 5 A 3 3 0 0 1 11 5 V 7" fill="none" stroke="#94a3b8" stroke-width="2"/>
+<text x="854" y="394" font-size="15" font-weight="bold" text-anchor="start" alignment-baseline="baseline" fill="#0f172a">ML System Design</text>
+<rect x="1084" y="379" width="60" height="20" rx="6" fill="#f1f5f9" /><text x="1114.0" y="393.0" font-size="10" font-weight="bold" text-anchor="middle" alignment-baseline="baseline" fill="#475569">LOCKED</text>
+</svg>

@@ -1,0 +1,9 @@
+Module,Route,Frontend Component,Backend API,DB Model,Research Relevance
+Career Recommendations,/career-recommendation,CareerRecommendationPage,GET /recommendations,UserSkill,Core
+Personalized Roadmap,/roadmap/:id,RoadmapPage,GET /roadmap,UserRoadmap,Core
+Live Jobs,/live-jobs,LiveJobsPage,GET /jobs,Job,Core
+Profile & Skills,/profile,ProfileWizard,POST /profile,Profile,Core
+Resume Intelligence,/resume-intelligence,ResumeIntelligence,POST /resume/analyze,ResumeAnalysis,Supporting
+Trending Jobs,/trending-jobs,TrendingJobsPage,GET /trending,None,Supporting
+GATE Dashboard,/gate/dashboard,GateDashboardPage,GET /gate/stats,GateUserProfile,Independent
+AIOS Career System,/aios,AiDashboard,POST /aios/chat,Conversation,Supporting

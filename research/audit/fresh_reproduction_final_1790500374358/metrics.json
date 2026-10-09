@@ -1,0 +1,87 @@
+{
+  "top1": "65.0",
+  "top3": "77.8",
+  "top5": "85.4",
+  "mrr": "73.9",
+  "ndcg": "75.6",
+  "macroP": "66.0",
+  "macroR": "64.9",
+  "macroF1": "58.2",
+  "confusionMatrix": {
+    "data analyst": {
+      "tp": 34,
+      "fp": 9,
+      "fn": 0
+    },
+    "full stack developer": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 34
+    },
+    "cybersecurity engineer": {
+      "tp": 33,
+      "fp": 43,
+      "fn": 1
+    },
+    "software engineer": {
+      "tp": 26,
+      "fp": 11,
+      "fn": 8
+    },
+    "qa engineer": {
+      "tp": 33,
+      "fp": 10,
+      "fn": 1
+    },
+    "nlp engineer": {
+      "tp": 33,
+      "fp": 58,
+      "fn": 0
+    },
+    "frontend developer": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 32
+    },
+    "devops engineer": {
+      "tp": 24,
+      "fp": 16,
+      "fn": 9
+    },
+    "data engineer": {
+      "tp": 28,
+      "fp": 2,
+      "fn": 5
+    },
+    "cloud engineer": {
+      "tp": 29,
+      "fp": 15,
+      "fn": 4
+    },
+    "backend developer": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 28
+    },
+    "computer vision engineer": {
+      "tp": 22,
+      "fp": 2,
+      "fn": 11
+    },
+    "machine learning engineer": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 33
+    },
+    "mlops engineer": {
+      "tp": 26,
+      "fp": 3,
+      "fn": 7
+    },
+    "data scientist": {
+      "tp": 31,
+      "fp": 6,
+      "fn": 2
+    }
+  }
+}

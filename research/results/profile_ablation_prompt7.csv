@@ -1,0 +1,11 @@
+Model,Top-1
+P (All 7),0.268
+P(-academics),0.258
+P(-projects),0.25
+P(-certifications),0.256
+P(-coding),0.262
+P(-career_goal),0.134
+P(-skills),0.28
+P(-interests),0.214
+A,0.824
+P + A,0.856

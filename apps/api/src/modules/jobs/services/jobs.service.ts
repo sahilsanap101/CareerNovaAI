@@ -1,26 +1,39 @@
 import { prisma } from '@/config/database';
+import { Prisma } from '@prisma/client';
 import { AppError } from '@/middleware/error.middleware';
 import { HTTP_STATUS, ERROR_CODES } from '@pathforge/shared-constants';
-import { getLatestRecommendations } from '@/modules/recommendations/repositories/recommendation.repository';
+
 import { getFullStudentData } from '@/modules/profile/repositories/profile.repository';
-import { scoreJob } from './matchScoring.service';
+import { scoreJob, type StudentContext } from './matchScoring.service';
 import { syncJobsForCareers } from './jobSync.service';
 import type { LiveJobFilters, JobMatchResult, AppStatus } from '../types/jobs.types';
+import { isJobRelevantForCareer } from './careerRelevance.service';
 
 // ─── Helpers ──────────────────────────────────────────────────────
 
-async function buildStudentContext(userId: string) {
-    const [student, recs] = await Promise.all([
-        getFullStudentData(userId),
-        getLatestRecommendations(userId),
-    ]);
-
-    const recommendedCareers = recs.map((r) => r.careerPath.name);
+async function buildStudentContext(userId: string): Promise<StudentContext> {
+    const student = await getFullStudentData(userId);
+    const recommendedCareers: string[] = [];
+    const rankedCareers: any[] = [];
     const skillNames = student?.skills.map((s) => s.skill.name) ?? [];
     const preferredLocation = student?.profile?.city ?? undefined;
     const workMode = student?.careerGoal?.preferredWorkMode ?? undefined;
 
-    return { recommendedCareers, skillNames, preferredLocation, workMode };
+    // Education / experience context (used by edu scoring — no BYSER impact)
+    const educationLevel = student?.profile?.degree ?? undefined;
+    const experienceMonths = student?.skills.reduce(
+        (acc, s) => acc + (s.experienceMonths ?? 0), 0,
+    ) ?? 0;
+
+    return {
+        recommendedCareers,
+        rankedCareers,
+        skillNames,
+        preferredLocation,
+        workMode,
+        educationLevel,
+        experienceMonths,
+    };
 }
 
 async function getSavedJobIds(userId: string): Promise<Set<string>> {
@@ -28,9 +41,23 @@ async function getSavedJobIds(userId: string): Promise<Set<string>> {
     return new Set(saved.map((s) => s.jobId));
 }
 
-async function getAppliedJobIds(userId: string): Promise<Set<string>> {
-    const applied = await prisma.jobApplication.findMany({ where: { userId }, select: { jobId: true } });
-    return new Set(applied.map((a) => a.jobId));
+interface AppliedInfo {
+    id: string;
+    status: AppStatus;
+    notes: string | null;
+}
+
+async function getAppliedJobMap(userId: string): Promise<Map<string, AppliedInfo>> {
+    const applied = await prisma.jobApplication.findMany({
+        where: { userId },
+        select: { id: true, jobId: true, status: true, notes: true },
+    });
+    return new Map(
+        applied.map((a) => [
+            a.jobId,
+            { id: a.id, status: a.status as AppStatus, notes: a.notes },
+        ]),
+    );
 }
 
 // ─── Get Recommended Jobs ─────────────────────────────────────────
@@ -43,27 +70,34 @@ async function getAppliedJobIds(userId: string): Promise<Set<string>> {
 export async function getRecommendedJobsForUser(userId: string, filters?: LiveJobFilters): Promise<JobMatchResult[]> {
     const ctx = await buildStudentContext(userId);
 
-    if (ctx.recommendedCareers.length === 0) {
-        return [];
-    }
-
     const page = filters?.page ?? 1;
     const limit = Math.min(filters?.limit ?? 30, 100);
     const skip = (page - 1) * limit;
 
-    // Fetch jobs from cache that are linked to any of the student's recommended careers
-    const where: Parameters<typeof prisma.job.findMany>[0]['where'] = {
+    const where: Prisma.JobWhereInput = {
         isActive: true,
-        careerMatches: {
+    };
+
+    if (filters?.career) {
+        // Automatically fetch from Jooble for the explicitly selected career
+        try {
+            await syncJobsForCareers([filters.career], ctx.preferredLocation);
+        } catch (err) {
+            console.warn(`Failed to auto-sync jobs for career ${filters.career}:`, err);
+        }
+
+        // Explicitly selected career bypasses recommendation constraints
+        where.careerMatches = { some: { careerIdentifier: { equals: filters.career, mode: 'insensitive' } } };
+    } else {
+        // Otherwise, fetch jobs for all recommended careers
+        if (ctx.recommendedCareers.length === 0) {
+            return [];
+        }
+        where.careerMatches = {
             some: {
                 careerIdentifier: { in: ctx.recommendedCareers },
             },
-        },
-    };
-
-    // Apply optional career filter
-    if (filters?.career) {
-        where.careerMatches = { some: { careerIdentifier: filters.career } };
+        };
     }
 
     // Apply search filter (against cached DB — not Jooble)
@@ -86,21 +120,34 @@ export async function getRecommendedJobsForUser(userId: string, filters?: LiveJo
         where.NOT = { type: { contains: 'intern', mode: 'insensitive' } };
     }
 
-    const [jobs, savedIds, appliedIds] = await Promise.all([
+    const [jobs, savedIds, appliedMap] = await Promise.all([
         prisma.job.findMany({
             where,
             include: { careerMatches: true },
             orderBy: { fetchedAt: 'desc' },
-            skip,
-            take: limit * 2, // Fetch extra so we can re-sort by match score
         }),
         getSavedJobIds(userId),
-        getAppliedJobIds(userId),
+        getAppliedJobMap(userId),
     ]);
 
-    // Score every job for this specific student
-    const scored: JobMatchResult[] = jobs.map((job) => {
-        const { matchScore, matchedSkills, gapSkills, matchReasons } = scoreJob(
+    // Apply strict relevance and seniority filters in memory
+    const relevantJobs = jobs.filter(job => {
+        if (filters?.career) {
+            return isJobRelevantForCareer(job.title, job.snippet, filters.career);
+        } else {
+            // If no specific career is selected, check if it's relevant for ANY of its recommended career matches
+            return job.careerMatches.some(cm => {
+                if (ctx.recommendedCareers.includes(cm.careerIdentifier)) {
+                    return isJobRelevantForCareer(job.title, job.snippet, cm.careerIdentifier);
+                }
+                return false;
+            });
+        }
+    });
+
+    // Score every job for this specific student (Live Jobs engine — independent from BYSER)
+    const scored: JobMatchResult[] = relevantJobs.map((job) => {
+        const result = scoreJob(
             {
                 title: job.title,
                 location: job.location,
@@ -110,6 +157,8 @@ export async function getRecommendedJobsForUser(userId: string, filters?: LiveJo
             },
             ctx,
         );
+
+        const appInfo = appliedMap.get(job.id);
 
         return {
             jobId: job.id,
@@ -123,13 +172,22 @@ export async function getRecommendedJobsForUser(userId: string, filters?: LiveJo
             providerUpdatedAt: job.providerUpdatedAt,
             fetchedAt: job.fetchedAt,
             careerMatches: job.careerMatches.map((cm) => cm.careerIdentifier),
-            matchScore,
-            matchedSkills,
-            gapSkills,
-            matchReasons,
+            matchScore: result.matchScore,
+            confidence: result.confidence,
+            recommendedCareer: result.recommendedCareer,
+            matchedSkills: result.matchedSkills,
+            skillGaps: result.skillGaps,
+            gapSkills: result.skillGaps,          // backward-compat alias
+            eduExperienceMatch: result.eduExperienceMatch,
+            locationMatch: result.locationMatch,
+            explanation: result.explanation,
+            matchReasons: result.matchReasons,
             isActive: job.isActive,
             isSaved: savedIds.has(job.id),
-            hasApplied: appliedIds.has(job.id),
+            hasApplied: !!appInfo,
+            applicationStatus: appInfo?.status ?? null,
+            applicationId: appInfo?.id ?? null,
+            applicationNotes: appInfo?.notes ?? null,
         };
     });
 
@@ -139,8 +197,8 @@ export async function getRecommendedJobsForUser(userId: string, filters?: LiveJo
             ? scored.filter((s) => s.matchScore >= (filters.minMatchScore ?? 0))
             : scored;
 
-    // Sort by match score descending; return max `limit` items
-    return filtered.sort((a, b) => b.matchScore - a.matchScore).slice(0, limit);
+    // Sort by match score descending, then paginate
+    return filtered.sort((a, b) => b.matchScore - a.matchScore).slice(skip, skip + limit);
 }
 
 // ─── Get All Live Jobs (generic browse, still match-scored) ────────
@@ -152,18 +210,18 @@ export async function getAllLiveJobs(userId: string, filters?: LiveJobFilters): 
 // ─── Get Single Job ───────────────────────────────────────────────
 
 export async function getLiveJobById(userId: string, jobId: string): Promise<JobMatchResult> {
-    const [job, ctx, savedIds, appliedIds] = await Promise.all([
+    const [job, ctx, savedIds, appliedMap] = await Promise.all([
         prisma.job.findUnique({ where: { id: jobId }, include: { careerMatches: true } }),
         buildStudentContext(userId),
         getSavedJobIds(userId),
-        getAppliedJobIds(userId),
+        getAppliedJobMap(userId),
     ]);
 
     if (!job) {
         throw new AppError('Job not found', HTTP_STATUS.NOT_FOUND, ERROR_CODES.USER_001);
     }
 
-    const { matchScore, matchedSkills, gapSkills, matchReasons } = scoreJob(
+    const result = scoreJob(
         {
             title: job.title,
             location: job.location,
@@ -173,6 +231,8 @@ export async function getLiveJobById(userId: string, jobId: string): Promise<Job
         },
         ctx,
     );
+
+    const appInfo = appliedMap.get(job.id);
 
     return {
         jobId: job.id,
@@ -186,13 +246,22 @@ export async function getLiveJobById(userId: string, jobId: string): Promise<Job
         providerUpdatedAt: job.providerUpdatedAt,
         fetchedAt: job.fetchedAt,
         careerMatches: job.careerMatches.map((cm) => cm.careerIdentifier),
-        matchScore,
-        matchedSkills,
-        gapSkills,
-        matchReasons,
+        matchScore: result.matchScore,
+        confidence: result.confidence,
+        recommendedCareer: result.recommendedCareer,
+        matchedSkills: result.matchedSkills,
+        skillGaps: result.skillGaps,
+        gapSkills: result.skillGaps,          // backward-compat alias
+        eduExperienceMatch: result.eduExperienceMatch,
+        locationMatch: result.locationMatch,
+        explanation: result.explanation,
+        matchReasons: result.matchReasons,
         isActive: job.isActive,
         isSaved: savedIds.has(job.id),
-        hasApplied: appliedIds.has(job.id),
+        hasApplied: !!appInfo,
+        applicationStatus: appInfo?.status ?? null,
+        applicationId: appInfo?.id ?? null,
+        applicationNotes: appInfo?.notes ?? null,
     };
 }
 
@@ -215,41 +284,68 @@ export async function unsaveJob(userId: string, jobId: string) {
 
 export async function getSavedJobs(userId: string): Promise<JobMatchResult[]> {
     const ctx = await buildStudentContext(userId);
-    const [saved, appliedIds] = await Promise.all([
+    const [saved, appliedMap] = await Promise.all([
         prisma.savedJob.findMany({
             where: { userId },
             include: { job: { include: { careerMatches: true } } },
             orderBy: { createdAt: 'desc' },
         }),
-        getAppliedJobIds(userId),
+        getAppliedJobMap(userId),
     ]);
 
     return saved.map(({ job }) => {
-        const { matchScore, matchedSkills, gapSkills, matchReasons } = scoreJob(
+        const result = scoreJob(
             { title: job.title, location: job.location, snippet: job.snippet, type: job.type, careerIdentifiers: job.careerMatches.map((cm) => cm.careerIdentifier) },
             ctx,
         );
+        const appInfo = appliedMap.get(job.id);
         return {
             jobId: job.id, title: job.title, company: job.company, location: job.location,
             snippet: job.snippet, salary: job.salary, type: job.type, applyUrl: job.applyUrl,
             providerUpdatedAt: job.providerUpdatedAt, fetchedAt: job.fetchedAt,
             careerMatches: job.careerMatches.map((cm) => cm.careerIdentifier),
-            matchScore, matchedSkills, gapSkills, matchReasons,
-            isActive: job.isActive, isSaved: true, hasApplied: appliedIds.has(job.id),
+            matchScore: result.matchScore,
+            confidence: result.confidence,
+            recommendedCareer: result.recommendedCareer,
+            matchedSkills: result.matchedSkills,
+            skillGaps: result.skillGaps,
+            gapSkills: result.skillGaps,          // backward-compat alias
+            eduExperienceMatch: result.eduExperienceMatch,
+            locationMatch: result.locationMatch,
+            explanation: result.explanation,
+            matchReasons: result.matchReasons,
+            isActive: job.isActive, isSaved: true,
+            hasApplied: !!appInfo,
+            applicationStatus: appInfo?.status ?? null,
+            applicationId: appInfo?.id ?? null,
+            applicationNotes: appInfo?.notes ?? null,
         };
     });
 }
 
 // ─── Applications ─────────────────────────────────────────────────
 
-export async function createApplication(userId: string, jobId: string, notes?: string) {
+export async function createApplication(
+    userId: string,
+    jobId: string,
+    status: AppStatus = 'APPLIED',
+    notes?: string,
+) {
     const exists = await prisma.job.findUnique({ where: { id: jobId } });
     if (!exists) throw new AppError('Job not found', HTTP_STATUS.NOT_FOUND, ERROR_CODES.USER_001);
 
     return prisma.jobApplication.upsert({
         where: { userId_jobId: { userId, jobId } },
-        update: { status: 'APPLIED', notes: notes ?? undefined },
-        create: { userId, jobId, status: 'APPLIED', notes: notes ?? undefined },
+        update: {
+            status,
+            notes: notes !== undefined ? notes : undefined,
+        },
+        create: {
+            userId,
+            jobId,
+            status,
+            notes: notes ?? undefined,
+        },
         include: { job: { select: { id: true, title: true, company: true, location: true, applyUrl: true } } },
     });
 }
@@ -276,9 +372,7 @@ export async function updateApplication(userId: string, applicationId: string, s
 // ─── Sync Trigger (admin/dev only) ───────────────────────────────
 
 export async function triggerSync(userId: string) {
-    const recs = await getLatestRecommendations(userId);
-    const careers = recs.map((r) => r.careerPath.name);
-
+    const careers: string[] = [];
     const student = await getFullStudentData(userId);
     const location = student?.profile?.city ?? undefined;
 

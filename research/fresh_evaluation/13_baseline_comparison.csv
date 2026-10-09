@@ -1,0 +1,7 @@
+Baseline Mode,Algorithm,Top-1 Hit Rate,Macro F1
+Profile-only,Random Forest,0.10333333333333333,0.10189763356724311
+Profile-only,Gradient Boosted Tree,0.11444444444444445,0.10462308472424793
+Assessment-only,Random Forest,0.1811111111111111,0.1736442934141434
+Assessment-only,Gradient Boosted Tree,0.2011111111111111,0.1962840215998592
+Profile + Assessment,Random Forest,0.21555555555555556,0.20851012138364808
+Profile + Assessment,Gradient Boosted Tree,0.23,0.22752227243992873

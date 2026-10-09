@@ -1,0 +1,18 @@
+item,status
+title consistency,Checked
+contribution consistency,Checked - Updated to remove empirical superiority
+algorithm description consistency,Checked - Accurately reflects deterministic nature
+profile weights consistency,Checked - M0 authoritative weights specified
+assessment specification consistency,Checked - Assesment v1 used
+fusion equation consistency,Checked - 70:30 tested
+evaluation metrics consistency,"Checked - Top-1/3/5, MRR, NDCG"
+dataset description consistency,Checked - Synthetic v3 explicitly described
+synthetic-data disclosure,Checked - Abstract latent DAG disclosed
+baseline description,Checked - RF and HistGradientBoosting used
+statistical reporting,Checked - Bootstrap CIs and Wilcoxon reported
+limitations,Checked - Explicitly stated no real students
+reference consistency,Checked
+table numbering,Checked
+figure numbering,Checked
+terminology consistency,Checked
+no unsupported real-world claims,Checked - Removed all real-world generalization claims

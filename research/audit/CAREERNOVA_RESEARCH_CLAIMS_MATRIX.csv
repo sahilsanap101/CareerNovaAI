@@ -1,0 +1,7 @@
+Claim,Evidence in Project,Source File,Implemented?,Evaluated?,Safe to Claim in Paper?
+CareerNova fuses profile and assessment signals,Weighted combination in controller,careers.controller.ts,Yes,Yes,Yes
+CareerNova provides personalized prerequisite-aware roadmaps,Skill gap mapped to roadmap JSON,careers.controller.ts / RoadmapPage.tsx,Yes,No,Yes
+CareerNova integrates live job market data via Jooble,API calls to Jooble for selected career,jobs.service.ts,Yes,No,Yes
+CareerNova improves recommendation accuracy significantly,Synthetic data evaluations in ablation study,ablation_study_summary.md,Yes,Yes,NO (Synthetic target labels cause ~0% accuracy for deterministic models)
+CareerNova extracts JDs and matches resumes,PDF parsing and keyword extraction logic,resume.controller.ts,Yes,No,Yes
+CareerNova uses an LLM to generate learning roadmaps,Roadmaps are actually loaded from JSON,complete_personalized_roadmaps_careers_1_60.json,No,No,NO

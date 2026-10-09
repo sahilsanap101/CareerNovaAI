@@ -1,0 +1,501 @@
+student_idx,true_career,rf_top1_pred,rf_score_top1,pop_top1_pred
+0,Frontend Developer,Backend Developer,0.17076917890110738,Software Engineer
+1,Data Scientist,NLP Engineer,0.21481304958312541,Software Engineer
+2,Cloud Engineer,Cloud Engineer,0.19625051430917587,Software Engineer
+3,Machine Learning Engineer,Data Scientist,0.18274753697319063,Software Engineer
+4,Data Engineer,Cloud Engineer,0.19313993936319956,Software Engineer
+5,Backend Developer,Software Engineer,0.2471381735817255,Software Engineer
+6,QA Engineer,QA Engineer,0.29626341739045364,Software Engineer
+7,DevOps Engineer,MLOps Engineer,0.21142343421409218,Software Engineer
+8,Data Engineer,Data Engineer,0.13458978629909576,Software Engineer
+9,Cybersecurity Engineer,Software Engineer,0.16043694384055937,Software Engineer
+10,NLP Engineer,NLP Engineer,0.16054564429086812,Software Engineer
+11,NLP Engineer,Data Scientist,0.18986912512536006,Software Engineer
+12,QA Engineer,QA Engineer,0.27595400867666675,Software Engineer
+13,Full Stack Developer,NLP Engineer,0.17164445458544603,Software Engineer
+14,QA Engineer,QA Engineer,0.18455736393245725,Software Engineer
+15,Cybersecurity Engineer,Software Engineer,0.21581852420941508,Software Engineer
+16,Data Engineer,Cybersecurity Engineer,0.22292725268028085,Software Engineer
+17,DevOps Engineer,Cloud Engineer,0.11627367273066232,Software Engineer
+18,Computer Vision Engineer,NLP Engineer,0.19819566066875105,Software Engineer
+19,Data Engineer,Data Engineer,0.14902898663133604,Software Engineer
+20,Full Stack Developer,Full Stack Developer,0.22894307871978456,Software Engineer
+21,Data Engineer,Cybersecurity Engineer,0.17809861577127198,Software Engineer
+22,Machine Learning Engineer,NLP Engineer,0.13314502754926302,Software Engineer
+23,Cloud Engineer,Cloud Engineer,0.172722735657422,Software Engineer
+24,Computer Vision Engineer,Computer Vision Engineer,0.20575038688216274,Software Engineer
+25,NLP Engineer,Software Engineer,0.1529601594657609,Software Engineer
+26,Machine Learning Engineer,Computer Vision Engineer,0.1460815046956362,Software Engineer
+27,Full Stack Developer,Full Stack Developer,0.19770302575725476,Software Engineer
+28,Data Engineer,MLOps Engineer,0.27874540832504896,Software Engineer
+29,Data Scientist,Software Engineer,0.23424790944035695,Software Engineer
+30,Full Stack Developer,Software Engineer,0.144522036505034,Software Engineer
+31,Machine Learning Engineer,Data Scientist,0.18802679650203127,Software Engineer
+32,Machine Learning Engineer,Data Scientist,0.1612839083865961,Software Engineer
+33,Backend Developer,Full Stack Developer,0.13246559542512018,Software Engineer
+34,Data Analyst,Data Analyst,0.39059751661329806,Software Engineer
+35,Data Analyst,Data Analyst,0.22273694862302243,Software Engineer
+36,Cybersecurity Engineer,Cybersecurity Engineer,0.189336006464045,Software Engineer
+37,Computer Vision Engineer,Software Engineer,0.23492264570606686,Software Engineer
+38,MLOps Engineer,Cybersecurity Engineer,0.13441885783159926,Software Engineer
+39,Backend Developer,Software Engineer,0.2028168941516088,Software Engineer
+40,Data Engineer,Cybersecurity Engineer,0.12907508804389245,Software Engineer
+41,Full Stack Developer,Software Engineer,0.31341252244632,Software Engineer
+42,NLP Engineer,Computer Vision Engineer,0.17401702150776685,Software Engineer
+43,QA Engineer,QA Engineer,0.33512566691222534,Software Engineer
+44,Full Stack Developer,Data Engineer,0.15700704053930228,Software Engineer
+45,Cybersecurity Engineer,Software Engineer,0.12299901312048396,Software Engineer
+46,Computer Vision Engineer,Computer Vision Engineer,0.2056544713535117,Software Engineer
+47,Data Analyst,Data Analyst,0.1580438402850727,Software Engineer
+48,Data Scientist,Data Scientist,0.23132885262537325,Software Engineer
+49,Data Scientist,Data Scientist,0.18935999885231314,Software Engineer
+50,QA Engineer,QA Engineer,0.21363370061707,Software Engineer
+51,Full Stack Developer,Software Engineer,0.27594034477223617,Software Engineer
+52,Software Engineer,Full Stack Developer,0.1284107028186168,Software Engineer
+53,Software Engineer,Software Engineer,0.33409214880981913,Software Engineer
+54,NLP Engineer,NLP Engineer,0.1918183265561897,Software Engineer
+55,Full Stack Developer,Software Engineer,0.1489680896260487,Software Engineer
+56,Cloud Engineer,Cloud Engineer,0.18017202547680253,Software Engineer
+57,NLP Engineer,Machine Learning Engineer,0.13802589774564855,Software Engineer
+58,Data Scientist,Data Scientist,0.16898453840280328,Software Engineer
+59,Data Analyst,Data Analyst,0.1595285737232445,Software Engineer
+60,Cloud Engineer,MLOps Engineer,0.13891815415560063,Software Engineer
+61,Full Stack Developer,QA Engineer,0.1985255338099503,Software Engineer
+62,Data Analyst,Data Analyst,0.28254805094069557,Software Engineer
+63,Software Engineer,Cybersecurity Engineer,0.11876261448822069,Software Engineer
+64,Full Stack Developer,Software Engineer,0.2577106747464272,Software Engineer
+65,Backend Developer,Backend Developer,0.1569383248113409,Software Engineer
+66,Machine Learning Engineer,Data Scientist,0.22850163910949245,Software Engineer
+67,Full Stack Developer,Cybersecurity Engineer,0.14108637695034293,Software Engineer
+68,Data Scientist,MLOps Engineer,0.16308544588232707,Software Engineer
+69,Full Stack Developer,Software Engineer,0.33376862672108054,Software Engineer
+70,Backend Developer,Software Engineer,0.22151991889632958,Software Engineer
+71,Software Engineer,Backend Developer,0.2075044972576197,Software Engineer
+72,Data Scientist,Data Scientist,0.1855241078658835,Software Engineer
+73,Backend Developer,Software Engineer,0.24392414769387177,Software Engineer
+74,Data Engineer,NLP Engineer,0.15054772927774068,Software Engineer
+75,DevOps Engineer,NLP Engineer,0.13401567787239663,Software Engineer
+76,Machine Learning Engineer,Computer Vision Engineer,0.1760978408755841,Software Engineer
+77,MLOps Engineer,Software Engineer,0.1389384018513945,Software Engineer
+78,Data Analyst,Data Analyst,0.22673510898081978,Software Engineer
+79,Software Engineer,Software Engineer,0.2549510601400313,Software Engineer
+80,Computer Vision Engineer,Computer Vision Engineer,0.2519277686174146,Software Engineer
+81,MLOps Engineer,MLOps Engineer,0.1734657714153875,Software Engineer
+82,Full Stack Developer,Software Engineer,0.1991012289644619,Software Engineer
+83,Software Engineer,Software Engineer,0.26381777329130857,Software Engineer
+84,Full Stack Developer,Data Engineer,0.13596202851443484,Software Engineer
+85,Cybersecurity Engineer,Data Engineer,0.17615001067664768,Software Engineer
+86,Software Engineer,Software Engineer,0.2063721096208275,Software Engineer
+87,Machine Learning Engineer,NLP Engineer,0.18224702523376363,Software Engineer
+88,QA Engineer,Full Stack Developer,0.17098650518122155,Software Engineer
+89,Data Engineer,MLOps Engineer,0.15637185270723472,Software Engineer
+90,Software Engineer,Software Engineer,0.30977496480373523,Software Engineer
+91,Machine Learning Engineer,Data Scientist,0.25501377315483514,Software Engineer
+92,Computer Vision Engineer,Data Analyst,0.3091512628026236,Software Engineer
+93,Data Analyst,Data Analyst,0.21681078813984683,Software Engineer
+94,Software Engineer,Software Engineer,0.3060278921464784,Software Engineer
+95,Frontend Developer,Computer Vision Engineer,0.1539856013887524,Software Engineer
+96,Computer Vision Engineer,Software Engineer,0.16966750632080682,Software Engineer
+97,MLOps Engineer,MLOps Engineer,0.3246673905806389,Software Engineer
+98,Software Engineer,Software Engineer,0.2715817790466593,Software Engineer
+99,Backend Developer,Software Engineer,0.2699152202124347,Software Engineer
+100,Cloud Engineer,Cybersecurity Engineer,0.1876972191216481,Software Engineer
+101,Computer Vision Engineer,Data Analyst,0.3678482866591374,Software Engineer
+102,Data Scientist,Data Scientist,0.1689578559740788,Software Engineer
+103,MLOps Engineer,MLOps Engineer,0.19347120184321973,Software Engineer
+104,Data Analyst,Software Engineer,0.25361114401483403,Software Engineer
+105,MLOps Engineer,Data Engineer,0.11775711270900174,Software Engineer
+106,Computer Vision Engineer,Computer Vision Engineer,0.2691570443265293,Software Engineer
+107,Data Scientist,Computer Vision Engineer,0.1915515189728481,Software Engineer
+108,Data Engineer,Full Stack Developer,0.16410410603718148,Software Engineer
+109,DevOps Engineer,MLOps Engineer,0.2272478107014443,Software Engineer
+110,Cybersecurity Engineer,Cybersecurity Engineer,0.1563544279656561,Software Engineer
+111,MLOps Engineer,Computer Vision Engineer,0.13148624588580227,Software Engineer
+112,NLP Engineer,Computer Vision Engineer,0.18587449423010902,Software Engineer
+113,QA Engineer,QA Engineer,0.3370514903417974,Software Engineer
+114,Backend Developer,Software Engineer,0.2664089525894801,Software Engineer
+115,QA Engineer,QA Engineer,0.17241397335310502,Software Engineer
+116,Frontend Developer,QA Engineer,0.20338681857492236,Software Engineer
+117,Data Analyst,Data Analyst,0.4272152556991493,Software Engineer
+118,Computer Vision Engineer,Software Engineer,0.13458999615814307,Software Engineer
+119,Cybersecurity Engineer,Data Engineer,0.20729485307563386,Software Engineer
+120,QA Engineer,DevOps Engineer,0.14569529585307486,Software Engineer
+121,Machine Learning Engineer,Computer Vision Engineer,0.23938562616942755,Software Engineer
+122,Full Stack Developer,Full Stack Developer,0.19069844553017945,Software Engineer
+123,Full Stack Developer,Software Engineer,0.2736669917142189,Software Engineer
+124,Backend Developer,Data Scientist,0.1685111214383478,Software Engineer
+125,Cloud Engineer,Cloud Engineer,0.2658801125144641,Software Engineer
+126,NLP Engineer,NLP Engineer,0.18777352460664606,Software Engineer
+127,Data Analyst,Data Analyst,0.4101053095565031,Software Engineer
+128,Machine Learning Engineer,Machine Learning Engineer,0.1357889150323613,Software Engineer
+129,Software Engineer,Software Engineer,0.16554277473621398,Software Engineer
+130,Data Analyst,Data Analyst,0.4739778208507983,Software Engineer
+131,Backend Developer,Software Engineer,0.14733736035863443,Software Engineer
+132,DevOps Engineer,Cloud Engineer,0.1496465888731636,Software Engineer
+133,Backend Developer,Backend Developer,0.16315416797923404,Software Engineer
+134,QA Engineer,Software Engineer,0.20842600381648585,Software Engineer
+135,Software Engineer,Software Engineer,0.1891639239066169,Software Engineer
+136,Machine Learning Engineer,NLP Engineer,0.17535008921116851,Software Engineer
+137,MLOps Engineer,Cybersecurity Engineer,0.1467854050235626,Software Engineer
+138,Full Stack Developer,Software Engineer,0.32141806228282344,Software Engineer
+139,Frontend Developer,Computer Vision Engineer,0.19118224019455,Software Engineer
+140,Data Analyst,Data Analyst,0.3588845647536123,Software Engineer
+141,QA Engineer,Data Analyst,0.2638164084171218,Software Engineer
+142,Machine Learning Engineer,NLP Engineer,0.18821905807883738,Software Engineer
+143,Cloud Engineer,Software Engineer,0.19515892517652658,Software Engineer
+144,Backend Developer,Software Engineer,0.1711275597707826,Software Engineer
+145,Full Stack Developer,Software Engineer,0.33719342939838165,Software Engineer
+146,Machine Learning Engineer,Computer Vision Engineer,0.22878676127781802,Software Engineer
+147,NLP Engineer,Software Engineer,0.27051271827077955,Software Engineer
+148,MLOps Engineer,Full Stack Developer,0.14138595784131266,Software Engineer
+149,NLP Engineer,Machine Learning Engineer,0.16434588241789314,Software Engineer
+150,Data Scientist,Software Engineer,0.1552182995604191,Software Engineer
+151,Full Stack Developer,Software Engineer,0.32458995795229884,Software Engineer
+152,Data Engineer,Software Engineer,0.1318150383474282,Software Engineer
+153,Data Analyst,Data Analyst,0.30447722244383735,Software Engineer
+154,Data Engineer,Cloud Engineer,0.14090220528419958,Software Engineer
+155,Cloud Engineer,Full Stack Developer,0.13480534718146095,Software Engineer
+156,NLP Engineer,Data Engineer,0.13274926899832018,Software Engineer
+157,Machine Learning Engineer,NLP Engineer,0.19052300749026782,Software Engineer
+158,Full Stack Developer,Software Engineer,0.2662031030622228,Software Engineer
+159,MLOps Engineer,DevOps Engineer,0.21738327185061063,Software Engineer
+160,QA Engineer,Software Engineer,0.2554293890289705,Software Engineer
+161,MLOps Engineer,MLOps Engineer,0.19658691684217292,Software Engineer
+162,QA Engineer,Cybersecurity Engineer,0.14599521496548626,Software Engineer
+163,Data Analyst,Data Analyst,0.23647505572200378,Software Engineer
+164,Data Analyst,Software Engineer,0.23634186270866792,Software Engineer
+165,Data Analyst,Software Engineer,0.28131129928129506,Software Engineer
+166,Data Scientist,Machine Learning Engineer,0.1847224638678137,Software Engineer
+167,Backend Developer,Software Engineer,0.1817037061012713,Software Engineer
+168,Cloud Engineer,MLOps Engineer,0.2860208090984455,Software Engineer
+169,Full Stack Developer,Software Engineer,0.20031971444602925,Software Engineer
+170,Data Analyst,Data Analyst,0.2551872688389762,Software Engineer
+171,Software Engineer,Software Engineer,0.21349125007068082,Software Engineer
+172,Software Engineer,Backend Developer,0.14037254130577342,Software Engineer
+173,Full Stack Developer,Full Stack Developer,0.12193657842487442,Software Engineer
+174,NLP Engineer,Data Scientist,0.19085723071167637,Software Engineer
+175,Cloud Engineer,DevOps Engineer,0.1846987719994385,Software Engineer
+176,Software Engineer,Software Engineer,0.1786343391937294,Software Engineer
+177,Computer Vision Engineer,NLP Engineer,0.17366972294557892,Software Engineer
+178,QA Engineer,Software Engineer,0.1828473005254316,Software Engineer
+179,QA Engineer,QA Engineer,0.2382033619625473,Software Engineer
+180,Cloud Engineer,Cloud Engineer,0.17551187186067516,Software Engineer
+181,MLOps Engineer,MLOps Engineer,0.30398966926046317,Software Engineer
+182,Cloud Engineer,MLOps Engineer,0.15626918516143187,Software Engineer
+183,Cloud Engineer,Cloud Engineer,0.20811430093831998,Software Engineer
+184,Data Engineer,Data Engineer,0.17120721362851893,Software Engineer
+185,DevOps Engineer,Cloud Engineer,0.15211833070516043,Software Engineer
+186,Data Scientist,Computer Vision Engineer,0.21468750251254612,Software Engineer
+187,Backend Developer,Software Engineer,0.3188903261694338,Software Engineer
+188,Software Engineer,Full Stack Developer,0.18036149524846454,Software Engineer
+189,Cloud Engineer,Cloud Engineer,0.16052400561061161,Software Engineer
+190,Computer Vision Engineer,Computer Vision Engineer,0.20602422693985592,Software Engineer
+191,NLP Engineer,Computer Vision Engineer,0.17220469980366016,Software Engineer
+192,Data Engineer,QA Engineer,0.17868575634174022,Software Engineer
+193,DevOps Engineer,Full Stack Developer,0.20963613215296084,Software Engineer
+194,Cloud Engineer,Software Engineer,0.1371258039805228,Software Engineer
+195,Software Engineer,Software Engineer,0.2054938501931124,Software Engineer
+196,Backend Developer,Software Engineer,0.3616142023705093,Software Engineer
+197,Software Engineer,Full Stack Developer,0.23438732247303168,Software Engineer
+198,Computer Vision Engineer,NLP Engineer,0.17802551998156935,Software Engineer
+199,Data Scientist,Data Scientist,0.21481362656661182,Software Engineer
+200,Computer Vision Engineer,Machine Learning Engineer,0.20298187665858125,Software Engineer
+201,Data Scientist,Data Scientist,0.1864864210183217,Software Engineer
+202,Computer Vision Engineer,NLP Engineer,0.1679700849558595,Software Engineer
+203,Cybersecurity Engineer,Cybersecurity Engineer,0.13915298869811535,Software Engineer
+204,Frontend Developer,QA Engineer,0.26039253455300587,Software Engineer
+205,DevOps Engineer,DevOps Engineer,0.18822870150316645,Software Engineer
+206,Cybersecurity Engineer,Cybersecurity Engineer,0.17413720067709013,Software Engineer
+207,MLOps Engineer,MLOps Engineer,0.238474197492043,Software Engineer
+208,Data Analyst,QA Engineer,0.314699872884289,Software Engineer
+209,Data Scientist,Machine Learning Engineer,0.17672290608203628,Software Engineer
+210,Software Engineer,Software Engineer,0.23814932315787204,Software Engineer
+211,QA Engineer,QA Engineer,0.42528608220785913,Software Engineer
+212,Software Engineer,Software Engineer,0.2665343171426134,Software Engineer
+213,Software Engineer,Software Engineer,0.3838361366486056,Software Engineer
+214,Backend Developer,Data Scientist,0.17254127716535328,Software Engineer
+215,Software Engineer,Data Analyst,0.2648633840946868,Software Engineer
+216,Data Engineer,Cloud Engineer,0.3115929807998152,Software Engineer
+217,Machine Learning Engineer,MLOps Engineer,0.13873548133222038,Software Engineer
+218,Data Analyst,Software Engineer,0.1860673987157237,Software Engineer
+219,Backend Developer,Backend Developer,0.12330696887094948,Software Engineer
+220,Data Scientist,Software Engineer,0.21971457968250377,Software Engineer
+221,Computer Vision Engineer,Computer Vision Engineer,0.19699948740101636,Software Engineer
+222,Full Stack Developer,Full Stack Developer,0.25873475978043337,Software Engineer
+223,NLP Engineer,Computer Vision Engineer,0.1818779359043255,Software Engineer
+224,Software Engineer,Software Engineer,0.3582548802587484,Software Engineer
+225,QA Engineer,QA Engineer,0.17066367590223983,Software Engineer
+226,Software Engineer,Software Engineer,0.1919117535913372,Software Engineer
+227,Data Engineer,Data Engineer,0.1271039680898956,Software Engineer
+228,Backend Developer,Software Engineer,0.2812018729965795,Software Engineer
+229,Computer Vision Engineer,Computer Vision Engineer,0.19400842810176866,Software Engineer
+230,Full Stack Developer,Full Stack Developer,0.16184514484690962,Software Engineer
+231,QA Engineer,QA Engineer,0.22310320035979037,Software Engineer
+232,Backend Developer,Software Engineer,0.20595673050079405,Software Engineer
+233,Cloud Engineer,Cloud Engineer,0.174033824300718,Software Engineer
+234,Data Scientist,NLP Engineer,0.18019184705505167,Software Engineer
+235,Data Engineer,Data Engineer,0.13495679752008238,Software Engineer
+236,Data Analyst,Data Engineer,0.14953358540702952,Software Engineer
+237,Data Analyst,Software Engineer,0.13302330057237702,Software Engineer
+238,Full Stack Developer,Software Engineer,0.23640081793629913,Software Engineer
+239,MLOps Engineer,MLOps Engineer,0.20337606783776396,Software Engineer
+240,Data Analyst,Data Analyst,0.3144138627416968,Software Engineer
+241,Full Stack Developer,Full Stack Developer,0.15709283213877528,Software Engineer
+242,QA Engineer,QA Engineer,0.19250152301067036,Software Engineer
+243,QA Engineer,Software Engineer,0.271410890099996,Software Engineer
+244,MLOps Engineer,Cloud Engineer,0.2586323253407899,Software Engineer
+245,Cybersecurity Engineer,Data Engineer,0.15830706285667062,Software Engineer
+246,Software Engineer,Software Engineer,0.28287345409100645,Software Engineer
+247,Full Stack Developer,Software Engineer,0.300013747197294,Software Engineer
+248,Cloud Engineer,Data Engineer,0.15345083524768954,Software Engineer
+249,Full Stack Developer,Software Engineer,0.1853884203957438,Software Engineer
+250,NLP Engineer,Machine Learning Engineer,0.15814607936099265,Software Engineer
+251,Software Engineer,Software Engineer,0.22037992737006548,Software Engineer
+252,Computer Vision Engineer,Software Engineer,0.17907112301184575,Software Engineer
+253,NLP Engineer,Machine Learning Engineer,0.16560631490077113,Software Engineer
+254,Data Scientist,Computer Vision Engineer,0.2425399975883466,Software Engineer
+255,Cybersecurity Engineer,Cybersecurity Engineer,0.18887945899441025,Software Engineer
+256,QA Engineer,Software Engineer,0.22474175966271892,Software Engineer
+257,Cybersecurity Engineer,DevOps Engineer,0.24472080129101925,Software Engineer
+258,QA Engineer,QA Engineer,0.4246554638957377,Software Engineer
+259,Backend Developer,Software Engineer,0.28803850731961383,Software Engineer
+260,Machine Learning Engineer,Computer Vision Engineer,0.18981361596676075,Software Engineer
+261,Data Engineer,Cybersecurity Engineer,0.20363109553726283,Software Engineer
+262,Software Engineer,Software Engineer,0.18324447873625282,Software Engineer
+263,NLP Engineer,NLP Engineer,0.14881254401448188,Software Engineer
+264,Software Engineer,Software Engineer,0.2710824289664775,Software Engineer
+265,Frontend Developer,Software Engineer,0.16829468150753776,Software Engineer
+266,Data Scientist,Data Analyst,0.21995531557752557,Software Engineer
+267,Computer Vision Engineer,Data Analyst,0.18395008918385652,Software Engineer
+268,Machine Learning Engineer,NLP Engineer,0.18435629726127498,Software Engineer
+269,Full Stack Developer,Software Engineer,0.21346897078555466,Software Engineer
+270,NLP Engineer,Computer Vision Engineer,0.17317763903002928,Software Engineer
+271,Backend Developer,Software Engineer,0.28703433218983665,Software Engineer
+272,Software Engineer,MLOps Engineer,0.11536215595610144,Software Engineer
+273,Software Engineer,Software Engineer,0.1682184692608173,Software Engineer
+274,Cloud Engineer,Full Stack Developer,0.14913435544049186,Software Engineer
+275,Computer Vision Engineer,Data Analyst,0.31776882991821004,Software Engineer
+276,Full Stack Developer,Frontend Developer,0.14257361257212608,Software Engineer
+277,Backend Developer,Software Engineer,0.1363127066107406,Software Engineer
+278,Machine Learning Engineer,Data Scientist,0.21185049911998075,Software Engineer
+279,Computer Vision Engineer,Data Scientist,0.1611858833893153,Software Engineer
+280,Backend Developer,Software Engineer,0.25946126642875245,Software Engineer
+281,Machine Learning Engineer,Machine Learning Engineer,0.14372053316173872,Software Engineer
+282,Software Engineer,Full Stack Developer,0.13953999960876357,Software Engineer
+283,Computer Vision Engineer,Data Scientist,0.2897867931979169,Software Engineer
+284,Computer Vision Engineer,Computer Vision Engineer,0.1709313010335014,Software Engineer
+285,Data Engineer,Cloud Engineer,0.15794415557549957,Software Engineer
+286,Cloud Engineer,Cloud Engineer,0.17565226021024846,Software Engineer
+287,Computer Vision Engineer,Computer Vision Engineer,0.19350621016675862,Software Engineer
+288,Cybersecurity Engineer,Cybersecurity Engineer,0.18624584890749052,Software Engineer
+289,Software Engineer,Software Engineer,0.180499787567514,Software Engineer
+290,Backend Developer,Software Engineer,0.2716320525495088,Software Engineer
+291,Machine Learning Engineer,MLOps Engineer,0.16483910033198373,Software Engineer
+292,Computer Vision Engineer,Computer Vision Engineer,0.18765760546085214,Software Engineer
+293,Software Engineer,Software Engineer,0.353468551394799,Software Engineer
+294,Cybersecurity Engineer,Cybersecurity Engineer,0.1802690153298753,Software Engineer
+295,DevOps Engineer,Data Analyst,0.14121919399339636,Software Engineer
+296,NLP Engineer,Software Engineer,0.15315124217375972,Software Engineer
+297,MLOps Engineer,Cloud Engineer,0.1821046573927095,Software Engineer
+298,NLP Engineer,Machine Learning Engineer,0.19531101639674883,Software Engineer
+299,Machine Learning Engineer,NLP Engineer,0.15132678336643277,Software Engineer
+300,Computer Vision Engineer,Computer Vision Engineer,0.16666753428864392,Software Engineer
+301,Computer Vision Engineer,NLP Engineer,0.135548068542413,Software Engineer
+302,Data Engineer,Cybersecurity Engineer,0.15520847258681375,Software Engineer
+303,Data Engineer,DevOps Engineer,0.18035540859005736,Software Engineer
+304,Data Analyst,Data Analyst,0.3166937587583731,Software Engineer
+305,DevOps Engineer,MLOps Engineer,0.12564350161916088,Software Engineer
+306,Cybersecurity Engineer,MLOps Engineer,0.2548591014399347,Software Engineer
+307,Software Engineer,Software Engineer,0.26407094050359015,Software Engineer
+308,Data Analyst,Data Scientist,0.18547474483470208,Software Engineer
+309,NLP Engineer,Computer Vision Engineer,0.23246507377007805,Software Engineer
+310,Software Engineer,Software Engineer,0.27800403364838994,Software Engineer
+311,Software Engineer,Software Engineer,0.2101293586187908,Software Engineer
+312,Machine Learning Engineer,Computer Vision Engineer,0.16149543736580643,Software Engineer
+313,Computer Vision Engineer,Computer Vision Engineer,0.16346500647726153,Software Engineer
+314,Data Engineer,Data Scientist,0.1583376364058841,Software Engineer
+315,Data Engineer,Cloud Engineer,0.17898621019660874,Software Engineer
+316,Software Engineer,Software Engineer,0.26038490608771003,Software Engineer
+317,Data Scientist,Data Analyst,0.28059784808312893,Software Engineer
+318,Frontend Developer,MLOps Engineer,0.15768789304758304,Software Engineer
+319,MLOps Engineer,MLOps Engineer,0.1670316024035986,Software Engineer
+320,Data Scientist,Machine Learning Engineer,0.18127453725328327,Software Engineer
+321,NLP Engineer,Computer Vision Engineer,0.16880157957322312,Software Engineer
+322,Cybersecurity Engineer,Software Engineer,0.24678604302453622,Software Engineer
+323,Frontend Developer,Computer Vision Engineer,0.17560592308187173,Software Engineer
+324,Cloud Engineer,DevOps Engineer,0.16408367901019683,Software Engineer
+325,Frontend Developer,Backend Developer,0.15560586437604895,Software Engineer
+326,Machine Learning Engineer,Computer Vision Engineer,0.19393269063888346,Software Engineer
+327,NLP Engineer,Software Engineer,0.1550186859753522,Software Engineer
+328,Software Engineer,MLOps Engineer,0.13822064931973665,Software Engineer
+329,Backend Developer,NLP Engineer,0.13387779944000155,Software Engineer
+330,Machine Learning Engineer,NLP Engineer,0.16455973341825325,Software Engineer
+331,Full Stack Developer,Software Engineer,0.2892233286875363,Software Engineer
+332,Software Engineer,Software Engineer,0.3290876613846619,Software Engineer
+333,Full Stack Developer,Software Engineer,0.2642840509143493,Software Engineer
+334,Software Engineer,Software Engineer,0.24532020386726944,Software Engineer
+335,Data Analyst,Data Analyst,0.23142132281999284,Software Engineer
+336,DevOps Engineer,DevOps Engineer,0.17095925204999193,Software Engineer
+337,Software Engineer,Software Engineer,0.2349721591413202,Software Engineer
+338,Data Analyst,Data Analyst,0.22564038020746455,Software Engineer
+339,Computer Vision Engineer,Computer Vision Engineer,0.17943679554733102,Software Engineer
+340,Frontend Developer,Full Stack Developer,0.13369483677983274,Software Engineer
+341,NLP Engineer,Data Scientist,0.2256331365006932,Software Engineer
+342,QA Engineer,QA Engineer,0.3837843573372766,Software Engineer
+343,Data Scientist,Computer Vision Engineer,0.1418606732443681,Software Engineer
+344,Backend Developer,Backend Developer,0.178874280942661,Software Engineer
+345,Cybersecurity Engineer,Cybersecurity Engineer,0.15061049121324685,Software Engineer
+346,Full Stack Developer,Software Engineer,0.2545941905819744,Software Engineer
+347,Software Engineer,Software Engineer,0.33722150860020295,Software Engineer
+348,Data Scientist,Data Scientist,0.16480934296093946,Software Engineer
+349,Frontend Developer,Data Analyst,0.12507535114640356,Software Engineer
+350,Frontend Developer,Software Engineer,0.18335360297939662,Software Engineer
+351,Data Engineer,Data Engineer,0.15582974129105384,Software Engineer
+352,Machine Learning Engineer,Computer Vision Engineer,0.22371451289638306,Software Engineer
+353,Software Engineer,Data Analyst,0.2140065997397574,Software Engineer
+354,Data Analyst,Data Analyst,0.275056995795628,Software Engineer
+355,Cybersecurity Engineer,Computer Vision Engineer,0.13288902575038875,Software Engineer
+356,Frontend Developer,QA Engineer,0.14290942061540676,Software Engineer
+357,Data Scientist,Software Engineer,0.1741183504969838,Software Engineer
+358,Backend Developer,Software Engineer,0.1886092322389997,Software Engineer
+359,Cybersecurity Engineer,MLOps Engineer,0.14046439795417937,Software Engineer
+360,Machine Learning Engineer,Software Engineer,0.21513207797557723,Software Engineer
+361,NLP Engineer,Computer Vision Engineer,0.253162722568211,Software Engineer
+362,DevOps Engineer,Cloud Engineer,0.17131949101303706,Software Engineer
+363,Data Engineer,MLOps Engineer,0.26648750033753954,Software Engineer
+364,Frontend Developer,Machine Learning Engineer,0.14028847388659205,Software Engineer
+365,Cloud Engineer,MLOps Engineer,0.13968157321592733,Software Engineer
+366,Cybersecurity Engineer,Software Engineer,0.13563943188324656,Software Engineer
+367,Backend Developer,Machine Learning Engineer,0.15471419063906905,Software Engineer
+368,Data Scientist,Computer Vision Engineer,0.14625511329337118,Software Engineer
+369,DevOps Engineer,Cybersecurity Engineer,0.18795314817354514,Software Engineer
+370,Cybersecurity Engineer,Machine Learning Engineer,0.13037474929366197,Software Engineer
+371,Data Scientist,Computer Vision Engineer,0.22086204461415992,Software Engineer
+372,Machine Learning Engineer,Backend Developer,0.16764538448828964,Software Engineer
+373,NLP Engineer,Computer Vision Engineer,0.15849912931439836,Software Engineer
+374,Cybersecurity Engineer,Software Engineer,0.21072512286274642,Software Engineer
+375,MLOps Engineer,MLOps Engineer,0.18669866429616097,Software Engineer
+376,Cloud Engineer,Software Engineer,0.179954906845801,Software Engineer
+377,QA Engineer,Data Analyst,0.31045369350523,Software Engineer
+378,Cybersecurity Engineer,Software Engineer,0.1869252123882261,Software Engineer
+379,Software Engineer,Software Engineer,0.2914716420030573,Software Engineer
+380,DevOps Engineer,Data Engineer,0.21716195580546752,Software Engineer
+381,QA Engineer,QA Engineer,0.401232138521655,Software Engineer
+382,Data Analyst,Software Engineer,0.128549148276295,Software Engineer
+383,Data Scientist,Backend Developer,0.2089985545720622,Software Engineer
+384,Full Stack Developer,Software Engineer,0.2791791933408707,Software Engineer
+385,Data Analyst,Software Engineer,0.21563347197405666,Software Engineer
+386,Cloud Engineer,Data Engineer,0.15630351711610582,Software Engineer
+387,NLP Engineer,Computer Vision Engineer,0.21298786405266068,Software Engineer
+388,Backend Developer,Software Engineer,0.21605581681231037,Software Engineer
+389,Data Engineer,Software Engineer,0.16251207244876947,Software Engineer
+390,Machine Learning Engineer,Computer Vision Engineer,0.1984641047733465,Software Engineer
+391,Data Scientist,Software Engineer,0.18911703804666266,Software Engineer
+392,Software Engineer,Cybersecurity Engineer,0.14251017923158574,Software Engineer
+393,Software Engineer,Software Engineer,0.19869042235317622,Software Engineer
+394,DevOps Engineer,Cloud Engineer,0.12370395994162184,Software Engineer
+395,Frontend Developer,Software Engineer,0.11160199280041004,Software Engineer
+396,Computer Vision Engineer,Computer Vision Engineer,0.28710690569049946,Software Engineer
+397,Software Engineer,Software Engineer,0.1661444436093138,Software Engineer
+398,DevOps Engineer,MLOps Engineer,0.2162454178429396,Software Engineer
+399,Cybersecurity Engineer,Cybersecurity Engineer,0.1965935790741196,Software Engineer
+400,QA Engineer,QA Engineer,0.17226874426569058,Software Engineer
+401,Cybersecurity Engineer,Cybersecurity Engineer,0.19558624243110534,Software Engineer
+402,Backend Developer,Software Engineer,0.16962613167242202,Software Engineer
+403,NLP Engineer,Data Scientist,0.2283011489388382,Software Engineer
+404,NLP Engineer,NLP Engineer,0.15553967277492864,Software Engineer
+405,Data Analyst,Data Analyst,0.20483995294325222,Software Engineer
+406,Data Scientist,Data Scientist,0.24271254361304223,Software Engineer
+407,Full Stack Developer,Software Engineer,0.23818238777817025,Software Engineer
+408,Full Stack Developer,Software Engineer,0.20162504168648318,Software Engineer
+409,QA Engineer,QA Engineer,0.5062289032634287,Software Engineer
+410,Software Engineer,Software Engineer,0.38393308902758977,Software Engineer
+411,Backend Developer,Software Engineer,0.3613630961147623,Software Engineer
+412,Data Scientist,Data Analyst,0.24586298074087154,Software Engineer
+413,MLOps Engineer,Machine Learning Engineer,0.12716857235301318,Software Engineer
+414,Full Stack Developer,Cybersecurity Engineer,0.17642914722365088,Software Engineer
+415,DevOps Engineer,Cybersecurity Engineer,0.1416591346887165,Software Engineer
+416,Software Engineer,Software Engineer,0.2784621001503891,Software Engineer
+417,DevOps Engineer,Software Engineer,0.14465896379612003,Software Engineer
+418,Full Stack Developer,Software Engineer,0.3492749713574863,Software Engineer
+419,Software Engineer,Software Engineer,0.1747833050423451,Software Engineer
+420,Computer Vision Engineer,Computer Vision Engineer,0.2306029605338699,Software Engineer
+421,QA Engineer,Software Engineer,0.26350592994843314,Software Engineer
+422,MLOps Engineer,Machine Learning Engineer,0.17529382385182604,Software Engineer
+423,Frontend Developer,QA Engineer,0.22188577691882308,Software Engineer
+424,Software Engineer,Software Engineer,0.16487008945281342,Software Engineer
+425,Cloud Engineer,Cybersecurity Engineer,0.1982749691904814,Software Engineer
+426,MLOps Engineer,DevOps Engineer,0.172879824332651,Software Engineer
+427,Data Engineer,MLOps Engineer,0.1907702281595926,Software Engineer
+428,Computer Vision Engineer,Computer Vision Engineer,0.24358425300700445,Software Engineer
+429,Backend Developer,Frontend Developer,0.14659197294442883,Software Engineer
+430,Frontend Developer,Software Engineer,0.20426700088495875,Software Engineer
+431,Software Engineer,Software Engineer,0.27787305837206305,Software Engineer
+432,MLOps Engineer,Cloud Engineer,0.19105647620192875,Software Engineer
+433,Software Engineer,QA Engineer,0.2161331341693132,Software Engineer
+434,MLOps Engineer,Cloud Engineer,0.1673947346006446,Software Engineer
+435,Cybersecurity Engineer,Cybersecurity Engineer,0.12913502931726856,Software Engineer
+436,Machine Learning Engineer,QA Engineer,0.13185467501563677,Software Engineer
+437,Cybersecurity Engineer,Cybersecurity Engineer,0.20371108948026936,Software Engineer
+438,Software Engineer,Software Engineer,0.1873109632206277,Software Engineer
+439,Computer Vision Engineer,Computer Vision Engineer,0.2858300905536292,Software Engineer
+440,Frontend Developer,QA Engineer,0.19673765250675276,Software Engineer
+441,Backend Developer,Backend Developer,0.20614000653994718,Software Engineer
+442,Cloud Engineer,Data Engineer,0.14643284850910862,Software Engineer
+443,NLP Engineer,NLP Engineer,0.20821154636566278,Software Engineer
+444,Cybersecurity Engineer,Cybersecurity Engineer,0.14088032573023393,Software Engineer
+445,QA Engineer,QA Engineer,0.3607577278295164,Software Engineer
+446,Data Engineer,Data Engineer,0.11508348042313525,Software Engineer
+447,MLOps Engineer,Data Scientist,0.19829230874532427,Software Engineer
+448,Machine Learning Engineer,Data Scientist,0.19047835429740723,Software Engineer
+449,MLOps Engineer,Cybersecurity Engineer,0.1525282492611756,Software Engineer
+450,NLP Engineer,NLP Engineer,0.16960287238739824,Software Engineer
+451,QA Engineer,QA Engineer,0.34893783317964017,Software Engineer
+452,Cloud Engineer,Cybersecurity Engineer,0.1762904592866262,Software Engineer
+453,NLP Engineer,Computer Vision Engineer,0.2613848448553865,Software Engineer
+454,Data Engineer,Data Analyst,0.13738764342869594,Software Engineer
+455,DevOps Engineer,Cloud Engineer,0.17958172486295,Software Engineer
+456,Software Engineer,Software Engineer,0.2658107898431604,Software Engineer
+457,Software Engineer,Software Engineer,0.24554679952325223,Software Engineer
+458,Data Scientist,NLP Engineer,0.17519087160325916,Software Engineer
+459,Data Analyst,Data Analyst,0.15417415146315372,Software Engineer
+460,Backend Developer,Software Engineer,0.30082531719162464,Software Engineer
+461,Data Analyst,Data Analyst,0.31852463551490556,Software Engineer
+462,Cybersecurity Engineer,Full Stack Developer,0.16411235317955014,Software Engineer
+463,Data Scientist,Data Scientist,0.17249422008456225,Software Engineer
+464,Data Analyst,Data Analyst,0.2958968247016884,Software Engineer
+465,Backend Developer,Software Engineer,0.2769582482608527,Software Engineer
+466,Data Analyst,Software Engineer,0.23421640376670783,Software Engineer
+467,Software Engineer,Software Engineer,0.27298429293941906,Software Engineer
+468,Data Scientist,Software Engineer,0.2776222820738062,Software Engineer
+469,NLP Engineer,Machine Learning Engineer,0.15769751592187206,Software Engineer
+470,Data Analyst,Data Analyst,0.17250628600821197,Software Engineer
+471,Software Engineer,Full Stack Developer,0.23522665764322642,Software Engineer
+472,DevOps Engineer,DevOps Engineer,0.16078075083956556,Software Engineer
+473,Frontend Developer,Data Analyst,0.22471135504582088,Software Engineer
+474,Computer Vision Engineer,Computer Vision Engineer,0.20752636892325202,Software Engineer
+475,Full Stack Developer,DevOps Engineer,0.15091004890171536,Software Engineer
+476,Full Stack Developer,Software Engineer,0.16161173803206605,Software Engineer
+477,Computer Vision Engineer,Computer Vision Engineer,0.21678797892617083,Software Engineer
+478,Data Scientist,Machine Learning Engineer,0.1823631901385874,Software Engineer
+479,MLOps Engineer,MLOps Engineer,0.1992606772565999,Software Engineer
+480,DevOps Engineer,Cloud Engineer,0.1254219573454994,Software Engineer
+481,Software Engineer,Software Engineer,0.26103239698092007,Software Engineer
+482,Computer Vision Engineer,Computer Vision Engineer,0.18247322928423493,Software Engineer
+483,Full Stack Developer,NLP Engineer,0.13240957585533944,Software Engineer
+484,Computer Vision Engineer,NLP Engineer,0.1911134252810196,Software Engineer
+485,NLP Engineer,Data Scientist,0.24872045549829236,Software Engineer
+486,DevOps Engineer,Data Analyst,0.3249927097199635,Software Engineer
+487,Data Scientist,Machine Learning Engineer,0.14325405192656246,Software Engineer
+488,Computer Vision Engineer,Data Scientist,0.17054890494554442,Software Engineer
+489,Backend Developer,Software Engineer,0.3900787990419498,Software Engineer
+490,Software Engineer,Software Engineer,0.26095358769941535,Software Engineer
+491,Data Analyst,Data Analyst,0.3385559130667084,Software Engineer
+492,DevOps Engineer,Cloud Engineer,0.1822192275931302,Software Engineer
+493,MLOps Engineer,MLOps Engineer,0.2425217641391634,Software Engineer
+494,Computer Vision Engineer,Computer Vision Engineer,0.19071876056740347,Software Engineer
+495,Software Engineer,Software Engineer,0.2806955278180011,Software Engineer
+496,DevOps Engineer,Data Engineer,0.16941695846529978,Software Engineer
+497,Software Engineer,Software Engineer,0.2684895957795294,Software Engineer
+498,Frontend Developer,Cloud Engineer,0.13469190102959983,Software Engineer
+499,Full Stack Developer,Software Engineer,0.28592344064351005,Software Engineer

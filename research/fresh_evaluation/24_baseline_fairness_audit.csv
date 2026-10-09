@@ -1,0 +1,10 @@
+criteria,verified
+Identical training data,True
+Identical target,True
+Identical test set,True
+Identical career universe,True
+No latent features used,True
+No generator-only fields,True
+No PATHFORGE scores used,True
+No PATHFORGE rankings used,True
+Hyperparameter selection on TRAIN/VAL only,True

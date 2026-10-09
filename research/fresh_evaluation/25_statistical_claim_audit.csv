@@ -1,0 +1,10 @@
+metric,value,verified
+Test Sample Size,900,True
+Fusion Top-1,0.0533333333333333,True
+Fusion Top-3,0.1588888888888888,True
+Fusion Top-5,0.2888888888888888,True
+Fusion MRR,0.1975698803022072,True
+Fusion NDCG@5,0.1649496923701227,True
+Fusion Macro F1,0.0095117845117845,True
+Fusion vs Profile p-value,,True
+Statistically Significant,False,True

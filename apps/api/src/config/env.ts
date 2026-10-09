@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { z } from 'zod';
 
 /**
@@ -48,6 +49,10 @@ const envSchema = z.object({
   JOOBLE_MAX_RESULTS_PER_QUERY: z.coerce.number().default(20),
   JOOBLE_MAX_LIFETIME_REQUESTS: z.coerce.number().default(500),
   JOOBLE_SAFETY_LIMIT: z.coerce.number().default(450),
+
+  // Gemini (Assistive Layer)
+  GEMINI_ENABLED: z.coerce.boolean().default(false),
+  GEMINI_API_KEY: z.string().optional(),
 });
 
 const parsed = envSchema.safeParse(process.env);

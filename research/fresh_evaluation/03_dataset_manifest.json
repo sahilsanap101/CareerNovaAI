@@ -1,0 +1,10 @@
+{
+    "generator_file": "research/fresh_evaluation/generate_dataset.py",
+    "master_seed": 9999,
+    "num_samples_per_condition": 2000,
+    "conditions": [
+        "A_profile_dominant",
+        "B_complementary",
+        "C_assessment_dominant"
+    ]
+}

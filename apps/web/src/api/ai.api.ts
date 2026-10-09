@@ -24,7 +24,42 @@ export interface AiAnalyticsData {
   avgLatencyMs: number;
 }
 
+export interface ResumeAnalysisResult {
+  matchScore: number;
+  categoryScores: {
+    requiredSkills: number;
+    preferredSkills: number;
+    experience: number;
+    projects: number;
+    education: number;
+    atsReadiness: number;
+  };
+  skillsYouHave: string[];
+  missingRequiredSkills: string[];
+  missingPreferredSkills: string[];
+  partialMatches: string[];
+  resumeIssues: string[];
+  top5Changes: string[];
+  improvedBulletSuggestions: {
+    original: string;
+    improved: string;
+    reason: string;
+  }[];
+  isDeterministicOnly?: boolean;
+  aiModelUsed?: string;
+}
+
 export const aiApi = {
+  analyzeResume: async (resumeText: string, jobDescription?: string): Promise<ResumeAnalysisResult> => {
+    const res = await api.post<ApiResponse<ResumeAnalysisResult>>('/ai/resume-analyze', {
+      resumeText,
+      jobDescription,
+    }, {
+      timeout: 120_000,
+    });
+    return res.data.data!;
+  },
+
   sendChatMessage: async (
     message: string,
     conversationId?: string,

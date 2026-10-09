@@ -1,0 +1,4 @@
+Condition,Latent_Oracle_Accuracy,Profile_Observable_Accuracy,Assessment_Observable_Accuracy,Combined_Observable_Accuracy
+A,1.0,0.0,Misaligned,Misaligned
+B,1.0,0.0,Misaligned,Misaligned
+C,1.0,0.0,Misaligned,Misaligned

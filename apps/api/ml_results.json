@@ -1,0 +1,102 @@
+{
+  "class_distribution": {
+    "QA Engineer": 34,
+    "Software Engineer": 34,
+    "Data Analyst": 34,
+    "Full Stack Developer": 34,
+    "Cybersecurity Engineer": 34,
+    "Data Scientist": 33,
+    "DevOps Engineer": 33,
+    "Backend Developer": 33,
+    "Data Engineer": 33,
+    "MLOps Engineer": 33,
+    "Machine Learning Engineer": 33,
+    "NLP Engineer": 33,
+    "Frontend Developer": 33,
+    "Computer Vision Engineer": 33,
+    "Cloud Engineer": 33
+  },
+  "models": {
+    "Logistic Regression": {
+      "top1": {
+        "mean": 0.9559999999999998,
+        "std": 0.013564659966250548
+      },
+      "top3": {
+        "mean": 0.998,
+        "std": 0.0040000000000000036
+      },
+      "top5": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "macroP": {
+        "mean": 0.9605873015873018,
+        "std": 0.011505356397502059
+      },
+      "macroR": {
+        "mean": 0.9549206349206351,
+        "std": 0.013227089940317198
+      },
+      "macroF1": {
+        "mean": 0.9544889554889554,
+        "std": 0.014183032523899651
+      },
+      "runtime_ms": 0.004714012145996094
+    },
+    "Random Forest": {
+      "top1": {
+        "mean": 0.968,
+        "std": 0.011661903789690611
+      },
+      "top3": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "top5": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "macroP": {
+        "mean": 0.9696349206349207,
+        "std": 0.011242712709362238
+      },
+      "macroR": {
+        "mean": 0.9676190476190477,
+        "std": 0.012441852661755808
+      },
+      "macroF1": {
+        "mean": 0.9673060273060272,
+        "std": 0.012708649923382291
+      },
+      "runtime_ms": 0.046880245208740234
+    },
+    "Gradient Boosting": {
+      "top1": {
+        "mean": 0.8719999999999999,
+        "std": 0.02638181191654586
+      },
+      "top3": {
+        "mean": 0.96,
+        "std": 0.017888543819998298
+      },
+      "top5": {
+        "mean": 0.97,
+        "std": 0.026076809620810583
+      },
+      "macroP": {
+        "mean": 0.8855271765271766,
+        "std": 0.0183622019238109
+      },
+      "macroR": {
+        "mean": 0.872063492063492,
+        "std": 0.02586084045005244
+      },
+      "macroF1": {
+        "mean": 0.8703013283013284,
+        "std": 0.025449724756715537
+      },
+      "runtime_ms": 0.045244693756103516
+    }
+  }
+}

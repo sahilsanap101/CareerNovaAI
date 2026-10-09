@@ -1,0 +1,29 @@
+{
+  "random_seed": 42,
+  "candidate_sets": {
+    "15_careers": 15,
+    "60_careers": 60
+  },
+  "data_files": {
+    "dataset": "student_dataset_500_minimal.csv",
+    "heuristic_scores": "heuristic_scores.json",
+    "assessment_weights": "career_assessment_weight_matrix_v1.json"
+  },
+  "features": [
+    "Profile_Heuristic_Score",
+    "Assessment_Heuristic_Score"
+  ],
+  "splits": {
+    "strategy": "StratifiedKFold",
+    "k_folds": 5
+  },
+  "model_configurations": {
+    "fusion_baseline": "70:30 fixed",
+    "fusion_best": "10:90 tuned",
+    "random_forest": {
+      "n_estimators": 100,
+      "max_depth": 5,
+      "random_state": 42
+    }
+  }
+}

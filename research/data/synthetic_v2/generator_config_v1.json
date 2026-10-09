@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "name": "controlled_synthetic_benchmark_v2",
+  "master_seed": 42,
+  "latent_dimension": 15,
+  "num_samples": 2000,
+  "num_careers": 15,
+  "num_assessment_questions": 20,
+  "conditions": {
+    "A_profile_dominant": {
+      "profile_noise_std": 0.1,
+      "assessment_noise_std": 2.5,
+      "profile_signal_ratio": 0.9,
+      "assessment_signal_ratio": 0.1
+    },
+    "B_balanced": {
+      "profile_noise_std": 0.5,
+      "assessment_noise_std": 0.5,
+      "profile_signal_ratio": 0.5,
+      "assessment_signal_ratio": 0.5
+    },
+    "C_assessment_dominant": {
+      "profile_noise_std": 2.5,
+      "assessment_noise_std": 0.1,
+      "profile_signal_ratio": 0.1,
+      "assessment_signal_ratio": 0.9
+    }
+  },
+  "generation_rules": {
+    "latent_distribution": "normal",
+    "latent_mean": 0,
+    "latent_std": 1,
+    "apply_student_preference_bias": true,
+    "bias_matrix_seed": 202
+  }
+}

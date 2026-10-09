@@ -1,0 +1,91 @@
+condition,model,career,precision,recall,f1,support
+A,M0,.NET Developer,0.08527131782945736,0.9166666666666666,0.15602836879432624,24
+A,M0,AI Data / Annotation Quality Specialist,0.0,0.0,0.0,20
+A,M0,AI Engineer,0.0,0.0,0.0,10
+A,M0,AI Product / Applied AI Developer,0.0,0.0,0.0,13
+A,M0,API / Integration Developer,0.0,0.0,0.0,21
+A,M0,Application Security Engineer,0.0,0.0,0.0,27
+A,M0,Automation Test Engineer,0.0,0.0,0.0,14
+A,M0,BI Developer / BI Analyst,0.14285714285714285,0.17647058823529413,0.15789473684210525,34
+A,M0,Backend Developer,0.0,0.0,0.0,15
+A,M0,Big Data Engineer,0.0,0.0,0.0,24
+A,M0,Blockchain / Web3 Developer,0.0,0.0,0.0,15
+A,M0,Business Analyst (IT),0.0,0.0,0.0,19
+A,M0,Cloud Data Engineer,0.0,0.0,0.0,19
+A,M0,Cloud Engineer,0.0,0.0,0.0,25
+A,M0,Cloud Security Engineer,0.0,0.0,0.0,20
+A,M4,.NET Developer,0.0,0.0,0.0,24
+A,M4,AI Data / Annotation Quality Specialist,0.0,0.0,0.0,20
+A,M4,AI Engineer,0.0,0.0,0.0,10
+A,M4,AI Product / Applied AI Developer,0.0,0.0,0.0,13
+A,M4,API / Integration Developer,0.0,0.0,0.0,21
+A,M4,Application Security Engineer,0.0,0.0,0.0,27
+A,M4,Automation Test Engineer,0.0,0.0,0.0,14
+A,M4,BI Developer / BI Analyst,0.0,0.0,0.0,34
+A,M4,Backend Developer,0.08823529411764706,0.2,0.12244897959183673,15
+A,M4,Big Data Engineer,0.0,0.0,0.0,24
+A,M4,Blockchain / Web3 Developer,0.0,0.0,0.0,15
+A,M4,Business Analyst (IT),0.0,0.0,0.0,19
+A,M4,Cloud Data Engineer,0.0,0.0,0.0,19
+A,M4,Cloud Engineer,0.08646616541353383,0.92,0.15807560137457044,25
+A,M4,Cloud Security Engineer,0.0,0.0,0.0,20
+B,M0,.NET Developer,0.051094890510948905,0.875,0.09655172413793103,16
+B,M0,AI Data / Annotation Quality Specialist,0.0,0.0,0.0,31
+B,M0,AI Engineer,0.0,0.0,0.0,17
+B,M0,AI Product / Applied AI Developer,0.0,0.0,0.0,23
+B,M0,API / Integration Developer,0.0,0.0,0.0,15
+B,M0,Application Security Engineer,0.0,0.0,0.0,33
+B,M0,Automation Test Engineer,0.0,0.0,0.0,22
+B,M0,BI Developer / BI Analyst,0.11538461538461539,0.16666666666666666,0.13636363636363635,18
+B,M0,Backend Developer,0.0,0.0,0.0,12
+B,M0,Big Data Engineer,0.0,0.0,0.0,17
+B,M0,Blockchain / Web3 Developer,0.0,0.0,0.0,14
+B,M0,Business Analyst (IT),0.0,0.0,0.0,15
+B,M0,Cloud Data Engineer,0.0,0.0,0.0,21
+B,M0,Cloud Engineer,0.0,0.0,0.0,24
+B,M0,Cloud Security Engineer,0.0,0.0,0.0,22
+B,M4,.NET Developer,0.0,0.0,0.0,16
+B,M4,AI Data / Annotation Quality Specialist,0.0,0.0,0.0,31
+B,M4,AI Engineer,0.0,0.0,0.0,17
+B,M4,AI Product / Applied AI Developer,0.0,0.0,0.0,23
+B,M4,API / Integration Developer,0.0,0.0,0.0,15
+B,M4,Application Security Engineer,0.0,0.0,0.0,33
+B,M4,Automation Test Engineer,0.0,0.0,0.0,22
+B,M4,BI Developer / BI Analyst,0.0,0.0,0.0,18
+B,M4,Backend Developer,0.15384615384615385,0.16666666666666666,0.16,12
+B,M4,Big Data Engineer,0.0,0.0,0.0,17
+B,M4,Blockchain / Web3 Developer,0.0,0.0,0.0,14
+B,M4,Business Analyst (IT),0.0,0.0,0.0,15
+B,M4,Cloud Data Engineer,0.0,0.0,0.0,21
+B,M4,Cloud Engineer,0.07665505226480836,0.9166666666666666,0.1414790996784566,24
+B,M4,Cloud Security Engineer,0.0,0.0,0.0,22
+C,M0,.NET Developer,0.10948905109489052,0.967741935483871,0.19672131147540983,31
+C,M0,AI Data / Annotation Quality Specialist,0.0,0.0,0.0,20
+C,M0,AI Engineer,0.0,0.0,0.0,21
+C,M0,AI Product / Applied AI Developer,0.0,0.0,0.0,20
+C,M0,API / Integration Developer,0.0,0.0,0.0,22
+C,M0,Application Security Engineer,0.0,0.0,0.0,23
+C,M0,Automation Test Engineer,0.0,0.0,0.0,19
+C,M0,BI Developer / BI Analyst,0.0,0.0,0.0,19
+C,M0,Backend Developer,0.0,0.0,0.0,12
+C,M0,Big Data Engineer,0.0,0.0,0.0,20
+C,M0,Blockchain / Web3 Developer,0.0,0.0,0.0,15
+C,M0,Business Analyst (IT),0.0,0.0,0.0,24
+C,M0,Cloud Data Engineer,0.0,0.0,0.0,21
+C,M0,Cloud Engineer,0.0,0.0,0.0,16
+C,M0,Cloud Security Engineer,0.0,0.0,0.0,17
+C,M4,.NET Developer,0.0,0.0,0.0,31
+C,M4,AI Data / Annotation Quality Specialist,0.0,0.0,0.0,20
+C,M4,AI Engineer,0.0,0.0,0.0,21
+C,M4,AI Product / Applied AI Developer,0.0,0.0,0.0,20
+C,M4,API / Integration Developer,0.0,0.0,0.0,22
+C,M4,Application Security Engineer,0.0,0.0,0.0,23
+C,M4,Automation Test Engineer,0.0,0.0,0.0,19
+C,M4,BI Developer / BI Analyst,0.0,0.0,0.0,19
+C,M4,Backend Developer,0.07142857142857142,0.08333333333333333,0.07692307692307693,12
+C,M4,Big Data Engineer,0.0,0.0,0.0,20
+C,M4,Blockchain / Web3 Developer,0.0,0.0,0.0,15
+C,M4,Business Analyst (IT),0.0,0.0,0.0,24
+C,M4,Cloud Data Engineer,0.0,0.0,0.0,21
+C,M4,Cloud Engineer,0.04895104895104895,0.875,0.09271523178807947,16
+C,M4,Cloud Security Engineer,0.0,0.0,0.0,17

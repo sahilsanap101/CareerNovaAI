@@ -1,0 +1,13 @@
+claim,status,evidence_source,supported_by_data,allowed_in_paper,required_qualification
+PATHFORGE is interpretable.,SUPPORTED,Architecture/Engine Source,"Yes, explicitly defined weights and logical mappings",Yes,None
+PATHFORGE uses deterministic career scoring.,SUPPORTED,RecommendationEngineService TS,Yes,Yes,None
+PATHFORGE performs profile-based recommendation.,PARTIALLY SUPPORTED,Prompt 13/14 results,"Yes, but performance is extremely low compared to ML baselines",Yes,"State that it is a deterministic heuristic, not a highly accurate predictor"
+PATHFORGE assessment component contains useful information.,SUPPORTED,Prompt 14 RF Baselines,"Yes, RF Assessment-only achieved >20% top-1",Yes,"Specify information exists in data, not necessarily recovered by engine"
+Assessment improves recommendation quality.,NOT SUPPORTED,Prompt 13 fusion results,"No, M4 degrades or fails to significantly improve over M0",No,"Must state it improves ML models, but not the current deterministic engine"
+70:30 fusion improves recommendation quality.,NOT SUPPORTED,Prompt 13 fusion results,"No, universally outperformed by 100:0 on validation, fails hypothesis test",No,Must state hypothesis was rejected
+PATHFORGE outperforms learned baselines.,NOT SUPPORTED,Prompt 14 RF/GB baselines,"No, severely underperforms learned baselines",No,Must state it was outperformed
+PATHFORGE provides valid skill-gap analysis.,PARTIALLY SUPPORTED,Architecture,"Yes, code exists to diff skills",Yes,State it is structurally functional but lacks empirical validation of effectiveness
+PATHFORGE produces prerequisite-aware roadmaps.,PARTIALLY SUPPORTED,Architecture,"Yes, mechanisms exist in TS",Yes,State it is structurally functional but lacks empirical validation
+PATHFORGE is validated on real students.,NOT SUPPORTED,Prompt 8/Final Status,No real data collected,No,Must state evaluation is strictly synthetic
+PATHFORGE generalizes to real-world career suitability.,NOT SUPPORTED,Prompt 12/13/14,Tested only on abstract latent synthetic conditions,No,Must state no real-world evaluation exists
+The current deterministic implementation is supported by controlled synthetic evidence.,NOT SUPPORTED,Prompt 13/14 results,Deterministic scoring failed heavily across conditions,No,Must state deterministic algorithm was not supported

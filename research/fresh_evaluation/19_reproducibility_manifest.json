@@ -1,0 +1,15 @@
+{
+    "reproducibility": {
+        "experiment_id": "PATHFORGE_FRESH_EVAL_2026_V1",
+        "date": "2026-10-07",
+        "split_seed": 4242,
+        "dataset_generator_seed": 9999,
+        "baseline_seed": 42,
+        "dataset_hash": "NEWLY_GENERATED_V1",
+        "metrics_definitions": {
+            "Top-1": "Hit rate at rank 1",
+            "MRR": "Mean Reciprocal Rank",
+            "Macro F1": "Macro-averaged F1 score"
+        }
+    }
+}

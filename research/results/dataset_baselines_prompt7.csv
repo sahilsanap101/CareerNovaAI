@@ -1,0 +1,6 @@
+Metric,Value
+Majority-class Top-1,0.124
+Uniform-random Top-1,0.0667
+Profile-only Predictive Top-1,0.268
+Assessment-only Predictive Top-1,0.824
+Profile + Assessment Predictive Top-1,0.856

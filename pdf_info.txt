@@ -1,0 +1,355 @@
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\00220-IAAI26.WangQ-EA.pdf ===
+AdaptJobRec: Enhancing Conversational Career Recommendation through an
+LLM-Powered Agentic System
+Qixin Wang1,2, Dawei Wang1, Kun Chen1, Yaowei Hu1
+Puneet Girdhar1, Ruoteng Wang1, Aadesh Gupta1, Chaitanya Devella1
+Wenlai Guo1, Shangwen Huang1, Bachir Aoun1, Greg Hayworth1
+Han Li1*, Xintao Wu2*
+1Walmart Global Tech
+2University of Arkansas
+han.li@walmart.com, xintaowu@uark.edu
+Abstract
+In recent years, recommendation systems have evolved from
+providing a single list of recommendations to offering a
+comprehensive suite of topic-focused services. To better ac-
+complish this task, conversational re
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\00920-BeutlingN.pdf ===
+Personalized Course Recommender: Linking Learning Objectives and Career
+Goals through Competencies
+Nils Beutling*1, Maja Spahic-Bogdanovic *1, 2
+1FHNW University of Applied Sciences and Arts Northwestern Switzerland
+2University of Camerino (UNICAM)
+nils.beutling@students.fhnw.ch, maja.spahic@fhnw.ch
+Abstract
+This paper presents a Knowledge-Based Recommender Sys-
+tem (KBRS) that aims to align course recommendations with
+students’ career goals in the field of information systems. The
+developed KBRS uses the European Skills, Competences,
+qualifications, and Occupations (ESCO) ontology, course de-
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\126025091.pdf ===
+   
+  
+  
+ 
+ 
+ 
+CareerAstra: An AI-Powered Hybrid Recommendation  
+System for Career Guidance of Indian Students 
+T.V.Sree vastha 1 , R.Raja Subramanian 2 ,    P.Thisyanth 3* ,  T.Venu babu 4 
+and P.Srikanth 5 
+Department of Computer Science and 
+Engineering Kalasalingam Academy of 
+Research and Education Madurai ,  India 
+sreevastha7@gmail.com , rajasubramanian.r@klu.ac.in,  policethisyanth@gmail.com*,  
+venurajvenu204@gmail.com, peyyalasrikanth0@gmail.com   
+Abstract .  Ma ny students in India have difficulty with career . 
+Decisions out of lack of structured and affordable guidance . In 
+pa
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\13+F.pdf ===
+2319-2526/ © 2026 The Authors. This is an open access article under the CC BY-NC-ND license (https://creativecommons.org/licenses/by-nc-nd/4.0). 
+ 
+ 
+ 
+International Journal on Advanced Computer Theory and  
+Engineering  
+ISSN: 2319 - 2526 
+Volume 15 Issue 2s (2026) | Pages: 91-97 
+ 
+AI-Powered Career Recommendation System Using Hybrid Architecture, Semantic 
+Retrieval, and Dynamic Scoring 
+Khushi Hemant Gharte1, Nishigandha Pawar2, Anjali Bijwe 3 
+¹²³Department of Artificial Intelligence and Data Science Engineering GSMCOE, Pune, India  
+         Email: khushigharte@gsmozecoe.org, nishigandha
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\239_CS345.pdf ===
+International Journal of Engineering & Extended Technologies Research   (IJEETR) 
+                   |ISSN: 2322-0163| www.ijeetr.com | A Bimonthly, Peer Reviewed, Scholarly Indexed Journal | 
+| Volume 8, Issue 2, March - April 2026 | 
+DOI:10.15662/IJEETR.2026.0802239 
+IJEETR©2026                                                   |     An ISO 9001:2008 Certified Journal   |                                                       2543 
+ 
+Personalized Career Planning using an Intelligent 
+Recommendation with Dynamic Roadmaps 
+ 
+Mr. Sivasubramanian R1, Sandhiya Sri M2, Sri Santhoshini V3, Yaswanthr
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\2404.10876v2.pdf ===
+Course Recommender Systems Need to Consider the Job
+Market
+Jibril Frej
+jibril.frej@epfl.ch
+ML4ED Lab, IC, EPFL
+Switzerland
+Anna Dai
+anna.dai@epfl.ch
+NLP Lab, IC, EPFL
+Switzerland
+Syrielle Montariol
+syrielle.montariol@epfl.ch
+NLP Lab, IC, EPFL
+Switzerland
+Antoine Bosselut
+antoine.bosselut@epfl.ch
+NLP Lab, IC, EPFL
+Switzerland
+Tanja Käser
+Tanja.kaser@epfl.ch
+ML4ED Lab, IC, EPFL
+Switzerland
+ABSTRACT
+Current course recommender systems primarily leverage learner-
+course interactions, course content, learner preferences, and sup-
+plementary course details like instructor, institution, ratings, and
+r
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\2405.18139v1.pdf ===
+1 
+    
+ 
+ 
+Unlocking Futures: A Natural Language Driven Career Prediction 
+System for Computer Science and Software Engineering Students 
+Sakir Hossain Faruquea, Sharun Akter Khushbua, Sharmin Aktera 
+aDepartment of Computer Science and Engineering, Daffodil International University, Dhaka, Bangladesh  
+ 
+ 
+Abstract 
+A career is a crucial aspect for any person to fulfill their desires through hard work. During 
+their studies, students cannot find the best career suggestions unless they receive meaningful 
+guidance tailored to their skills. Therefore, we developed an AI -assisted model for ear
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\2508.13423v2.pdf ===
+AdaptJobRec: Enhancing Conversational Career Recommendation through an
+LLM-Powered Agentic System
+Qixin Wang1,2, Dawei Wang1, Kun Chen1, Yaowei Hu1
+Puneet Girdhar1, Ruoteng Wang1, Aadesh Gupta1, Chaitanya Devella1
+Wenlai Guo1, Shangwen Huang1, Bachir Aoun1, Greg Hayworth1
+Han Li1*, Xintao Wu2*
+1Walmart Global Tech
+han.li@walmart.com
+2University of Arkansas
+xintaowu@uark.edu
+Abstract
+In recent years, recommendation systems have evolved from
+providing a single list of recommendations to offering a
+comprehensive suite of topic-focused services. To better ac-
+complish this task, conversational rec
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\2511.09819v1.pdf ===
+Improving Graduate Outcomes by Identifying Skills
+Gaps and Recommending Courses Based on Career
+Interests
+Rahul Soni 1, Basem Suleiman 1, Sonit Singh 1
+1School of Computer Science and Engineering, University of New South Wales, Sydney, Australia
+Email: sonit.singh@unsw.edu.au
+Abstract—This paper aims to address the challenge of se-
+lecting relevant courses for students by proposing the design
+and development of a course recommendation system. The
+course recommendation system utilises a combination of data
+analytics techniques and machine learning algorithms to rec-
+ommend courses that align wi
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\2602.03097v1.pdf ===
+De-conflating Preference and Qualification: Constrained Dual-Perspective
+Reasoning for Job Recommendation with Large Language Models
+Bryce Kan1∗ Wei Yang1∗ Emily Nguyen1∗ Ganghui Yi1
+Bowen Yi1 Chenxiao Yu1 Yan Liu1
+1University of Southern California
+{brycekan, wyang930, emilyn98, yanliu.cs}@usc.edu
+Abstract
+Professional job recommendation involves a
+complex bipartite matching process that must
+reconcile a candidate’s subjective preference
+with an employer’s objective qualification.
+While Large Language Models (LLMs) are
+well-suited for modeling the rich semantics
+of resumes and job description
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\2603.02568v1.pdf ===
+AI4CAREER: Responsible AI for STEM Career
+Development at Scale in K-16 Education
+Sugana Chawla, Si Chen, Julia Qian, Gina Svarovsky, Alison Cheng, Rick
+Johnson, Nitesh V. Chawla, and Ronald Metoyer
+University of Notre Dame, Notre Dame, IN, USA
+Abstract.Rapid advances in artificial intelligence (AI) are reshaping
+how students imagine, explore, and prepare for STEM careers across
+K–16 education. As AI systems increasingly influence feedback, advis-
+ing, and access to opportunity information, they are becoming part
+of the developmental infrastructure that shapes career identity forma-
+tion and re
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\2605.27656v1.pdf ===
+Developing an Intelligent Job Recommendation
+System Using Semantic Retrieval and Explainable
+AI Techniques
+Hussein Ali Al Awad ∗ Dr. Khaled Fathi Omar ∗
+∗Master of Web Science, Syrian Virtual University, Damascus, Syria
+Hussein Ali Al Awad: husseinite98@gmail.com
+Dr. Khaled Fathi Omar: Kh.om.mail@gmail.com
+Abstract—Online recruitment platforms require recommenda-
+tion methods that can retrieve relevant job opportunities from
+large and heterogeneous collections of postings. Keyword-based
+search is efficient and interpretable, but it can miss relevant
+postings when equivalent roles are expressed
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\2606.15831v1.pdf ===
+ 
+1 
+   
+ 
+ 
+ 
+ 
+An Integrated System for Real-Time Student Assessment and 
+Career Guidance Using Neural Networks in Computing 
+Disciplines 
+Sakir Hossain Faruque1 (sakir15-3862@diu.edu.bd), Md. Jubair Hossain2 
+(jubair.duengg@bec.edu.bd), Sharun Akter Khushbu1 (sharun.cse@diu.edu.bd) 
+1Department of Computer Science and Engineering, Daffodil International University, Dhaka -1216, 
+Bangladesh,  
+2Department of Electrical and Electronic Engineering, Barishal Engineering College, Barishal, Bangladesh  
+ 
+Abstract 
+Many undergraduate students in Computer Science (CS) and Software Engineering (SWE
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\2608.22056v1.pdf ===
+Personalized and Aspiration oriented career path finder 
+by modelling similarity of career paths 
+Kuleshwar Sahu1, Girish Keshav Palshikar1and Rajiv Srivastava1,2 
+1 Tata Research Development and Design Center, TCS, 54-B, Hadapsar Industrial Estate, 
+Hadapsar, Pune, INDIA 
+2 Department of Technology, University of Pune, Pune, INDIA 
+{kuleshwar.sahu, gk.palshikar, rajiv.srivastava}@tcs.com 
+Abstract. Fulfilling career aspirations is important for growth of employee and 
+x `organization. We propose a data driven meth odology to recommend person-
+alized career path for a given aspirant’s career p
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\3626772.3657847.pdf ===
+Course Recommender Systems Need to Consider the Job Market
+Jibril Frej
+jibril.frej@epfl.ch
+ML4ED Lab, IC, EPFL
+Lausanne, Switzerland
+Anna Dai
+anna.dai@epfl.ch
+NLP Lab, IC, EPFL
+Lausanne, Switzerland
+Syrielle Montariol
+syrielle.montariol@epfl.ch
+NLP Lab, IC, EPFL
+Lausanne, Switzerland
+Antoine Bosselut
+antoine.bosselut@epfl.ch
+NLP Lab, IC, EPFL
+Lausanne, Switzerland
+Tanja Käser
+Tanja.kaser@epfl.ch
+ML4ED Lab, IC, EPFL
+Lausanne, Switzerland
+ABSTRACT
+Current course recommender systems primarily leverage learner-
+course interactions, course content, learner preferences, and sup-
+plementary course de
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\AI-Powered_Career_Guidance_A_Scalable_Model_for_Personalized_Recommendations.pdf ===
+Received 15 January 2026, accepted 31 January 2026, date of publication 6 February 2026, date of current version 11 February 2026.
+Digital Object Identifier 10.1 109/ACCESS.2026.3661573
+AI-Powered Career Guidance: A Scalable Model
+for Personalized Recommendations
+MINAKSHI ROY
+ AND KALPANA SHARMA
+Department of Computer Science and Engineering, Sikkim Manipal Institute of Technology, Sikkim Manipal University, Majhitar, Sikkim 737136, India
+Corresponding author: Kalpana Sharma (kalpana.s@smit.smu.edu.in)
+ABSTRACT The primary objective of this study is to enhance career guidance in higher educati
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\feduc-11-1787689.pdf ===
+Frontiers in Education 01 frontiersin.org
+Implementation of AI in career 
+counselling for university 
+students: a systematic review
+Yerbol Sarmurzin 1, Askar Azhenov 2*, Ainash Kudysheva 3, 
+Bayan Ualikhanova 4, Indira Saparbekova 4 and Akan Besbayev 5
+1Buketov Karaganda National Research University, Karaganda, Kazakhstan, 2Kazakh National University 
+of Sports, Astana, Kazakhstan, 3Kazakh National University of Arts, Astana, Kazakhstan, 4Zhanibekov 
+University, Shymkent, Kazakhstan, 5Auezov South Kazakhstan University, Shymkent, Kazakhstan
+Artificial intelligence (AI) is transforming universi
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\IJARCCE.2026.153127-AI.pdf ===
+ISSN (O) 2278-1021, ISSN (P) 2319-5940 
+IJARCCE 
+International Journal of Advanced Research in Computer and Communication Engineering 
+Impact Factor 8.471Peer-reviewed & Refereed journalVol. 15, Issue 3, March 2026 
+DOI:  10.17148/IJARCCE.2026.153127 
+© IJARCCE                This work is licensed under a Creative Commons Attribution 4.0 International License                 775 
+AI Career Role Recommendation System with 
+Skill Gap Analysis, Career Progression, and 
+Salary Simulation Using Resume Semantic 
+Analysis 
+ 
+Ms. Neelam Mary Vijaya Nirmala1, G. Pallavi2, B. Jhansi Lakshmi3, G. Ram
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\IRJAEH-04-04-0322-2603267-2401-2408.pdf ===
+ 
+International Research Journal on Advanced Engineering Hub (IRJAEH)  
+e ISSN: 2584-2137 
+Vol. 04 Issue: 04 April 2026 
+Page No: 2401-2408 
+https://irjaeh.com 
+https://doi.org/10.47392/IRJAEH.2026.0322          
+ 
+    
+International Research Journal on Advanced Engineering Hub (IRJAEH)  
+                         2401 
+ 
+ 
+ 
+Career Recommendation System with Skill Gap Analysis  
+R.A.MabelRose1,LakshmiPriyaG2,HarshiniSwethaMP3,DhanyaV4 
+1 Assistant Professor at the Department of Computer Science & Business Systems, Panimalar Engineering 
+College,Chennai. 
+2,3,4 Students of Department of Compute
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\s44163-026-00996-9.pdf ===
+RESEARCH Open Access
+© The Author(s) 2026. Open Access  This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, 
+sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the 
+source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or other third party material in this article 
+are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not 
+
+=== c:/Users/ankit/Downloads/PATHFORGE (1)/PATHFORGE/paper/previous\ssrn-6559880.pdf ===
+ 
+AI Powered Career Guidance System 
+ 
+Jillella Karthik Reddy 
+Dept. Of Information Technology 
+Alliance University 
+Bangalore, India 
+Kjillellabtech22@Ced.Alliance.Edu.In 
+ 
+Pasuluri 
+Govardhan 
+ Dept. Of Information Technology 
+Alliance University 
+Bangalore, India 
+Gpasuluribtech22@Ced.All
+iance.Edu.In 
+ 
+N. Prajwal Gowda 
+Dept. Of Information Technology 
+Alliance University 
+Bangalore, India 
+Nprajwalbtech22@Ced.Alliance.Edu.In 
+ 
+Kirti Chandra Ray 
+Dept. Of Information Technology 
+Alliance University 
+Bangalore, India 
+Ckirtibtech22@Ced.Alliance.Edu.In 
+ 
+ 
+Ms. Devika P 
+Dept. Of Computer

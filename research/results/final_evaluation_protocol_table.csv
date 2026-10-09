@@ -1,0 +1,7 @@
+Experiment ID,Model Name,Inputs,Fusion Ratio (Profile:Assessment),Target Ground Truth,Dataset Condition,Evaluation Split,Metrics
+1,PATHFORGE Profile-only,7 Profile Dimensions,100:0,Career Suitability,A/B/C/Real,TEST,Top-1/3/5; MRR; NDCG@5; Macro F1
+2,PATHFORGE Assessment-only,20 Assessment Questions,0:100,Career Suitability,A/B/C/Real,TEST,Top-1/3/5; MRR; NDCG@5; Macro F1
+3,PATHFORGE Fusion,Profile + Assessment,Tuned on VALIDATION,Career Suitability,A/B/C/Real,TEST,Top-1/3/5; MRR; NDCG@5; Macro F1
+4,Baseline 1 (Random Forest),Profile + Assessment,N/A,Career Suitability,A/B/C/Real,TEST,Top-1/3/5; MRR; NDCG@5; Macro F1
+5,Baseline 2 (XGBoost),Profile + Assessment,N/A,Career Suitability,A/B/C/Real,TEST,Top-1/3/5; MRR; NDCG@5; Macro F1
+6,Oracle Upper Bound,Latent Preference Vector,N/A,Career Suitability,A/B/C (Synthetic Only),TEST,Top-1/3/5; MRR; NDCG@5; Macro F1

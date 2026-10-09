@@ -86,8 +86,8 @@ const quickActions = [
   { label: 'AIOS Career System', href: APP_ROUTES.AI, icon: Bot, color: 'text-violet-500' },
   { label: 'Resume Intelligence', href: APP_ROUTES.RESUME_INTELLIGENCE, icon: FileText, color: 'text-purple-500' },
   { label: 'Interview Coach', href: APP_ROUTES.INTERVIEW_COACH, icon: Mic, color: 'text-rose-500' },
-  { label: 'Adaptive Roadmap', href: APP_ROUTES.ROADMAP, icon: Map, color: 'text-primary-500' },
-  { label: 'Top 5 Career Matches', href: APP_ROUTES.RECOMMENDATIONS, icon: Sparkles, color: 'text-sky-500' },
+  { label: 'Adaptive Roadmap (Coming Soon)', href: '#', icon: Map, color: 'text-primary-500' },
+  { label: 'Top 5 Career Matches (Coming Soon)', href: '#', icon: Sparkles, color: 'text-sky-500' },
   { label: 'Engineering Analytics', href: APP_ROUTES.ANALYTICS, icon: BarChart3, color: 'text-emerald-500' },
 ];
 

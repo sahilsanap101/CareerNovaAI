@@ -1,0 +1,5 @@
+{
+  "profile_weights": "recommendation_weights_exact.json",
+  "multipliers": "academic_stage_multipliers_exact.csv",
+  "assessment_mapping": "MISSING_FROM_IMPLEMENTATION"
+}

@@ -80,6 +80,21 @@ async function bootstrap(): Promise<void> {
     await connectDatabase();
     logger.info('✅ Database connected');
 
+    // Initialize CSV Knowledge Base
+    const { CareerKnowledgeService } = require('@/modules/careers/services/careerKnowledge.service');
+    const { RoadmapKnowledgeService } = require('@/modules/careers/services/roadmapKnowledge.service');
+    try {
+      CareerKnowledgeService.initialize();
+      logger.info('✅ Career CSV Knowledge Base Initialized');
+      RoadmapKnowledgeService.initialize();
+      logger.info('✅ Roadmap JSON Knowledge Base Initialized');
+    } catch (e) {
+      logger.error('❌ Career Knowledge Base failed to load', e);
+      if (env.NODE_ENV === 'development') {
+        process.exit(1);
+      }
+    }
+
     // Verify mail transporter (non-blocking)
     void verifyMailConnection();
 
@@ -119,6 +134,8 @@ async function bootstrap(): Promise<void> {
   }
 }
 
-void bootstrap();
+if (process.env.NODE_ENV !== 'test') {
+  void bootstrap();
+}
 
 export default app;

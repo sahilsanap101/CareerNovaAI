@@ -1,0 +1,146 @@
+career_id,career_name,skill,importance,minimum_proficiency
+C03,Backend Developer,Java,Core,3
+C03,Backend Developer,Node.js,Core,3
+C03,Backend Developer,Python,Core,3
+C03,Backend Developer,REST API,Core,3
+C03,Backend Developer,SQL,Core,3
+C03,Backend Developer,DSA,Important,2
+C03,Backend Developer,Docker,Important,2
+C03,Backend Developer,Git,Important,2
+C03,Backend Developer,Linux,Important,2
+C03,Backend Developer,System Design,Important,2
+C23,Cloud Engineer,AWS,Core,3
+C23,Cloud Engineer,Docker,Core,3
+C23,Cloud Engineer,Kubernetes,Core,3
+C23,Cloud Engineer,Linux,Core,3
+C23,Cloud Engineer,Networking,Core,3
+C23,Cloud Engineer,CI/CD,Important,2
+C23,Cloud Engineer,Git,Important,2
+C23,Cloud Engineer,Python,Important,2
+C23,Cloud Engineer,Security,Important,2
+C23,Cloud Engineer,Terraform,Important,2
+C17,Computer Vision Engineer,Computer Vision,Core,3
+C17,Computer Vision Engineer,Deep Learning,Core,3
+C17,Computer Vision Engineer,Machine Learning,Core,3
+C17,Computer Vision Engineer,OpenCV,Core,3
+C17,Computer Vision Engineer,Python,Core,3
+C17,Computer Vision Engineer,Docker,Important,2
+C17,Computer Vision Engineer,Git,Important,2
+C17,Computer Vision Engineer,PyTorch,Important,2
+C17,Computer Vision Engineer,Statistics,Important,2
+C17,Computer Vision Engineer,TensorFlow,Important,2
+C30,Cybersecurity Engineer,Cybersecurity,Core,3
+C30,Cybersecurity Engineer,Linux,Core,3
+C30,Cybersecurity Engineer,Networking,Core,3
+C30,Cybersecurity Engineer,Python,Core,3
+C30,Cybersecurity Engineer,Cloud Security,Important,2
+C30,Cybersecurity Engineer,Cryptography,Important,2
+C30,Cybersecurity Engineer,Ethical Hacking,Important,2
+C30,Cybersecurity Engineer,Git,Important,2
+C30,Cybersecurity Engineer,SIEM,Important,2
+C19,Data Analyst,Excel,Core,3
+C19,Data Analyst,Python,Core,3
+C19,Data Analyst,SQL,Core,3
+C19,Data Analyst,Statistics,Core,3
+C19,Data Analyst,Data Analysis,Important,2
+C19,Data Analyst,Data Visualization,Important,2
+C19,Data Analyst,Git,Important,2
+C19,Data Analyst,Power BI,Important,2
+C19,Data Analyst,Tableau,Important,2
+C20,Data Engineer,Apache Spark,Core,3
+C20,Data Engineer,Data Engineering,Core,3
+C20,Data Engineer,ETL,Core,3
+C20,Data Engineer,Python,Core,3
+C20,Data Engineer,SQL,Core,3
+C20,Data Engineer,AWS,Important,2
+C20,Data Engineer,Data Warehousing,Important,2
+C20,Data Engineer,Docker,Important,2
+C20,Data Engineer,Git,Important,2
+C20,Data Engineer,Linux,Important,2
+C18,Data Scientist,Data Analysis,Core,3
+C18,Data Scientist,Machine Learning,Core,3
+C18,Data Scientist,Python,Core,3
+C18,Data Scientist,SQL,Core,3
+C18,Data Scientist,Statistics,Core,3
+C18,Data Scientist,Data Visualization,Important,2
+C18,Data Scientist,Deep Learning,Important,2
+C18,Data Scientist,Git,Important,2
+C18,Data Scientist,NumPy,Important,2
+C18,Data Scientist,Pandas,Important,2
+C25,DevOps Engineer,AWS,Core,3
+C25,DevOps Engineer,CI/CD,Core,3
+C25,DevOps Engineer,Docker,Core,3
+C25,DevOps Engineer,Kubernetes,Core,3
+C25,DevOps Engineer,Linux,Core,3
+C25,DevOps Engineer,Git,Important,2
+C25,DevOps Engineer,Monitoring,Important,2
+C25,DevOps Engineer,Networking,Important,2
+C25,DevOps Engineer,Python,Important,2
+C25,DevOps Engineer,Terraform,Important,2
+C04,Frontend Developer,HTML/CSS,Core,3
+C04,Frontend Developer,JavaScript,Core,3
+C04,Frontend Developer,React,Core,3
+C04,Frontend Developer,TypeScript,Core,3
+C04,Frontend Developer,Git,Important,2
+C04,Frontend Developer,REST API,Important,2
+C04,Frontend Developer,Testing,Important,2
+C04,Frontend Developer,UI/UX,Important,2
+C05,Full Stack Developer,HTML/CSS,Core,3
+C05,Full Stack Developer,JavaScript,Core,3
+C05,Full Stack Developer,Node.js,Core,3
+C05,Full Stack Developer,React,Core,3
+C05,Full Stack Developer,SQL,Core,3
+C05,Full Stack Developer,DSA,Important,2
+C05,Full Stack Developer,Docker,Important,2
+C05,Full Stack Developer,Git,Important,2
+C05,Full Stack Developer,MongoDB,Important,2
+C05,Full Stack Developer,REST API,Important,2
+C26,MLOps Engineer,AWS,Core,3
+C26,MLOps Engineer,Docker,Core,3
+C26,MLOps Engineer,Kubernetes,Core,3
+C26,MLOps Engineer,Machine Learning,Core,3
+C26,MLOps Engineer,Python,Core,3
+C26,MLOps Engineer,CI/CD,Important,2
+C26,MLOps Engineer,Git,Important,2
+C26,MLOps Engineer,Linux,Important,2
+C26,MLOps Engineer,MLflow,Important,2
+C26,MLOps Engineer,Monitoring,Important,2
+C14,Machine Learning Engineer,Deep Learning,Core,3
+C14,Machine Learning Engineer,Machine Learning,Core,3
+C14,Machine Learning Engineer,Python,Core,3
+C14,Machine Learning Engineer,SQL,Core,3
+C14,Machine Learning Engineer,Statistics,Core,3
+C14,Machine Learning Engineer,AWS,Important,2
+C14,Machine Learning Engineer,DSA,Important,2
+C14,Machine Learning Engineer,Docker,Important,2
+C14,Machine Learning Engineer,Git,Important,2
+C14,Machine Learning Engineer,MLOps,Important,2
+C14,Machine Learning Engineer,PyTorch,Important,2
+C16,NLP Engineer,Deep Learning,Core,3
+C16,NLP Engineer,Machine Learning,Core,3
+C16,NLP Engineer,NLP,Core,3
+C16,NLP Engineer,Python,Core,3
+C16,NLP Engineer,Docker,Important,2
+C16,NLP Engineer,Git,Important,2
+C16,NLP Engineer,PyTorch,Important,2
+C16,NLP Engineer,Statistics,Important,2
+C16,NLP Engineer,Transformers,Important,2
+C35,QA Engineer,Java,Core,3
+C35,QA Engineer,Python,Core,3
+C35,QA Engineer,Selenium,Core,3
+C35,QA Engineer,Testing,Core,3
+C35,QA Engineer,API Testing,Important,2
+C35,QA Engineer,Automation Testing,Important,2
+C35,QA Engineer,CI/CD,Important,2
+C35,QA Engineer,Git,Important,2
+C35,QA Engineer,SQL,Important,2
+C01,Software Engineer,C++,Core,3
+C01,Software Engineer,DSA,Core,3
+C01,Software Engineer,Java,Core,3
+C01,Software Engineer,Python,Core,3
+C01,Software Engineer,SQL,Core,3
+C01,Software Engineer,Git,Important,2
+C01,Software Engineer,Linux,Important,2
+C01,Software Engineer,OOP,Important,2
+C01,Software Engineer,System Design,Important,2
+C01,Software Engineer,Testing,Important,2

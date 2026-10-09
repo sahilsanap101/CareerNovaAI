@@ -1,0 +1,8 @@
+dimension,base_weight,source_file,source_symbol,notes
+SKILLS,0.35,byserWeights.ts,BYSER_WEIGHTS,
+INTERESTS,0.2,byserWeights.ts,BYSER_WEIGHTS,
+PROJECTS,0.15,byserWeights.ts,BYSER_WEIGHTS,
+ACADEMIC,0.1,byserWeights.ts,BYSER_WEIGHTS,
+CERTIFICATIONS,0.1,byserWeights.ts,BYSER_WEIGHTS,
+CODING,0.05,byserWeights.ts,BYSER_WEIGHTS,
+GOALS,0.05,byserWeights.ts,BYSER_WEIGHTS,

@@ -1,0 +1,10 @@
+Method,Route,Purpose,Backend Controller
+GET,/api/v1/career-recommendation/recommendations,Generate career recs,careers.controller.ts
+GET,/api/v1/career-recommendation/:careerId/roadmap,Generate skill gap & roadmap,careers.controller.ts
+GET,/api/v1/career-recommendation/my-roadmaps,Fetch user roadmaps,careers.controller.ts
+POST,/api/v1/resume/analyze,Analyze resume vs JD,resume.controller.ts
+GET,/api/v1/jobs/search,Fetch Jooble jobs,jobs.controller.ts
+GET,/api/v1/profile,Fetch user profile,profile.controller.ts
+PUT,/api/v1/profile,Update user profile,profile.controller.ts
+GET,/api/v1/skills,Fetch skill catalog,skills.controller.ts
+POST,/api/v1/assessment/submit,Submit career assessment,assessment.controller.ts

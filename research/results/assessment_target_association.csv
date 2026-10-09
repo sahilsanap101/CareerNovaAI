@@ -1,0 +1,21 @@
+question,measure,statistic,p_value,interpretation
+assessment_q01,Kruskal-Wallis H,199.3355164976092,7.507794801250534e-35,Significant
+assessment_q02,Kruskal-Wallis H,154.95293141908178,7.321440149172937e-26,Significant
+assessment_q03,Kruskal-Wallis H,315.54156956321066,6.738645271001014e-59,Significant
+assessment_q04,Kruskal-Wallis H,250.0394266277101,2.820627416488292e-45,Significant
+assessment_q05,Kruskal-Wallis H,142.26420669555978,2.5145352041255244e-23,Significant
+assessment_q06,Kruskal-Wallis H,234.36475280667545,4.8618476570415625e-42,Significant
+assessment_q07,Kruskal-Wallis H,377.09039070113135,8.413760292101712e-72,Significant
+assessment_q08,Kruskal-Wallis H,355.8296159915728,2.46225151328242e-67,Significant
+assessment_q09,Kruskal-Wallis H,377.19506201257764,7.997980292411605e-72,Significant
+assessment_q10,Kruskal-Wallis H,192.34431343897236,2.002582945297709e-33,Significant
+assessment_q11,Kruskal-Wallis H,373.7420580942955,4.255561201579121e-71,Significant
+assessment_q12,Kruskal-Wallis H,113.06334512214438,1.421595673849108e-17,Significant
+assessment_q13,Kruskal-Wallis H,263.5338030534906,4.528404494061068e-48,Significant
+assessment_q14,Kruskal-Wallis H,233.59138262632658,7.01778145883756e-42,Significant
+assessment_q15,Kruskal-Wallis H,366.1734124260799,1.657489840029136e-69,Significant
+assessment_q16,Kruskal-Wallis H,363.13707336826843,7.197933825242866e-69,Significant
+assessment_q17,Kruskal-Wallis H,386.0478336268349,1.0983799423600078e-73,Significant
+assessment_q18,Kruskal-Wallis H,212.36437533633514,1.6204896393244226e-37,Significant
+assessment_q19,Kruskal-Wallis H,342.16037861090217,1.8117321493391286e-64,Significant
+assessment_q20,Kruskal-Wallis H,142.37393029031242,2.3911711423519443e-23,Significant

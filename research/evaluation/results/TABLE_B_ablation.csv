@@ -1,0 +1,7 @@
+Config,Top1,Top3,Top5,MacroP,MacroR,MacroF1
+A (Interest Only),6.80,20.60,20.60,0.45,6.67,0.85
+B (Skills Only),0.20,4.20,8.40,0.15,0.09,0.11
+C (Skills + Interests),0.20,4.20,8.40,0.15,0.09,0.11
+D (Skills + Interests + Academics),0.20,4.20,8.40,0.15,0.09,0.11
+E (Skills + Interests + Academics + Projects),0.20,4.20,8.40,0.15,0.09,0.11
+F (Full Proposed Model),9.80,13.20,19.00,18.53,4.89,7.73

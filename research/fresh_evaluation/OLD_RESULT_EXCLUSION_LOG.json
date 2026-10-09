@@ -1,0 +1,17 @@
+{
+  "excluded_directories": [
+    "research/results",
+    "research/audit"
+  ],
+  "excluded_files": [
+    "fusion_comparison_v1.csv",
+    "fusion_comparison_v3_test.csv",
+    "baseline_comparison_v3.csv",
+    "profile_ablation_prompt7.csv",
+    "assessment_target_association.csv",
+    "METRIC_BASELINE_BEFORE.json",
+    "research_results.json",
+    "ml_results.json"
+  ],
+  "reason": "Absolute old-result exclusion required by prompt."
+}

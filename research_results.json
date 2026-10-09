@@ -1,0 +1,2035 @@
+{
+  "ablation": {
+    "A": {
+      "name": "Interest Only",
+      "top1": {
+        "mean": 0.06799999999999999,
+        "std": 0.019390719429665314
+      },
+      "top3": {
+        "mean": 0.20600000000000002,
+        "std": 0.03136877428271625
+      },
+      "top5": {
+        "mean": 0.20600000000000002,
+        "std": 0.03136877428271625
+      },
+      "macroP": {
+        "mean": 0.004533333333333334,
+        "std": 0.0012927146286443546
+      },
+      "macroR": {
+        "mean": 0.06666666666666667,
+        "std": 0
+      },
+      "macroF1": {
+        "mean": 0.008448178674939969,
+        "std": 0.0022699451799983662
+      }
+    },
+    "B": {
+      "name": "Skills Only",
+      "top1": {
+        "mean": 0.002,
+        "std": 0.004
+      },
+      "top3": {
+        "mean": 0.041999999999999996,
+        "std": 0.016
+      },
+      "top5": {
+        "mean": 0.08399999999999999,
+        "std": 0.0233238075793812
+      },
+      "macroP": {
+        "mean": 0.0014492753623188404,
+        "std": 0.0028985507246376808
+      },
+      "macroR": {
+        "mean": 0.0010869565217391304,
+        "std": 0.002173913043478261
+      },
+      "macroF1": {
+        "mean": 0.0012422360248447203,
+        "std": 0.0024844720496894407
+      }
+    },
+    "C": {
+      "name": "Skills + Interests",
+      "top1": {
+        "mean": 0.002,
+        "std": 0.004
+      },
+      "top3": {
+        "mean": 0.041999999999999996,
+        "std": 0.016
+      },
+      "top5": {
+        "mean": 0.08399999999999999,
+        "std": 0.0233238075793812
+      },
+      "macroP": {
+        "mean": 0.0014492753623188404,
+        "std": 0.0028985507246376808
+      },
+      "macroR": {
+        "mean": 0.0010869565217391304,
+        "std": 0.002173913043478261
+      },
+      "macroF1": {
+        "mean": 0.0012422360248447203,
+        "std": 0.0024844720496894407
+      }
+    },
+    "D": {
+      "name": "Skills + Interests + Academics",
+      "top1": {
+        "mean": 0.002,
+        "std": 0.004
+      },
+      "top3": {
+        "mean": 0.041999999999999996,
+        "std": 0.016
+      },
+      "top5": {
+        "mean": 0.08399999999999999,
+        "std": 0.0233238075793812
+      },
+      "macroP": {
+        "mean": 0.0014492753623188404,
+        "std": 0.0028985507246376808
+      },
+      "macroR": {
+        "mean": 0.0010869565217391304,
+        "std": 0.002173913043478261
+      },
+      "macroF1": {
+        "mean": 0.0012422360248447203,
+        "std": 0.0024844720496894407
+      }
+    },
+    "E": {
+      "name": "Skills + Interests + Academics + Projects",
+      "top1": {
+        "mean": 0.002,
+        "std": 0.004
+      },
+      "top3": {
+        "mean": 0.041999999999999996,
+        "std": 0.016
+      },
+      "top5": {
+        "mean": 0.08399999999999999,
+        "std": 0.0233238075793812
+      },
+      "macroP": {
+        "mean": 0.0014492753623188404,
+        "std": 0.0028985507246376808
+      },
+      "macroR": {
+        "mean": 0.0010869565217391304,
+        "std": 0.002173913043478261
+      },
+      "macroF1": {
+        "mean": 0.0012422360248447203,
+        "std": 0.0024844720496894407
+      }
+    },
+    "F": {
+      "name": "Full Proposed Model",
+      "top1": {
+        "mean": 0.098,
+        "std": 0.02785677655436824
+      },
+      "top3": {
+        "mean": 0.132,
+        "std": 0.027856776554368235
+      },
+      "top5": {
+        "mean": 0.19,
+        "std": 0.028284271247461905
+      },
+      "macroP": {
+        "mean": 0.1469436843349887,
+        "std": 0.02036922501112867
+      },
+      "macroR": {
+        "mean": 0.052242375857198,
+        "std": 0.014696716615085162
+      },
+      "macroF1": {
+        "mean": 0.07661847130014508,
+        "std": 0.019035825412667504
+      }
+    }
+  },
+  "perCareer": {
+    "QA/Automation Engineer": {
+      "count": 36,
+      "hits": 0
+    },
+    "Cloud Engineer": {
+      "count": 32,
+      "hits": 0
+    },
+    "Software Engineer": {
+      "count": 36,
+      "hits": 4
+    },
+    "AI/ML Engineer": {
+      "count": 27,
+      "hits": 0
+    },
+    "Data Analyst": {
+      "count": 47,
+      "hits": 31
+    },
+    "Computer Vision Engineer": {
+      "count": 29,
+      "hits": 0
+    },
+    "Full Stack Developer": {
+      "count": 39,
+      "hits": 0
+    },
+    "Frontend Developer": {
+      "count": 34,
+      "hits": 0
+    },
+    "Cybersecurity Engineer": {
+      "count": 38,
+      "hits": 1
+    },
+    "NLP Engineer": {
+      "count": 36,
+      "hits": 0
+    },
+    "Data Scientist": {
+      "count": 23,
+      "hits": 0
+    },
+    "Data Engineer": {
+      "count": 34,
+      "hits": 9
+    },
+    "Backend Developer": {
+      "count": 30,
+      "hits": 0
+    },
+    "DevOps Engineer": {
+      "count": 34,
+      "hits": 0
+    },
+    "MLOps Engineer": {
+      "count": 25,
+      "hits": 4
+    }
+  },
+  "runtime": 0.535,
+  "errors": [
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Cybersecurity Analyst"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Site Reliability Engineer (SRE)"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Analyst",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "BI Developer / BI Analyst"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Data Analyst",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Site Reliability Engineer (SRE)"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Embedded Software Engineer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Cybersecurity Analyst"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Embedded Software Engineer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "BI Developer / BI Analyst"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Site Reliability Engineer (SRE)"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Embedded Software Engineer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Cybersecurity Analyst"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "Site Reliability Engineer (SRE)"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Application Security Engineer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Embedded Software Engineer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "AI Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Cybersecurity Analyst"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Analyst",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Analyst",
+      "predicted": "Site Reliability Engineer (SRE)"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Analyst",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Cybersecurity Analyst"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Cybersecurity Analyst"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Site Reliability Engineer (SRE)"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Analyst",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Site Reliability Engineer (SRE)"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Site Reliability Engineer (SRE)"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "BI Developer / BI Analyst"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "BI Developer / BI Analyst"
+    },
+    {
+      "actual": "Data Analyst",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Site Reliability Engineer (SRE)"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Cybersecurity Analyst"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Analyst",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Cybersecurity Analyst"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Cybersecurity Analyst"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Analyst",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Data Analyst",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Analyst",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Cybersecurity Analyst"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Site Reliability Engineer (SRE)"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Embedded Software Engineer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "Site Reliability Engineer (SRE)"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Site Reliability Engineer (SRE)"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Analyst",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Cybersecurity Analyst"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Cybersecurity Analyst"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Analyst",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Embedded Software Engineer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "BI Developer / BI Analyst"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Embedded Software Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Analyst",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Cybersecurity Analyst"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Embedded Software Engineer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Cybersecurity Analyst"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Analyst",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Cybersecurity Analyst"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Site Reliability Engineer (SRE)"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Embedded Software Engineer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Application Security Engineer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Python Developer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Analyst",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cybersecurity Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Data Scientist",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "BI Developer / BI Analyst"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "NLP Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Data Engineer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Computer Vision Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "AI/ML Engineer",
+      "predicted": "IoT Engineer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "QA/Automation Engineer",
+      "predicted": "Site Reliability Engineer (SRE)"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Mobile App Developer (Cross-platform)"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "AI Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Developer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Software Developer"
+    }
+  ]
+}

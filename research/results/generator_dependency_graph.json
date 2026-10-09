@@ -1,0 +1,32 @@
+{
+  "nodes": [
+    {
+      "id": "preferred_career",
+      "type": "target"
+    },
+    {
+      "id": "profile_career_goal",
+      "type": "feature"
+    },
+    {
+      "id": "profile_interests",
+      "type": "feature"
+    },
+    {
+      "id": "assessment_responses",
+      "type": "feature"
+    }
+  ],
+  "edges": [
+    {
+      "source": "preferred_career",
+      "target": "assessment_responses",
+      "relationship": "target-conditioned generation (empirical inference)"
+    },
+    {
+      "source": "preferred_career",
+      "target": "profile_career_goal",
+      "relationship": "target-conditioned generation (empirical inference)"
+    }
+  ]
+}

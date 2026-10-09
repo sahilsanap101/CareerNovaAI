@@ -1,0 +1,4 @@
+Metric,Result,Note
+Dependency Violation Rate,0.0%,The structural topological sort inherently prevents cycles and violations.
+Cycle Rate,0.0%,Valid DAG.
+Pedagogical Effectiveness,PENDING,Pedagogical effectiveness was not evaluated. Requires human studies.

@@ -21,11 +21,13 @@ export async function callJooble(params: JoobleRequestParams): Promise<JoobleRes
         keywords: params.keywords,
         page: params.page ?? 1,
         ResultOnPage: params.ResultOnPage ?? env.JOOBLE_MAX_RESULTS_PER_QUERY,
-        companysearch: params.companysearch ?? false,
     };
 
     if (params.location) body['location'] = params.location;
-    if (params.radius) body['radius'] = params.radius;
+    if (params.radius !== undefined) body['radius'] = params.radius;
+    if (params.salary !== undefined) body['salary'] = params.salary;
+    if (params.SearchMode !== undefined) body['SearchMode'] = params.SearchMode;
+    if (params.companysearch !== undefined) body['companysearch'] = params.companysearch;
 
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 15000);
@@ -54,7 +56,11 @@ export async function callJooble(params: JoobleRequestParams): Promise<JoobleRes
         if (err instanceof Error && err.name === 'AbortError') {
             throw new Error('JOOBLE_TIMEOUT');
         }
-        throw err;
+        if (err instanceof Error) {
+            const cleanMsg = apiKey ? err.message.split(apiKey).join('[REDACTED]') : err.message;
+            throw new Error(cleanMsg);
+        }
+        throw new Error('Jooble request failed');
     }
 }
 
@@ -69,8 +75,9 @@ export function normalizeJoobleJob(raw: NonNullable<JoobleResponse['jobs']>[numb
         return null;
     }
 
-    // Jooble returns a synthetic id but sometimes it is empty
-    const providerJobId = raw.id?.trim() || generateFallbackId(raw);
+    // Jooble returns an id (which can be number or string) but sometimes it is empty
+    const idStr = raw.id != null ? String(raw.id).trim() : '';
+    const providerJobId = idStr.length > 0 ? idStr : generateFallbackId(raw);
 
     let providerUpdatedAt: Date | undefined;
     if (raw.updated) {
@@ -88,7 +95,7 @@ export function normalizeJoobleJob(raw: NonNullable<JoobleResponse['jobs']>[numb
         title: raw.title.trim(),
         company: raw.company?.trim() || undefined,
         location: raw.location?.trim() || undefined,
-        snippet: raw.snippet?.trim() || undefined,
+        snippet: cleanSnippet(raw.snippet),
         salary: raw.salary?.trim() || undefined,
         type: raw.type?.trim() || undefined,
         source: raw.source?.trim() || undefined,
@@ -96,6 +103,21 @@ export function normalizeJoobleJob(raw: NonNullable<JoobleResponse['jobs']>[numb
         providerUpdatedAt,
         expiresAt,
     };
+}
+
+function cleanSnippet(snippet?: string | null): string | undefined {
+    if (!snippet) return undefined;
+    const cleaned = snippet
+        .replace(/<[^>]*>/g, '') // remove HTML tags
+        .replace(/&nbsp;/g, ' ')
+        .replace(/&amp;/g, '&')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/\s+/g, ' ')
+        .trim();
+    return cleaned || undefined;
 }
 
 function generateFallbackId(raw: NonNullable<JoobleResponse['jobs']>[number]): string {

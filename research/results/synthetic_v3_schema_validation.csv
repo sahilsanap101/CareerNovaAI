@@ -1,0 +1,5 @@
+metric,value
+total_smoke_tested,60
+valid_ingested,60
+schema_errors,0
+status,PASS

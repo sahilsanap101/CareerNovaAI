@@ -1,0 +1,24 @@
+{
+  "expA": {
+    "Top-1 Recommendation Hit Rate": "5.8",
+    "Top-3 Recommendation Hit Rate": "17.6",
+    "Top-5 Recommendation Hit Rate": "28.0",
+    "Mean Reciprocal Rank (MRR)": "19.1",
+    "NDCG@5": "16.7",
+    "Macro Precision": "6.4",
+    "Macro Recall": "5.9",
+    "Macro-F1": "5.7"
+  },
+  "expB": {
+    "Top-1 Recommendation Hit Rate": "5.8",
+    "Top-3 Recommendation Hit Rate": "17.6",
+    "Top-5 Recommendation Hit Rate": "28.0",
+    "Mean Reciprocal Rank (MRR)": "19.1"
+  },
+  "system": {
+    "Catalog Coverage (Top-5)": "100.0",
+    "Catalog Coverage (All scored)": "100.0",
+    "Evidence Availability (Top-5)": "100.0",
+    "Evidence Availability (All scored)": "100.0"
+  }
+}

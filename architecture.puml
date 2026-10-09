@@ -1,0 +1,73 @@
+@startuml
+skinparam handwritten false
+skinparam defaultFontName Arial
+skinparam roundCorner 10
+skinparam padding 5
+skinparam TitleFontSize 16
+skinparam ArrowColor #555555
+skinparam RectangleBackgroundColor white
+skinparam RectangleBorderColor #333333
+
+title CareerNova System Architecture and Data Flow
+
+package "Core Research Pipeline" <<Rectangle>> {
+  rectangle "Student Database Records" as db
+  rectangle "20-Question Career Assessment" as ca
+  
+  rectangle "Feature Extraction\n(Seven-Dimensional Student Profile:\nSkills, Interests, Projects, Academics,\nCertifications, Coding Evidence, Career Goals)" as fe
+  
+  rectangle "Academic-Year-Based\nWeight Adjustment" as wa
+  
+  rectangle "Deterministic Profile Scoring P(u,c)" as p_score
+  rectangle "Career Assessment Scoring Q(u,c)" as q_score
+  
+  rectangle "Score Fusion\nR(u,c) = 0.70 P(u,c) + 0.30 Q(u,c)" as fusion
+  
+  rectangle "Career Ranking and Evidence Generation" as rank
+  rectangle "Ranked Career Recommendations" as recs
+  rectangle "Selected Career" as sel
+  
+  rectangle "Career-Conditioned Skill-Gap Analysis\n(Current C_k, Required T_k, Skill Status)" as gap
+  rectangle "Personalized Learning Roadmap" as roadmap
+
+  db --> fe
+  ca --> q_score
+  
+  fe --> wa
+  wa --> p_score
+  
+  p_score --> fusion
+  q_score --> fusion
+  
+  fusion --> rank
+  rank --> recs
+  recs --> sel
+  sel --> gap
+  gap --> roadmap
+}
+
+package "Supporting Services" <<Cloud>> #F9F9F9 {
+  rectangle "Resume Intelligence" as ri
+  rectangle "AIOS Career System" as aios
+  rectangle "Live Job Retrieval" as lj
+  rectangle "Trending Jobs\n(Current Stub / Interface)" as tj
+}
+
+package "Independent Subsystem" <<Folder>> #F9F9F9 {
+  rectangle "GATE Preparation Subsystem\n(Operates independently from career recommendation)" as gate
+  rectangle "GATE Features" as gate_feat [
+    - Syllabus
+    - Practice/PYQs
+    - Study Planner
+    - Study Sessions
+    - Practice Attempts
+    - Mistake Log
+    - Revision Hub
+    - Mock Tests
+    - Analytics
+    - Readiness Assessment
+  ]
+  gate --> gate_feat
+}
+
+@enduml

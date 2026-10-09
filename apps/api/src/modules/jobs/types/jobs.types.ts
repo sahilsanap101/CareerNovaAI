@@ -1,7 +1,7 @@
 // ─── Jooble API Types ─────────────────────────────────────────────
 
 export interface JoobleJobRaw {
-    id?: string;
+    id?: string | number;
     title?: string;
     location?: string;
     snippet?: string;
@@ -21,13 +21,21 @@ export interface JoobleResponse {
 export interface JoobleRequestParams {
     keywords: string;
     location?: string;
-    radius?: string;
+    radius?: string | number;
+    salary?: string | number;
     page?: number;
     ResultOnPage?: number;
+    SearchMode?: number | string;
     companysearch?: boolean;
 }
 
 // ─── Internal Job Types ───────────────────────────────────────────
+
+export interface RankedCareer {
+    name: string;
+    rank: number;
+    totalScore?: number;
+}
 
 export interface NormalizedJob {
     provider: string;
@@ -47,22 +55,43 @@ export interface NormalizedJob {
 export interface JobMatchResult {
     jobId: string;
     title: string;
-    company?: string;
-    location?: string;
-    snippet?: string;
-    salary?: string;
-    type?: string;
+    company?: string | null;
+    location?: string | null;
+    snippet?: string | null;
+    salary?: string | null;
+    type?: string | null;
     applyUrl: string;
     providerUpdatedAt?: Date | null;
     fetchedAt: Date;
     careerMatches: string[];
+
+    // ─── Match Scoring (Live Jobs Engine — independent from BYSER) ──────
     matchScore: number;
+    confidence: 'HIGH' | 'MEDIUM' | 'LOW';
+    recommendedCareer: string | null;
     matchedSkills: string[];
+    /** Skills mentioned in the job that the student does not have */
+    skillGaps: string[];
+    /** @deprecated use skillGaps — kept for backward compatibility */
     gapSkills: string[];
+    eduExperienceMatch: {
+        status: 'MATCHED' | 'UNAVAILABLE';
+        detail: string;
+    };
+    locationMatch: {
+        status: 'MATCHED' | 'PARTIAL' | 'MISMATCH' | 'UNAVAILABLE';
+        detail: string;
+    };
+    /** Human-readable single-sentence explanation */
+    explanation: string;
     matchReasons: string[];
+
     isActive: boolean;
     isSaved: boolean;
     hasApplied: boolean;
+    applicationStatus?: AppStatus | null;
+    applicationId?: string | null;
+    applicationNotes?: string | null;
 }
 
 export interface LiveJobFilters {

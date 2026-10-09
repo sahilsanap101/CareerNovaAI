@@ -20,6 +20,7 @@ const VerifyEmail = lazy(() => import('@/pages/auth/VerifyEmail'));
 const NotFound = lazy(() => import('@/pages/errors/NotFound'));
 const Dashboard = lazy(() => import('@/pages/Dashboard/Dashboard'));
 const Profile = lazy(() => import('@/pages/Profile/Profile'));
+const CareerAssessmentPage = lazy(() => import('@/pages/Profile/CareerAssessmentPage').then(m => ({ default: m.CareerAssessmentPage })));
 const Settings = lazy(() => import('@/pages/Settings/Settings'));
 const GateDashboardPage = lazy(() => import('@/pages/Gate/GateDashboardPage'));
 const GateSyllabusPage = lazy(() => import('@/pages/Gate/GateSyllabusPage'));
@@ -32,18 +33,16 @@ const GateRevisionHubPage = lazy(() => import('@/pages/Gate/GateRevisionHubPage'
 const GateMockTestsPage = lazy(() => import('@/pages/Gate/GateMockTestsPage'));
 const GateAnalyticsPage = lazy(() => import('@/pages/Gate/GateAnalyticsPage'));
 const GateReadinessPage = lazy(() => import('@/pages/Gate/GateReadinessPage').then(m => ({ default: m.GateReadinessPage })));
-const Recommendations = lazy(() => import('@/pages/Recommendations/Recommendations'));
-const CareerComparison = lazy(() => import('@/pages/Recommendations/CareerComparison').then((m) => ({ default: m.CareerComparison })));
-const AnalyticsDashboard = lazy(() => import('@/pages/Analytics/AnalyticsDashboard'));
-const RoadmapDashboard = lazy(() => import('@/pages/Roadmap/RoadmapDashboard'));
-const SkillGraph = lazy(() => import('@/pages/Roadmap/SkillGraph').then((m) => ({ default: m.SkillGraph })));
-const WeeklyPlanner = lazy(() => import('@/pages/Roadmap/WeeklyPlanner').then((m) => ({ default: m.WeeklyPlanner })));
+
 const AiDashboard = lazy(() => import('@/pages/AI/AiDashboard'));
 const ResumeIntelligence = lazy(() => import('@/pages/AI/ResumeIntelligence').then((m) => ({ default: m.ResumeIntelligence })));
 const InterviewCoach = lazy(() => import('@/pages/AI/InterviewCoach').then((m) => ({ default: m.InterviewCoach })));
 const SuccessStoriesPage = lazy(() => import('@/pages/SuccessStoriesPage').then((m) => ({ default: m.SuccessStoriesPage })));
 const LiveJobsPage = lazy(() => import('@/pages/LiveJobsPage'));
-
+const CareerRecommendationPage = lazy(() => import('@/pages/CareerRecommendation/CareerRecommendationPage').then(m => ({ default: m.CareerRecommendationPage })));
+const CareerCatalogPage = lazy(() => import('@/pages/CareerCatalog/CareerCatalogPage').then(m => ({ default: m.CareerCatalogPage })));
+const RoadmapPage = lazy(() => import('@/pages/Roadmap/RoadmapPage').then(m => ({ default: m.RoadmapPage })));
+const MyRoadmapsPage = lazy(() => import('@/pages/MyRoadmaps/MyRoadmapsPage').then(m => ({ default: m.MyRoadmapsPage })));
 // ─── Router Config ────────────────────────────────────────────────
 const router = createBrowserRouter([
   // ─ Public Pages ────────────────────────────────────────────────
@@ -73,13 +72,14 @@ const router = createBrowserRouter([
     children: [
       { path: '/dashboard', element: <PageTransition><Dashboard /></PageTransition> },
       { path: '/profile', element: <PageTransition><Profile /></PageTransition> },
+      { path: '/profile/assessment', element: <PageTransition><CareerAssessmentPage /></PageTransition> },
       { path: '/settings', element: <PageTransition><Settings /></PageTransition> },
-      { path: '/recommendations', element: <PageTransition><Recommendations /></PageTransition> },
-      { path: '/career-comparison', element: <PageTransition><CareerComparison /></PageTransition> },
-      { path: '/analytics', element: <PageTransition><AnalyticsDashboard /></PageTransition> },
-      { path: '/roadmap', element: <PageTransition><RoadmapDashboard /></PageTransition> },
-      { path: '/skill-graph', element: <PageTransition><SkillGraph /></PageTransition> },
-      { path: '/planner', element: <PageTransition><WeeklyPlanner /></PageTransition> },
+      { path: '/career-recommendation', element: <PageTransition><CareerRecommendationPage /></PageTransition> },
+      { path: '/career-catalog', element: <PageTransition><CareerCatalogPage /></PageTransition> },
+      { path: '/roadmap', element: <PageTransition><RoadmapPage /></PageTransition> },
+      { path: '/roadmap/:careerId', element: <PageTransition><RoadmapPage /></PageTransition> },
+      { path: '/my-roadmaps', element: <PageTransition><MyRoadmapsPage /></PageTransition> },
+
       { path: '/ai', element: <PageTransition><AiDashboard /></PageTransition> },
       { path: '/gate', element: <PageTransition><GateDashboardPage /></PageTransition> },
       { path: '/gate/syllabus', element: <PageTransition><GateSyllabusPage /></PageTransition> },

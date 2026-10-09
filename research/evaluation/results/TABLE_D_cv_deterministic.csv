@@ -1,0 +1,7 @@
+Metric,Mean,Std
+Top1,9.80,3.06
+Top3,13.20,3.87
+Top5,19.00,3.52
+MacroP,13.79,3.33
+MacroR,5.29,1.03
+MacroF1,7.59,1.43

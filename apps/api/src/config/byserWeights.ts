@@ -13,7 +13,7 @@ export const BYSER_WEIGHTS = {
   GOALS: 0.05,           // 5% Preferred Job Role & Industry Match
 
   // --- ADDITIVE LAYER 1 EXTENSION ---
-  // Market Alignment uses external ESCO proxy data to boost scores 
+  // Market Alignment uses external market data proxy to boost scores 
   // It acts additively strictly on top of the deterministic core equation without altering base weights
   MARKET_ALIGNMENT: 0.15,
 };

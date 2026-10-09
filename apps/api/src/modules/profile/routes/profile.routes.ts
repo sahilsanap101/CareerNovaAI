@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import * as profileController from '@/modules/profile/controllers/profile.controller';
+import * as assessmentController from '@/modules/profile/controllers/assessment.controller';
 import { authenticate } from '@/middleware/auth.middleware';
 import { validate } from '@/middleware/validate.middleware';
 import {
@@ -52,5 +53,12 @@ router.delete('/certifications/:id', profileController.deleteCertification);
 router.post('/coding-platforms', validate(codingPlatformSchema), profileController.addCodingPlatform);
 router.put('/coding-platforms/:id', profileController.updateCodingPlatform);
 router.delete('/coding-platforms/:id', profileController.deleteCodingPlatform);
+
+// ─── Career Assessment ────────────────────────────────────────────
+router.get('/assessment/questions', assessmentController.getQuestions);
+router.get('/assessment/responses', assessmentController.getResponses);
+router.post('/assessment/responses', assessmentController.saveResponse);
+router.get('/assessment/completion', assessmentController.getCompletionStatus);
+router.post('/assessment/submit', assessmentController.submitAssessment);
 
 export default router;

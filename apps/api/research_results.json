@@ -1,0 +1,655 @@
+{
+  "ablation": {
+    "A": {
+      "name": "Interest Only",
+      "top1": {
+        "mean": 0,
+        "std": 0
+      },
+      "top3": {
+        "mean": 0,
+        "std": 0
+      },
+      "top5": {
+        "mean": 0,
+        "std": 0
+      },
+      "macroP": {
+        "mean": 0,
+        "std": 0
+      },
+      "macroR": {
+        "mean": 0,
+        "std": 0
+      },
+      "macroF1": {
+        "mean": 0,
+        "std": 0
+      }
+    },
+    "B": {
+      "name": "Skills Only",
+      "top1": {
+        "mean": 0.65,
+        "std": 0.026832815729997503
+      },
+      "top3": {
+        "mean": 0.7779999999999999,
+        "std": 0.038157568056677825
+      },
+      "top5": {
+        "mean": 0.8539999999999999,
+        "std": 0.043174066289845804
+      },
+      "macroP": {
+        "mean": 0.5727800098377565,
+        "std": 0.06178884979573173
+      },
+      "macroR": {
+        "mean": 0.6478262108262107,
+        "std": 0.0187403408806795
+      },
+      "macroF1": {
+        "mean": 0.6057498717651272,
+        "std": 0.03325156594869268
+      }
+    },
+    "C": {
+      "name": "Skills + Interests",
+      "top1": {
+        "mean": 0.65,
+        "std": 0.026832815729997503
+      },
+      "top3": {
+        "mean": 0.7779999999999999,
+        "std": 0.038157568056677825
+      },
+      "top5": {
+        "mean": 0.8539999999999999,
+        "std": 0.043174066289845804
+      },
+      "macroP": {
+        "mean": 0.5727800098377565,
+        "std": 0.06178884979573173
+      },
+      "macroR": {
+        "mean": 0.6478262108262107,
+        "std": 0.0187403408806795
+      },
+      "macroF1": {
+        "mean": 0.6057498717651272,
+        "std": 0.03325156594869268
+      }
+    },
+    "D": {
+      "name": "Skills + Interests + Academics",
+      "top1": {
+        "mean": 0.65,
+        "std": 0.026832815729997503
+      },
+      "top3": {
+        "mean": 0.7779999999999999,
+        "std": 0.038157568056677825
+      },
+      "top5": {
+        "mean": 0.8539999999999999,
+        "std": 0.043174066289845804
+      },
+      "macroP": {
+        "mean": 0.5727800098377565,
+        "std": 0.06178884979573173
+      },
+      "macroR": {
+        "mean": 0.6478262108262107,
+        "std": 0.0187403408806795
+      },
+      "macroF1": {
+        "mean": 0.6057498717651272,
+        "std": 0.03325156594869268
+      }
+    },
+    "E": {
+      "name": "Skills + Interests + Academics + Projects",
+      "top1": {
+        "mean": 0.65,
+        "std": 0.026832815729997503
+      },
+      "top3": {
+        "mean": 0.7779999999999999,
+        "std": 0.038157568056677825
+      },
+      "top5": {
+        "mean": 0.8539999999999999,
+        "std": 0.043174066289845804
+      },
+      "macroP": {
+        "mean": 0.5727800098377565,
+        "std": 0.06178884979573173
+      },
+      "macroR": {
+        "mean": 0.6478262108262107,
+        "std": 0.0187403408806795
+      },
+      "macroF1": {
+        "mean": 0.6057498717651272,
+        "std": 0.03325156594869268
+      }
+    },
+    "F": {
+      "name": "Full Proposed Model",
+      "top1": {
+        "mean": 0.7879999999999999,
+        "std": 0.027856776554368214
+      },
+      "top3": {
+        "mean": 0.8859999999999999,
+        "std": 0.022449944320643667
+      },
+      "top5": {
+        "mean": 0.93,
+        "std": 0.03346640106136301
+      },
+      "macroP": {
+        "mean": 0.7380059998481052,
+        "std": 0.056302947337525805
+      },
+      "macroR": {
+        "mean": 0.779077922077922,
+        "std": 0.026421960252635376
+      },
+      "macroF1": {
+        "mean": 0.7573429410319846,
+        "std": 0.039680019565320225
+      }
+    }
+  },
+  "perCareer": {
+    "QA Engineer": {
+      "count": 34,
+      "hits": 34
+    },
+    "Software Engineer": {
+      "count": 34,
+      "hits": 33
+    },
+    "Data Scientist": {
+      "count": 33,
+      "hits": 33
+    },
+    "DevOps Engineer": {
+      "count": 33,
+      "hits": 31
+    },
+    "Data Analyst": {
+      "count": 34,
+      "hits": 34
+    },
+    "Data Engineer": {
+      "count": 33,
+      "hits": 33
+    },
+    "Backend Developer": {
+      "count": 33,
+      "hits": 22
+    },
+    "Machine Learning Engineer": {
+      "count": 33,
+      "hits": 1
+    },
+    "MLOps Engineer": {
+      "count": 33,
+      "hits": 31
+    },
+    "NLP Engineer": {
+      "count": 33,
+      "hits": 33
+    },
+    "Cybersecurity Engineer": {
+      "count": 34,
+      "hits": 34
+    },
+    "Frontend Developer": {
+      "count": 33,
+      "hits": 8
+    },
+    "Computer Vision Engineer": {
+      "count": 33,
+      "hits": 33
+    },
+    "Cloud Engineer": {
+      "count": 33,
+      "hits": 32
+    },
+    "Full Stack Developer": {
+      "count": 34,
+      "hits": 2
+    }
+  },
+  "runtime": 0.25666666666666665,
+  "errors": [
+    {
+      "actual": "Backend Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "DevOps Engineer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "QA Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Software Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "DevOps Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "Data Scientist"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "DevOps Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "MLOps Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Computer Vision Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "QA Engineer"
+    },
+    {
+      "actual": "Software Engineer",
+      "predicted": "QA Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "Data Scientist"
+    },
+    {
+      "actual": "Cloud Engineer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "DevOps Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Software Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Data Scientist"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Cloud Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Cloud Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "DevOps Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Data Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Cloud Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "DevOps Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Software Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Cloud Engineer"
+    },
+    {
+      "actual": "DevOps Engineer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "MLOps Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Cloud Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "QA Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "MLOps Engineer",
+      "predicted": "DevOps Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Cloud Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "Computer Vision Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Software Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "DevOps Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "QA Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "QA Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Cloud Engineer"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "QA Engineer"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "DevOps Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Full Stack Developer",
+      "predicted": "Data Analyst"
+    },
+    {
+      "actual": "Backend Developer",
+      "predicted": "Cybersecurity Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "NLP Engineer"
+    },
+    {
+      "actual": "Frontend Developer",
+      "predicted": "Data Scientist"
+    },
+    {
+      "actual": "Machine Learning Engineer",
+      "predicted": "NLP Engineer"
+    }
+  ]
+}

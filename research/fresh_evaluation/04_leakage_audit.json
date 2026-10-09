@@ -1,0 +1,41 @@
+{
+    "status": "PASS",
+    "checks": [
+        {
+            "dataset": "dataset_A_profile_dominant.csv",
+            "check_name": "target_career_in_profile",
+            "passed": true,
+            "violations": 0
+        },
+        {
+            "dataset": "dataset_A_profile_dominant.csv",
+            "check_name": "preferred_career_in_profile",
+            "passed": true,
+            "violations": 0
+        },
+        {
+            "dataset": "dataset_B_complementary.csv",
+            "check_name": "target_career_in_profile",
+            "passed": true,
+            "violations": 0
+        },
+        {
+            "dataset": "dataset_B_complementary.csv",
+            "check_name": "preferred_career_in_profile",
+            "passed": true,
+            "violations": 0
+        },
+        {
+            "dataset": "dataset_C_assessment_dominant.csv",
+            "check_name": "target_career_in_profile",
+            "passed": true,
+            "violations": 0
+        },
+        {
+            "dataset": "dataset_C_assessment_dominant.csv",
+            "check_name": "preferred_career_in_profile",
+            "passed": true,
+            "violations": 0
+        }
+    ]
+}

@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard,
   User,
@@ -38,7 +38,8 @@ import {
   Library,
   LineChart,
   Activity,
-  Star
+  Star,
+  Briefcase
 } from 'lucide-react';
 import { clsx } from 'clsx';
 import { useAuthStore } from '@/store/auth.store';
@@ -53,17 +54,19 @@ const mainNavItems = [
   { label: 'Success Stories', href: '/success-stories', icon: Star },
 ];
 
-const byserNavItems = [
-  { label: 'Recommendations', href: APP_ROUTES.RECOMMENDATIONS, icon: Sparkles },
-  { label: 'Career Comparison', href: APP_ROUTES.CAREER_COMPARISON, icon: ArrowLeftRight },
-  { label: 'Analytics', href: APP_ROUTES.ANALYTICS, icon: BarChart3 },
+
+
+const liveJobsNavItems = [
+  { label: 'Live Jobs', href: '/live-jobs', icon: Briefcase },
 ];
 
-const roadmapNavItems = [
-  { label: 'Adaptive Roadmap', href: APP_ROUTES.ROADMAP, icon: Map },
-  { label: 'Skill Dependency Graph', href: APP_ROUTES.SKILL_GRAPH, icon: GitFork },
-  { label: 'Weekly Planner', href: APP_ROUTES.PLANNER, icon: Calendar },
+const careerNavItems = [
+  { label: 'Career Recommendations', href: '/career-recommendation', icon: Target },
+  { label: 'Trending Jobs', href: '/career-catalog', icon: Library },
+  { label: 'Personalized Roadmap', href: '/my-roadmaps', icon: Map },
 ];
+
+
 
 const aiNavItems = [
   { label: 'AIOS Career System', href: APP_ROUTES.AI, icon: Bot },
@@ -87,6 +90,7 @@ const gateNavItems = [
 export function Sidebar() {
   const { user, logout } = useAuthStore();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = async () => {
     try {
@@ -116,18 +120,21 @@ export function Sidebar() {
             Main
           </p>
           <div className="space-y-0.5">
-            {mainNavItems.map((item) => (
-              <NavLink
-                key={item.href}
-                to={item.href}
-                className={({ isActive }: { isActive: boolean }) =>
-                  clsx('sidebar-item', isActive && 'active')
-                }
-              >
-                <item.icon className="h-4 w-4 shrink-0" aria-hidden="true" />
-                {item.label}
-              </NavLink>
-            ))}
+            {mainNavItems.map((item) => {
+              const isProfileSection = item.href === APP_ROUTES.PROFILE && location.pathname.startsWith('/profile');
+              return (
+                <NavLink
+                  key={item.href}
+                  to={item.href}
+                  className={({ isActive }: { isActive: boolean }) =>
+                    clsx('sidebar-item', (isActive || isProfileSection) && 'active')
+                  }
+                >
+                  <item.icon className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  {item.label}
+                </NavLink>
+              );
+            })}
           </div>
         </div>
 
@@ -173,13 +180,15 @@ export function Sidebar() {
           </div>
         </div>
 
-        {/* BYSER Engine Section */}
+
+
+        {/* Career Intelligence Section */}
         <div>
-          <p className="px-3 mb-2 text-xs font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider">
-            BYSER Engine
+          <p className="px-3 mb-2 text-xs font-semibold text-blue-500 uppercase tracking-wider">
+            Career Intelligence
           </p>
           <div className="space-y-0.5">
-            {byserNavItems.map((item) => (
+            {careerNavItems.map((item) => (
               <NavLink
                 key={item.href}
                 to={item.href}
@@ -194,13 +203,13 @@ export function Sidebar() {
           </div>
         </div>
 
-        {/* Adaptive Roadmap Section */}
+        {/* Live Jobs Section */}
         <div>
-          <p className="px-3 mb-2 text-xs font-semibold text-accent-500 uppercase tracking-wider">
-            Learning Ecosystem
+          <p className="px-3 mb-2 text-xs font-semibold text-emerald-500 uppercase tracking-wider">
+            Opportunities
           </p>
           <div className="space-y-0.5">
-            {roadmapNavItems.map((item) => (
+            {liveJobsNavItems.map((item) => (
               <NavLink
                 key={item.href}
                 to={item.href}
@@ -214,6 +223,8 @@ export function Sidebar() {
             ))}
           </div>
         </div>
+
+
       </nav>
 
       {/* User footer */}

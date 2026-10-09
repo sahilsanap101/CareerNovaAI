@@ -1,0 +1,172 @@
+{
+  "system": {
+    "name": "Constraint-Aware Competency-Preference Career Ranking with Dependency-Constrained Personalized Roadmap Generation",
+    "forbidden_claims": [
+      "first-ever",
+      "optimal",
+      "state-of-the-art",
+      "best",
+      "highest accuracy",
+      "AI accuracy",
+      "prediction accuracy"
+    ]
+  },
+  "recommendation_model": {
+    "competency_fit": "earnedCompetencySum(u,c) / totalRequirementWeight(c)",
+    "preference_fit": "deterministic preference alignment score",
+    "final_score": "0.7 * CompetencyFit(u,c) + 0.3 * PreferenceFit(u,c)",
+    "forbidden_additions": [
+      "market score",
+      "popularity score",
+      "personality score",
+      "LLM score",
+      "random score",
+      "arbitrary stage score",
+      "fabricated demand score"
+    ]
+  },
+  "recommendation_pipeline": [
+    "Student Profile",
+    "Competency Representation",
+    "Skill Identity Resolution",
+    "Career Knowledge Base",
+    "Eligibility Constraint",
+    "Competency Fit",
+    "Preference Fit",
+    "70/30 Fusion",
+    "Ranking",
+    "Top 5"
+  ],
+  "skill_resolution": {
+    "priority": [
+      "Internal canonical skill ID",
+      "ESCO/source URI exact match",
+      "Explicit validated source mapping",
+      "Normalized exact name",
+      "unresolved"
+    ],
+    "forbidden": [
+      "fuzzy matching",
+      "arbitrary similarity threshold",
+      "assuming identifiers from different namespaces are identical"
+    ]
+  },
+  "status_semantics": {
+    "states": [
+      "MATCHED",
+      "MISSING",
+      "UNMAPPED",
+      "AMBIGUOUS",
+      "UNRESOLVED",
+      "AVAILABLE",
+      "NOT_AVAILABLE",
+      "NOT_APPLICABLE",
+      "NOT_USED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "rules": [
+      "0 = valid numeric zero",
+      "null = unavailable",
+      "Never convert null to 0",
+      "Never convert unavailable competency into preference-only scoring"
+    ]
+  },
+  "eligibility": {
+    "constraints": [
+      "Academic eligibility is a constraint",
+      "Use only explicit evidence contained in the research data",
+      "Do not invent academic restrictions",
+      "If eligibility is unknown: NOT_VERIFIED / NOT_AVAILABLE"
+    ]
+  },
+  "roadmap_model": {
+    "pipeline": [
+      "Selected Career",
+      "Skill Gap",
+      "Dependency Closure",
+      "Remove Satisfied Nodes",
+      "Topological Ordering",
+      "Priority Scheduling",
+      "Roadmap Validation"
+    ],
+    "forbidden_algorithms": [
+      "Foundation → Intermediate → Advanced → Professional as the core research algorithm"
+    ],
+    "forbidden_claims": [
+      "optimal",
+      "pedagogically optimal",
+      "guaranteed",
+      "best"
+    ],
+    "required_terminology": [
+      "dependency-valid personalized roadmap"
+    ]
+  },
+  "gemini": {
+    "status": "OPTIONAL",
+    "allowed": [
+      "natural-language explanations",
+      "student-friendly explanations",
+      "explanation of existing roadmap steps",
+      "learning guidance based on already validated roadmap steps"
+    ],
+    "forbidden": [
+      "assign career scores",
+      "change ranking",
+      "determine eligibility",
+      "invent skill mappings",
+      "invent prerequisite relationships",
+      "change roadmap ordering",
+      "invent requirement weights"
+    ],
+    "truth_source": "The deterministic backend is always the source of truth"
+  },
+  "data_architecture": {
+    "postgresql": "student/application state",
+    "knowledge_base": "research/data/processed/final_v2/",
+    "rules": [
+      "Do not seed complete FINAL_V2 into PostgreSQL"
+    ]
+  },
+  "determinism": {
+    "inputs": [
+      "same student profile",
+      "same research data version",
+      "same configuration"
+    ],
+    "must_produce_exact": [
+      "competency fit",
+      "preference fit",
+      "final scores",
+      "ranking",
+      "skill-gap classification",
+      "roadmap ordering"
+    ]
+  },
+  "traceability": {
+    "rules": [
+      "Every career recommendation and roadmap step must be explainable through structured evidence",
+      "No Markdown parsing",
+      "No frontend reconstruction of scores",
+      "Backend is the single source of truth"
+    ]
+  },
+  "required_test_categories": [
+    "data ingestion",
+    "schema validation",
+    "skill resolution",
+    "competency calculation",
+    "preference calculation",
+    "eligibility",
+    "70/30 fusion",
+    "null vs zero",
+    "top-5 ranking",
+    "skill gaps",
+    "dependency closure",
+    "topological ordering",
+    "roadmap validation",
+    "Gemini independence",
+    "determinism",
+    "frontend/backend consistency"
+  ]
+}

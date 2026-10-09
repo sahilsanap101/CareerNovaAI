@@ -1,0 +1,1 @@
+ALTER TABLE "career_paths" DROP COLUMN "roadmapId";

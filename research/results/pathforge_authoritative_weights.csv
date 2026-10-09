@@ -1,0 +1,8 @@
+Dimension,Weight,Source File,Symbol/Constant,Runtime Modification
+Skills,0.35,byserWeights.ts,BYSER_WEIGHTS.SKILLS,"Multiplied by 0.7 if Year <= 2, Multiplied by 1.1 if Year >= 3"
+Interests,0.20,byserWeights.ts,BYSER_WEIGHTS.INTERESTS,"Multiplied by 1.5 if Year <= 2"
+Projects,0.15,byserWeights.ts,BYSER_WEIGHTS.PROJECTS,"Multiplied by 1.1 if Year >= 3"
+Academics,0.10,byserWeights.ts,BYSER_WEIGHTS.ACADEMIC,"Multiplied by 1.2 if Year <= 2"
+Certifications,0.10,byserWeights.ts,BYSER_WEIGHTS.CERTIFICATIONS,None
+Coding,0.05,byserWeights.ts,BYSER_WEIGHTS.CODING,"Multiplied by 0.5 if Year <= 2, Multiplied by 1.2 if Year >= 3"
+Goals,0.05,byserWeights.ts,BYSER_WEIGHTS.GOALS,"Multiplied by 1.2 if Year >= 3"

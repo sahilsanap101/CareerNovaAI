@@ -1,0 +1,9 @@
+check,answer,status
+Does career_suitability depend on PATHFORGE?,NO,PASS
+Does profile depend on career_suitability?,NO (Both depend on latent LV),PASS
+Does assessment depend on career_suitability?,NO (Both depend on latent LV),PASS
+Does targetRole contain target career names?,NO (Vocabulary is separate abstract job goals),PASS
+Does targetIndustry directly encode target career?,NO (Randomly selected from goal_domains),PASS
+Does project/certification text encode target career?,"NO (Project techs depend on student skills, title is generic)",PASS
+Does generator call PATHFORGE recommendation engine?,NO,PASS
+Does generator use current fusion ratio?,NO,PASS

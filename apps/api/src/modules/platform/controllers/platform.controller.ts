@@ -12,10 +12,10 @@ export async function getPlatformStats(req: Request, res: Response, next: NextFu
             roadmapsGenerated
         ] = await Promise.all([
             prisma.user.count({ where: { role: 'STUDENT' } }),
-            prisma.recommendationResult.count(),
+            prisma.careerRecommendationHistory.count(),
             prisma.careerPath.count(),
             prisma.skill.count(),
-            prisma.roadmap.count()
+            prisma.studySession.count()
         ]);
 
         sendSuccess(res, {
@@ -32,4 +32,3 @@ export async function getPlatformStats(req: Request, res: Response, next: NextFu
         next(error);
     }
 }
-

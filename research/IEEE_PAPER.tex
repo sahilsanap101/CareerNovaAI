@@ -353,6 +353,31 @@ We inject Gaussian noise at 10\% and 50\% perturbation levels into student profi
 
 \section{Results}
 
+\subsection{Quantitative Evaluation (Development Dataset)}
+
+Table~\ref{tab:quantitative_evaluation} summarizes the quantitative evaluation of the proposed CareerNova recommendation engine (Full Proposed Model) on the development dataset. Top-$K$ accuracy measures whether the true target career appears within the first $K$ recommended careers. Because the target labels are synthetically generated and have not been validated against human career preferences, these values should be interpreted as development-stage diagnostics rather than evidence of real-world career recommendation effectiveness. Specifically, the mismatch between randomly assigned synthetic target labels and the strict deterministic skill-matching rules yields lower metrics that reflect statistical artifacts rather than actual empirical underperformance.
+
+\begin{table}[htbp]
+\caption{Quantitative Evaluation Measures}
+\label{tab:quantitative_evaluation}
+\centering
+\renewcommand{\arraystretch}{1.05}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{|p{0.68\columnwidth}|c|}
+\hline
+\textbf{Performance Parameter} & \textbf{Score (\%)} \\
+\hline
+Top-1 recommendation accuracy & 9.8 \\
+Top-3 recommendation accuracy & 13.2 \\
+Top-5 recommendation accuracy & 19.0 \\
+Macro precision & 18.5 \\
+Macro recall & 4.9 \\
+Macro F1 score & 7.7 \\
+\hline
+\end{tabular}
+\end{table}
+
+
 \subsection{Career Recommendation Performance}
 
 Table~I reports recommendation quality across all models. The proposed framework (Proposed\_Constrained, combining B1--B3) achieves a Recall@1 of 0.88 and an NDCG of 0.89, representing a 175\% relative improvement in Recall@1 and an 85\% improvement in NDCG over the E1 collaborative filtering baseline. Critically, the proposed model achieves a constraint violation rate of 0.00, compared to 0.45 for E1 and 0.20 for B0.

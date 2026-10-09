@@ -50,8 +50,8 @@ export async function getSavedJobs(filters?: LiveJobFilters): Promise<LiveJob[]>
 
 // ─── Applications ──────────────────────────────────────────────────
 
-export async function createApplication(id: string, notes?: string): Promise<JobApplication> {
-    const { data } = await api.post(`/live-jobs/${id}/application`, { notes });
+export async function createApplication(id: string, status?: ApplicationStatus, notes?: string): Promise<JobApplication> {
+    const { data } = await api.post(`/live-jobs/${id}/application`, { status, notes });
     return data.data as JobApplication;
 }
 

@@ -1,0 +1,46 @@
+{
+    "nodes": [
+        {
+            "id": "LV",
+            "description": "Latent Student Variables (Normal Distribution)"
+        },
+        {
+            "id": "W_c",
+            "description": "Random Career Weights Matrix (Seed 101)"
+        },
+        {
+            "id": "Noise",
+            "description": "Gaussian Noise"
+        },
+        {
+            "id": "S_c",
+            "description": "Continuous Suitability Score"
+        },
+        {
+            "id": "career_suitability",
+            "description": "Argmax of S_c (Ground Truth Target)"
+        },
+        {
+            "id": "PATHFORGE_logic",
+            "description": "Current RecommendationEngineService (NOT LINKED)"
+        }
+    ],
+    "edges": [
+        {
+            "source": "LV",
+            "target": "S_c"
+        },
+        {
+            "source": "W_c",
+            "target": "S_c"
+        },
+        {
+            "source": "Noise",
+            "target": "S_c"
+        },
+        {
+            "source": "S_c",
+            "target": "career_suitability"
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "generator_versions": "v3 (PATHFORGE Schema Compatible)",
+    "dataset_hashes": "frozen from prompt 12",
+    "career_subset_hash": "frozen 15 careers",
+    "skill_catalog_hash": "unavailable (using static production CSV)",
+    "Assessment_v1_hash": "frozen",
+    "authoritative_PATHFORGE_weight_source": "pathforge_authoritative_weights.csv (M0)",
+    "split_seed": 42,
+    "test_split_manifest": "prompt13_split_manifest.json",
+    "experiment_identifiers": [
+        "Prompt 13 (Fusion)",
+        "Prompt 14 (Baselines)"
+    ],
+    "code_script_locations": [
+        "scratch/evaluate_v3.py",
+        "apps/api/src/scripts/dump_v3_scores.ts",
+        "scratch/run_baselines_v3.py",
+        "apps/api/src/scripts/pathforge_ablation.ts"
+    ]
+}

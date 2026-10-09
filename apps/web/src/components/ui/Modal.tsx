@@ -17,7 +17,8 @@ interface ModalProps {
 const sizeClasses = {
   sm: 'max-w-sm',
   md: 'max-w-md',
-  lg: 'max-w-lg',
+  lg: 'max-w-3xl',
+  xl: 'max-w-5xl',
 };
 
 export function Modal({ isOpen, onClose, title, children, size = 'md', footer }: ModalProps) {
@@ -54,14 +55,14 @@ export function Modal({ isOpen, onClose, title, children, size = 'md', footer }:
       {/* Modal */}
       <div
         className={clsx(
-          'relative w-full bg-white dark:bg-slate-800',
+          'relative w-full bg-white dark:bg-slate-800 flex flex-col',
           'rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700',
-          'animate-fade-up',
+          'animate-fade-up max-h-[85vh]',
           sizeClasses[size],
         )}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-700">
+        <div className="flex-shrink-0 flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-700">
           <h2 id="modal-title" className="text-lg font-semibold text-slate-900 dark:text-slate-100">
             {title}
           </h2>
@@ -71,11 +72,11 @@ export function Modal({ isOpen, onClose, title, children, size = 'md', footer }:
         </div>
 
         {/* Body */}
-        <div className="p-6">{children}</div>
+        <div className="p-6 overflow-y-auto">{children}</div>
 
         {/* Footer */}
         {footer && (
-          <div className="px-6 pb-6 flex items-center justify-end gap-3">
+          <div className="flex-shrink-0 px-6 pb-6 pt-4 flex items-center justify-end gap-3 border-t border-slate-200 dark:border-slate-700">
             {footer}
           </div>
         )}

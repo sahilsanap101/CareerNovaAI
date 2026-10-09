@@ -1,0 +1,6 @@
+Filename,Path,Purpose,Source,Real/Synthetic,Used By,Research Relevance
+career_catalog_pathforge_60_careers_2026.csv,research/data/,Career DB,Curated,Curated,Recommendation Engine,Core
+student_dataset_500_development.csv,research/data/,Testing/Evaluation,Generated,Synthetic,Evaluation,Limitation Context
+complete_personalized_roadmaps_careers_1_60.json,research/data/,Roadmap DB,Curated,Curated,Roadmap Engine,Core
+skill_catalog_pathforge_2026.csv,research/data/,Skill Knowledge,Curated,Curated,Recommendation Engine,Core
+skill_prerequisite_graph.csv,research/data/,Roadmap Ordering,Curated,Curated,Roadmap Engine,Core

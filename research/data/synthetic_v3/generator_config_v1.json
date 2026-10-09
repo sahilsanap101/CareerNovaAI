@@ -1,0 +1,46 @@
+{
+  "version": "3.0",
+  "name": "semantic_controlled_benchmark_v3",
+  "master_seed": 303,
+  "latent_dimension": 20,
+  "num_samples": 2000,
+  "num_careers": 15,
+  "num_assessment_questions": 20,
+  "schema_version": "StudentRecommendationProfile",
+  "catalogs": {
+    "skills": "research/data/production/skill_catalog_pathforge_2026.csv",
+    "careers": "research/data/production/career_catalog_pathforge_60_careers_2026.csv",
+    "assessments": "research/data/collection/career_assessment_questions_v1.json"
+  },
+  "conditions": {
+    "A_profile_dominant": {
+      "profile_noise_std": 0.2,
+      "assessment_noise_std": 3.0,
+      "semantic_threshold": 0.2
+    },
+    "B_complementary": {
+      "profile_noise_std": 0.5,
+      "assessment_noise_std": 0.5,
+      "semantic_threshold": 0.5,
+      "orthogonal_mapping": true
+    },
+    "C_assessment_dominant": {
+      "profile_noise_std": 3.0,
+      "assessment_noise_std": 0.2,
+      "semantic_threshold": 0.8
+    }
+  },
+  "generation_rules": {
+    "latent_distribution": "normal",
+    "latent_mean": 0,
+    "latent_std": 1,
+    "apply_student_preference_bias": true,
+    "bias_matrix_seed": 404,
+    "career_suitability_generation": "argmax(LV * W_c)"
+  },
+  "semantic_mappings": {
+    "skill_proficiency_scale": [1, 5],
+    "max_projects": 5,
+    "max_certifications": 3
+  }
+}

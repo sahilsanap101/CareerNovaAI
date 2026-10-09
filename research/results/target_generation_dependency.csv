@@ -1,0 +1,4 @@
+Target,Direct input,Indirect input,Randomized?,Evidence/source
+preferred_career,UNKNOWN (Empirical: Yes),UNKNOWN,UNKNOWN,Generator Missing; High RF importance for career_goal length
+preferred_career,UNKNOWN (Empirical: Yes),UNKNOWN,UNKNOWN,Generator Missing; High RF importance for interests
+preferred_career,UNKNOWN (Empirical: Yes),UNKNOWN,UNKNOWN,Generator Missing; Massive correlation with assessment_q01-q20 (p < 1e-20)

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -26,12 +27,11 @@ import { Textarea } from '@/components/ui/Textarea';
 import { Select } from '@/components/ui/Select';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { Spinner } from '@/components/ui/Loader';
+import { Modal } from '@/components/ui/Modal';
 import { useStudentProfile } from '@/hooks/useStudentProfile';
 import { useToast } from '@/hooks/useToast';
 import { profileApi } from '@/api/profile.api';
 import { ResumeImportChoice } from './ResumeImportChoice';
-import { ResumeUploader } from './ResumeUploader';
-import type { ExtractedResumeData } from '@/lib/resumeExtractor';
 import {
   updateProfileSchema,
   careerGoalSchema,
@@ -58,10 +58,14 @@ const STEPS = [
 ];
 
 export function ProfileWizard() {
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0); // 0 = Choice/Upload phase
-  const [isUploading, setIsUploading] = useState(false);
   const [skillSearch, setSkillSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
+  const [selectedSkillToAdd, setSelectedSkillToAdd] = useState<{ id: string, name: string, category: string } | null>(null);
+  const [skillProficiency, setSkillProficiency] = useState(3);
+  const [skillExperience, setSkillExperience] = useState(6);
+  const [skillConfidence, setSkillConfidence] = useState(70);
 
   const toast = useToast();
 
@@ -149,118 +153,15 @@ export function ProfileWizard() {
     );
   }
 
-  const handleResumeSuccess = async (data: ExtractedResumeData) => {
-    setIsUploading(true);
-    try {
-      if (data.skills && data.skills.length > 0) {
-        for (const skillName of data.skills) {
-          const match = masterSkills.find(m => m.name.toLowerCase() === skillName.toLowerCase());
-          const alreadyAdded = studentData?.skills.some(s => s.skill.id === match?.id);
-          if (match && !alreadyAdded) {
-            await profileApi.addUserSkill({ skillId: match.id, proficiency: 3, experienceMonths: 0, confidence: 50 });
-          }
-        }
-      }
-
-      if (data.interests && data.interests.length > 0) {
-        for (const interestName of data.interests) {
-          const match = masterInterests.find(m => m.name.toLowerCase() === interestName.toLowerCase());
-          const alreadyAdded = studentData?.interests.some(i => i.interest.id === match?.id);
-          if (match && !alreadyAdded) {
-            await profileApi.addUserInterest({ interestId: match.id, priority: 1 });
-          }
-        }
-      }
-
-      if (data.projects && data.projects.length > 0) {
-        for (const p of data.projects) {
-          await profileApi.addProject(p);
-        }
-      }
-
-      if (data.certifications && data.certifications.length > 0) {
-        for (const c of data.certifications) {
-          await profileApi.addCertification(c);
-        }
-      }
-
-      if (data.codingProfiles && data.codingProfiles.length > 0) {
-        for (const cp of data.codingProfiles) {
-          await profileApi.addCodingPlatform(cp);
-        }
-      }
-
-      // Merge scalar fields safely so we don't blow away what they had if the resume missed it
-      const mergedFields: any = {};
-      for (const [key, value] of Object.entries(data.profile)) {
-        if (value) mergedFields[key] = value;
-      }
-
-      if (Object.keys(mergedFields).length > 0) {
-        await profileApi.updateProfile({
-          fullName: mergedFields.fullName || studentData?.fullName || '',
-          college: mergedFields.college || studentData?.profile?.college || '',
-          university: mergedFields.university || studentData?.profile?.university || '',
-          degree: mergedFields.degree || studentData?.profile?.degree || '',
-          branch: mergedFields.branch || studentData?.profile?.branch || '',
-          specialization: mergedFields.specialization || studentData?.profile?.specialization || '',
-          graduationYear: mergedFields.graduationYear ?? studentData?.profile?.graduationYear ?? undefined,
-          cgpa: mergedFields.cgpa ?? studentData?.profile?.cgpa ?? undefined,
-          currentYear: studentData?.profile?.currentYear ?? undefined,
-          currentSemester: studentData?.profile?.currentSemester ?? undefined,
-          bio: mergedFields.bio || studentData?.profile?.bio || '',
-          city: mergedFields.city || studentData?.profile?.city || '',
-          country: mergedFields.country || studentData?.profile?.country || 'India',
-          profileImage: studentData?.profile?.profileImage || ''
-        });
-      }
-
-      const mergedCareer: any = {};
-      for (const [key, value] of Object.entries(data.career)) {
-        if (value !== undefined) mergedCareer[key] = value;
-      }
-
-      if (Object.keys(mergedCareer).length > 0) {
-        await profileApi.updateCareerGoals({
-          preferredJobRole: mergedCareer.preferredJobRole || studentData?.careerGoal?.preferredJobRole || '',
-          preferredIndustry: mergedCareer.preferredIndustry || studentData?.careerGoal?.preferredIndustry || '',
-          preferredWorkMode: mergedCareer.preferredWorkMode || studentData?.careerGoal?.preferredWorkMode || 'HYBRID',
-          preferredCountries: mergedCareer.preferredCountries || studentData?.careerGoal?.preferredCountries || '',
-          expectedSalary: mergedCareer.expectedSalary || studentData?.careerGoal?.expectedSalary || '',
-          higherStudies: mergedCareer.higherStudies ?? studentData?.careerGoal?.higherStudies ?? false,
-          startup: mergedCareer.startup ?? studentData?.careerGoal?.startup ?? false,
-          entrepreneurship: studentData?.careerGoal?.entrepreneurship ?? false,
-          governmentJobs: studentData?.careerGoal?.governmentJobs ?? false,
-          research: studentData?.careerGoal?.research ?? false,
-        });
-      }
-
-      toast.success('Resume data securely merged into your profile!');
-    } catch (e) {
-      toast.error('Partial network failure during data merge, please check extracted fields.');
-    } finally {
-      setIsUploading(false);
-      refetch(); // Invalidate canonical query state to trigger re-render of forms with actual DB values!
-      setCurrentStep(9); // Send directly to Review screen!
-    }
-  };
-
   if (currentStep === 0) {
     return (
       <div className="space-y-6 w-full pb-12">
-        {isUploading ? (
-          <ResumeUploader
-            onSuccess={handleResumeSuccess}
-            onSkip={() => { setIsUploading(false); setCurrentStep(1); }}
-          />
-        ) : (
-          <ResumeImportChoice
-            onChoice={(c) => {
-              if (c === 'import') setIsUploading(true);
-              else setCurrentStep(1);
-            }}
-          />
-        )}
+        <ResumeImportChoice
+          onChoice={(c) => {
+            if (c === 'assessment') navigate('/profile/assessment');
+            else setCurrentStep(1);
+          }}
+        />
       </div>
     );
   }
@@ -341,8 +242,9 @@ export function ProfileWizard() {
               </CardHeader>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input {...profileForm.register('fullName')} error={profileForm.formState.errors.fullName?.message as string} label="Full Name" placeholder="Arjun Sharma" />
-                <Input {...profileForm.register('profileImage')} error={profileForm.formState.errors.profileImage?.message as string} label="Profile Image URL" placeholder="https://..." />
+                <div className="md:col-span-2">
+                  <Input {...profileForm.register('fullName')} error={profileForm.formState.errors.fullName?.message as string} label="Full Name" placeholder="Arjun Sharma" />
+                </div>
                 <Input {...profileForm.register('city')} error={profileForm.formState.errors.city?.message as string} label="City" placeholder="Mumbai" />
                 <Input {...profileForm.register('country')} error={profileForm.formState.errors.country?.message as string} label="Country" placeholder="India" />
                 <div className="md:col-span-2">
@@ -468,7 +370,12 @@ export function ProfileWizard() {
                       <button
                         key={mSkill.id}
                         disabled={alreadyAdded}
-                        onClick={() => addSkill({ skillId: mSkill.id, proficiency: 3, experienceMonths: 6, confidence: 70 })}
+                        onClick={() => {
+                          setSelectedSkillToAdd(mSkill);
+                          setSkillProficiency(3);
+                          setSkillExperience(6);
+                          setSkillConfidence(70);
+                        }}
                         className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${alreadyAdded
                           ? 'bg-slate-100 text-slate-400 border border-slate-200 opacity-60 cursor-not-allowed'
                           : 'bg-primary-50 dark:bg-primary-950/50 text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-800 hover:bg-primary-100'
@@ -481,279 +388,334 @@ export function ProfileWizard() {
                   })}
                 </div>
               </div>
-            </div>
-          )}
 
-          {/* STEP 4: Interests Management */}
-          {currentStep === 4 && (
-            <div className="space-y-6">
-              <CardHeader className="px-0 pt-0">
-                <CardTitle>Interests & Domains</CardTitle>
-                <CardDescription>Select domains you are passionate about (Max 10)</CardDescription>
-              </CardHeader>
-
-
-
-              {/* Current Interests */}
-              <div className="flex flex-wrap gap-2">
-                {studentData?.interests.map((i) => (
-                  <div key={i.id} className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-purple-50 dark:bg-purple-950/50 border border-purple-200 dark:border-purple-800 text-purple-700 dark:text-purple-300 text-xs font-medium">
-                    <span>{i.interest.name}</span>
-                    <button onClick={() => deleteInterest(i.id)} className="hover:text-red-500">
-                      <Trash2 className="h-3.5 w-3.5" />
-                    </button>
-                  </div>
-                ))}
+              {/* Add Skill Modal */}
+          <Modal
+            isOpen={!!selectedSkillToAdd}
+            onClose={() => setSelectedSkillToAdd(null)}
+            title={`Add Skill: ${selectedSkillToAdd?.name}`}
+            footer={
+              <div className="flex justify-end gap-2 w-full">
+                <Button variant="ghost" onClick={() => setSelectedSkillToAdd(null)}>Cancel</Button>
+                <Button onClick={() => {
+                  if (selectedSkillToAdd) {
+                    addSkill({
+                      skillId: selectedSkillToAdd.id,
+                      proficiency: skillProficiency,
+                      experienceMonths: skillExperience,
+                      confidence: skillConfidence,
+                    });
+                    setSelectedSkillToAdd(null);
+                  }
+                }}>Add Skill</Button>
               </div>
-
-              {/* Available Master Interests */}
-              <div className="pt-4 border-t border-slate-200 dark:border-slate-800">
-                <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Available Interests</h4>
-                <div className="flex flex-wrap gap-2">
-                  {masterInterests.map((mInt) => {
-                    const added = studentData?.interests.some((i) => i.interest.id === mInt.id);
-                    return (
-                      <button
-                        key={mInt.id}
-                        disabled={added}
-                        onClick={() => addInterest({ interestId: mInt.id, priority: 1 })}
-                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${added
-                          ? 'bg-slate-100 text-slate-400 border border-slate-200 opacity-60 cursor-not-allowed'
-                          : 'bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-purple-400'
-                          }`}
-                      >
-                        <Plus className="h-3.5 w-3.5" />
-                        {mInt.name}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* STEP 5: Projects */}
-          {currentStep === 5 && (
-            <div className="space-y-6">
-              <CardHeader className="px-0 pt-0">
-                <CardTitle>Projects</CardTitle>
-                <CardDescription>Showcase your hands-on coding projects</CardDescription>
-              </CardHeader>
-
-
-
-              {/* Project List */}
-              <div className="space-y-3">
-                {studentData?.projects.map((p) => (
-                  <div key={p.id} className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex justify-between items-start">
-                    <div>
-                      <h4 className="font-semibold text-sm text-slate-900 dark:text-slate-100">{p.title}</h4>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{p.description}</p>
-                      <p className="text-xs text-primary-600 dark:text-primary-400 font-medium mt-2">Tech: {p.technologies}</p>
-                    </div>
-                    <Button variant="ghost" size="sm" onClick={() => deleteProject(p.id)}>
-                      <Trash2 className="h-4 w-4 text-red-500" />
-                    </Button>
-                  </div>
-                ))}
-              </div>
-
-              {/* Add Project Form */}
-              <form onSubmit={projectForm.handleSubmit((d) => { addProject(d); projectForm.reset(); })} className="space-y-3 pt-4 border-t border-slate-200 dark:border-slate-800">
-                <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Add New Project</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <Input {...projectForm.register('title')} error={projectForm.formState.errors.title?.message as string} label="Project Title" placeholder="AI Portfolio Website" />
-                  <Input {...projectForm.register('technologies')} error={projectForm.formState.errors.technologies?.message as string} label="Technologies Used" placeholder="React, Node.js, PostgreSQL" />
-                  <Input {...projectForm.register('githubUrl')} error={projectForm.formState.errors.githubUrl?.message as string} label="GitHub Repository URL" placeholder="https://github.com/..." />
-                  <Input {...projectForm.register('demoUrl')} error={projectForm.formState.errors.demoUrl?.message as string} label="Live Demo URL" placeholder="https://..." />
-                </div>
-                <Textarea {...projectForm.register('description')} error={projectForm.formState.errors.description?.message as string} label="Project Description" rows={2} placeholder="Summary of what you built..." />
-                <Button type="submit" size="sm">Add Project</Button>
-              </form>
-            </div>
-          )}
-
-          {/* STEP 6: Certifications */}
-          {currentStep === 6 && (
-            <div className="space-y-6">
-              <CardHeader className="px-0 pt-0">
-                <CardTitle>Certifications</CardTitle>
-                <CardDescription>Verified courses and professional certificates</CardDescription>
-              </CardHeader>
-
-
-
-              <div className="space-y-3">
-                {studentData?.certifications.map((c) => (
-                  <div key={c.id} className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex justify-between items-center">
-                    <div>
-                      <h4 className="font-semibold text-sm text-slate-900 dark:text-slate-100">{c.title}</h4>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">Issuer: {c.issuer}</p>
-                    </div>
-                    <Button variant="ghost" size="sm" onClick={() => deleteCertification(c.id)}>
-                      <Trash2 className="h-4 w-4 text-red-500" />
-                    </Button>
-                  </div>
-                ))}
-              </div>
-
-              <form onSubmit={certForm.handleSubmit((d) => { addCertification(d); certForm.reset(); })} className="space-y-3 pt-4 border-t border-slate-200 dark:border-slate-800">
-                <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Add Certification</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <Input {...certForm.register('title')} error={certForm.formState.errors.title?.message as string} label="Certification Title" placeholder="AWS Certified Developer" />
-                  <Input {...certForm.register('issuer')} error={certForm.formState.errors.issuer?.message as string} label="Issuing Organization" placeholder="Amazon Web Services" />
-                  <Input {...certForm.register('issueDate')} error={certForm.formState.errors.issueDate?.message as string} label="Issue Date" placeholder="2025-06" />
-                  <Input {...certForm.register('credentialUrl')} error={certForm.formState.errors.credentialUrl?.message as string} label="Credential Verification URL" placeholder="https://..." />
-                </div>
-                <Button type="submit" size="sm">Add Certification</Button>
-              </form>
-            </div>
-          )}
-
-          {/* STEP 7: Coding Profiles */}
-          {currentStep === 7 && (
-            <div className="space-y-6">
-              <CardHeader className="px-0 pt-0">
-                <CardTitle>Coding Profiles</CardTitle>
-                <CardDescription>Connect competitive programming platforms</CardDescription>
-              </CardHeader>
-
-
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {studentData?.codingPlatforms.map((cp) => (
-                  <div key={cp.id} className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex items-center justify-between">
-                    <div>
-                      <span className="font-semibold text-sm text-slate-900 dark:text-slate-100">{cp.platform}</span>
-                      <p className="text-xs text-slate-500">@{cp.username} ({cp.problemsSolved} solved)</p>
-                    </div>
-                    <Button variant="ghost" size="sm" onClick={() => deleteCodingPlatform(cp.id)}>
-                      <Trash2 className="h-4 w-4 text-red-500" />
-                    </Button>
-                  </div>
-                ))}
-              </div>
-
-              <form onSubmit={codingForm.handleSubmit((d) => { addCodingPlatform(d); codingForm.reset(); })} className="space-y-3 pt-4 border-t border-slate-200 dark:border-slate-800">
-                <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Add Coding Profile</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <Select
-                    {...codingForm.register('platform')}
-                    error={codingForm.formState.errors.platform?.message as string}
-                    label="Platform"
-                    options={[
-                      { value: 'LeetCode', label: 'LeetCode' },
-                      { value: 'Codeforces', label: 'Codeforces' },
-                      { value: 'HackerRank', label: 'HackerRank' },
-                      { value: 'CodeChef', label: 'CodeChef' },
-                      { value: 'GeeksforGeeks', label: 'GeeksforGeeks' },
-                      { value: 'GitHub', label: 'GitHub' },
-                    ]}
-                    placeholder="Select Platform"
-                  />
-                  <Input {...codingForm.register('username')} error={codingForm.formState.errors.username?.message as string} label="Username" placeholder="your_handle" />
-                  <Input {...codingForm.register('problemsSolved', { valueAsNumber: true })} error={codingForm.formState.errors.problemsSolved?.message as string} label="Problems Solved" type="number" placeholder="150" />
-                </div>
-                <Button type="submit" size="sm">Add Profile</Button>
-              </form>
-            </div>
-          )}
-
-          {/* STEP 8: Career Goals */}
-          {currentStep === 8 && (
-            <form onSubmit={careerForm.handleSubmit((d) => updateCareerGoals(d))} className="space-y-4">
-              <CardHeader className="px-0 pt-0">
-                <CardTitle>Career Goals</CardTitle>
-                <CardDescription>Your target roles, preferred industries, and long-term aspirations</CardDescription>
-              </CardHeader>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input {...careerForm.register('preferredJobRole')} error={careerForm.formState.errors.preferredJobRole?.message as string} label="Target Job Role" placeholder="Backend Engineer / ML Engineer" />
-                <Input {...careerForm.register('preferredIndustry')} error={careerForm.formState.errors.preferredIndustry?.message as string} label="Target Industry" placeholder="FinTech / AI / SaaS" />
-                <Select
-                  {...careerForm.register('preferredWorkMode')}
-                  error={careerForm.formState.errors.preferredWorkMode?.message as string}
-                  label="Preferred Work Mode"
-                  options={[
-                    { value: 'REMOTE', label: 'Remote' },
-                    { value: 'HYBRID', label: 'Hybrid' },
-                    { value: 'ONSITE', label: 'Onsite' },
-                  ]}
+            }
+          >
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-1">Proficiency (1-5)</label>
+                <Input
+                  type="number"
+                  min={1}
+                  max={5}
+                  value={skillProficiency}
+                  onChange={(e) => setSkillProficiency(Number(e.target.value))}
                 />
-                <Input {...careerForm.register('preferredCountries')} error={careerForm.formState.errors.preferredCountries?.message as string} label="Preferred Countries" placeholder="India, Germany, USA" />
-                <Input {...careerForm.register('expectedSalary')} error={careerForm.formState.errors.expectedSalary?.message as string} label="Expected Salary Range" placeholder="15 - 25 LPA" />
               </div>
-
-              <div className="pt-3 space-y-2">
-                <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">Aspirations & Pathways</p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  <Checkbox {...careerForm.register('higherStudies')} label="Higher Studies (MS/M.Tech)" />
-                  <Checkbox {...careerForm.register('startup')} label="Join Early-stage Startup" />
-                  <Checkbox {...careerForm.register('entrepreneurship')} label="Build Own Company" />
-                  <Checkbox {...careerForm.register('research')} label="Research & Academia" />
-                  <Checkbox {...careerForm.register('governmentJobs')} label="Government Sector" />
-                </div>
+              <div>
+                <label className="block text-sm font-medium mb-1">Experience (Months)</label>
+                <Input
+                  type="number"
+                  min={0}
+                  value={skillExperience}
+                  onChange={(e) => setSkillExperience(Number(e.target.value))}
+                />
               </div>
-
-              <Button type="submit" size="sm">Save Career Goals</Button>
-            </form>
-          )}
-
-          {/* STEP 9: Review & Summary */}
-          {currentStep === 9 && (
-            <div className="space-y-6">
-              <CardHeader className="px-0 pt-0">
-                <CardTitle>Profile Review & Completion</CardTitle>
-                <CardDescription>Review your complete student profile summary</CardDescription>
-              </CardHeader>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-
-                <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                  <span className="text-xs font-semibold text-slate-400 uppercase">Profile Completion</span>
-                  <p className="text-3xl font-extrabold text-primary-600 mt-1">{completion?.completionPercentage}%</p>
-                </div>
-
-                <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                  <span className="text-xs font-semibold text-slate-400 uppercase">Missing Sections</span>
-                  {completion?.missingSections.length === 0 ? (
-                    <p className="text-sm text-green-600 font-semibold mt-2">🎉 Profile is 100% complete!</p>
-                  ) : (
-                    <ul className="text-xs text-amber-600 dark:text-amber-400 mt-1 space-y-1">
-                      {completion?.missingSections.map((m) => (
-                        <li key={m}>• {m}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
+              <div>
+                <label className="block text-sm font-medium mb-1">Confidence (0-100%)</label>
+                <Input
+                  type="number"
+                  min={0}
+                  max={100}
+                  value={skillConfidence}
+                  onChange={(e) => setSkillConfidence(Number(e.target.value))}
+                />
               </div>
             </div>
+          </Modal>
+        </div>
           )}
 
-          {/* Footer Controls (Previous / Next) */}
-          <div className="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-slate-800 mt-6">
-            <Button
-              variant="outline"
-              size="sm"
-              disabled={currentStep === 1}
-              onClick={prevStep}
-              leftIcon={<ChevronLeft className="h-4 w-4" />}
-            >
-              Previous
-            </Button>
+        {/* STEP 4: Interests Management */}
+        {currentStep === 4 && (
+          <div className="space-y-6">
+            <CardHeader className="px-0 pt-0">
+              <CardTitle>Interests & Domains</CardTitle>
+              <CardDescription>Select domains you are passionate about (Max 10)</CardDescription>
+            </CardHeader>
 
-            <Button
-              size="sm"
-              disabled={currentStep === STEPS.length}
-              onClick={nextStep}
-              rightIcon={<ChevronRight className="h-4 w-4" />}
-            >
-              Next
-            </Button>
+
+
+            {/* Current Interests */}
+            <div className="flex flex-wrap gap-2">
+              {studentData?.interests.map((i) => (
+                <div key={i.id} className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-purple-50 dark:bg-purple-950/50 border border-purple-200 dark:border-purple-800 text-purple-700 dark:text-purple-300 text-xs font-medium">
+                  <span>{i.interest.name}</span>
+                  <button onClick={() => deleteInterest(i.id)} className="hover:text-red-500">
+                    <Trash2 className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            {/* Available Master Interests */}
+            <div className="pt-4 border-t border-slate-200 dark:border-slate-800">
+              <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Available Interests</h4>
+              <div className="flex flex-wrap gap-2">
+                {masterInterests.map((mInt) => {
+                  const added = studentData?.interests.some((i) => i.interest.id === mInt.id);
+                  return (
+                    <button
+                      key={mInt.id}
+                      disabled={added}
+                      onClick={() => addInterest({ interestId: mInt.id, priority: 1 })}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${added
+                        ? 'bg-slate-100 text-slate-400 border border-slate-200 opacity-60 cursor-not-allowed'
+                        : 'bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-purple-400'
+                        }`}
+                    >
+                      <Plus className="h-3.5 w-3.5" />
+                      {mInt.name}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
-        </CardContent>
-      </Card>
-    </div>
+        )}
+
+        {/* STEP 5: Projects */}
+        {currentStep === 5 && (
+          <div className="space-y-6">
+            <CardHeader className="px-0 pt-0">
+              <CardTitle>Projects</CardTitle>
+              <CardDescription>Showcase your hands-on coding projects</CardDescription>
+            </CardHeader>
+
+
+
+            {/* Project List */}
+            <div className="space-y-3">
+              {studentData?.projects.map((p) => (
+                <div key={p.id} className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex justify-between items-start">
+                  <div>
+                    <h4 className="font-semibold text-sm text-slate-900 dark:text-slate-100">{p.title}</h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{p.description}</p>
+                    <p className="text-xs text-primary-600 dark:text-primary-400 font-medium mt-2">Tech: {p.technologies}</p>
+                  </div>
+                  <Button variant="ghost" size="sm" onClick={() => deleteProject(p.id)}>
+                    <Trash2 className="h-4 w-4 text-red-500" />
+                  </Button>
+                </div>
+              ))}
+            </div>
+
+            {/* Add Project Form */}
+            <form onSubmit={projectForm.handleSubmit((d) => { addProject(d); projectForm.reset(); })} className="space-y-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+              <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Add New Project</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <Input {...projectForm.register('title')} error={projectForm.formState.errors.title?.message as string} label="Project Title" placeholder="AI Portfolio Website" />
+                <Input {...projectForm.register('technologies')} error={projectForm.formState.errors.technologies?.message as string} label="Technologies Used" placeholder="React, Node.js, PostgreSQL" />
+                <Input {...projectForm.register('githubUrl')} error={projectForm.formState.errors.githubUrl?.message as string} label="GitHub Repository URL" placeholder="https://github.com/..." />
+                <Input {...projectForm.register('demoUrl')} error={projectForm.formState.errors.demoUrl?.message as string} label="Live Demo URL" placeholder="https://..." />
+              </div>
+              <Textarea {...projectForm.register('description')} error={projectForm.formState.errors.description?.message as string} label="Project Description" rows={2} placeholder="Summary of what you built..." />
+              <Button type="submit" size="sm">Add Project</Button>
+            </form>
+          </div>
+        )}
+
+        {/* STEP 6: Certifications */}
+        {currentStep === 6 && (
+          <div className="space-y-6">
+            <CardHeader className="px-0 pt-0">
+              <CardTitle>Certifications</CardTitle>
+              <CardDescription>Verified courses and professional certificates</CardDescription>
+            </CardHeader>
+
+
+
+            <div className="space-y-3">
+              {studentData?.certifications.map((c) => (
+                <div key={c.id} className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex justify-between items-center">
+                  <div>
+                    <h4 className="font-semibold text-sm text-slate-900 dark:text-slate-100">{c.title}</h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">Issuer: {c.issuer}</p>
+                  </div>
+                  <Button variant="ghost" size="sm" onClick={() => deleteCertification(c.id)}>
+                    <Trash2 className="h-4 w-4 text-red-500" />
+                  </Button>
+                </div>
+              ))}
+            </div>
+
+            <form onSubmit={certForm.handleSubmit((d) => { addCertification(d); certForm.reset(); })} className="space-y-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+              <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Add Certification</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <Input {...certForm.register('title')} error={certForm.formState.errors.title?.message as string} label="Certification Title" placeholder="AWS Certified Developer" />
+                <Input {...certForm.register('issuer')} error={certForm.formState.errors.issuer?.message as string} label="Issuing Organization" placeholder="Amazon Web Services" />
+                <Input {...certForm.register('issueDate')} error={certForm.formState.errors.issueDate?.message as string} label="Issue Date" placeholder="2025-06" />
+                <Input {...certForm.register('credentialUrl')} error={certForm.formState.errors.credentialUrl?.message as string} label="Credential Verification URL" placeholder="https://..." />
+              </div>
+              <Button type="submit" size="sm">Add Certification</Button>
+            </form>
+          </div>
+        )}
+
+        {/* STEP 7: Coding Profiles */}
+        {currentStep === 7 && (
+          <div className="space-y-6">
+            <CardHeader className="px-0 pt-0">
+              <CardTitle>Coding Profiles</CardTitle>
+              <CardDescription>Connect competitive programming platforms</CardDescription>
+            </CardHeader>
+
+
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {studentData?.codingPlatforms.map((cp) => (
+                <div key={cp.id} className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex items-center justify-between">
+                  <div>
+                    <span className="font-semibold text-sm text-slate-900 dark:text-slate-100">{cp.platform}</span>
+                    <p className="text-xs text-slate-500">@{cp.username} ({cp.problemsSolved} solved)</p>
+                  </div>
+                  <Button variant="ghost" size="sm" onClick={() => deleteCodingPlatform(cp.id)}>
+                    <Trash2 className="h-4 w-4 text-red-500" />
+                  </Button>
+                </div>
+              ))}
+            </div>
+
+            <form onSubmit={codingForm.handleSubmit((d) => { addCodingPlatform(d); codingForm.reset(); })} className="space-y-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+              <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Add Coding Profile</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <Select
+                  {...codingForm.register('platform')}
+                  error={codingForm.formState.errors.platform?.message as string}
+                  label="Platform"
+                  options={[
+                    { value: 'LeetCode', label: 'LeetCode' },
+                    { value: 'Codeforces', label: 'Codeforces' },
+                    { value: 'HackerRank', label: 'HackerRank' },
+                    { value: 'CodeChef', label: 'CodeChef' },
+                    { value: 'GeeksforGeeks', label: 'GeeksforGeeks' },
+                    { value: 'GitHub', label: 'GitHub' },
+                  ]}
+                  placeholder="Select Platform"
+                />
+                <Input {...codingForm.register('username')} error={codingForm.formState.errors.username?.message as string} label="Username" placeholder="your_handle" />
+                <Input {...codingForm.register('problemsSolved', { valueAsNumber: true })} error={codingForm.formState.errors.problemsSolved?.message as string} label="Problems Solved" type="number" placeholder="150" />
+              </div>
+              <Button type="submit" size="sm">Add Profile</Button>
+            </form>
+          </div>
+        )}
+
+        {/* STEP 8: Career Goals */}
+        {currentStep === 8 && (
+          <form onSubmit={careerForm.handleSubmit((d) => updateCareerGoals(d))} className="space-y-4">
+            <CardHeader className="px-0 pt-0">
+              <CardTitle>Career Goals</CardTitle>
+              <CardDescription>Your target roles, preferred industries, and long-term aspirations</CardDescription>
+            </CardHeader>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Input {...careerForm.register('preferredJobRole')} error={careerForm.formState.errors.preferredJobRole?.message as string} label="Target Job Role" placeholder="Backend Engineer / ML Engineer" />
+              <Input {...careerForm.register('preferredIndustry')} error={careerForm.formState.errors.preferredIndustry?.message as string} label="Target Industry" placeholder="FinTech / AI / SaaS" />
+              <Select
+                {...careerForm.register('preferredWorkMode')}
+                error={careerForm.formState.errors.preferredWorkMode?.message as string}
+                label="Preferred Work Mode"
+                options={[
+                  { value: 'REMOTE', label: 'Remote' },
+                  { value: 'HYBRID', label: 'Hybrid' },
+                  { value: 'ONSITE', label: 'Onsite' },
+                ]}
+              />
+              <Input {...careerForm.register('preferredCountries')} error={careerForm.formState.errors.preferredCountries?.message as string} label="Preferred Countries" placeholder="India, Germany, USA" />
+              <Input {...careerForm.register('expectedSalary')} error={careerForm.formState.errors.expectedSalary?.message as string} label="Expected Salary Range" placeholder="15 - 25 LPA" />
+            </div>
+
+            <div className="pt-3 space-y-2">
+              <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">Aspirations & Pathways</p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <Checkbox {...careerForm.register('higherStudies')} label="Higher Studies (MS/M.Tech)" />
+                <Checkbox {...careerForm.register('startup')} label="Join Early-stage Startup" />
+                <Checkbox {...careerForm.register('entrepreneurship')} label="Build Own Company" />
+                <Checkbox {...careerForm.register('research')} label="Research & Academia" />
+                <Checkbox {...careerForm.register('governmentJobs')} label="Government Sector" />
+              </div>
+            </div>
+
+            <Button type="submit" size="sm">Save Career Goals</Button>
+          </form>
+        )}
+
+        {/* STEP 9: Review & Summary */}
+        {currentStep === 9 && (
+          <div className="space-y-6">
+            <CardHeader className="px-0 pt-0">
+              <CardTitle>Profile Review & Completion</CardTitle>
+              <CardDescription>Review your complete student profile summary</CardDescription>
+            </CardHeader>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+
+              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="text-xs font-semibold text-slate-400 uppercase">Profile Completion</span>
+                <p className="text-3xl font-extrabold text-primary-600 mt-1">{completion?.completionPercentage}%</p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <span className="text-xs font-semibold text-slate-400 uppercase">Missing Sections</span>
+                {completion?.missingSections.length === 0 ? (
+                  <p className="text-sm text-green-600 font-semibold mt-2">🎉 Profile is 100% complete!</p>
+                ) : (
+                  <ul className="text-xs text-amber-600 dark:text-amber-400 mt-1 space-y-1">
+                    {completion?.missingSections.map((m) => (
+                      <li key={m}>• {m}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Footer Controls (Previous / Next) */}
+        <div className="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-slate-800 mt-6">
+          <Button
+            variant="outline"
+            size="sm"
+            disabled={currentStep === 1}
+            onClick={prevStep}
+            leftIcon={<ChevronLeft className="h-4 w-4" />}
+          >
+            Previous
+          </Button>
+
+          <Button
+            size="sm"
+            disabled={currentStep === STEPS.length}
+            onClick={nextStep}
+            rightIcon={<ChevronRight className="h-4 w-4" />}
+          >
+            Next
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+    </div >
   );
 }

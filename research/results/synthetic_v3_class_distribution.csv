@@ -1,0 +1,46 @@
+Condition,Career,Frequency
+A,Application Security Engineer,0.0825
+A,.NET Developer,0.0795
+A,BI Developer / BI Analyst,0.0785
+A,AI Data / Annotation Quality Specialist,0.0735
+A,AI Product / Applied AI Developer,0.073
+A,Cloud Engineer,0.0715
+A,Business Analyst (IT),0.068
+A,Cloud Data Engineer,0.0655
+A,Big Data Engineer,0.062
+A,API / Integration Developer,0.0605
+A,Blockchain / Web3 Developer,0.0595
+A,Automation Test Engineer,0.0585
+A,Backend Developer,0.057
+A,AI Engineer,0.0565
+A,Cloud Security Engineer,0.054
+B,AI Data / Annotation Quality Specialist,0.083
+B,Application Security Engineer,0.08
+B,.NET Developer,0.0775
+B,AI Product / Applied AI Developer,0.0765
+B,Blockchain / Web3 Developer,0.0685
+B,BI Developer / BI Analyst,0.067
+B,Cloud Data Engineer,0.0655
+B,API / Integration Developer,0.063
+B,Cloud Engineer,0.063
+B,Automation Test Engineer,0.0625
+B,Cloud Security Engineer,0.062
+B,Big Data Engineer,0.062
+B,AI Engineer,0.061
+B,Business Analyst (IT),0.059
+B,Backend Developer,0.0495
+C,.NET Developer,0.081
+C,Application Security Engineer,0.075
+C,AI Data / Annotation Quality Specialist,0.0745
+C,Automation Test Engineer,0.071
+C,AI Product / Applied AI Developer,0.069
+C,Backend Developer,0.069
+C,BI Developer / BI Analyst,0.067
+C,AI Engineer,0.0665
+C,Business Analyst (IT),0.0655
+C,Blockchain / Web3 Developer,0.063
+C,Big Data Engineer,0.0625
+C,Cloud Engineer,0.0625
+C,Cloud Security Engineer,0.0595
+C,Cloud Data Engineer,0.0585
+C,API / Integration Developer,0.0555

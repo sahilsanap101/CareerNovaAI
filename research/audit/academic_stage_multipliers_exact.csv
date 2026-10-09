@@ -1,0 +1,9 @@
+academic_stage,dimension,multiplier,normalized_weight,source_file,source_symbol
+Year 1-2 (Exploratory),INTERESTS,1.5,dynamic,recommendationEngine.service.ts,generateRecommendations
+Year 1-2 (Exploratory),ACADEMIC,1.2,dynamic,recommendationEngine.service.ts,generateRecommendations
+Year 1-2 (Exploratory),SKILLS,0.7,dynamic,recommendationEngine.service.ts,generateRecommendations
+Year 1-2 (Exploratory),CODING,0.5,dynamic,recommendationEngine.service.ts,generateRecommendations
+Year 3-4 (Placement Ready),SKILLS,1.1,dynamic,recommendationEngine.service.ts,generateRecommendations
+Year 3-4 (Placement Ready),CODING,1.2,dynamic,recommendationEngine.service.ts,generateRecommendations
+Year 3-4 (Placement Ready),PROJECTS,1.1,dynamic,recommendationEngine.service.ts,generateRecommendations
+Year 3-4 (Placement Ready),GOALS,1.2,dynamic,recommendationEngine.service.ts,generateRecommendations

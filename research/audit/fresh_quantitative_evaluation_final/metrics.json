@@ -1,0 +1,12 @@
+{
+  "totalEvaluated": 500,
+  "Recommendation Top-1 success": "2.6",
+  "Recommendation Top-3 retrieval": "10.0",
+  "Recommendation Top-5 retrieval": "15.6",
+  "Ranking quality (MRR)": "12.7",
+  "Recommendation Precision@5": "3.1",
+  "Recommendation Macro-F1@5": "5.2",
+  "Recommendation coverage": "100.0",
+  "Explainability evidence coverage": "80.7",
+  "Mean Composite Score": "28.7"
+}

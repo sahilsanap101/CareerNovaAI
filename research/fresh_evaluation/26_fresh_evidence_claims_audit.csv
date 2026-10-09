@@ -1,0 +1,11 @@
+claim,status
+1. Current PATHFORGE has high recommendation accuracy.,PARTIALLY SUPPORTED
+2. Current Fusion improves over Profile-only.,UNSUPPORTED
+3. Assessment provides incremental predictive information.,SUPPORTED
+4. PATHFORGE outperforms Random Forest.,UNSUPPORTED
+5. PATHFORGE outperforms Gradient Boosted Tree.,UNSUPPORTED
+6. PATHFORGE generalizes to unseen students.,SUPPORTED
+7. PATHFORGE performs zero-shot career recommendation.,SUPPORTED
+8. PATHFORGE is real-world validated.,UNSUPPORTED
+9. PATHFORGE provides effective skill-gap recommendations.,UNSUPPORTED
+10. PATHFORGE provides effective learning roadmaps.,UNSUPPORTED

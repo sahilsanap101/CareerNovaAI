@@ -192,4 +192,30 @@ export const profileApi = {
     const res = await api.delete<ApiResponse<unknown>>(`/profile/coding-platforms/${id}`);
     return res.data.data;
   },
+
+  // Career Assessment
+  getAssessmentQuestions: async () => {
+    const res = await api.get<ApiResponse<any>>('/profile/assessment/questions');
+    return res.data.data;
+  },
+
+  getAssessmentResponses: async () => {
+    const res = await api.get<ApiResponse<any>>('/profile/assessment/responses');
+    return res.data.data;
+  },
+
+  saveAssessmentResponse: async (questionId: string, selectedValue: string) => {
+    const res = await api.post<ApiResponse<any>>('/profile/assessment/responses', { questionId, selectedValue });
+    return res.data.data;
+  },
+
+  getAssessmentCompletion: async () => {
+    const res = await api.get<ApiResponse<any>>('/profile/assessment/completion');
+    return res.data.data;
+  },
+
+  submitAssessment: async () => {
+    const res = await api.post<ApiResponse<any>>('/profile/assessment/submit');
+    return res.data.data;
+  },
 };

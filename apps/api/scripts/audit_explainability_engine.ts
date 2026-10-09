@@ -1,0 +1,102 @@
+import fs from 'fs';
+import path from 'path';
+import { ResearchDataRepository } from '../src/research_core/data/research_data_repository';
+import { SkillResolver } from '../src/research_core/data/skill_resolver';
+import { CompetencyFitEngine } from '../src/research_core/evaluation/competency_fit_engine';
+import { PreferenceFitEngine } from '../src/research_core/evaluation/preference_fit_engine';
+import { CareerRecommendationEngine } from '../src/research_core/engine/career_recommendation_engine';
+import { ExplainabilityEngine } from '../src/research_core/engine/explainability_engine';
+import { StudentEvidence } from '../src/research_core/evidence/student_evidence';
+
+async function runExplainabilityAudit() {
+  console.log('Loading ResearchDataRepository for Explainability Audit...');
+  const repo = ResearchDataRepository.getInstance();
+  repo.load();
+
+  const rawSkills = Array.from((repo as any).skills.values());
+  const resolver = new SkillResolver(rawSkills, new Map());
+  const compEngine = new CompetencyFitEngine(resolver);
+  const prefEngine = new PreferenceFitEngine(resolver);
+  const recEngine = new CareerRecommendationEngine(compEngine, prefEngine, rawSkills as any);
+  const explEngine = new ExplainabilityEngine();
+
+  // Synthetic student
+  const evidence: StudentEvidence = {
+    userId: 'audit-expl-123',
+    context: { degree: 'B.Tech', branch: 'Computer Science' },
+    primaryCompetencies: [
+      { skillName: 'JavaScript', proficiency: 4, experienceMonths: 12, confidence: 90 },
+      { skillName: 'React', proficiency: 4, experienceMonths: 12, confidence: 80 },
+      { skillName: 'Python', proficiency: 3, experienceMonths: 6, confidence: 70 },
+      { skillName: 'Unknown Framework', proficiency: 3, experienceMonths: 0, confidence: 0 } // Unmapped test
+    ],
+    supportingEvidence: { projects: [], certifications: [], codingProfiles: [] },
+    preferences: {
+      preferredRoles: ['Full Stack Developer'],
+      preferredIndustries: [],
+      interests: [{ name: 'Web Development', priority: 1 }]
+    },
+    provenance: { generatedAt: new Date().toISOString(), source: 'Audit' }
+  };
+
+  const careers = Array.from((repo as any).careers.values()) as any[];
+  const top5 = recEngine.rankCareers(careers, evidence, 5);
+
+  const auditsDir = path.join(process.cwd(), '..', '..', 'research', 'audits');
+  if (!fs.existsSync(auditsDir)) {
+    fs.mkdirSync(auditsDir, { recursive: true });
+  }
+
+  let mdContent = `# Structured Explainability Engine Report
+
+This report demonstrates the JSON/structured output that the frontend will consume for the "View Explainability" button.
+
+## Top 5 Explanations
+
+`;
+
+  for (const rec of top5) {
+    const explanation = explEngine.generateExplanation(rec);
+    mdContent += `### Rank ${rec.rank}: ${rec.careerName}\n`;
+    mdContent += `- **Status**: ${explanation.status}\n`;
+    
+    if (explanation.status === 'AVAILABLE') {
+      mdContent += `- **Final Score**: ${(explanation.finalScore! * 100).toFixed(2)}%\n`;
+      mdContent += `- **Eligibility**: ${explanation.eligibility}\n`;
+      mdContent += `- **Why This Career**: ${explanation.whyThisCareer}\n`;
+      mdContent += `- **Calculation**: \`${explanation.calculation}\`\n`;
+      mdContent += `\n**Competency Evidence**\n`;
+      mdContent += `- Matched Skills: ${explanation.competencyEvidence?.matchedSkills.map(s => s.skillName).join(', ') || 'None'}\n`;
+      mdContent += `- Missing Skills: ${explanation.competencyEvidence?.missingSkills.map(s => s.skillName).join(', ') || 'None'}\n`;
+      mdContent += `- Unmapped Skills: ${explanation.competencyEvidence?.unmappedSkills.map(s => s.skillName).join(', ') || 'None'}\n`;
+      mdContent += `- Ambiguous Skills: ${explanation.competencyEvidence?.ambiguousSkills.map(s => s.skillName).join(', ') || 'None'}\n`;
+      mdContent += `\n**Preference Evidence**\n`;
+      mdContent += `- Matched Roles: ${explanation.preferenceEvidence?.matchedRoles.join(', ') || 'None'}\n`;
+      mdContent += `- Matched Industries: ${explanation.preferenceEvidence?.matchedIndustries.join(', ') || 'None'}\n`;
+      mdContent += `- Matched Interests: ${explanation.preferenceEvidence?.matchedInterests.join(', ') || 'None'}\n`;
+      
+      mdContent += `\n#### Raw JSON Output\n\`\`\`json\n${JSON.stringify(explanation, null, 2)}\n\`\`\`\n`;
+    } else {
+      mdContent += `- **Message**: ${explanation.message}\n`;
+    }
+    
+    mdContent += `---\n`;
+  }
+
+  // Force an invalid one to prove failure fallback
+  const invalidRec = { ...top5[0], status: 'INSUFFICIENT_EVIDENCE', finalScore: null };
+  const invalidExpl = explEngine.generateExplanation(invalidRec as any);
+  
+  mdContent += `### Forced Invalid Career (Missing Evidence)\n`;
+  mdContent += `- **Status**: ${invalidExpl.status}\n`;
+  mdContent += `- **Message**: ${invalidExpl.message}\n`;
+  mdContent += `\n#### Raw JSON Output\n\`\`\`json\n${JSON.stringify(invalidExpl, null, 2)}\n\`\`\`\n`;
+
+  mdContent += `\n> Generated by Explainability Engine Audit.\n`;
+
+  const mdPath = path.join(auditsDir, 'explainability_engine_report.md');
+  fs.writeFileSync(mdPath, mdContent);
+  console.log('Explainability Audit generated successfully.');
+}
+
+void runExplainabilityAudit();

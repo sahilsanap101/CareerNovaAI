@@ -43,7 +43,9 @@ export async function calculateProfileCompletion(userId: string) {
   }
 
   // 2. Academic Info (20%)
-  const hasAcademic = Boolean(profile?.college && profile?.degree && profile?.branch && profile?.cgpa);
+  const hasAcademic = Boolean(
+    profile?.college && profile?.degree && profile?.branch && profile?.cgpa,
+  );
   if (hasAcademic) {
     score += 20;
   } else {
@@ -104,8 +106,11 @@ export async function calculateProfileCompletion(userId: string) {
 
 // ─── Master Lists ─────────────────────────────────────────────────
 
+import { CareerKnowledgeService } from '@/modules/careers/services/careerKnowledge.service';
+
 export async function getMasterSkills() {
-  return profileRepo.getAllMasterSkills();
+  const skills = await profileRepo.getAllMasterSkills();
+  return skills.filter((s) => s.category !== 'Deprecated');
 }
 
 export async function getMasterInterests() {
@@ -151,7 +156,11 @@ export async function addProject(userId: string, input: ProjectInput) {
   });
 }
 
-export async function updateProject(userId: string, projectId: string, input: Partial<ProjectInput>) {
+export async function updateProject(
+  userId: string,
+  projectId: string,
+  input: Partial<ProjectInput>,
+) {
   return profileRepo.updateProject(userId, projectId, input);
 }
 
@@ -170,7 +179,11 @@ export async function addCertification(userId: string, input: CertificationInput
   });
 }
 
-export async function updateCertification(userId: string, certId: string, input: Partial<CertificationInput>) {
+export async function updateCertification(
+  userId: string,
+  certId: string,
+  input: Partial<CertificationInput>,
+) {
   return profileRepo.updateCertification(userId, certId, input);
 }
 
@@ -184,7 +197,11 @@ export async function addCodingPlatform(userId: string, input: CodingPlatformInp
   return profileRepo.createCodingPlatform(userId, input);
 }
 
-export async function updateCodingPlatform(userId: string, platformId: string, input: Partial<CodingPlatformInput>) {
+export async function updateCodingPlatform(
+  userId: string,
+  platformId: string,
+  input: Partial<CodingPlatformInput>,
+) {
   return profileRepo.updateCodingPlatform(userId, platformId, input);
 }
 
